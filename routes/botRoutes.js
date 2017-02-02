@@ -155,26 +155,30 @@ bot.onText(/\/addbook (.+) (.+)/, function (msg, match) {
 * */
 bot.onText(/\/tolunch/, function(msg, match){
     var chatId = msg.chat.id;
+    var name = msg.chat.user_name;
 
-    bot.sendMessage(chatId, "I'm going to have a lunch!");
+    bot.sendMessage(chatId, name + ": I'm going to have a lunch!");
 });
 
 bot.onText(/\/fromlunch/, function(msg, match){
     var chatId = msg.chat.id;
+    var name = msg.chat.user_name;
 
-    bot.sendMessage(chatId, 'I came from lunch');
+    bot.sendMessage(chatId, name + ': I came from lunch');
 });
 
 bot.onText(/\/stopwork/, function(msg, match){
     var chatId = msg.chat.id;
+    var name = msg.chat.user_name;
 
-    bot.sendMessage(chatId, 'Stop working');
+    bot.sendMessage(chatId, name +  ': Stop working');
 });
 
 bot.onText(/\/starkwork/, function(msg, match){
     var chatId = msg.chat.id;
+    var name = msg.chat.user_name;
 
-    bot.sendMessage(chatId, 'Start working');
+    bot.sendMessage(chatId, name + ': Start working');
 });
 
 // bot.onText(/(.+)  /, function(msg, match){
