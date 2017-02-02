@@ -1,0 +1,18 @@
+<form >
+	    <label style="display: block">{{vm.greeting}}</label>
+	    
+<!-- 	    <md-input-container>
+		  <label>Username</label>
+		  <input type="text" ng-model="user.name">
+		</md-input-container>
+ -->
+		<md-input-container>
+		  <label>Введите код</label>
+		  <textarea ng-model="vm.code"></textarea>
+		</md-input-container>
+
+	     <md-button style="display: block" ng-click="vm.sendCode(vm.code, vm.checked, vm.botId)">
+	      Отправить
+	    </md-button>
+	    
+</form>

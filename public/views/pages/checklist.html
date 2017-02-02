@@ -1,0 +1,14 @@
+<div ui-view>
+	<form >
+		<label>Welcome!</label>
+	    <!-- <label style="display: block">{{vm.greeting}}</label> -->
+	    <md-input-container style="display: block">
+	      <label for="testInput">ВВЕДИТЕ СВОЙ ID</label>
+	      <input id="testInput" ng-model="vm.employee_id" md-autofocus type="text">
+	    </md-input-container>
+	     <md-button style="display: block" ng-click="vm.checkChecked(vm.employee_id)">
+	      Отправить
+	    </md-button>
+	    <label ng-if="vm.message" style="display: block; margin: 5px; padding: 3px; border-radius: 5px; background-color: #f44259; color:#9aaced "> {{vm.message}}</label>
+	</form>
+</div>

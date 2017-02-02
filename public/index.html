@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html ng-app="checklist">
+<head >
+
+    <meta charset="utf-8">
+    <base href="/">
+
+<!--     <link rel="stylesheet" href="../assets/css/foundation.css">
+    <link rel="stylesheet" href="../assets/css/faq_question_content.css">
+    <link rel="stylesheet" type="text/css" href="../bower_components/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/buttons.css">
+
+    <link rel="stylesheet" href="../assets/css/styles.css"> -->
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/angular-material/angular-material.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+  <meta name="viewport" content="initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pages.css">
+
+    <!-- agnular libs -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+    <script src="bower_components/webcam/app/scripts/webcam.js"></script>
+
+    <!-- required for angular material  -->
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+
+    <!-- angular material library -->
+    <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/webcam/app/scripts/webcam.js"></script>
+    <!-- Angular Custom scripts -->
+    <!-- Routing  -->
+    <script src="app.js"></script>
+
+    <!-- controllers -->
+    <script src="controllers.js"></script>
+
+    <!-- services -->
+    <script src="services.js"></script>
+    <title>Checklist</title>
+
+</head>
+
+<body layout="column" ng-cloak>
+    <md-toolbar layout="row">
+        <div class="md-toolbar-tools">
+          <button ng-click="vm.toggleSidenav('left')" class="menuBtn" aria-label="Toggle Menu">
+          </button>
+          <h1 layout-align-gt-sm="center">
+            Checklist
+          </h1>
+        </div>
+    </md-toolbar>
+
+    <div layout="row" flex class="change-my-css">
+        <md-sidenav md-component-id="left" layout="column" class="sidenav1" md-is-locked-open='true'>
+           <!--  <div ui-view flex="" layout="row" style="margin: 200px ">
+                 Профиль пользователя
+            </div> -->
+        </md-sidenav>
+
+        <md-content flex layout="row" class="content" >
+            <div ui-view flex="" layout="row" style="margin: 200px ">
+                
+            </div>
+        </md-content>
+    </div>
+
+</body>     
+
+
+
+<!-- <body layout="column">
+  <md-toolbar layout="row">
+    <div class="md-toolbar-tools">
+      <button ng-click="vm.toggleSidenav('left')" hide-gt-sm class="menuBtn" aria-label="Toggle Menu">bvcbvc
+      </button>
+      <h1 layout-align-gt-sm="center">
+        Hello World
+      </h1>
+    </div>
+  </md-toolbar>
+  
+  <div layout="row" flex class="change-my-css">
+    <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="vm.left" md-is-locked-open="vm.$mdMedia('gt-sm')">
+      <div>Side Navigation</div>
+
+      <md-list>
+        <md-list-item ng-repeat="li in vm.list">
+          <div class="md-list-item-text">
+            <div layout="row">
+              <span>{{li.name}}</span>
+              <span flex></span>
+              <span>{{li.idx || 0}}</span>
+            </div>
+          </div>
+        </md-list-item>
+      </md-list>
+    </md-sidenav>
+  
+    <md-content layout="column" id="content" flex class="md-padding">
+      Content
+      <p ng-repeat="x in [1,2,3,4,5,6,7,8,9,0]">Test {{x}}</p>
+      <p ng-repeat="x in [1,2,3,4,5,6,7,8,9,0]">Test {{x}}</p>
+      <p ng-repeat="x in [1,2,3,4,5,6,7,8,9,0]">Test {{x}}</p>
+      <p ng-repeat="x in [1,2,3,4,5,6,7,8,9,0]">Test {{x}}</p>
+      <p ng-repeat="x in [1,2,3,4,5,6,7,8,9,0]">Test {{x}}</p>
+      <p ng-repeat="x in [1,2,3,4,5,6,7,8,9,0]">Test {{x}}</p>
+      <p ng-repeat="x in [1,2,3,4,5,6,7,8,9,0]">Test {{x}}</p>
+      <p ng-repeat="x in [1,2,3,4,5,6,7,8,9,0]">Test {{x}}</p>
+    </md-content>
+  </div>
+ -->
+<!-- 
+    <body layout="row" ng-cloak>
+
+        <md-sidenav layout="column" class="sidenav1" md-is-locked-open='true'>
+             Профиль пользователя
+       </md-sidenav>
+
+        <md-content flex layout="column" >
+            <div flex="66" layout="row">
+                jhfjksdhjkf
+            </div>
+            <div flex layout="row">
+                    kjfhdkjfhs
+            </div>
+            <ui-view></ui-view>
+        </md-content>
+
+    </body> -->
+
+</html>

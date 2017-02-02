@@ -1,0 +1,163 @@
+/** {
+    border: 1px solid red !important;
+}
+*/
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.grid {
+    margin: 0 auto;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.row {
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.col-1 {
+    width: 8.33%;
+}
+
+.col-2 {
+    width: 16.66%;
+}
+
+.col-3 {
+    width: 25%;
+}
+
+.col-4 {
+    width: 33.33%;
+}
+
+.col-5 {
+    width: 41.66%;
+}
+
+.col-6 {
+    width: 50%;
+}
+
+.col-7 {
+    width: 58.33%;
+}
+
+.col-8 {
+    width: 66.66%;
+}
+
+.col-9 {
+    width: 75%;
+}
+
+.col-10 {
+    width: 83.33%;
+}
+
+.col-11 {
+    width: 91.66%;
+}
+
+.col-12 {
+    width: 100%;
+}
+
+.content {
+  background-color: #4FC3F7
+}
+
+.form {
+  border-radius: 5px;
+}
+
+
+.label {
+
+}
+.label_error {
+
+}
+
+.label_success {
+
+}
+
+
+
+.button {
+
+}
+
+.button_error {
+
+}
+
+.button_success {
+
+}
+
+
+
+
+
+.text {
+
+}
+
+
+
+.flex {
+      -webkit-flex: 1 1 0%;
+          -ms-flex: 1 1 0%;
+              flex: 1 1 0%;
+      box-sizing: border-box;
+    }
+    .flex-20 {
+      -webkit-flex: 1 1 20%;
+          -ms-flex: 1 1 20%;
+              flex: 1 1 20%;
+      max-width: 20%;
+      max-height: 100%;
+      box-sizing: border-box;
+    }
+
+    .layout-row .flex-33 {
+      -webkit-flex: 1 1 calc(100% / 3);
+          -ms-flex: 1 1 calc(100% / 3);
+              flex: 1 1 calc(100% / 3);
+      box-sizing: border-box;
+    }
+
+    .layout-row  .flex-66 {
+      -webkit-flex: 1 1 calc(200% / 3);
+          -ms-flex: 1 1 calc(200% / 3);
+              flex: 1 1 calc(200% / 3);
+      box-sizing: border-box;
+    }
+
+    .layout-row .flex-33 {
+      max-width: calc(100% / 3);
+      max-height: 100%;
+    }
+
+    .layout-row  .flex-66 {
+      max-width: calc(200% / 3);
+      max-height: 100%;
+    }
+
+    .layout-column .flex-33 {
+      max-width: 100%;
+      max-height: calc(100% / 3);
+    }
+
+    .layout-column  .flex-66 {
+      max-width: 100%;
+      max-height: calc(200% / 3);
+    }
