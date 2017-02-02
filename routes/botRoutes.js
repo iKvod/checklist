@@ -37,7 +37,8 @@ var options = {
     }
 };
 
-var url = 'https://checklist.automato.me>';
+//var url = 'https://checklist.automato.me>';
+var url = 'http://188.166.182.2/';
 var bot = new TelegramBot(token, options);
 
 
