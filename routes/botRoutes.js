@@ -16,8 +16,8 @@ var bot = new TelegramBot(token, {polling: true});
 // var options = {
 //     webHook: {
 //         port: 443,
-//         key: `${__dirname}/key.pem`,
-//         cert: `${__dirname}/crt.pem`
+//         key: `${__dirname}/cert/key.pem`,
+//         cert: `${__dirname}/cert/crt.pem`
 //     }
 // };
 //
