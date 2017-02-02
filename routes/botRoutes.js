@@ -33,7 +33,7 @@ var options = {
     webHook: {
         port: 80,
         key: `${__dirname}/cert/key.pem`,
-        cert: `${__dirname}/cert/crt.pem`
+        cert: `${__dirname}/cert/cert.pem`
     }
 };
 
@@ -77,7 +77,7 @@ bot.onText(/\/start/, function(msg, match){
     user.save(function(err, user){
         if(err) {
             console.log("Ошибка при сохранений: " + err.errmsg);
-            bot.sendMessage(chatId, "Sorry can't refister you!");
+            bot.sendMessage(chatId, "Sorry can't register you!");
             return ;
         }
         console.log(user);
