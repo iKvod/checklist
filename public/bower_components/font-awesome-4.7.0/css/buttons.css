@@ -1,0 +1,16 @@
+.button-green {
+    position: relative;
+    background-color: #4CAF50;
+    border:none;
+    font-size: 28px;
+    color: #FFFFFF;
+    padding: 10px;
+    width:200px;
+    text-align: center;
+    -webkit-transition-duration:0.4s;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+
