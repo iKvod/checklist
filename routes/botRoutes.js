@@ -15,7 +15,7 @@ var token = "324830524:AAF_QWatxxdsHbxrC2cB82jxKj8tZmd6wWE";
 
 var options = {
     webHook: {
-        port: 443,
+        port: 80,
         key: `${__dirname}/cert/key.pem`,
         cert: `${__dirname}/cert/crt.pem`
     }
