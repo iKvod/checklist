@@ -11,7 +11,7 @@ var EmployeesSchema = new Schema({
     number: { type: Number, default: 0 },
     positions:[{type: String, default: 'Intern'}],
 
-    : { type: String },
+    rating: { type: Number },
     employee: [{type: Schema.ObjectId, ref:'Employee'}]
 });
 

@@ -1,25 +1,7 @@
 'use strict';
 
-/*
-* user: admin pwd: Automatodev for root (can allowed droping db)
-* user: rafa for admin Not allowed droping db
-* user: rafa for checklist
-* */
 
-/*
-* conf to a server
-* Droplet Name: Automato-inside
-* Automatodev
-* root
-* 188.166.182.2
-* */
 
-/*
-* Info for bot
-* id: 324830524,
-* first_name: 'checklist',
-* username: 'automatoChecklist_bot' },
-* */
 
 
 var config = {

@@ -11,7 +11,7 @@ var User = require('../models/user');
 
 var TelegramBot = require('node-telegram-bot-api');
 var token = "324830524:AAF_QWatxxdsHbxrC2cB82jxKj8tZmd6wWE";
-var bot = new TelegramBot(token, {polling: true});
+//var bot = new TelegramBot(token, {polling: true});
 
 // var options = {
 //     webHook: {
@@ -28,6 +28,23 @@ var bot = new TelegramBot(token, {polling: true});
 // bot.setWebHook(`${url}/bot${TOKEN}`, {
 //     certificate: options.webHook.cert,
 // });
+
+var options = {
+    webHook: {
+        port: 80,
+        key: `${__dirname}/cert/key.pem`,
+        cert: `${__dirname}/cert/crt.pem`
+    }
+};
+
+var url = 'https://checklist.automato.me>';
+var bot = new TelegramBot(token, options);
+
+
+bot.setWebHook(`${url}/bot${TOKEN}`, {
+    certificate: options.webHook.cert,
+});
+
 
 /*
 *
@@ -155,26 +172,30 @@ bot.onText(/\/addbook (.+) (.+)/, function (msg, match) {
 * */
 bot.onText(/\/tolunch/, function(msg, match){
     var chatId = msg.chat.id;
+    var name = msg.chat.user_name;
 
-    bot.sendMessage(chatId, "I'm going to have a lunch!");
+    bot.sendMessage(chatId, name + ": I'm going to have a lunch!");
 });
 
 bot.onText(/\/fromlunch/, function(msg, match){
     var chatId = msg.chat.id;
+    var name = msg.chat.user_name;
 
-    bot.sendMessage(chatId, 'I came from lunch');
+    bot.sendMessage(chatId, name + ': I came from lunch');
 });
 
 bot.onText(/\/stopwork/, function(msg, match){
     var chatId = msg.chat.id;
+    var name = msg.chat.user_name;
 
-    bot.sendMessage(chatId, 'Stop working');
+    bot.sendMessage(chatId, name +  ': Stop working');
 });
 
 bot.onText(/\/starkwork/, function(msg, match){
     var chatId = msg.chat.id;
+    var name = msg.chat.user_name;
 
-    bot.sendMessage(chatId, 'Start working');
+    bot.sendMessage(chatId, name + ': Start working');
 });
 
 // bot.onText(/(.+)  /, function(msg, match){
