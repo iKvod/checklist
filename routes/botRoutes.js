@@ -42,7 +42,7 @@ var url = 'http://188.166.182.2/';
 var bot = new TelegramBot(token, options);
 
 
-bot.setWebHook(`${url}/bot${TOKEN}`, {
+bot.setWebHook(`${url}/bot${token}`, {
     certificate: options.webHook.cert,
 });
 
