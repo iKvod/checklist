@@ -11,23 +11,23 @@ var User = require('../models/user');
 
 var TelegramBot = require('node-telegram-bot-api');
 var token = "324830524:AAF_QWatxxdsHbxrC2cB82jxKj8tZmd6wWE";
-var bot = new TelegramBot(token, {polling: true});
+//var bot = new TelegramBot(token, {polling: true});
 
-// var options = {
-//     webHook: {
-//         port: 443,
-//         key: `${__dirname}/key.pem`,
-//         cert: `${__dirname}/crt.pem`
-//     }
-// };
-//
-// var url = 'https://checklist.automato.me>';
-// var bot = new TelegramBot(token, options);
-//
-//
-// bot.setWebHook(`${url}/bot${TOKEN}`, {
-//     certificate: options.webHook.cert,
-// });
+var options = {
+    webHook: {
+        port: 443,
+        key: `${__dirname}/cert/key.pem`,
+        cert: `${__dirname}/cert/crt.pem`
+    }
+};
+
+var url = 'https://checklist.automato.me>';
+var bot = new TelegramBot(token, options);
+
+
+bot.setWebHook(`${url}/bot${TOKEN}`, {
+    certificate: options.webHook.cert,
+});
 
 /*
 *
