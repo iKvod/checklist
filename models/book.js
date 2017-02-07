@@ -6,9 +6,12 @@ mongoose.Promise = global.Promise
 var Schema = mongoose.Schema;
 
 var BookSchema = new Schema({
-   title: { type: String },
+    title: { type: String },
     link: { type: String },
-    employee: [{type: Schema.ObjectId, ref:'Employee'}]
+    employee: [{type: Schema.ObjectId, ref:'Employee'}],
+    required: {
+       type: Boolean, default:false
+    }
 });
 
-module.exports = mongoose.models('Books', BookSchema);
+module.exports = mongoose.model('Books', BookSchema);

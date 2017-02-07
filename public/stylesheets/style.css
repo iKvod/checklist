@@ -1,4 +1,95 @@
-    md-sidenav  {
+
+body {
+    background-color: #FEEBC8;
+}
+
+.main {
+  background-color: #4FC3F7;
+}
+
+.header {
+  background-color: #999999;
+  height: 50px;
+  display: flex;
+}
+
+.form {
+  border-radius: 5px;
+}
+
+
+.label {
+
+}
+.label_error {
+
+}
+
+.label_success {
+
+}
+
+.button {
+
+}
+
+.button_error {
+
+}
+
+.button_success {
+
+}
+
+.text {
+
+}
+
+.text_error {
+  
+}
+
+
+/*
+  * { box-sizing: border-box; }
+  body {
+    width: 90%;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+  .wrapper {
+    padding-right: 2.08333333%;
+  }
+  
+  .row {
+    display: flex;
+  }
+  .col {
+    margin-left: 2.08333333%;
+    margin-bottom: 1em;
+    width: 6.25%;
+    flex: 1 1 auto;
+    background: rgb(255,150,150);
+  }
+  .col.span2 { width: calc((6.25%*2) + 2.08333333%); }
+  .col.span3 { width: calc((6.25%*3) + (2.08333333%*2)); }
+  .col.span4 { width: calc((6.25%*4) + (2.08333333%*3)); }
+  .col.span5 { width: calc((6.25%*5) + (2.08333333%*4)); }
+  .col.span6 { width: calc((6.25%*6) + (2.08333333%*5)); }
+  .col.span7 { width: calc((6.25%*7) + (2.08333333%*6)); }
+  .col.span8 { width: calc((6.25%*8) + (2.08333333%*7)); }
+  .col.span9 { width: calc((6.25%*9) + (2.08333333%*8)); }
+  .col.span10 { width: calc((6.25%*10) + (2.08333333%*9)); }
+  .col.span11 { width: calc((6.25%*11) + (2.08333333%*10)); }
+  .col.span12 { width: calc((6.25%*12) + (2.08333333%*11)); }
+  */
+
+
+
+
+
+
+/*    md-sidenav  {
       width: 110px;height:100%;
       padding:20px;
       background-color: #6bc7cc;
@@ -11,8 +102,8 @@
     }
 
 .change-my-css {
-  /*overflow: hidden;*/
-  /*overflow: auto;*/
+  overflow: hidden;
+  overflow: auto;
 }
 
 .menuBtn {
@@ -33,9 +124,9 @@ md-list .md-button {
 
 
 
-/* Using Data-URI converted from svg until <md-icon> becomes available 
+ Using Data-URI converted from svg until <md-icon> becomes available 
 https://github.com/google/material-design-icons
-*/
+
 .menuBtn {
   background: transparent url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIyNHB4IiB2aWV3Qm94PSIwIDAgMjQgMjQiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDI0IDI0IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGcgaWQ9IkhlYWRlciI+CiAgICA8Zz4KICAgICAgICA8cmVjdCB4PSItNjE4IiB5PSItMjIzMiIgZmlsbD0ibm9uZSIgd2lkdGg9IjE0MDAiIGhlaWdodD0iMzYwMCIvPgogICAgPC9nPgo8L2c+CjxnIGlkPSJMYWJlbCI+CjwvZz4KPGcgaWQ9Ikljb24iPgogICAgPGc+CiAgICAgICAgPHJlY3QgZmlsbD0ibm9uZSIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ii8+CiAgICAgICAgPHBhdGggZD0iTTMsMThoMTh2LTJIM1YxOHogTTMsMTNoMTh2LTJIM1YxM3ogTTMsNnYyaDE4VjZIM3oiIHN0eWxlPSJmaWxsOiNmM2YzZjM7Ii8+CiAgICA8L2c+CjwvZz4KPGcgaWQ9IkdyaWQiIGRpc3BsYXk9Im5vbmUiPgogICAgPGcgZGlzcGxheT0iaW5saW5lIj4KICAgIDwvZz4KPC9nPgo8L3N2Zz4=) no-repeat  center center;
 }
@@ -43,3 +134,4 @@ https://github.com/google/material-design-icons
 
 
 
+*/

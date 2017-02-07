@@ -1,0 +1,27 @@
+<div ui-view>
+	<form >
+	    <label style="display: block">{{vm.greeting}}</label>
+	    
+<!-- 	    <md-input-container>
+		  <label>Username</label>
+		  <input type="text" ng-model="user.name">
+		</md-input-container>
+ -->
+		<md-input-container> 
+		  <label>Введите код</label>
+		  <textarea ng-model="vm.code"></textarea>
+		</md-input-container>
+		<md-button style="display: block" ng-click="vm.checkOut(vm.code)">
+	      Отправить
+	    </md-button>
+	    <label>Checkout{{vm.data}}</label>
+
+	    <!--  <md-button style="display: block" ng-click="vm.sendCode(vm.code)">
+	      Отправить
+	    </md-button>
+	     <md-button style="display: block" ng-click="vm.checkOut()">
+	      Отправить
+	    </md-button> -->
+	    
+	</form>
+</div>

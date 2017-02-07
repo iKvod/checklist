@@ -29,25 +29,18 @@ angular.module('checklist', [
         // })      
         .state('checklist', {
             url: '/checklist',
-            templateUrl: 'views/pages/checklist.html',
+            templateUrl: 'views/pages/checklist_id_form.html',
             controller: 'ChecklistCtrl',
-            controllerAs: 'vm',
+            controllerAs: 'vm'/*,
             resolve: {
                 user : function(ChecklistService){
                     var userData = ChecklistService.query();
                     return userData.$promise;
                 }
-            }
+            }*/
         })
-        //unnessary state
-         .state("checkin", { //state for showing all the faqs
-             url:'/checkin',
-             templateUrl:"views/pages/checkin_id_form.html",
-             controller: "CheckinCtrl",
-             controllerAs: "vm"
-         })
-         .state("checkin.code", { //state for creating new FAQﬁ
-            url:'^/code/{employee_id}',
+         .state("checkin", { //state for creating new FAQﬁ
+            url:'/in/code/{employee_id}',
             templateUrl:"views/pages/checkin_code_form.html",
             controller:"CheckinCtrl",
             controllerAs:"vm"
@@ -56,38 +49,31 @@ angular.module('checklist', [
             //         return CheckinService.getUserData();
             //     }
             // }
-         })
-        //unnessary state
-         .state("checkout",{//state for uploadin image and description
-            url:'/checkout',
-            templateUrl:"views/pages/checkin_id_form.html",
-            controller:"CheckoutCtrl",
-            controllerAs:"vm"
-         })
-         .state('checkout.code',{
-            url:'^/code/{employee_id}',
-            templateUrl:'views/pages/checkin_code_form.html',
-            controeller:'CheckoutCtrl',
-            controllerAs:'vm',
-            params: {
+            ,params: {
                 employee_id: null
             }
          })
-         .state("image",{//state for uploadin image and description
+         .state("checkin.image",{//state for uploadin image and description
             url:'/camera',
             templateUrl:"views/pages/checkin_image_form.html",
-            controller:"WebcamCtrl",
+            controller:"CheckinCtrl",
             controllerAs:"vm"
-         })  
+            ,params: {
+                employee_id: null
+            }
+         })
+         .state("checkout", {
+            url:'/out/code/{employee_id}',
+            templateUrl:'views/pages/checkout_code_form.html',
+            controller:'CheckoutCtrl',
+            controllerAs:'vm'
+            ,params: {
+                employee_id: null
+            }
+         })
          .state('checkout.image',{
             url:'/camera',
-            templateUrl:'views/pages/checkin_image_form.html',
-            controeller:'CheckoutCtrl',
-            controllerAs:'vm'
-         })
-         .state('checkout.report',{
-            url:'/camera',
-            templateUrl:'views/pages/report_form.html',
+            templateUrl:'views/pages/checkout_image_form.html',
             controeller:'CheckoutCtrl',
             controllerAs:'vm'
          })

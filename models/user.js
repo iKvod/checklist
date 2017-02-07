@@ -14,7 +14,7 @@ var Employee = new Schema({
     firstname: {type: String, default:''},
     lastname: {type: String, default: ''},
     email: String,
-    phoneNumber: {type:String},
+    phonenumber: {type:String},
     department: String,
     position: String,
     registered_at: { type:Date, default:Date.now},
@@ -22,6 +22,7 @@ var Employee = new Schema({
         type: Boolean,
         default:false
     },
+    updated: Date,
     rating: [{type: Number}],
     report: [{
         type: Schema.Types.ObjectId,
@@ -41,6 +42,12 @@ var Employee = new Schema({
 //
 // });
 
+
+Employee.pre('save', function (next) {
+    var currentDate = new Date();
+    this.updated = currentDate;
+    next();
+})
 
 Employee.method.getName = function () {
   return this.firstname + ' ' + this.lastname;

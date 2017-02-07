@@ -7,17 +7,17 @@ var Schema = mongoose.Schema;
 
 
 var ReportingSchema = new Schema({
-    checkin: Date,
-    checkout: Date,
-    lunchin: Date,
-    lunchout: Date,
-    goOUt: Date,
-    comeback: Date,
-    created_at: { type: Date, default: Date.now },
-    updated_at: { type: Date, default: Date.now },
+    check_in: Date,
+    check_out: Date,
+    lunch_in: Date,
+    lunch_out: Date,
+    go_out: Date,
+    come_back: Date,
+    // created_at: { type: Date, default: Date.now },
+    // updated_at: { type: Date, default: Date.now },
     report: { type: String },
     employee: { // position id of employee
-        type: String,
+        type: Schema.Types.ObjectId,
         ref:'Employee'
     },
 }, {

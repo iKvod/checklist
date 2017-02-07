@@ -9,10 +9,13 @@ var Schema = mongoose.Schema;
 
 var EmployeesSchema = new Schema({
     number: { type: Number, default: 0 },
-    positions:[{type: String, default: 'Intern'}],
-
-    rating: { type: Number },
-    employee: [{type: Schema.ObjectId, ref:'Employee'}]
+    positions: [{type: String, default: 'Intern'}]
+    // rating: { type: Number },
+    //employee: [{type: Schema.ObjectId, ref:'Employee'}]
 });
 
-module.exports = mongoose.models('Employees', EmployeesSchema);
+module.exports = mongoose.model('Employees', EmployeesSchema);
+
+EmployeesSchema.pre('save', function (next) {
+    this.number++;
+});

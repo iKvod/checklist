@@ -42,9 +42,39 @@ function time() {
     console.log(date.getFullYear());
     console.log(date.toLocaleDateString());
 }
-time();
+//time();
 
 
+function stringSeparator(sep, string) {
+    var strData = string.split(sep);
+    return strData[0];
+   // console.log(strData[0]);
+}
+var Employees = require('../models/employees');
+
+function generateId(count){
+    var date = new Date();
+    var year = date.getFullYear().toString().substr(2);
+    var dep = 'IT';
+    var newId = year + dep + count;
+
+    console.log("dsds");
+}
+
+
+function getEmployyesCount (callback){
+    var count = 0;
+
+    Employees.findOne({})
+        .select({ number:1 })
+        .exec(function (err, employee) {
+            if(err) {console.log(err); return}
+            count = employee.number;
+            callback(count);
+        });
+}
+
+getEmployyesCount(generateId);
 
 //console.log(generateCode());
 //generateCode();
