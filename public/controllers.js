@@ -67,6 +67,7 @@ angular.module('checklist')
         ['$state','$stateParams','$http', '$rootScope','CheckinService','WebcamService', function($state,$stateParams, $http, $rootScope, CheckinService, WebcamService){
             var vm = this;
             vm.greeting = "Добро пожаловать! Отметтесь пожалуйста";
+            vm.successGreating = "Вы отметились в системе!"
             vm.data = { message: "Пришел(пришла) на работу", id: $stateParams.employee_id};
 
             //WEBCAM snacpshot taking
@@ -92,6 +93,7 @@ angular.module('checklist')
                     data: {image:image, report: vm.data}
                 })
                 .then(function(response){
+                    $state.go('checkin.success');
                     console.log(response);
                 }, function (error) {
                     console.log(error);
@@ -122,6 +124,7 @@ angular.module('checklist')
         function($state, $http, $stateParams, CheckoutService, WebcamService){
         var vm = this;
         vm.greeting = "Hello! Checkout, please!!"
+         vm.successGreating = "Надеемся день у Вас был плодотворным!"
         vm.data = { message: "Уходит с работы!", id: $stateParams.employee_id, report:'', bookreport:''};
 
         
@@ -165,6 +168,7 @@ angular.module('checklist')
                     data: {image:image, report: vm.data}
                 })
                 .then(function(response){
+                    $state.go('checkout.success');
                     console.log(response);
                 }, function (error) {
                     console.log(error);

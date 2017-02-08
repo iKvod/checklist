@@ -100,7 +100,8 @@ bot.onText(/\/start/, function (msg, match) {
 
     var message = "Чтобы зарегистритоваться в системе вам нужно\n"
         + "набрать команду * в той же последовательноcти * как ниже:\n\t\t"
-        + "/register ID firstname lastname email mobile# department position\n"
+        + "/register ID firstname lastname email mobile# department position\n\n"
+        + "P.S. после регистраций наберите /info для получений списков команд\n";
 
     bot.sendMessage(userId, message, opt);
 
@@ -373,14 +374,18 @@ bot.onText(/\/getbookinfo (.+)/,function (msg, match) {
 
             if(err) {
                 console.log(err);
-                bot.sendMessage(userId, "Возможно, он уже прочитал книги!\n" + " Отправьте ему книги");
+                bot.sendMessage(userId, "Ошибка, попробуйте через некоторое время!\n");
                 return;
             }
 
-            if(data.book){
+
+            if(data.book.length === 0){
                 bot.sendMessage(userId, "Возможно, он уже прочитал книги!\n" + " Отправьте ему книги");
             } else {
-                console.log(data.book);
+                for (var i = 0, len = data.book.length; i < len; i++){
+                    var message = i+1 + " " + data.book[i] + " \n"
+                }
+                bot.sendMessage(userId, "dsds");
             }
         });
 });

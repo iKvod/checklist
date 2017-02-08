@@ -62,6 +62,12 @@ angular.module('checklist', [
                 employee_id: null
             }
          })
+        .state('checkin.success', {
+            url:'/success',
+            templateUrl:'views/pages/success_checkin_page.html',
+            controler:"CheckinCtrl",
+            controllerAs:'vm'
+         })
          .state("checkout", {
             url:'/out/code/{employee_id}',
             templateUrl:'views/pages/checkout_code_form.html',
@@ -77,6 +83,12 @@ angular.module('checklist', [
             controeller:'CheckoutCtrl',
             controllerAs:'vm'
          })
+         .state('checkout.success', {
+            url:'/success',
+            templateUrl:'views/pages/success_checkin_page.html',
+            controler:"CheckoutCtrl",
+            controllerAs:'vm'
+         })
          .state('error',{
             url:'/error',
             templateUrl:'',
@@ -85,7 +97,7 @@ angular.module('checklist', [
          })
          .state('success',{
             url:'/success',
-            templateUrl:'',
+            templateUrl:'views/pages/success_checkin_page.html',
             controler:"",
             controllerAs:''
          })
