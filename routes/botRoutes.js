@@ -15,22 +15,22 @@ var token = "324830524:AAF_QWatxxdsHbxrC2cB82jxKj8tZmd6wWE";
 //var bot = new TelegramBot(token, {polling: true});
 
 
-var options = {
-    webHook: {
-        port: 443,
-        key: `${__dirname}/cert/key.pem`,
-        cert: `${__dirname}/cert/cert.pem`
-    }
-};
-
-//var url = 'https://checklist.automato.me>';
-var url = 'https://188.166.182.2/';
-var bot = new TelegramBot(token, options);
-
+// var options = {
+//     webHook: {
+//         port: 443,
+//         key: `${__dirname}/cert/key.pem`,
+//         cert: `${__dirname}/cert/cert.pem`
+//     }
+// };
 //
-bot.setWebHook(`${url}/bot${token}`, {
-    certificate: options.webHook.cert,
-});
+// //var url = 'https://checklist.automato.me>';
+// var url = 'https://188.166.182.2/';
+// var bot = new TelegramBot(token, options);
+//
+// //
+// bot.setWebHook(`${url}/bot${token}`, {
+//     certificate: options.webHook.cert,
+// });
 
 //bot.deleteWebHook();
 
