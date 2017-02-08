@@ -12,7 +12,7 @@ var Employees = require('../models/employees');
 
 var TelegramBot = require('node-telegram-bot-api');
 var token = "324830524:AAF_QWatxxdsHbxrC2cB82jxKj8tZmd6wWE";
-//var bot = new TelegramBot(token, {polling: true});
+var bot = new TelegramBot(token, {polling: true});
 
 
 // var options = {
