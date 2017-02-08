@@ -79,10 +79,10 @@ bot.onText(/\/register (.+) (.+) (.+) (.+) (.+) (.+) (.+)/, function(msg, match)
             return ;
         }
         console.log(user);
-        var emp = new Employees();
-        emp.save(err, function (err, savedEmp) {
-           // console.log(savedEmp);
-        });
+        // var emp = new Employees();
+        // emp.save(err, function (err, savedEmp) {
+        //    // console.log(savedEmp);
+        // });
         bot.sendMessage(chatId, user.firstname +  ', вы зарегистрированы в системе\n' + " Ваш ID " + user.employee_id);
     });
 });

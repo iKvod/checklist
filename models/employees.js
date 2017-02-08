@@ -17,5 +17,5 @@ var EmployeesSchema = new Schema({
 module.exports = mongoose.model('Employees', EmployeesSchema);
 
 EmployeesSchema.pre('save', function (next) {
-    this.number++;
+    this.number += 1;
 });
