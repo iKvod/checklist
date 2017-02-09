@@ -14,7 +14,7 @@ var TelegramBot = require('node-telegram-bot-api');
 var token = "324830524:AAF_QWatxxdsHbxrC2cB82jxKj8tZmd6wWE";
 //@checklistAutomato2_bot bot for testing
 var token2 = "308572160:AAG4WW0OA9qdLK1bakj7-edMxS-P1vriedY";
-var bot = new TelegramBot(token, {polling: true});
+var bot = new TelegramBot(token2, {polling: true});
 
 
 // var options = {
@@ -492,13 +492,13 @@ botrouter.post('/image', function (req, res, next) {
 
     if(message && report && bookReport){
         caption = time + "\n" + message + "\n" + report + "\n" + "Мои заметки по книге: "+ bookReport + "\n";
-        console.log("1"+caption)
+        //console.log("1"+caption)
     } else if (message && (report !== undefined) && (bookReport === undefined) ) {
         caption = time + "\n" + message + "\n" + report + "\n" + "Я еще не прочел книгу" + "\n";
-        console.log("2"+message);
+       // console.log("2"+message);
     } else if(message && (report === undefined) && (bookReport === undefined)){
         caption = time + "\n"+ message;
-        console.log("3"+caption);
+        //console.log("3"+caption);
     }
 
 
@@ -515,13 +515,13 @@ botrouter.post('/image', function (req, res, next) {
                         [{text: '👎'}]
                     ],
                     "resize_keyboard" : true,
-                    "one_time_keyboard" : true
+                    "one_time_keyboard" : true,
+                    "remove_keyboard":true
             }
     };
-
-    bot.sendPhoto(78923920, buffer, opt);
+    //bot.sendPhoto(78923920, buffer, opt);
     bot.sendPhoto(228106138, buffer, opt);
-
+    bot.sendPhoto(207925830, buffer, opt);
 
     fs.writeFile('./public/photos/' + time.getTime() + "_" + id + '.jpeg', buffer, function(e){
         if(e) console.log(e);

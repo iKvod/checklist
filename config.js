@@ -1,9 +1,5 @@
 'use strict';
 
-
-
-
-
 var config = {
     token: '324830524:AAF_QWatxxdsHbxrC2cB82jxKj8tZmd6wWE',
     botName: 'automatoChecklist_bot',

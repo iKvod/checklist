@@ -110,6 +110,7 @@ angular.module('checklist')
                 checkin.$promise
                     .then(
                         function(data){
+                            console.log("Checkin");
                             console.log(data);
                             $state.go('checkin.image', {employee_id: data._id});
 
@@ -126,6 +127,7 @@ angular.module('checklist')
         vm.greeting = "Hello! Checkout, please!!"
         vm.successGreating = "Надеемся день у Вас был плодотворным!"
         vm.data = { message: "Уходит с работы!", id: $stateParams.employee_id, report:'', bookreport:''};
+        vm.report = '';
 
         
         //WEB CAM 
@@ -145,19 +147,41 @@ angular.module('checklist')
 
 
         vm.checkOut = function(code){
-            console.log("Checkout code: " + code);
+            //console.log("Checkout code: " + code);
             var id = $stateParams.employee_id; 
 
             var checkOut = CheckoutService.query({id:id});
 
             checkOut.$promise
                 .then(function(data){
-                    console.log($stateParams.employee_id);
+                   // console.log($stateParams.employee_id);
                     $state.go('checkout.image', {reload:true});
                 }, function(err){
                     console.log(err);
                 });
         }
+
+        vm.sendReport  = function (report){
+            var id = $stateParams.employee_id;
+            vm.report = report;
+            var obj = {}
+            obj.report = vm.report;
+            var reporting = new CheckoutService(obj);
+            reporting.$update({id:id})
+            // .$promise
+            //     .then(function(data){
+            //         console.log(data);    
+            //     }, function(err){
+
+            //     })
+        }
+
+        // vm.sendReport = function(report){
+        //      var id = $stateParams.employee_id;
+        //     var report = CheckoutService.get({id:id}, function(){
+        //         report.
+        //     });
+        // }
 
         vm.sendData = function(image, report, reportBook){
                 vm.data.report = report;
@@ -169,7 +193,7 @@ angular.module('checklist')
                 })
                 .then(function(response){
                     $state.go('checkout.success');
-                    console.log(response);
+                    //console.log(response);
                 }, function (error) {
                     console.log(error);
                 });   

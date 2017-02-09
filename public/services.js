@@ -42,6 +42,12 @@
                     params: {"id": "@id"},
                     isArray: false,
                     cache: false,
+                },
+                update: {
+                    method: 'PUT',
+                    params:{"id":"@id"},
+                    isArray:false,
+                    cache:false,
                 }
             })
 

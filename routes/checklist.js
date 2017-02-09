@@ -111,6 +111,16 @@ checklist.post('/checkin/:id', function(req, res, next){
 
 });
 
+checklist.get('/report', function (req, res, next) {
+    Users.find({})
+        .populate('report')
+        .select({})
+        .exec(function (err, data) {
+            if(err) { console.log(err); return }
+            res.send(data);
+        });
+});
+
 
 checklist.get('/checkout/:id', function (req, res, next) {
     var id = req.params.id;
@@ -121,14 +131,14 @@ checklist.get('/checkout/:id', function (req, res, next) {
             if(err) { console.log(err); return }
             var len = data.report.length;
             var report = data.report[len - 1];
-            console.log(data.report[len - 1]);
+            //console.log(data.report[len - 1]);
             res.send(data);
         });
 });
 
 
 checklist.put('/checkout/:id', function (req, res, next) {
-
+    //console.log(req.body);
     Users.findById(req.params.id, function(err, data){
         if (err) console.log(err);
         var len = data.report.length - 1;
@@ -141,13 +151,13 @@ checklist.put('/checkout/:id', function (req, res, next) {
 
             Reports.findById(lastReportId, function (err, report) {
                if(err) return next(err);
-               console.log(report);
+               //console.log(report);
 
                report.check_out = new Date();
+               report.report = req.body.report;
                //
                report.save(function (err, savedReport) {
-                   console.log(savedReport);
-
+                   //console.log(savedReport);
                     res.send(savedReport);
                });
             });

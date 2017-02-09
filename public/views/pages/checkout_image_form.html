@@ -29,7 +29,7 @@
                                           <!-- <input id="testInput" ng-model="vm.reportBook" md-autofocus type="text"> -->
                             <textarea  id="testInput" ng-model="vm.reportBook" md-autofocus type="text"></textarea>
                         </md-input-container>
-                        <md-button class="btn btn-default" type="button" ng-click="vm.sendData(vm.photo, vm.report, vm.reportBook)">Отправить</md-button>         
+                        <md-button class="btn btn-default" type="button" ng-click="vm.sendData(vm.photo, vm.report, vm.reportBook);vm.sendReport(vm.report)">Отправить</md-button>         
                     </form>
                 </div>
         </div>
