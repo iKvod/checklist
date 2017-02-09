@@ -12,6 +12,8 @@ var Employees = require('../models/employees');
 
 var TelegramBot = require('node-telegram-bot-api');
 var token = "324830524:AAF_QWatxxdsHbxrC2cB82jxKj8tZmd6wWE";
+//@checklistAutomato2_bot bot for testing
+var token2 = "308572160:AAG4WW0OA9qdLK1bakj7-edMxS-P1vriedY";
 var bot = new TelegramBot(token, {polling: true});
 
 
@@ -240,7 +242,6 @@ bot.onText(/\/userinfo/, function (msg, match) {
             var it = 0;
             data.forEach(function(user){
                 it++;
-                console.log(user.botId);
                 text += it + ") ID сотрудника:"+ user.employee_id + " Имя: " + user.firstname + " " + "\n";
             });
 
@@ -518,7 +519,9 @@ botrouter.post('/image', function (req, res, next) {
             }
     };
 
-    bot.sendPhoto(207925830, buffer, opt);
+    bot.sendPhoto(78923920, buffer, opt);
+    bot.sendPhoto(228106138, buffer, opt);
+
 
     fs.writeFile('./public/photos/' + time.getTime() + "_" + id + '.jpeg', buffer, function(e){
         if(e) console.log(e);

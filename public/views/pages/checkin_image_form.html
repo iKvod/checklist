@@ -1,5 +1,10 @@
-<div ui-view>
-	<div id="webcam" ng-if="vm.showweb">
+	<div class="form_content">
+		<div class="form_header">
+				<img src="/images/footer-logo.png">
+				<!-- <label>Welcome!</label> -->
+		</div>	
+		<div class="form_body">
+				<div id="webcam" ng-if="vm.showweb">
                     <webcam channel="vm.webcam.channel"
                             on-streaming="vm.webcam.onSuccess()"
                             on-error="vm.webcam.onError(err)"
@@ -7,12 +12,10 @@
                     <md-button class="btn btn-default" type="button" ng-click="vm.webcam.makeSnapshot();vm.sendData(vm.photo)">Сделать фото</md-button>
                     <canvas ng-hide="true" id="snapshot" width="200" height="200"></canvas>
                     
+				</div>
+				<div ng-if="vm.photo">
+					<img data-ng-src="{{'data:' + vm.fotoContentType + ';base64,' + vm.photo}}" width="320" height="180" style=""/>
+				    <md-button class="btn btn-default" type="button" ng-click="vm.sendData(vm.photo)">Отправить</md-button>
+				</div>
+		</div>
 	</div>
-
-
-	<div ng-if="vm.photo">
-		<img data-ng-src="{{'data:' + vm.fotoContentType + ';base64,' + vm.photo}}" width="320" height="180" style=""/>
-	    <md-button style="display: block;" class="btn btn-default" type="button" ng-click="vm.sendData(vm.photo)">Отправить</md-button>
-	</div>
-
-</div>

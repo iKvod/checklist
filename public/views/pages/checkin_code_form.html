@@ -1,17 +1,23 @@
-<div ui-view>
-
-	<form>
-	    <label style="display: block">{{vm.greeting}}</label>
-	    
-		<md-input-container> 
-		  <label>Введите код</label>
-		  <textarea ng-model="vm.code"></textarea>
-		</md-input-container>
-		<md-button style="display: block" ng-click="vm.checkIn(vm.code)">
-	      Отправить
-	    </md-button>
-	    <label>Тут должно быть инфо {{vm.data}}</label>
-	    
-	</form>
-
+<div ui-view class="form">
+	<div class="form_content">
+		<div class="form_header">
+				<img src="/images/footer-logo.png">
+				<!-- <label>Welcome!</label> -->
+		</div>	
+		<div class="form_body">
+				<form>
+				    <label style="display: block">{{vm.greeting}}</label>
+				    
+					<md-input-container> 
+					  <label>Введите код</label>
+					  <textarea ng-model="vm.code"></textarea>
+					</md-input-container>
+					<md-button style="display: block" ng-click="vm.checkIn(vm.code)">
+				      Отправить
+				    </md-button>
+				    <label>Тут должно быть инфо {{vm.data}}</label>
+				    
+				</form>
+		</div>
+	</div>
 </div>

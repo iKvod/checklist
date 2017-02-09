@@ -1,54 +1,26 @@
-<div ui-view class="wrapper">
-	<div class="">
-		<form >
-			<label>Welcome!</label>
-		    <!-- <label style="display: block">{{vm.greeting}}</label> -->
-		    <md-input-container style="display: block">
-		      <label for="testInput">ВВЕДИТЕ СВОЙ ID</label>
-		      <input id="testInput" ng-model="vm.employee_id" md-autofocus type="text">
-		    </md-input-container>
-		     <md-button style="display: block" ng-click="vm.checkChecked(vm.employee_id)">
-		      Отправить
-		    </md-button>
-		    <label ng-if="vm.message" style="display: block; margin: 5px; padding: 3px; border-radius: 5px; background-color: #f44259; color:#9aaced "> {{vm.message}}</label>
-		</form>
+<div ui-view class="form">
+	<div class="form_content">
+		<div class="form_header">
+				<img src="/images/footer-logo.png">
+				<!-- <label>Welcome!</label> -->
+		</div>	
+		<div class="form_body flex_form">
+				<form>	
+			    <!-- <label style="display: block">{{vm.greeting}}</label> -->
+				    <div>
+				    	<md-input-container>
+					      <label for="testInput">ВВЕДИТЕ СВОЙ ID</label>
+					      <input id="testInput" ng-model="vm.employee_id" md-autofocus type="text">
+					    </md-input-container>
+				  	</div>
+				  	<div>
+				  		   <md-button ng-click="vm.checkChecked(vm.employee_id)">Отправить</md-button>
+				  	</div>
+				  	<div>
+					    <label ng-if="vm.message"> {{vm.message}}</label>
+				  	</div>
+				    
+				</form>
+		</div>
 	</div>
-	
 </div>
-
-<!-- <style type="text/css">
-	.wrapper {
-		display: -webkit-box;
-		display: -moz-box;
-		display: -webkit-flex;
-		display: flex;
-
-		font-weight: bold;
-		text-align: center;
-	}
-
-	.wrapper > * {
-		padding: 10px;
-		flex: 1 100%;
-	}
-
-	.header	{
-
-	}
-
-	.footer {
-
-	}
-
-	.main {
-		text-align: left;
-		background: #fff;
-	}
-
-	/*body {
-		padding: 2em;
-	}*/
-
-
-
-</style> -->

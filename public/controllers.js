@@ -124,7 +124,7 @@ angular.module('checklist')
         function($state, $http, $stateParams, CheckoutService, WebcamService){
         var vm = this;
         vm.greeting = "Hello! Checkout, please!!"
-         vm.successGreating = "Надеемся день у Вас был плодотворным!"
+        vm.successGreating = "Надеемся день у Вас был плодотворным!"
         vm.data = { message: "Уходит с работы!", id: $stateParams.employee_id, report:'', bookreport:''};
 
         

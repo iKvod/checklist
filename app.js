@@ -14,32 +14,6 @@ var checklistRoutes = require('./routes/checklist');
 
 var config = require('./config');
 var app = express();
-var TelegramBot = require('node-telegram-bot-api');
-var token = "324830524:AAF_QWatxxdsHbxrC2cB82jxKj8tZmd6wWE";
-//var bot = new TelegramBot(token, {polling: true});
-
-
-// var options = {
-//     webHook: {
-//         port: 443,
-//         key: `${__dirname}/cert/key.pem`,
-//         cert: `${__dirname}/cert/cert.pem`
-//     }
-// };
-//
-// //var url = 'https://checklist.automato.me>';
-// var bot = new TelegramBot(token);
-//
-// //var url = 'https://188.166.182.2/';
-// //var bot = new TelegramBot(token, options);
-//
-// //
-// // bot.setWebHook(`${url}/bot${token}`, {
-// //     certificate: options.webHook.cert,
-// // });
-// bot.deleteWebHook();
-
-
 
 //mongoose.connect(config.mongoUrl, config.opt);
 mongoose.connect(config.mongoUrl);
@@ -50,76 +24,6 @@ db.once('open', function () {
     console.log("Соединение к базе прошло успешно");
 });
 
-// //'use strict';
-//
-// const Telegram = require('telegram-node-bot'),
-//     PersistentMemoryStorage = require('./TBhelpers/adapters/PersistentMemoryStorage'),
-//     storage = new PersistentMemoryStorage(
-//         `${__dirname}/data/userStorage.json`,
-//         `${__dirname}/data/chatStorage.json`
-//     ),
-//     tg = new Telegram.Telegram('324830524:AAF_QWatxxdsHbxrC2cB82jxKj8tZmd6wWE', {
-//         workers: 1,
-//             webAdmin: {
-//         port: 3000,
-//         host: 'localhost'
-//     },
-//         storage: storage
-//     });
-//
-// const TodoController = require('./TBhelpers/controllers/todos')
-//     , OtherwiseController = require('./TBhelpers/controllers/otherwise');
-//
-// const todoCtrl = new TodoController();
-//
-// tg.router.when(new Telegram.TextCommand('/add', 'addCommand'), todoCtrl)
-//     .when(new Telegram.TextCommand('/get', 'getCommand'), todoCtrl)
-//     .when(new Telegram.TextCommand('/check', 'checkCommand'), todoCtrl)
-//     .when(new Telegram.TextCommand('/books', 'booksAddComand', todoCtrl))
-//     .otherwise(new OtherwiseController());
-//
-// function exitHandler(exitCode) {
-//     storage.flush();
-//     process.exit(exitCode);
-// }
-//
-// process.on('SIGINT', exitHandler.bind(null, 0));
-// process.on('uncaughtException', exitHandler.bind(null, 1));
-
-//
-// const Telegram = require('telegram-node-bot')
-// const TelegramBaseController = Telegram.TelegramBaseController
-// const TextCommand = Telegram.TextCommand
-//
-// const tg = new Telegram.Telegram('324830524:AAF_QWatxxdsHbxrC2cB82jxKj8tZmd6wWE', {
-//     webAdmin: {
-//         port: 3000,
-//         host: 'localhost'
-//     }
-// });
-//
-//
-//
-// class PingController extends TelegramBaseController {
-//     /**
-//      * @param {Scope} $
-//      */
-//     pingHandler($) {
-//         $.sendMessage('pong')
-//     }
-//
-//     get routes() {
-//         return {
-//             'pingCommand': 'pingHandler'
-//         }
-//     }
-// }
-//
-// tg.router
-//     .when(
-//         new TextCommand('ping', 'pingCommand'),
-//         new PingController()
-//     )
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
