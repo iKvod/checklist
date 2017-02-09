@@ -14,7 +14,7 @@ var TelegramBot = require('node-telegram-bot-api');
 var token = "324830524:AAF_QWatxxdsHbxrC2cB82jxKj8tZmd6wWE";
 //@checklistAutomato2_bot bot for testing
 var token2 = "308572160:AAG4WW0OA9qdLK1bakj7-edMxS-P1vriedY";
-var bot = new TelegramBot(token2, {polling: true});
+var bot = new TelegramBot(token, {polling: true});
 
 
 // var options = {
@@ -104,7 +104,7 @@ bot.onText(/\/start/, function (msg, match) {
 
     var message = "Чтобы зарегистритоваться в системе вам нужно\n"
         + "набрать команду * в той же последовательноcти * как ниже:\n\t\t"
-        + "/register ID firstname lastname email mobile# department position\n\n"
+        + "/register ID firstname lastname email mobile department position\n\n"
         + "P.S. после регистраций наберите /info для получений списков команд\n";
 
     bot.sendMessage(userId, message, opt);
@@ -459,23 +459,14 @@ bot.onText(/\/starkwork/, function(msg, match){
 
 bot.on('sticker',function(msg){
     var chatId = msg.chat.id;
-    console.log(msg);
-    bot.sendMessage(chatId, "Recieved Your message");
+    console.log("ajkfhjh kjah");
+    bot.sendMessage(chatId, "Recieved Your sticker");
 });
 
 /*
 * API checklist
 * from web client
 * */
-
-
-botrouter.get('/books', function(req, res, next){
-
-});
-
-botrouter.post('/book', function(req, res, next){
-    bot.sendMessage(chatId, "SOME MESSAGE");
-});
 
 //gathering snapchot image and sending it to bot
 botrouter.post('/image', function (req, res, next) {
@@ -519,6 +510,7 @@ botrouter.post('/image', function (req, res, next) {
                     "remove_keyboard":true
             }
     };
+
     bot.sendPhoto(78923920, buffer, opt);
     bot.sendPhoto(228106138, buffer, opt);
     bot.sendPhoto(207925830, buffer, opt);

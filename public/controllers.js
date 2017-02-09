@@ -45,8 +45,8 @@ angular.module('checklist')
             }
        }*/
 
-       vm.checkChecked = function(id){ 
-           
+       vm.checkChecked = function(emp_id){ 
+           var id = emp_id.toLowerCase();
             var userData = ChecklistService.get({id:id});
             userData.$promise.then(
                 function(data){
