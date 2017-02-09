@@ -519,7 +519,7 @@ botrouter.post('/image', function (req, res, next) {
                     "remove_keyboard":true
             }
     };
-    //bot.sendPhoto(78923920, buffer, opt);
+    bot.sendPhoto(78923920, buffer, opt);
     bot.sendPhoto(228106138, buffer, opt);
     bot.sendPhoto(207925830, buffer, opt);
 
