@@ -74,7 +74,21 @@ function getEmployyesCount (callback){
         });
 }
 
-getEmployyesCount(generateId);
+//getEmployyesCount(generateId);
+
+var date = new Date();
+
+var time1 = date.getTime();
+console.log(time1);
+
+var time2 = date.getUTCHours();
+console.log(time2 + 6)
+
+var time3 = date.toLocaleString();
+console.log(time3);
+
+
+
 
 //console.log(generateCode());
 //generateCode();
