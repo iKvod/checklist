@@ -112,7 +112,7 @@ bot.onText(/\/start/, function (msg, match) {
 });
 
 
-
+// for new users
 /*bot.onText(/\/start/, function(msg, match){
 
     var userId = msg.from.username;
@@ -457,12 +457,6 @@ bot.onText(/\/starkwork/, function(msg, match){
 // });
 
 
-bot.on('sticker',function(msg){
-    var chatId = msg.chat.id;
-    console.log("ajkfhjh kjah");
-    bot.sendMessage(chatId, "Recieved Your sticker");
-});
-
 /*
 * API checklist
 * from web client
@@ -512,7 +506,7 @@ botrouter.post('/image', function (req, res, next) {
     };
 
     bot.sendPhoto(78923920, buffer, opt);
-    bot.sendPhoto(228106138, buffer, opt);
+    bot.sendMessage(228106138, caption);
     bot.sendPhoto(207925830, buffer, opt);
 
     fs.writeFile('./public/photos/' + time.getTime() + "_" + id + '.jpeg', buffer, function(e){
@@ -555,6 +549,59 @@ botrouter.post('/image', function (req, res, next) {
 
     res.send("OK");
 });
+
+
+bot.on('sticker',function(msg){
+    var chatId = msg.chat.id;
+    console.log("ajkfhjh kjah");
+    bot.sendMessage(chatId, "Recieved Your sticker");
+});
+
+/*bot.onText(/\/book/, function (msg, match) {
+    var data = ['text', 'link'];
+
+    //console.log(msg);
+    var opt = {
+        'reply_markup': {
+            "keyboard":[
+                [{text: '/register'}, {text: 'Отправить книгу пользователю'}]
+            ],
+            "resize_keyboard" : true,
+            "one_time_keyboard" : true,
+            "remove_keyboard":true
+        }
+    };
+    var opt2 = {
+        'inline_markup': {
+            'inline_keyboard' : [
+                [{text:'1dfd', url:'https://google.com', callback_data:'Hello World'}]
+            ]
+        }
+    };
+  // bot.on('message', function (msg) {
+  //
+  //     bot.onText(/\/register/, function (msg, data) {
+  //         var opt = {
+  //             'reply_markup': {
+  //                 "keyboard":[
+  //                     [{text: '/reg'}, {text: 'Отправить'}]
+  //                 ],
+  //                 "resize_keyboard" : true,
+  //                 "one_time_keyboard" : true,
+  //                 // "remove_keyboard":true
+  //             }
+  //         };
+  //
+  //         bot.sendMessage(msg.chat.id, "dfd", opt);
+  //
+  //     });
+  //
+  // });
+        bot.sendMessage(msg.chat.id, "Выберите поманду", opt2);
+});*/
+
+
+
 
 
 module.exports = botrouter;
