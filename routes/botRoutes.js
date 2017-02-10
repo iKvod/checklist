@@ -519,10 +519,10 @@ var optEmployee = {
   }
 };
 
-bot.onText(/\/swich/, function (msg, match) {
-    //if(msg.chat.id === 207925830){
+bot.onText(/\/switch/, function (msg, match) {
+    if(msg.chat.id === 207925830){
 
-     if(msg.chat.id === 78923920){
+    // if(msg.chat.id === 78923920){
         bot.sendMessage(msg.chat.id, "У вас новые кнопки", optionCeo);
     } else {
         bot.sendMessage(msg.chat.id,"У вас новые кнопки", optEmployee);
@@ -581,6 +581,7 @@ bot.on(mes, function (msg) {
 
         if(msg.text === button ){
             bot.sendMessage(msg.chat.id, "Книга не отправлена",optionCeo);
+            bookData = [];
         }
         else {
             var optionCeo = {
@@ -609,6 +610,7 @@ bot.on(mes, function (msg) {
                }
                 var message = '['+savedBook.title +'](' + savedBook.link +')';
                 bot.sendMessage(msg.chat.id, message, optionCeo);
+                bookData = [];
             });
         }
     }
