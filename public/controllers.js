@@ -51,11 +51,14 @@ angular.module('checklist')
             userData.$promise.then(
                 function(data){
                    console.log(data);
+                   $rootScope.name = data.firstname + " " + data.lastname;
+                   $rootScope.botId = data.botId;
+                   //$rootScope.checked = data.checked;
                     if(data.checked){
-                        $rootScope.id = data._id;
+                        $rootScope.id = data.id;
                         $state.go('checkout', { employee_id: data._id });
                     } else {
-                        $rootScope.id = data._id;
+                        $rootScope.id = data.id;
                         $state.go('checkin', { employee_id: data._id });
                     }
             }, function(err){
@@ -68,7 +71,11 @@ angular.module('checklist')
             var vm = this;
             vm.greeting = "Добро пожаловать! Отметтесь пожалуйста";
             vm.successGreating = "Вы отметились в системе!"
-            vm.data = { message: "Пришел(пришла) на работу", id: $stateParams.employee_id};
+            vm.data = { message: "Пришел(пришла) на работу", 
+                        id: $stateParams.employee_id, 
+                        name: $rootScope.name,
+                        botId: $rootScope.botId
+            };
 
             //WEBCAM snacpshot taking
             vm.showweb = true;
@@ -121,12 +128,17 @@ angular.module('checklist')
             };
             
     }])
-    .controller('CheckoutCtrl', ['$state', '$http','$stateParams', 'CheckoutService', 'WebcamService', 
-        function($state, $http, $stateParams, CheckoutService, WebcamService){
+    .controller('CheckoutCtrl', ['$state', '$rootScope','$http','$stateParams', 'CheckoutService', 'WebcamService', 
+        function($state, $rootScope, $http, $stateParams, CheckoutService, WebcamService){
         var vm = this;
         vm.greeting = "Hello! Checkout, please!!"
         vm.successGreating = "Надеемся день у Вас был плодотворным!"
-        vm.data = { message: "Уходит с работы!", id: $stateParams.employee_id, report:'', bookreport:''};
+        vm.data = { 
+            message: "Уходит с работы!", id: $stateParams.employee_id, 
+            report:'', bookreport:'', 
+            name: $rootScope.name,
+            botId: $rootScope.botId
+        };
         vm.report = '';
 
         

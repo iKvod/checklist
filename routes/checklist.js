@@ -111,17 +111,6 @@ checklist.post('/checkin/:id', function(req, res, next){
 
 });
 
-checklist.get('/report', function (req, res, next) {
-    Users.find({})
-        .populate('report')
-        .select({})
-        .exec(function (err, data) {
-            if(err) { console.log(err); return }
-            res.send(data);
-        });
-});
-
-
 checklist.get('/checkout/:id', function (req, res, next) {
     var id = req.params.id;
     Users.findById(id)
@@ -166,6 +155,15 @@ checklist.put('/checkout/:id', function (req, res, next) {
     });
 });
 
+checklist.get('/report', function (req, res, next) {
+    Users.find({})
+        .populate('report')
+        .select({})
+        .exec(function (err, data) {
+            if(err) { console.log(err); return }
+            res.send(data);
+        });
+});
 
 // checklist.get('/checklist', function (req, res, next) {
 //     console.log('/api/cheklist/checklist');
@@ -198,7 +196,7 @@ checklist.get('/:id', function (req, res, next) {
     Users.findOne({
          employee_id: id
     })
-        .select({checked: 1, code:1, botId:1, employee_id:1, report:1})
+        .select({checked: 1, firstname:1, lastname:1, code:1, botId:1, employee_id:1, report:1})
         .exec(function (err, data) {
             //console.log(data);
             if(err){

@@ -438,27 +438,31 @@ bot.onText(/\/👨🏼‍💻starkwork👩🏼‍💻/, function(msg, match){
 
 //gathering snapchot image and reports and sending it to bot
 botrouter.post('/image', function (req, res, next) {
-    //console.log(req.body);
     var date = new Date();
     var time = date.toLocaleString();
     var id = req.body.report.id;
     var b64Data = req.body.image;
     var message = req.body.report.message;
-   // console.log(message);
     var report = req.body.report.report;
-    //console.log(report !== undefined)
     var bookReport = req.body.report.bookreport;
-    //console.log(bookReport !== undefined);
+    var name = req.body.report.name;
+    var botId = req.body.report.botId;
     var caption = '';
+    var messageToUser = '';
+    var messageToManager = null;
 
     if(message && report && bookReport){
-        caption = time + "\n" + message + "\n" + report + "\n" + "Мои заметки по книге: "+ bookReport + "\n";
+        caption = time + "\n" + name + " " + message + "\n" + report + "\n" + "Мои заметки по книге: "+ bookReport + "\n";
         //console.log("1"+caption)
+        messageToUser = "У вас круто получилось сделать Checkout!";
+        messageToManager = time + "\n"  + "Отчет: \n " + name + " - "+ report;
     } else if (message && (report !== undefined) && (bookReport === undefined) ) {
-        caption = time + "\n" + message + "\n" + report + "\n" + "Я еще не прочел книгу" + "\n";
-       // console.log("2"+message);
+        caption = time + "\n" + name + " " + message + "\n" + report + "\n" + "Я еще не прочел книгу" + "\n";
+       messageToUser = "У вас круто получилось сделать Checkout!";
+        messageToManager = time + "\n"  + "Отчет: \n " + name + " - "+ report;
     } else if(message && (report === undefined) && (bookReport === undefined)){
-        caption = time + "\n"+ message;
+        caption = time + "\n" + name + " " + message;
+        messageToUser = "У вас круто получилось сделать Checkin!";
         //console.log("3"+caption);
     }
 
@@ -478,10 +482,21 @@ botrouter.post('/image', function (req, res, next) {
         //     }
     };
 
-    bot.sendPhoto(78923920, buffer, opt);
-    bot.sendMessage(228106138, caption);
-    bot.sendMessage(207925830, caption);
-    bot.sendPhoto(207925830, buffer, opt);
+    bot.sendPhoto(78923920, buffer, opt); // Rustam's bot ID
+    //sends to manager Report for current day
+    if(messageToManager !== null){
+        bot.sendMessage(228106138, messageToManager); //  Ayganym's bot ID
+    }
+    bot.sendMessage(botId, messageToUser); // Users ID send if he checked in or out
+
+    // testing
+    //bot.sendPhoto(207925830, buffer, opt); // testing
+    // bot.sendPhoto(207925830, buffer, opt); // Rustam's bot ID
+    // //sends to manager Report for current day
+    // if(messageToManager !== null){
+    //     bot.sendMessage(207925830, messageToManager); //  Ayganym's bot ID
+    // }
+    // bot.sendMessage(botId, messageToUser); // Users ID send if he checked in or out
 
     fs.writeFile('./public/photos/' + date.getTime() + "_" + id + '.jpeg', buffer, function(e){
         if(e) {
