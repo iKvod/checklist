@@ -6,3 +6,8 @@
 // /info - команда для получения о доступных командах для бота
 // @automatoChecklist_bot - название бота Checklist Automato
 
+/tolunch
+/fromlunch
+/stopwork
+/starkwork
+

@@ -233,7 +233,7 @@ bot.onText(/\/info/, function (msg, match) {
 
 
 // /info - informations about users
-bot.onText(/\/userinfo/, function (msg, match) {
+bot.onText(/\/👤 (.+) (.+)/, function (msg, match) {
     User.find({})
         .select({employee_id:1, firstname:1})
         .exec(function (err, data) {
@@ -403,68 +403,44 @@ bot.onText(/\/getbookinfo (.+)/,function (msg, match) {
 *
 *
 * */
-bot.onText(/\/tolunch/, function(msg, match){
+bot.onText(/\/🍔tolunch/, function(msg, match){
     var chatId = msg.chat.id;
     var name = msg.chat.user_name;
 
     bot.sendMessage(chatId, name + ": I'm going to have a lunch!");
 });
 
-bot.onText(/\/fromlunch/, function(msg, match){
+bot.onText(/\/fromlunch🍔/, function(msg, match){
     var chatId = msg.chat.id;
     var name = msg.chat.user_name;
 
     bot.sendMessage(chatId, name + ': I came from lunch');
 });
 
-bot.onText(/\/stopwork/, function(msg, match){
+bot.onText(/\/⚔️stopwork/, function(msg, match){
     var chatId = msg.chat.id;
     var name = msg.chat.user_name;
 
     bot.sendMessage(chatId, name +  ': Stop working');
 });
 
-bot.onText(/\/starkwork/, function(msg, match){
+bot.onText(/\/👨🏼‍💻starkwork👩🏼‍💻/, function(msg, match){
     var chatId = msg.chat.id;
     var name = msg.chat.user_name;
 
     bot.sendMessage(chatId, name + ': Start working');
 });
 
-// bot.onText(/(.+)  /, function(msg, match){
-//     console.log(msg.text + " from " + msg.chat.username ) ;
-// });
-
-// bot.onText(/\/key/,function(msg, match){
-//     var opt = {
-//         'parse_mode':"Markdown",
-//         'reply_markup': {
-//                 "keyboard":[
-//                     [{text: 'YES'}],
-//                     [{text: 'NO'}]
-//                 ]
-//
-//         }
-//     }
-//
-//     bot.sendMessage(msg.chat.id, "*Some* message here", opt);
-//
-// });
-
-// bot.onText(/\/(.+)/, function(msg, match){
-//     var chatId = msg.chat.id;
-//     bot.sendMessage(chatId, "Can't understand!");
-// });
-
-
 /*
 * API checklist
 * from web client
 * */
 
-//gathering snapchot image and sending it to bot
+//gathering snapchot image and reports and sending it to bot
 botrouter.post('/image', function (req, res, next) {
-    var time = new Date();
+    //console.log(req.body);
+    var date = new Date();
+    var time = date.toLocaleString();
     var id = req.body.report.id;
     var b64Data = req.body.image;
     var message = req.body.report.message;
@@ -486,122 +462,157 @@ botrouter.post('/image', function (req, res, next) {
         //console.log("3"+caption);
     }
 
-
-    //console.log(message);
-
     var buffer = new Buffer(b64Data, 'base64');
    // bot.sendMessage(207925830,'_'+report+'_', {'parse_mode':"Markdown"});
     //var url = "https://www.google.kz/imgres?imgurl=https://lh5.googleusercontent.com/-89xTT1Ctbrk/AAAAAAAAAAI/AAAAAAAABcc/Kg0vilTzpKI/s0-c-k-no-ns/photo.jpg&imgrefurl=https://plus.google.com/u/0/114461178896543099856&h=349&w=349&tbnid=xioshf3NC0EdIM:&vet=1&tbnh=186&tbnw=186&docid=Crf5bkJhI8aTfM&itg=1&usg=__TtEAsURjtwX5OnkvlM3Ngw4WYsg=&sa=X&ved=0ahUKEwjn4KbdhO_RAhUFS5oKHW3BCu8Q_B0IczAK&ei=CueRWOezJYWW6QTtgqv4Dg#h=349&imgrc=xioshf3NC0EdIM:&tbnh=186&tbnw=186&vet=1&w=349";
     var opt = {
         "caption": caption,
-        'reply_markup': {
-                    "keyboard":[
-                        [{text: '👍'}],
-                        [{text: '👎'}]
-                    ],
-                    "resize_keyboard" : true,
-                    "one_time_keyboard" : true,
-                    "remove_keyboard":true
-            }
+        // 'reply_markup': { // for rating
+        //             "keyboard":[
+        //                 [{text: '👍'}],
+        //                 [{text: '👎'}]
+        //             ],
+        //             "resize_keyboard" : true,
+        //             "one_time_keyboard" : true,
+        //             "remove_keyboard":true
+        //     }
     };
 
     bot.sendPhoto(78923920, buffer, opt);
     bot.sendMessage(228106138, caption);
+    bot.sendMessage(207925830, caption);
     bot.sendPhoto(207925830, buffer, opt);
 
-    fs.writeFile('./public/photos/' + time.getTime() + "_" + id + '.jpeg', buffer, function(e){
-        if(e) console.log(e);
+    fs.writeFile('./public/photos/' + date.getTime() + "_" + id + '.jpeg', buffer, function(e){
+        if(e) {
+            console.log(e)
+        }
     });
-
-    // var opt = {
-    //     'parse_mode':"Markdown",
-    //     'reply_markup': {
-    //             "keyboard":[
-    //                 [{text: 'YES'}],
-    //                 [{text: 'NO'}]
-    //             ],
-    //             "resize_keyboard" : true,
-    //             "one_time_keyboard" : true
-    //     }
-    // };
-    //
-    // bot.sendMessage(207925830, '_Hello_', opt)
-
-    /*
-    * For sending links for books
-    * */
-    // var opt = {
-    //     'parse_mode':"Markdown",
-    //     'inline_markup': {
-    //         "inline_button":[
-    //             [{text: 'YES', url: "google.com"}],
-    //             [{text: 'NO'}]
-    //         ]
-    //     }
-    // };
-    //
-    // bot.sendMessage(207925830, '[Book](http://www.vk.com)', opt)
-    //     .then(function (resp) {
-    //         console.log(resp)
-    //     }, function (err) {
-    //         console.log(err);
-    //     });
 
     res.send("OK");
 });
 
-
 bot.on('sticker',function(msg){
     var chatId = msg.chat.id;
-    console.log("ajkfhjh kjah");
     bot.sendMessage(chatId, "Recieved Your sticker");
 });
 
-/*bot.onText(/\/book/, function (msg, match) {
-    var data = ['text', 'link'];
+var mes = 'message';
+var bookData = [];
+var optionCeo = {
+    'reply_markup': {
+        "keyboard":[
+            [{text: '/👤 Информация о пользователе'}, {text: '/📕Addbooks'}]
+        ],
+        "resize_keyboard" : true,
+        "one_time_keyboard" : true,
+        "remove_keyboard":true
+    }
+};
 
-    //console.log(msg);
-    var opt = {
-        'reply_markup': {
-            "keyboard":[
-                [{text: '/register'}, {text: 'Отправить книгу пользователю'}]
-            ],
-            "resize_keyboard" : true,
-            "one_time_keyboard" : true,
-            "remove_keyboard":true
+var optEmployee = {
+  'reply_markup': {
+      'keyboard' : [
+          [{text:'/🍔tolunch'}, {text:'/fromlunch🍔'}],
+          [{text:'/⚔️stopwork'}, {text:'/👨🏼‍💻starkwork👩🏼‍💻'}]
+      ]
+  }
+};
+
+bot.onText(/\/swich/, function (msg, match) {
+    //if(msg.chat.id === 207925830){
+
+     if(msg.chat.id === 78923920){
+        bot.sendMessage(msg.chat.id, "У вас новые кнопки", optionCeo);
+    } else {
+        bot.sendMessage(msg.chat.id,"У вас новые кнопки", optEmployee);
+    }
+});
+
+
+// for sending book interactively
+bot.on(mes, function (msg) {
+    var data = ["text", "link"];
+    var mes_id = 0;
+
+
+    if(msg.text === '/📕Addbooks'){
+        this.mes_id = msg.message_id;
+
+        var opt = {
+            'reply_to_message_id': this.mes_id
+        };
+        bot.sendMessage(msg.chat.id, "Введите название книги", opt);
+
+
+    }
+
+    if((msg.message_id - this.mes_id) === 2){
+
+        bookData.push(msg.text);
+
+        var opt = {
+            'reply_to_message_id': (this.mes_id + 1),
+            'reply_markup': {
+                "keyboard":[
+                    [{text: '⬅️ Назад'}]
+                ],
+                "resize_keyboard" : true,
+                "one_time_keyboard" : true,
+                "remove_keyboard":true
+            }
+        };
+        bot.sendMessage(msg.chat.id, "Введите ссылку на книгу", opt);
+    }
+
+    var button = "⬅️ Назад";
+    if((msg.message_id - this.mes_id) === 4){
+        var optionCeo = {
+            'reply_to_message_id': (this.mes_id + 1),
+            'reply_markup': {
+                "keyboard":[
+                    [{text: '/👤 Информация о пользователе'}, {text: '/Addbooks'}]
+                ],
+                "resize_keyboard" : true,
+                "one_time_keyboard" : true,
+                "remove_keyboard":true
+            }
+        };
+
+        if(msg.text === button ){
+            bot.sendMessage(msg.chat.id, "Книга не отправлена",optionCeo);
         }
-    };
-    var opt2 = {
-        'inline_markup': {
-            'inline_keyboard' : [
-                [{text:'1dfd', url:'https://google.com', callback_data:'Hello World'}]
-            ]
+        else {
+            var optionCeo = {
+                //'reply_to_message_id': (this.mes_id + 1),
+                'parse_mode':"Markdown",
+                'reply_markup': {
+                    "keyboard":[
+                        [{text: '/👤 Информация о пользователе'}, {text: '/📕Addbooks'}]
+                    ],
+                    "resize_keyboard" : true,
+                    "one_time_keyboard" : true,
+                    "remove_keyboard":true
+                }
+            };
+
+            bookData.push(msg.text);
+            var book = Books({
+                title: bookData[0],
+                link: bookData[1],
+                required: true
+            });
+
+            book.save(function (err, savedBook) {
+               if(err) {
+                   console.log(err);
+               }
+                var message = '['+savedBook.title +'](' + savedBook.link +')';
+                bot.sendMessage(msg.chat.id, message, optionCeo);
+            });
         }
-    };
-  // bot.on('message', function (msg) {
-  //
-  //     bot.onText(/\/register/, function (msg, data) {
-  //         var opt = {
-  //             'reply_markup': {
-  //                 "keyboard":[
-  //                     [{text: '/reg'}, {text: 'Отправить'}]
-  //                 ],
-  //                 "resize_keyboard" : true,
-  //                 "one_time_keyboard" : true,
-  //                 // "remove_keyboard":true
-  //             }
-  //         };
-  //
-  //         bot.sendMessage(msg.chat.id, "dfd", opt);
-  //
-  //     });
-  //
-  // });
-        bot.sendMessage(msg.chat.id, "Выберите поманду", opt2);
-});*/
+    }
 
-
-
-
+});
 
 module.exports = botrouter;
