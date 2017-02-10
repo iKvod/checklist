@@ -4,18 +4,6 @@ angular.module('checklist')
     .controller('MainCtrl', ['$mdSidenav', function($mdSidenav){
         var vm = this;
 
-        vm.toggleSidenav = function(left){
-            $mdSidenav(left).toggle();
-        }
-
-        var list = [];
-          for (var i = 0; i < 100; i++) {
-            list.push({
-              name: 'List Item ' + i,
-              idx: i
-            });
-          };
-         vm.list = list;
 
     }])
     .controller('ChecklistCtrl', ['ChecklistService', '$state','$stateParams', '$rootScope',
@@ -53,6 +41,7 @@ angular.module('checklist')
                    console.log(data);
                    $rootScope.name = data.firstname + " " + data.lastname;
                    $rootScope.botId = data.botId;
+                   $rootScope.code = data.code;
                    //$rootScope.checked = data.checked;
                     if(data.checked){
                         $rootScope.id = data.id;
@@ -107,7 +96,7 @@ angular.module('checklist')
                 });   
             };
 
-
+            // reports checkin in db
             vm.checkIn = function(code){
                 console.log(code);
                 var id = $stateParams.employee_id;
@@ -134,7 +123,8 @@ angular.module('checklist')
         vm.greeting = "Hello! Checkout, please!!"
         vm.successGreating = "Надеемся день у Вас был плодотворным!"
         vm.data = { 
-            message: "Уходит с работы!", id: $stateParams.employee_id, 
+            message: "Уходит с работы!", 
+            id: $stateParams.employee_id, 
             report:'', bookreport:'', 
             name: $rootScope.name,
             botId: $rootScope.botId
@@ -157,7 +147,7 @@ angular.module('checklist')
                 vm.webcam.turnOff();
         }
 
-
+        //sending checkput report to server
         vm.checkOut = function(code){
             //console.log("Checkout code: " + code);
             var id = $stateParams.employee_id; 
@@ -173,6 +163,7 @@ angular.module('checklist')
                 });
         }
 
+        //sending report to server
         vm.sendReport  = function (report){
             var id = $stateParams.employee_id;
             vm.report = report;
@@ -180,21 +171,10 @@ angular.module('checklist')
             obj.report = vm.report;
             var reporting = new CheckoutService(obj);
             reporting.$update({id:id})
-            // .$promise
-            //     .then(function(data){
-            //         console.log(data);    
-            //     }, function(err){
-
-            //     })
+           
         }
 
-        // vm.sendReport = function(report){
-        //      var id = $stateParams.employee_id;
-        //     var report = CheckoutService.get({id:id}, function(){
-        //         report.
-        //     });
-        // }
-
+        //sending checout report to bot
         vm.sendData = function(image, report, reportBook){
                 vm.data.report = report;
                 vm.data.bookreport = reportBook;    

@@ -536,7 +536,6 @@ var optEmployee = {
 
 bot.onText(/\/switch/, function (msg, match) {
    // if(msg.chat.id === 207925830){
-
      if(msg.chat.id === 78923920){
         bot.sendMessage(msg.chat.id, "У вас новые кнопки", optionCeo);
     } else {
