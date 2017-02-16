@@ -45,8 +45,8 @@ ReportingSchema.methods.calcTime = function () {
     var lunchTimeMinutes = null;
 
     if(this.check_in && this.check_out){
-        console.log(this.check_in);
-        console.log(this.check_out);
+        // console.log(this.check_in);
+        // console.log(this.check_out);
         fullTimeHours =
             this.check_out.getHours() - this.check_in.getHours();
         fullTimeMinutes = (this.check_out.getHours() * 60 + this.check_out.getMinutes())
@@ -64,8 +64,8 @@ ReportingSchema.methods.calcTime = function () {
         }
 
         totalTimeInMinutes = fullTimeMinutes - outWorkMinutes - lunchTimeMinutes;
-        console.log("Get interval in hours: "+ fullTimeHours);
-        console.log("Get interval in min: " + fullTimeMinutes);
+        // console.log("Get interval in hours: "+ fullTimeHours);
+        // console.log("Get interval in min: " + fullTimeMinutes);
 
         return {
             minutes : fullTimeMinutes, // whole time begiin
@@ -75,8 +75,8 @@ ReportingSchema.methods.calcTime = function () {
         };
     } else {
         console.log("Вы не сделали чекаут!");
-        console.log(this.check_in  + this.check_out);
-        console.log(this.check_out);
+        // console.log(this.check_in  + this.check_out);
+        // console.log(this.check_out);
 
     }
 };

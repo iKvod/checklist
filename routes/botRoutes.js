@@ -493,7 +493,7 @@ botrouter.post('/image', function (req, res, next) {
     var checkOut = false;
 
     if(message && report && bookReport){
-        caption = time + "\n" + name + " " + message + "\n" + report + "\n" + "Мои заметки по книге: "+ bookReport + "\n";
+        caption = time + "\n" + name + " " + message + "\n" + report + "\n" + "Мои заметки по книге:\n "+ bookReport + "\n";
         //console.log("1"+caption)
         messageToUser = "У вас круто получилось сделать Checkout!";
         checkOut = true;
@@ -537,14 +537,17 @@ botrouter.post('/image', function (req, res, next) {
         bot.sendMessage(botId, messageToUser); // Users ID send if he checked in or out
     }
 
-
    //  //testing
    // bot.sendPhoto(207925830, buffer, opt); // testing
    // //sends to manager Report for current day
    //  if(messageToManager !== null){
    //      bot.sendMessage(207925830, messageToManager); //  Ayganym's bot ID
    //  }
-   //  bot.sendMessage(botId, messageToUser); // Users ID send if he checked in or out
+   //  if(checkOut){
+   //      fetchBook(botId, sendBookCheckout, messageToUser);
+   //  } else {
+   //      bot.sendMessage(botId, messageToUser); // Users ID send if he checked in or out
+   //  }
 
 
     fs.writeFile('./public/photos/' + date.getTime() + "_" + id + '.jpeg', buffer, function(e){
@@ -575,7 +578,7 @@ function sendBookCheckout(link, title, botId, messageToUser) {
     var opt = {
         'parse_mode':"Markdown"
     };
-    bot.sendMessage(botId, "["+title+"](" + link + ")", opt);
+    bot.sendMessage(botId, "["+"Текущая книга которую  Вы должны прочитать\n"+title+"](" + link + ")", opt);
     bot.sendMessage(botId, messageToUser);
 }
 
