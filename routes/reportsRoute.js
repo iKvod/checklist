@@ -24,45 +24,73 @@ reportRoute.get('/', function (req, res, next) {
 
 
 
-    Reports.find({})
-        .populate('employee', ' firstname lastname' )
-        .select('')
-        .exec(function (err, report) {
-            if(err){
-                console.log(err);
-                return next(err);
-            }
-            //console.log(report[0].calcTime());
-            calculateMinutes(report, sendReportMinutes, usersReports, res);
-
-        });
-
-    // Users.find({})
-    //     .populate('report')
-    //     .select({'lastname':1,'firstname':1 ,'report': 1})
-    //     .exec(function (err, users) {
-    //         res.send(users);
+    // Reports.find({})
+    //     .populate('employee', ' firstname lastname' )
+    //     .select('')
+    //     .exec(function (err, report) {
+    //         if(err){
+    //             console.log(err);
+    //             return next(err);
+    //         }
+    //         res.send(report);
+    //         //console.log(report[0].calcTime());
+    //         //calculateMinutes(report, sendReportMinutes, usersReports, res);
+    //
     //     });
+
+    Users.find({})
+        .populate('report')
+        .select({'lastname':1,'firstname':1 ,'report': 1})
+        .exec(function (err, users) {
+            calculateMinutes(users, res, sendReportMinutes);
+           // res.send(users);
+        });
 });
 
-function calculateMinutes (report, callback, usersReports, res) {
-    var reportMinutes = [];
-    var name = '';
+function calculateMinutes (users, res, callback) {
+    var userReport = [{
+        username: 'NAN',
+        reportminutes: []
+    }];
 
-    for(var i = 0; i < report.length; i++){
-        if(i === 0){
-            name = report[i].employee.lastname + " " +report[i].employee.firstname;
-            usersReports.name = name;
-        }
-        reportMinutes.push(report[i].calcTime());
+    for(var i = 0, len = users.length; i < len; i++){
+        var name = users[i].lastname + " " + users[i].firstname;
+        userReport[i].username = name;
+        for(var j = 0, len1 = users[i].report.length; j < len1; j++){
+           userReport[i].reportminutes.push(users[i].report[j].calcTime());
+       }
     }
-    callback(reportMinutes, usersReports, res);
-};
 
-function sendReportMinutes(reportMinutes, usersReports, res) {
-    usersReports.reportminutes = reportMinutes;
-    res.send(usersReports);
+    callback(userReport, res);
 }
+
+function sendReportMinutes(userReport, res) {
+    res.send(userReport);
+}
+
+
+
+
+
+//if Users populater from Reports
+// function calculateMinutes (report, callback, usersReports, res) {
+//     var reportMinutes = [];
+//     var name = '';
+//
+//     for(var i = 0; i < report.length; i++){
+//         if(i === 0){
+//             name = report[i].employee.lastname + " " +report[i].employee.firstname;
+//             usersReports.name = name;
+//         }
+//         reportMinutes.push(report[i].calcTime());
+//     }
+//     callback(reportMinutes, usersReports, res);
+// };
+//
+// function sendReportMinutes(reportMinutes, usersReports, res) {
+//     usersReports.reportminutes = reportMinutes;
+//     res.send(usersReports);
+// }
 
 
 reportRoute.get('/:id', function (req, res, next) {

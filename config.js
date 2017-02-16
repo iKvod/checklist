@@ -12,8 +12,8 @@ var config = {
     },
     ceoBotID : 78923920,
     managerBotID : 228106138,
-    //ceoBotID:207925830,     //for testing
-    //managerBotID:207925830 // for testing
+    // ceoBotID:207925830,     //for testing
+    // managerBotID:207925830 // for testing
 };
 
 module.exports =  config;
