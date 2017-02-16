@@ -490,15 +490,18 @@ botrouter.post('/image', function (req, res, next) {
     var caption = '';
     var messageToUser = '';
     var messageToManager = null;
+    var checkOut = false;
 
     if(message && report && bookReport){
         caption = time + "\n" + name + " " + message + "\n" + report + "\n" + "Мои заметки по книге: "+ bookReport + "\n";
         //console.log("1"+caption)
         messageToUser = "У вас круто получилось сделать Checkout!";
+        checkOut = true;
         messageToManager = time + "\n"  + "Отчет: \n " + name + " - "+ report;
     } else if (message && (report !== undefined) && (bookReport === undefined) ) {
         caption = time + "\n" + name + " " + message + "\n" + report + "\n" + "Я еще не прочел книгу" + "\n";
        messageToUser = "У вас круто получилось сделать Checkout!";
+        checkOut = true;
         messageToManager = time + "\n"  + "Отчет: \n " + name + " - "+ report;
     } else if(message && (report === undefined) && (bookReport === undefined)){
         caption = time + "\n" + name + " " + message;
@@ -523,19 +526,26 @@ botrouter.post('/image', function (req, res, next) {
     };
     //
     bot.sendPhoto(ceoBotId, buffer, opt); // Rustam's bot ID
-    //sends to manager Report for current day
+   // sends to manager Report for current day
     if(messageToManager !== null){
         bot.sendMessage(managerBotId, messageToManager); //  Ayganym's bot ID
     }
-    bot.sendMessage(botId, messageToUser); // Users ID send if he checked in or out
 
-   // testing
+    if(checkOut){
+        fetchBook(botId, sendBookCheckout, messageToUser);
+    } else {
+        bot.sendMessage(botId, messageToUser); // Users ID send if he checked in or out
+    }
+
+
+   //  //testing
    // bot.sendPhoto(207925830, buffer, opt); // testing
-   // sends to manager Report for current day
+   // //sends to manager Report for current day
    //  if(messageToManager !== null){
    //      bot.sendMessage(207925830, messageToManager); //  Ayganym's bot ID
    //  }
    //  bot.sendMessage(botId, messageToUser); // Users ID send if he checked in or out
+
 
     fs.writeFile('./public/photos/' + date.getTime() + "_" + id + '.jpeg', buffer, function(e){
         if(e) {
@@ -545,6 +555,34 @@ botrouter.post('/image', function (req, res, next) {
 
     res.send("OK");
 });
+
+
+function fetchBook(botId, callback, messageToUser){ // bookData title and link
+
+    Books.find({})
+        .exec(function(err, books){
+            var len = books.length;
+            if(err){
+                console.log(err);
+            }
+            callback(books[len-1].link,books[len-1].title, botId, messageToUser);
+            console.log(books);
+        });
+}
+
+function sendBookCheckout(link, title, botId, messageToUser) {
+
+    var opt = {
+        'parse_mode':"Markdown"
+    };
+    bot.sendMessage(botId, "["+title+"](" + link + ")", opt);
+    bot.sendMessage(botId, messageToUser);
+}
+
+
+
+
+
 
 bot.on('sticker',function(msg){
     var chatId = msg.chat.id;
