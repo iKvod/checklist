@@ -11,7 +11,8 @@ var BookSchema = new Schema({
     employee: [{type: Schema.ObjectId, ref:'Employee'}],
     required: {
        type: Boolean, default:false
-    }
+    },
+    read : [{type: String, ref:'Employee'}] // if employee read this book (true) or not {false}
 });
 
 module.exports = mongoose.model('Books', BookSchema);

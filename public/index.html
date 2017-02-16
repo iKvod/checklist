@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html ng-app="checklist">
-<head >
+<head>
 
     <meta charset="utf-8">
     <base href="/">
@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../assets/css/styles.css"> -->
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/pages.css">
+    <link rel="stylesheet" href="stylesheets/admin_panel.css">
     <link rel="stylesheet" type="text/css" href="bower_components/angular-material/angular-material.css">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
   <meta name="viewport" content="initial-scale=1" />
@@ -39,54 +40,30 @@
 
     <!-- controllers -->
     <script src="controllers.js"></script>
+    <script src="./admin_panel/admin-panel-controller.js"></script>
 
     <!-- services -->
     <script src="services.js"></script>
+    <script src="./admin_panel/admin-panel-service.js"></script>
     <title>Checklist</title>
 
 </head>
 
 
 
-<!-- <body layout="column" ng-cloak ng-controller="MainCtrl">
-    <md-toolbar layout="row" >
-        <div class="md-toolbar-tools">
-          <button ng-click="vm.toggleSidenav('left')" class="menuBtn" aria-label="Toggle Menu">
-          </button>
-          <h1 layout-align-gt-sm="center">
-            Checklist
-          </h1>
-        </div>
-    </md-toolbar>
-
-    <div layout="row" flex class="change-my-css">
-        <md-sidenav style="margin-left: -320px; transition: all 0.5s;" md-component-id="left" layout="column" class="sidenav1" md-is-locked-open='true'>
-        </md-sidenav>
-
-        <md-content flex layout="row" class="content">
-
-
-            <div ui-view flex="" layout="row" style="margin: 200px ">
-                
-            </div>
-        </md-content>
-    </div>
-
-</body>  -->
-
 <body>
 
-  <div class="grid">
-    <header class="header">
+  <div class="main-container">
+    <header class="header-main">
       <img src="/images/footer-logo.png" width="158" height="27">
     </header>
+    <a ui-sref="admin">Admin</a>
 
     <section class="main" ui-view>
-      
-      
+      sdsd
     </section>
 
-    <footer class="footer">
+    <footer class="footer-main">
       
     </footer> 
 
@@ -94,74 +71,5 @@
 
 
 </body>
-
-<!-- <body>
-    <div class="wrapper">
-      <div class="row">
-        <div class="col">1</div>
-        <div class="col">2</div>
-        <div class="col">3</div>
-        <div class="col">4</div>
-        <div class="col">5</div>
-        <div class="col">6</div>
-        <div class="col">7</div>
-        <div class="col">8</div>
-        <div class="col">9</div>
-        <div class="col">10</div>
-        <div class="col">11</div>
-        <div class="col">12</div>
-      </div>
-      <div class="row">
-        <div class="col span1">13</div>
-        <div class="col span6">14</div>
-        <div class="col span3">15</div>
-        <div class="col span2">16</div>
-      </div>
-    </div>
-  </body> -->
-<!-- <body layout="column">
-  <md-toolbar layout="row">
-    <div class="md-toolbar-tools">
-      <button ng-click="vm.toggleSidenav('left')" hide-gt-sm class="menuBtn" aria-label="Toggle Menu">bvcbvc
-      </button>
-      <h1 layout-align-gt-sm="center">
-        Hello World
-      </h1>
-    </div>
-  </md-toolbar>
-  
-  <div layout="row" flex class="change-my-css">
-    <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="vm.left" md-is-locked-open="vm.$mdMedia('gt-sm')">
-      <div>Side Navigation</div>
-
-      <md-list>
-        <md-list-item ng-repeat="li in vm.list">
-          <div class="md-list-item-text">
-            <div layout="row">
-              <span>{{li.name}}</span>
-              <span flex></span>
-              <span>{{li.idx || 0}}</span>
-            </div>
-          </div>
-        </md-list-item>
-      </md-list>
-    </md-sidenav>
-  
-    <md-content layout="column" id="content" flex class="md-padding">
-      Content
-      <p ng-repeat="x in [1,2,3,4,5,6,7,8,9,0]">Test {{x}}</p>
-      <p ng-repeat="x in [1,2,3,4,5,6,7,8,9,0]">Test {{x}}</p>
-      <p ng-repeat="x in [1,2,3,4,5,6,7,8,9,0]">Test {{x}}</p>
-      <p ng-repeat="x in [1,2,3,4,5,6,7,8,9,0]">Test {{x}}</p>
-      <p ng-repeat="x in [1,2,3,4,5,6,7,8,9,0]">Test {{x}}</p>
-      <p ng-repeat="x in [1,2,3,4,5,6,7,8,9,0]">Test {{x}}</p>
-      <p ng-repeat="x in [1,2,3,4,5,6,7,8,9,0]">Test {{x}}</p>
-      <p ng-repeat="x in [1,2,3,4,5,6,7,8,9,0]">Test {{x}}</p>
-    </md-content>
-  </div>
-
-    
-
-  </body> -->
 
 </html>

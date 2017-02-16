@@ -4,17 +4,19 @@ var express = require('express');
 var botrouter = express.Router();
 var upload = require('multer')();
 var fs = require('fs');
+var config = require('../config');
 
 //Models
 var User = require('../models/user');
 var Books = require('../models/book');
 var Employees = require('../models/employees');
+var Report = require('../models/reporting');
 
 var TelegramBot = require('node-telegram-bot-api');
-var token = "324830524:AAF_QWatxxdsHbxrC2cB82jxKj8tZmd6wWE";
-//@checklistAutomato2_bot bot for testing
-var token2 = "308572160:AAG4WW0OA9qdLK1bakj7-edMxS-P1vriedY";
-var bot = new TelegramBot(token, {polling: true});
+var token = config.token;
+var bot = new TelegramBot(token, { polling: true});
+var ceoBotId = config.ceoBotID;
+var managerBotId = config.managerBotID;
 
 
 // var options = {
@@ -360,8 +362,6 @@ function saveBook(sep, text, callback) {
                             console.log(savedUsers);
                         })
                     }
-
-
                 });
         });
     }
@@ -380,7 +380,6 @@ bot.onText(/\/getbookinfo (.+)/,function (msg, match) {
                 bot.sendMessage(userId, "Ошибка, попробуйте через некоторое время!\n");
                 return;
             }
-
 
             if(data.book.length === 0){
                 bot.sendMessage(userId, "Возможно, он уже прочитал книги!\n" + " Отправьте ему книги");
@@ -403,33 +402,74 @@ bot.onText(/\/getbookinfo (.+)/,function (msg, match) {
 *
 *
 * */
-bot.onText(/\/🍔tolunch/, function(msg, match){
-    var chatId = msg.chat.id;
-    var name = msg.chat.user_name;
 
-    bot.sendMessage(chatId, name + ": I'm going to have a lunch!");
+
+bot.onText(/\/🍔tolunch/, function(msg, match){
+    //console.log(msg);
+    var botId = msg.from.id;
+    var name = msg.chat.user_name;
+    var checkinType = { "type" : "lunch_in" };
+
+    //this is for checking  if users report for current day
+    var date = new Date();
+
+    goDuringWorkHours(botId, checkinType.type);
+
 });
 
 bot.onText(/\/fromlunch🍔/, function(msg, match){
-    var chatId = msg.chat.id;
+    var botId = msg.from.id;
     var name = msg.chat.user_name;
+    var checkinType = {"type": "lunch_out"}
 
-    bot.sendMessage(chatId, name + ': I came from lunch');
+    goDuringWorkHours(botId, checkinType.type);
+
 });
 
 bot.onText(/\/⚔️stopwork/, function(msg, match){
-    var chatId = msg.chat.id;
+    var botId = msg.from.id;
     var name = msg.chat.user_name;
+    var checkinType = {"type":"go_out"};
 
-    bot.sendMessage(chatId, name +  ': Stop working');
+    goDuringWorkHours(botId, checkinType.type);
+
 });
 
 bot.onText(/\/👨🏼‍💻starkwork👩🏼‍💻/, function(msg, match){
-    var chatId = msg.chat.id;
+    var botId = msg.from.id;
     var name = msg.chat.user_name;
+    var checkinType = {"type": "come_back"};
 
-    bot.sendMessage(chatId, name + ': Start working');
+    goDuringWorkHours(botId, checkinType.type);
+
 });
+
+//for writing times to report during work time
+// (Lunch/come from lunch and go out/come during work hours
+function goDuringWorkHours(botId, checkinType) {
+
+    User.findOne({botId: botId})
+        .select('report firstname')
+        .exec(function (err, user){
+            var len = user.report.length;
+            var lastReportId = user.report[len-1];
+            var name = user.firstname;
+
+            Report.findOne({_id: lastReportId})
+                .exec(function (err, currentDayReport) {
+                    currentDayReport[checkinType] = new Date();
+                    currentDayReport.save(function (err, savedReport) {
+                        if(err){
+                            bot.sendMessage(botId, err);
+                            return next(err);
+                        }
+                        console.log(savedReport);
+                        bot.sendMessage(botId, name + ", Ваш запрос успешно обработан!");
+                    });
+                });
+        });
+}
+
 
 /*
 * API checklist
@@ -481,22 +521,21 @@ botrouter.post('/image', function (req, res, next) {
         //             "remove_keyboard":true
         //     }
     };
-
-    bot.sendPhoto(78923920, buffer, opt); // Rustam's bot ID
+    //
+    bot.sendPhoto(ceoBotId, buffer, opt); // Rustam's bot ID
     //sends to manager Report for current day
     if(messageToManager !== null){
-        bot.sendMessage(228106138, messageToManager); //  Ayganym's bot ID
+        bot.sendMessage(managerBotId, messageToManager); //  Ayganym's bot ID
     }
     bot.sendMessage(botId, messageToUser); // Users ID send if he checked in or out
 
-    // testing
-    //bot.sendPhoto(207925830, buffer, opt); // testing
-    // bot.sendPhoto(207925830, buffer, opt); // Rustam's bot ID
-    // //sends to manager Report for current day
-    // if(messageToManager !== null){
-    //     bot.sendMessage(207925830, messageToManager); //  Ayganym's bot ID
-    // }
-    // bot.sendMessage(botId, messageToUser); // Users ID send if he checked in or out
+   // testing
+   // bot.sendPhoto(207925830, buffer, opt); // testing
+   // sends to manager Report for current day
+   //  if(messageToManager !== null){
+   //      bot.sendMessage(207925830, messageToManager); //  Ayganym's bot ID
+   //  }
+   //  bot.sendMessage(botId, messageToUser); // Users ID send if he checked in or out
 
     fs.writeFile('./public/photos/' + date.getTime() + "_" + id + '.jpeg', buffer, function(e){
         if(e) {
@@ -514,6 +553,28 @@ bot.on('sticker',function(msg){
 
 var mes = 'message';
 var bookData = [];
+
+
+//for testing. comment when production mode
+var optTesting = {
+    'reply_markup': {
+        "keyboard":[
+            [{text: '/👤 Информация о пользователе'}, {text: '/📕Addbooks'}],
+            [{text:'/🍔tolunch'}, {text:'/fromlunch🍔'}],
+            [{text:'/⚔️stopwork'}, {text:'/👨🏼‍💻starkwork👩🏼‍💻'}]
+        ],
+        "resize_keyboard" : true,
+        "one_time_keyboard" : true,
+        "remove_keyboard":true
+    }
+
+};
+
+bot.onText(/\/1switchtest/, function (msg, match) {
+    bot.sendMessage(msg.chat.id,"У вас новые кнопки", optTesting);
+});
+
+
 var optionCeo = {
     'reply_markup': {
         "keyboard":[
@@ -535,8 +596,8 @@ var optEmployee = {
 };
 
 bot.onText(/\/switch/, function (msg, match) {
-   // if(msg.chat.id === 207925830){
-     if(msg.chat.id === 78923920){
+    //if(msg.chat.id === 207925830){
+     if(msg.chat.id === ceoBotId ){
         bot.sendMessage(msg.chat.id, "У вас новые кнопки", optionCeo);
     } else {
         bot.sendMessage(msg.chat.id,"У вас новые кнопки", optEmployee);
@@ -557,14 +618,11 @@ bot.on(mes, function (msg) {
             'reply_to_message_id': this.mes_id
         };
         bot.sendMessage(msg.chat.id, "Введите название книги", opt);
-
-
     }
 
     if((msg.message_id - this.mes_id) === 2){
 
         bookData.push(msg.text);
-
         var opt = {
             'reply_to_message_id': (this.mes_id + 1),
             'reply_markup': {
@@ -580,8 +638,9 @@ bot.on(mes, function (msg) {
     }
 
     var button = "⬅️ Назад";
+
     if((msg.message_id - this.mes_id) === 4){
-        var optionCeo = {
+        var optCeo = {
             'reply_to_message_id': (this.mes_id + 1),
             'reply_markup': {
                 "keyboard":[
@@ -589,29 +648,18 @@ bot.on(mes, function (msg) {
                 ],
                 "resize_keyboard" : true,
                 "one_time_keyboard" : true,
-                "remove_keyboard":true
+               // "remove_keyboard":true
             }
         };
 
         if(msg.text === button ){
-            bot.sendMessage(msg.chat.id, "Книга не отправлена",optionCeo);
+            bot.sendMessage(msg.chat.id, "Книга не отправлена",optCeo);
             bookData = [];
         }
         else {
-            var optionCeo = {
-                //'reply_to_message_id': (this.mes_id + 1),
-                'parse_mode':"Markdown",
-                'reply_markup': {
-                    "keyboard":[
-                        [{text: '/👤 Информация о пользователе'}, {text: '/📕Addbooks'}]
-                    ],
-                    "resize_keyboard" : true,
-                    "one_time_keyboard" : true,
-                    "remove_keyboard":true
-                }
-            };
 
             bookData.push(msg.text);
+
             var book = Books({
                 title: bookData[0],
                 link: bookData[1],
@@ -619,16 +667,65 @@ bot.on(mes, function (msg) {
             });
 
             book.save(function (err, savedBook) {
+                console.log(savedBook);
                if(err) {
                    console.log(err);
                }
-                var message = '['+savedBook.title +'](' + savedBook.link +')';
-                bot.sendMessage(msg.chat.id, message, optionCeo);
                 bookData = [];
+                var id = savedBook._id;
+
+                //save book to user and sends it as a notification to employee
+                saveBook(id, sendBookInfo, savedBook.title, savedBook.link);
+
             });
         }
     }
-
+    // if(msg.text === button ){
+    //     bot.sendMessage(msg.chat.id, "Книга не отправлена",this.optionCeo);
+    // }
 });
+
+function saveBook(id, callback, title, link) {
+    console.log("Saving to users...");
+
+    User.find({})
+        .exec(function (err, users) {
+            var len = users.length;
+            for (var i = 0; i < len; i ++){
+                users[i].book.push(id);
+                users[i].save(function (err, savedUsers) {
+                    if(err) {console.log(err); return}
+                    //console.log(savedUsers);
+                    callback(savedUsers.botId, title, link);
+                })
+            }
+        });
+}
+
+//sends book info to employees
+function sendBookInfo(botId, title, link) {
+    console.log("Notifying " + botId);
+    var opt = {
+        'parse_mode':"Markdown"
+    };
+    // var optionCeo = {
+    //     //'reply_to_message_id': (this.mes_id + 1),
+    //     'parse_mode':"Markdown",
+    //     'reply_markup': {
+    //         "keyboard":[
+    //             [{text: '/👤 Информация о пользователе'}, {text: '/📕Addbooks'}]
+    //         ],
+    //         "resize_keyboard" : true,
+    //         "one_time_keyboard" : true,
+    //         // "remove_keyboard":true
+    //     }
+    // };
+    if(botId != ceoBotId) {
+        bot.sendMessage(botId, "Новая книга, не забудьте прочитать");
+        bot.sendMessage(botId, '[КНИГА: ' + title + ']('+ link +')', opt);
+    }  else {
+        bot.sendMessage(botId, '[Отправлена КНИГА: ' + title + ']('+ link +')', optionCeo);
+    }
+}
 
 module.exports = botrouter;

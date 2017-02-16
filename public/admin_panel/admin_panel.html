@@ -1,0 +1,50 @@
+<div class="aside">
+
+</div>
+
+<div class="admin-container">
+	<div class="calendar-container">
+
+	</div>
+
+	<div class="admin-header">
+		<button ng-click="vm.getReports()">GetReport</button>
+		<button >Calendar</button>
+	</div>
+	<div class="admin-main">
+		<div class="table-header">
+			<div class="table-heading">
+				<!--<div class="table-main">
+				</div>-->
+				<span> Ф.И.О.</span>
+			</div>
+
+			<div class="table-cell-header">
+				<span>february</span>
+				<!--<div class="table-main-cell"> &lt;!&ndash;ng-repeat="date in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] track by $index"&ndash;&gt;-->
+					<!--<span>date</span>-->
+					<!--<span>date</span>-->
+					<!--<span>date</span>-->
+					<!--<span>date</span>-->
+
+				<!--</div>-->
+				<div class="table-main-cell" > <!--ng-repeat="date in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] track by $index"-->
+					<span class="line" >{{ vm.date }}</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="table-body">
+			<div class="table-body-main">
+				<span class="name"> {{ vm.name }} </span>
+			</div>
+
+			<div class="table-body-cell-header" >
+				<span class="report"> {{ vm.minutes }}</span>
+			</div>
+		</div>
+
+
+	</div>
+
+</div>

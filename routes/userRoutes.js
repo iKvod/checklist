@@ -8,6 +8,7 @@ var Users = require('../models/user');
 userrouter.get('/', function(req, res, next){
     Users.find({}, function(err, users){
         if(err) return next(err);
+        res.send(users);
     })
 });
 
@@ -35,7 +36,7 @@ userrouter.delete('/', function(req, res, next){
 
 
 userrouter.get('/:userId', function(req, res, next){
-    User.findById(req.params.userId, function (err, user) {
+    Users.findById(req.params.userId, function (err, user) {
         if(err) return next(err);
         res.send(user);
     });
@@ -65,5 +66,6 @@ userrouter.delete('/:userid', function(req, res, next){
         });
     });
 });
+
 
 module.exports = userrouter;

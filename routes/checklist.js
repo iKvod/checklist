@@ -4,14 +4,14 @@ var express = require('express');
 var checklist = express.Router();
 var mongoose = require('mongoose');
 var fs = require('fs');
+var config = require('../config');
 
 var TelegramBot = require('node-telegram-bot-api');
-var token = "324830524:AAF_QWatxxdsHbxrC2cB82jxKj8tZmd6wWE";
+var token = config.token;
 var bot = new TelegramBot(token);
 
 var Users = require('../models/user');
 var Reports = require('../models/reporting');
-
 
 
 function generateIndex(max, min) {
@@ -39,15 +39,14 @@ checklist.get('/checkin/:id', function (req, res, next) {
     Users.find({_id:req.params.id})
         .populate('report')
         .exec(function (err, data) {
-           if (err) console.log(err)
-            console.log(data);
-           res.send(data);
+            if(err){
+                return next(err);
+            }
+            res.send(data);
         });
 });
 
 checklist.post('/checkin/:id', function(req, res, next){
-    console.log(req.body);
-    console.log(req.params.id);
 
     var id = req.params.id;
 
@@ -68,7 +67,9 @@ checklist.post('/checkin/:id', function(req, res, next){
             user.checked = true;
 
             user.save(function(err, savedUser){
-                console.log(savedUser);
+                if(err){
+                    return next(err);
+                }
                 res.send(savedUser);
             });
 
@@ -78,37 +79,6 @@ checklist.post('/checkin/:id', function(req, res, next){
 
         });
     });
-
-    // Users.findById(id, function (err, user) {
-    //    if(err){console.log(err); return next(err);}
-    //
-    //    user.checked = req.body.checked;
-    //     //console.log(user);
-    //
-    //     user.save(function (err, data) {
-    //        if(err) {res.send(err); return}
-    //         var report = new Reports({
-    //             employee: data._id,
-    //             check_in: data.updated,
-    //             report: "Hello, this is my first record!"
-    //         });
-    //
-    //        report.save(function (err, report) {
-    //            if (err){ console.log("Error when saveing report time"); return}
-    //            console.log(report);
-    //        });
-    //        res.send(data);
-    //    });
-    // });
-    // // Users.update({employee_id:req.params.id}, { $set: { checked: req.body.checked }}, function (err, user) {
-    // //     console.log(user);
-    // //     res.send(user);
-    // //     // user.checked = req.body.checked;
-    // //     // user.save(function (err, updatedUser) {
-    // //     //     res.send(updatedUser);
-    // //     // })
-    // // });
-
 });
 
 checklist.get('/checkout/:id', function (req, res, next) {
@@ -117,17 +87,18 @@ checklist.get('/checkout/:id', function (req, res, next) {
         .populate('report')
         .select({})
         .exec(function (err, data) {
-            if(err) { console.log(err); return }
+            if(err){
+                return next(err);
+            }
             var len = data.report.length;
             var report = data.report[len - 1];
-            //console.log(data.report[len - 1]);
             res.send(data);
         });
 });
 
 
 checklist.put('/checkout/:id', function (req, res, next) {
-    //console.log(req.body);
+
     Users.findById(req.params.id, function(err, data){
         if (err) console.log(err);
         var len = data.report.length - 1;
@@ -139,15 +110,21 @@ checklist.put('/checkout/:id', function (req, res, next) {
             var lastReportId = savedData.report[len];
 
             Reports.findById(lastReportId, function (err, report) {
-               if(err) return next(err);
-               //console.log(report);
+                if(err){
+                    return next(err);
+                }
 
                report.check_out = new Date();
                report.report = req.body.report;
+               report.calcTime();
                //
                report.save(function (err, savedReport) {
-                   //console.log(savedReport);
-                    res.send(savedReport);
+                   if(err){
+                       return next(err);
+                   }
+                   savedReport.calcTime();
+                   //console.log(savedReport.calcTime());
+                   res.send(savedReport);
                });
             });
         });
@@ -160,7 +137,9 @@ checklist.get('/report', function (req, res, next) {
         .populate('report')
         .select({})
         .exec(function (err, data) {
-            if(err) { console.log(err); return }
+            if(err){
+                return next(err);
+            }
             res.send(data);
         });
 });
@@ -200,9 +179,7 @@ checklist.get('/:id', function (req, res, next) {
         .exec(function (err, data) {
             //console.log(data);
             if(err){
-                console.log(err);
-                res.send(err);
-                return;
+                return next(err);
             }
             if(data) {
                 var index = generateIndex(8,0);
@@ -228,10 +205,8 @@ checklist.post('/code', function(req, res,  next){
         })
         .select({ code:1 })
         .exec(function (err, data) {
-            if(err) {
-                console.log(err);
-                res.send(err);
-                return;
+            if(err){
+                return next(err);
             }
             //check if the code in users code prototype
             console.log(data);
@@ -246,8 +221,7 @@ checklist.post('/code', function(req, res,  next){
             } else {
                 res.send("CodeIsnotprovided");
             }
-
-            //bot.sendMessage(data[0].botId, data[0].code[index]);
+            bot.sendMessage(data[0].botId, data[0].code[index]);
         });
 
     } else {
@@ -261,9 +235,11 @@ checklist.post('/code', function(req, res,  next){
 checklist.post('/upload/:id', function (req, res, next) {
     var b64Data = req.body.data.split(',')[1];
     var buffer = new Buffer(b64Data, 'base64');
+
     fs.writeFile('./' + req.body.name, buffer, function(e){
         if(e) console.log(e);
     });
+
 });
 
 

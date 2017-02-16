@@ -1,0 +1,149 @@
+.admin-container {
+    width: 100%;
+    /*
+    margin: 2% 5% 2% 5%;
+    */
+    margin: auto;
+    padding: 5px;
+    height: 100%;
+    /*
+    background: linear-gradient(rgba(40, 163, 204, 0.2), white);
+    */
+    border-radius: 3px;
+    background: #E5EBF2;
+}
+    .admin-header {
+        margin: 5px 5px 5px 5px;
+        background: #FFFFFF ;
+        height: 7%;
+        min-height: 40px;
+        padding: 4px;
+        border-radius: 1px;
+    }
+        .admin-header button {
+            color: #fff;
+            font-family: Roboto, sans-serif;
+            font-size: 0.75em;
+            font-weight: 700;
+            text-transform: uppercase;
+            max-width: 100px;
+            min-width: 100px;
+            height: 30px;
+            background-color: #31B6FC;
+            margin: 0.5%;
+            padding: 0;
+            border-color: transparent;
+        }
+.admin-main {
+    margin: 5px 5px 5px 5px;
+    background-color: rgba(204, 229, 243, 0.3);
+    height: 90%;
+    padding: 4px;
+    border-radius: 1px;
+    box-shadow: 0px 2px 4px rgba(34, 62, 66, .25);
+    border: 1px;
+
+}
+    .table-header {
+        background-color: #FFF;
+        padding: 5px;
+        height: 8%;
+        border-bottom: 1px solid #eeeeee;
+        margin: 0 0 10px 0;
+        display: flex;
+    }
+
+    .table-heading {
+        padding: 0;
+        margin: 0;
+        flex:1;
+        display: flex;
+
+    }
+        .table-heading  span {
+            text-align: center;
+            margin: auto;
+            font-size: 1.5em;
+            font-weight: 600;
+
+        }
+    .table-cell-header {
+        margin: 0;
+        padding: 0px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        flex:4;
+    }
+        .table-cell-header span {
+            padding: 0px;
+            margin: 0;
+            font-size: 0.9em;
+            text-align: center;
+            text-transform: capitalize;
+        }
+
+        .table-main-cell {
+
+            margin-top: 3px;
+            height: 52%;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+
+        }
+            span.line {
+                border-right: 1px solid #E5EBF2;
+
+            }
+            .table-main-cell span {
+                font-size: 1em;
+                padding: 0 2px 0 2px;
+                margin: 0;
+            }
+
+
+.table-body {
+    padding: 0;
+    height: 6%;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: row;
+    margin: 0 0 5px 0;
+    box-shadow: 0px 2px 4px rgba(34, 62, 66, .25);
+}
+    .table-body-main {
+        flex:1;
+        display: flex;
+    }
+
+        .table-body-main span.name {
+            margin: auto;
+            padding: 0 3px;
+        }
+
+    .table-body-cell-header {
+        padding: 6px;
+        flex:4;
+    }
+        .table-body-cell-header span.report {
+            font-size: 1em;
+            padding: 0 2px 0 2px;
+            margin: 0;
+            border-right: 1px solid #E5EBF2;
+            width: 40px;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -16,11 +16,13 @@
 				  	<div>
 				  		   <md-button ng-click="vm.checkChecked(vm.employee_id)">Отправить</md-button>
 				  	</div>
-				  	<div>
-					    <label ng-if="vm.message"> {{vm.message}}</label>
-				  	</div>
+				  	
 				    
 				</form>
 		</div>
+
 	</div>
+	<div ng-if="vm.errorMessage" style="padding: 5px; margin: auto; border-radius: 3px; transition: 9s; background-color: #9c2b2e ;color:#fff">
+					    <label > {{vm.errorMessage}}</label>
+  	</div>
 </div>

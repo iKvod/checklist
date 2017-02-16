@@ -1,33 +1,40 @@
 
 body {
+    color: #66819B;
     background-color: #FEEBC8;
     margin: 0px;
     font-family: -apple-system,BlinkMacSystemFont,Roboto,Open Sans,Helvetica Neue,sans-serif;
 }
 
-.grid {
-   /* margin: 0 auto;*/
+.main-container {
     max-width: 100%;
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin:0px;
 }
 
 .main {
-  background-color: #5e81a8;
-  display: flex;
-  width: 100%;
-  height: 86%;
+    background-color: #455C74;
+    display: flex;
+    width: 100%;
+    height: 86%;
+    padding: 0px;
 }
 
-.header {
-  background-color: #4a256d;
+.header-main {
+  background-color: #4F6883;
   height: 65px;
   padding: 5px;
   margin: 0px;
 }
+.header-main img {
+    margin: 12px;
+}
 
-.footer {
-  background-color: #4a256d;
+.footer-main {
+  background-color: #4F6883;
   height: 70px;
 }
 

@@ -11,27 +11,7 @@ angular.module('checklist')
        var vm = this;
     //vm.user = user;
        vm.employee_id = '';
-       vm.message = '';
-
-  /*     // bad solution. check by id if he/she checked
-       vm.checkChecked = function(id){
-            vm.employee_id = id;
-            for ( var i = 0, len = user.length; i < len; ++i){
-                if((id === user[i].employee_id)){
-                    $rootScope.employee_id = id;
-                    if(!user[i].checked){
-                        $state.go('checkin.code');
-                        //$stateParams({id: })
-                    } else {
-                        $state.go('checkout.code');
-                    }
-
-                } else {
-                   vm.message = "You're not registered or provided bad ID. Try again";
-                   $state.go('checklist')
-                }
-            }
-       }*/
+       vm.errorMessage = '';
 
        vm.checkChecked = function(emp_id){ 
            var id = emp_id.toLowerCase();
@@ -51,7 +31,8 @@ angular.module('checklist')
                         $state.go('checkin', { employee_id: data._id });
                     }
             }, function(err){
-                console.log(err);
+                console.log(err.status);
+                vm.errorMessage = 'Пользователь не найден!'
             });
        }
     }])
@@ -147,7 +128,7 @@ angular.module('checklist')
                 vm.webcam.turnOff();
         }
 
-        //sending checkput report to server
+        //sending checkout report to server
         vm.checkOut = function(code){
             //console.log("Checkout code: " + code);
             var id = $stateParams.employee_id; 

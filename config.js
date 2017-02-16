@@ -1,14 +1,17 @@
 'use strict';
 
 var config = {
-    token: '324830524:AAF_QWatxxdsHbxrC2cB82jxKj8tZmd6wWE',
+    token: '324830524:AAF_QWatxxdsHbxrC2cB82jxKj8tZmd6wWE', // production token for telegram bot api
+    //token: '308572160:AAG4WW0OA9qdLK1bakj7-edMxS-P1vriedY', //test token for telegram bot
     botName: 'automatoChecklist_bot',
     mongoUrl: 'mongodb://127.0.0.1:27017/checklist',
     opt: {
         user: 'rafa',
         pass: 'Automatodev',
         auth: { authdb: "checklist"}
-    }
+    },
+    ceoBotID : 78923920,
+    managerBotID : 228106138
 };
 
 module.exports =  config;

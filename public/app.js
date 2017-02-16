@@ -86,7 +86,7 @@ angular.module('checklist', [
          .state('checkout.success', {
             url:'/success',
             templateUrl:'views/pages/success_checkin_page.html',
-            controler:"CheckoutCtrl",
+            controller:"CheckoutCtrl",
             controllerAs:'vm'
          })
          .state('error',{
@@ -98,13 +98,13 @@ angular.module('checklist', [
          .state('success',{
             url:'/success',
             templateUrl:'views/pages/success_checkin_page.html',
-            controler:"",
+            controller:"",
             controllerAs:''
          })
          .state('admin',{
             url:'/admin',
-            templateUrl:'views/pages/admin_form.html',
-            controller:'AdminCtrl',
+            templateUrl:'admin_panel/admin_panel.html',
+            controller:'ReportCtrl',
             controllerAs:'vm'
          });
 

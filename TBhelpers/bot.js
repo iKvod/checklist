@@ -78,15 +78,51 @@ function getEmployyesCount (callback){
 
 var date = new Date();
 
-var time1 = date.getTime();
-console.log(time1);
+// console.log(date.getDate());
+// console.log(date.getHours());
+// console.log(date.getDay());
+// console.log(date.getFullYear());
 
-var time2 = date.getUTCHours();
-console.log(time2 + 6)
 
-var time3 = date.toLocaleString();
-console.log(time3);
 
+
+// var time1 = date.getTime();
+// console.log(time1);
+//
+// var time2 = date.getUTCHours();
+// console.log(time2 + 6)
+//
+// var time3 = date.toLocaleString();
+// console.log(time3);
+
+setTimeout(function () {
+    var date2 = new Date();
+    // console.log(date);
+    // console.log(date2);
+    date2.setFullYear(2016, 12, 22);
+    if(date < date2){
+        console.log('date > date2');
+    } else  {
+        //console.log('date2 > date');
+        // console.log(date2.getDate());
+        // console.log(date2.getDay());
+        console.log(date.getMonth());
+
+    }
+    // var interval = date2 - date;
+    // console.log(date);
+
+}, 2000);
+
+
+//// testing null variable
+// var a = null;
+// var b = null;
+// if(!(a && b)){
+//     console.log('NOT NULL')
+// } else {
+//     console.log(a)
+// }
 
 
 
