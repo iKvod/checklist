@@ -25,6 +25,9 @@ reportRoute.get('/', function (req, res, next) {
         .populate('report')
         .select({'lastname':1,'firstname':1 ,'report': 1})
         .exec(function (err, users) {
+            if (err) {
+                return next(err);
+            }
             calculateMinutes(users, res, sendReportMinutes);
            //res.send(users);
         });

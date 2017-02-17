@@ -31,9 +31,8 @@ angular.module('checklist')
                             vm.reportMinutes.push(data[i].reportminutes[j].report.totalTimeInMinutes);
                         }
 
-                        obj.report = vm.reportMinutes
+                        obj.report = vm.reportMinutes;
                         vm.report.push(obj);
-						console.log(vm.report[i]);
                         vm.reportMinutes = [];
                         obj = {};
                         vm.name = '';
