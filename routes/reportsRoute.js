@@ -7,23 +7,6 @@ var Users = require('../models/user');
 
 
 reportRoute.get('/', function (req, res, next) {
-
-    var usersReports = {
-
-    };
-    // var userReport = {
-    //     username: String,
-    //     reportminutes: [
-    //         {
-    //             date: null,
-    //             minutes: null
-    //         }
-    //     ]
-    // };
-
-
-
-
     // Reports.find({})
     //     .populate('employee', ' firstname lastname' )
     //     .select('')
@@ -43,34 +26,41 @@ reportRoute.get('/', function (req, res, next) {
         .select({'lastname':1,'firstname':1 ,'report': 1})
         .exec(function (err, users) {
             calculateMinutes(users, res, sendReportMinutes);
-           // res.send(users);
+           //res.send(users);
         });
 });
 
 function calculateMinutes (users, res, callback) {
-    var userReport = [{
-        username: 'NAN',
+    var usersReports = [];
+    var userReport = {
+        username: null,
         reportminutes: []
-    }];
+    };
+
+    var  repMin = [];
 
     for(var i = 0, len = users.length; i < len; i++){
         var name = users[i].lastname + " " + users[i].firstname;
-        userReport[i].username = name;
+        userReport.username = name;
+
         for(var j = 0, len1 = users[i].report.length; j < len1; j++){
-           userReport[i].reportminutes.push(users[i].report[j].calcTime());
+            var obj = {}
+            obj.date = users[i].report[j].check_in;
+            obj.report = users[i].report[j].calcTime()
+            repMin.push(obj);
        }
+        userReport.reportminutes = repMin;
+        usersReports.push(userReport);
+        repMin = []
+        userReport = {}
     }
 
-    callback(userReport, res);
+    callback(usersReports, res);
 }
 
 function sendReportMinutes(userReport, res) {
     res.send(userReport);
 }
-
-
-
-
 
 //if Users populater from Reports
 // function calculateMinutes (report, callback, usersReports, res) {

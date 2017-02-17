@@ -569,7 +569,7 @@ function fetchBook(botId, callback, messageToUser){ // bookData title and link
                 console.log(err);
             }
             callback(books[len-1].link,books[len-1].title, botId, messageToUser);
-            console.log(books);
+
         });
 }
 
@@ -581,10 +581,6 @@ function sendBookCheckout(link, title, botId, messageToUser) {
     bot.sendMessage(botId, "["+"Текущая книга которую  Вы должны прочитать\n"+title+"](" + link + ")", opt);
     bot.sendMessage(botId, messageToUser);
 }
-
-
-
-
 
 
 bot.on('sticker',function(msg){
@@ -708,7 +704,7 @@ bot.on(mes, function (msg) {
             });
 
             book.save(function (err, savedBook) {
-                console.log(savedBook);
+
                if(err) {
                    console.log(err);
                }
@@ -727,7 +723,7 @@ bot.on(mes, function (msg) {
 });
 
 function saveBook(id, callback, title, link) {
-    console.log("Saving to users...");
+
 
     User.find({})
         .exec(function (err, users) {
@@ -745,7 +741,7 @@ function saveBook(id, callback, title, link) {
 
 //sends book info to employees
 function sendBookInfo(botId, title, link) {
-    console.log("Notifying " + botId);
+
     var opt = {
         'parse_mode':"Markdown"
     };

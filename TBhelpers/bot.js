@@ -95,24 +95,59 @@ var date = new Date();
 // var time3 = date.toLocaleString();
 // console.log(time3);
 
-setTimeout(function () {
-    var date2 = new Date();
-    // console.log(date);
-    // console.log(date2);
-    date2.setFullYear(2016, 12, 22);
-    if(date < date2){
-        console.log('date > date2');
-    } else  {
-        //console.log('date2 > date');
-        // console.log(date2.getDate());
-        // console.log(date2.getDay());
-        console.log(date.getMonth());
+// setTimeout(function () {
+//     var date2 = new Date();
+//     // console.log(date);
+//     // console.log(date2);
+//     date2.setFullYear(2016, 12, 22);
+//     if(date < date2){
+//         console.log('date > date2');
+//     } else  {
+//         //console.log('date2 > date');
+//         // console.log(date2.getDate());
+//         // console.log(date2.getDay());
+//         console.log(date.getMonth());
+//
+//     }
+//     // var interval = date2 - date;
+//     // console.log(date);
+//
+// }, 2000);
 
+function calculateMinutes (callback) {
+    var usersReports = [];
+    var userReport = {
+        username: null,
+        reportminutes: []
     }
-    // var interval = date2 - date;
-    // console.log(date);
 
-}, 2000);
+    var repMin = [];
+    //console.log(userReport);
+
+    for(var i = 0, len = 10; i < len; i++){
+        var name = 'kmdfk ' + i;
+        userReport.username = name;
+
+        for(var j = 0, len1 = 10; j < len1; j++){
+            //console.log(userReport);
+            repMin.push(j + " lkjlkjkl");
+        }
+        userReport.reportminutes = repMin;
+        usersReports.push(userReport);
+
+        userReport = {};
+        userReport.reportminutes = [];
+    }
+    callback(usersReports);
+}
+
+function sendReportMinutes(usersReports) {
+    console.log(usersReports)
+    //res.send(userReport);
+}
+
+calculateMinutes(sendReportMinutes);
+
 
 
 //// testing null variable
