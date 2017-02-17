@@ -78,10 +78,16 @@ function getEmployyesCount (callback){
 
 var date = new Date();
 
-// console.log(date.getDate());
-// console.log(date.getHours());
-// console.log(date.getDay());
-// console.log(date.getFullYear());
+console.log(date.getDate());
+console.log(date.getUTCDate());
+console.log(date.getTime())// time in ms
+console.log(date.getUTCDay()) // day of week
+console.log(date.getTimezoneOffset())
+console.log(date.getUTCHours() + 6)
+console.log(date.)
+console.log(date.getHours());
+console.log(date.getDay());
+console.log(date.getFullYear());
 
 
 
@@ -114,39 +120,39 @@ var date = new Date();
 //
 // }, 2000);
 
-function calculateMinutes (callback) {
-    var usersReports = [];
-    var userReport = {
-        username: null,
-        reportminutes: []
-    }
-
-    var repMin = [];
-    //console.log(userReport);
-
-    for(var i = 0, len = 10; i < len; i++){
-        var name = 'kmdfk ' + i;
-        userReport.username = name;
-
-        for(var j = 0, len1 = 10; j < len1; j++){
-            //console.log(userReport);
-            repMin.push(j + " lkjlkjkl");
-        }
-        userReport.reportminutes = repMin;
-        usersReports.push(userReport);
-
-        userReport = {};
-        userReport.reportminutes = [];
-    }
-    callback(usersReports);
-}
-
-function sendReportMinutes(usersReports) {
-    console.log(usersReports)
-    //res.send(userReport);
-}
-
-calculateMinutes(sendReportMinutes);
+// function calculateMinutes (callback) {
+//     var usersReports = [];
+//     var userReport = {
+//         username: null,
+//         reportminutes: []
+//     }
+//
+//     var repMin = [];
+//     //console.log(userReport);
+//
+//     for(var i = 0, len = 10; i < len; i++){
+//         var name = 'kmdfk ' + i;
+//         userReport.username = name;
+//
+//         for(var j = 0, len1 = 10; j < len1; j++){
+//             //console.log(userReport);
+//             repMin.push(j + " lkjlkjkl");
+//         }
+//         userReport.reportminutes = repMin;
+//         usersReports.push(userReport);
+//
+//         userReport = {};
+//         userReport.reportminutes = [];
+//     }
+//     callback(usersReports);
+// }
+//
+// function sendReportMinutes(usersReports) {
+//     console.log(usersReports)
+//     //res.send(userReport);
+// }
+//
+// calculateMinutes(sendReportMinutes);
 
 
 
