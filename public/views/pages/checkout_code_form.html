@@ -8,14 +8,17 @@
 				<form >
 				    <label style="display: block">{{vm.greeting}}</label>
 	
-					<md-input-container> 
+					<md-input-container class="md-block">
 					  <label>Введите код</label>
 					  <textarea ng-model="vm.code"></textarea>
 					</md-input-container>
-					<md-button style="display: block" ng-click="vm.checkOut(vm.code)">
-				      Отправить
-				    </md-button>
-				    <label>Checkout{{vm.data}}</label>			    
+					<md-button class="md-raised custom_btn md-primary" style="display: block" ng-click="vm.checkOut(vm.code)">
+						Отправить
+					</md-button>
+					<!--<md-button style="display: block" ng-click="vm.checkOut(vm.code)">-->
+				      <!--Отправить-->
+				    <!--</md-button>-->
+				    <!--<label>Checkout{{vm.data}}</label>			    -->
 				</form>
 		</div>
 	</div>

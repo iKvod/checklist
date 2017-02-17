@@ -5,16 +5,18 @@
 				<!-- <label>Welcome!</label> -->
 		</div>	
 		<div class="form_body flex_form">
-				<form>	
+				<form class="full_form">
 			    <!-- <label style="display: block">{{vm.greeting}}</label> -->
 				    <div>
-				    	<md-input-container>
+				    	<md-input-container class="md-block">
 					      <label for="testInput">ВВЕДИТЕ СВОЙ ID</label>
 					      <input id="testInput" ng-model="vm.employee_id" md-autofocus type="text">
 					    </md-input-container>
 				  	</div>
 				  	<div>
-				  		   <md-button ng-click="vm.checkChecked(vm.employee_id)">Отправить</md-button>
+						<md-button class="custom_btn md-raised md-primary" ng-click="vm.checkChecked(vm.employee_id)">Отправить</md-button>
+
+						<!--<md-button ng-click="vm.checkChecked(vm.employee_id)">Отправить</md-button>-->
 				  	</div>
 				  	
 				    
@@ -22,7 +24,7 @@
 		</div>
 
 	</div>
-	<div ng-if="vm.errorMessage" style="padding: 5px; margin: auto; border-radius: 3px; transition: 9s; background-color: #9c2b2e ;color:#fff">
-					    <label > {{vm.errorMessage}}</label>
-  	</div>
+	<div ng-if="vm.errorMessage" class="floating_alert">
+		<label > {{vm.errorMessage}}</label>
+	</div>
 </div>

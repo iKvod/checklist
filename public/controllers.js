@@ -6,8 +6,8 @@ angular.module('checklist')
 
 
     }])
-    .controller('ChecklistCtrl', ['ChecklistService', '$state','$stateParams', '$rootScope',
-     function(ChecklistService, $state, $stateParams, $rootScope){
+    .controller('ChecklistCtrl', ['ChecklistService', '$state','$stateParams', '$rootScope', '$timeout',
+     function(ChecklistService, $state, $stateParams, $rootScope, $timeout){
        var vm = this;
     //vm.user = user;
        vm.employee_id = '';
@@ -33,6 +33,9 @@ angular.module('checklist')
             }, function(err){
                 console.log(err.status);
                 vm.errorMessage = 'Пользователь не найден!'
+                    $timeout(function () {
+                        vm.errorMessage = '';
+                    }, 1000);
             });
        }
     }])
