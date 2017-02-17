@@ -48,7 +48,6 @@ function calculateMinutes (users, res, callback) {
 
         for(var j = 0, len1 = users[i].report.length; j < len1; j++){
             var obj = {}
-            console.log(typeof users[i].report[j].check_in);
             obj.check_in = new Date(users[i].report[j].check_in);
             obj.check_out = new Date(users[i].report[j].check_out);
             obj.report = users[i].report[j].calcTime();

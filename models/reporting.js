@@ -75,8 +75,12 @@ ReportingSchema.methods.calcTime = function () {
         };
     } else {
         console.log("Вы не сделали чекаут!");
-        // console.log(this.check_in  + this.check_out);
-        // console.log(this.check_out);
+        return {
+            minutes : fullTimeMinutes, // whole time begiin
+            lunchTime : lunchTimeMinutes,
+            outWorkDW : outWorkMinutes,
+            totalTimeInMinutes: totalTimeInMinutes
+        };
 
     }
 };
