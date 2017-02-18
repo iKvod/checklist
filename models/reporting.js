@@ -74,8 +74,8 @@ ReportingSchema.methods.calcTime = function () {
             lunchTime : lunchTimeMinutes,
             outWorkDW : outWorkMinutes,
             totalTimeInMinutes: totalTimeInMinutes,
-            check_in: this.check_in + localTime * 3600 * 1000,
-            check_out: this.check_out + localTime * 3600 * 1000,
+            check_in: this.check_in,
+            check_out: this.check_out,
             report_id: this._id
         };
     } else {
