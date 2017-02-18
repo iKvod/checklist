@@ -31,6 +31,7 @@ var server = http.createServer(app);
 
 if(privateIp){
   server.listen(port, privateIp);
+  console.log(`server is listening on host ${privateIp} and ${port} `)
 } else {
     server.listen(port);
 }
