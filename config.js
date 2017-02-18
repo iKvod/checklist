@@ -14,7 +14,8 @@ var config = {
     managerBotID : 228106138,
     // ceoBotID:207925830,     //for testing
     // managerBotID:207925830 // for testing
-    pip:"10.130.39.7"
+    //pip:"10.130.39.7"
+    pip:"188.166.182.2"
 };
 
 module.exports =  config;
