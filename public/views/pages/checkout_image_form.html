@@ -59,16 +59,26 @@
                 <form>
                     <img data-ng-src="{{'data:' + vm.fotoContentType + ';base64,' + vm.photo}}" width="320" height="180" style=""/>
                     <md-input-container style="display: block;">
-                        <label for="testInput">Отчет</label>
+                        <label for="reportDaily">Отчет</label>
                         <!-- <input id="testInput" ng-model="vm.report" md-autofocus type="text"> -->
-                        <textarea  id="testInput" ng-model="vm.report" md-autofocus type="text"></textarea>
+                        <textarea  id="reportDaily" ng-model="vm.report" md-autofocus type="text"></textarea>
 
                     </md-input-container>
                     <md-input-container style="display: block;">
-                        <label for="testInput">Отчет о прочитанной книге</label>
+                        <label for="reportBook">Отчет о прочитанной книге</label>
                         <!-- <input id="testInput" ng-model="vm.reportBook" md-autofocus type="text"> -->
-                        <textarea  id="testInput" ng-model="vm.reportBook" md-autofocus type="text"></textarea>
+                        <textarea  id="reportBook" ng-model="vm.reportBook" md-autofocus type="text"></textarea>
                     </md-input-container>
+
+                    <md-radio-group >
+                        <md-radio-button flex
+                                         ng-value="vm.doneReading"
+                                          >
+
+                            Закончил читать книгу
+                        </md-radio-button>
+                    </md-radio-group>
+
                     <md-button
                             class="custom_btn md-primary md-raised"
                             type="button"

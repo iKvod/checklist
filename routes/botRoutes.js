@@ -485,6 +485,7 @@ botrouter.post('/image', function (req, res, next) {
     var message = req.body.report.message;
     var report = req.body.report.report;
     var bookReport = req.body.report.bookreport;
+    var bookReportCeo = '';
     var name = req.body.report.name;
     var botId = req.body.report.botId;
     var caption = '';
@@ -492,26 +493,26 @@ botrouter.post('/image', function (req, res, next) {
     var messageToManager = null;
     var checkOut = false;
 
+
     if(message && report && bookReport){
-        caption = time + "\n" + name + " " + message + "\n" + report + "\n" + "Мои заметки по книге:\n "+ bookReport + "\n";
-        //console.log("1"+caption)
+        caption = time + "\n" + name + " " + message + "\n" + report + "\n" ;
+        bookReportCeo = "Мои заметки по книге:\n "+ bookReport + "\n";
         messageToUser = "У вас круто получилось сделать Checkout!";
         checkOut = true;
         messageToManager = time + "\n"  + "Отчет: \n " + name + " - "+ report;
     } else if (message && (report !== undefined) && (bookReport === undefined) ) {
-        caption = time + "\n" + name + " " + message + "\n" + report + "\n" + "Я еще не прочел книгу" + "\n";
-       messageToUser = "У вас круто получилось сделать Checkout!";
+        caption = time + "\n" + name + " " + message + "\n" + report + "\n";
+        bookReportCeo = "Я еще не прочел книгу" + "\n";
+        messageToUser = "У вас круто получилось сделать Checkout!";
         checkOut = true;
         messageToManager = time + "\n"  + "Отчет: \n " + name + " - "+ report;
     } else if(message && (report === undefined) && (bookReport === undefined)){
         caption = time + "\n" + name + " " + message;
         messageToUser = "У вас круто получилось сделать Checkin!";
-        //console.log("3"+caption);
+
     }
 
     var buffer = new Buffer(b64Data, 'base64');
-   // bot.sendMessage(207925830,'_'+report+'_', {'parse_mode':"Markdown"});
-    //var url = "https://www.google.kz/imgres?imgurl=https://lh5.googleusercontent.com/-89xTT1Ctbrk/AAAAAAAAAAI/AAAAAAAABcc/Kg0vilTzpKI/s0-c-k-no-ns/photo.jpg&imgrefurl=https://plus.google.com/u/0/114461178896543099856&h=349&w=349&tbnid=xioshf3NC0EdIM:&vet=1&tbnh=186&tbnw=186&docid=Crf5bkJhI8aTfM&itg=1&usg=__TtEAsURjtwX5OnkvlM3Ngw4WYsg=&sa=X&ved=0ahUKEwjn4KbdhO_RAhUFS5oKHW3BCu8Q_B0IczAK&ei=CueRWOezJYWW6QTtgqv4Dg#h=349&imgrc=xioshf3NC0EdIM:&tbnh=186&tbnw=186&vet=1&w=349";
     var opt = {
         "caption": caption,
         // 'reply_markup': { // for rating
@@ -524,13 +525,22 @@ botrouter.post('/image', function (req, res, next) {
         //             "remove_keyboard":true
         //     }
     };
+
+    var bookOpt = {
+        'parse_mode':"Markdown"
+    };
     //
     bot.sendPhoto(ceoBotId, buffer, opt); // Rustam's bot ID
+    //sending comment about red books
+    if(bookReportCeo){
+        bot.sendMessage(ceoBotId, bookReportCeo, bookOpt);
+    }
    // sends to manager Report for current day
     if(messageToManager !== null){
         bot.sendMessage(managerBotId, messageToManager); //  Ayganym's bot ID
     }
-
+    //sending message to  employee if he checked out or in
+    //and must read book info
     if(checkOut){
         fetchBook(botId, sendBookCheckout, messageToUser);
     } else {
@@ -578,8 +588,8 @@ function sendBookCheckout(link, title, botId, messageToUser) {
     var opt = {
         'parse_mode':"Markdown"
     };
-    bot.sendMessage(botId, "["+"Текущая книга которую  Вы должны прочитать\n"+title+"](" + link + ")", opt);
     bot.sendMessage(botId, messageToUser);
+    bot.sendMessage(botId, "["+"Текущая книга которую Вы должны прочитать:\n"+title+"](" + link + ")", opt);
 }
 
 

@@ -36,7 +36,9 @@ ReportingSchema.pre('save', function (next) {
 
     next();
 });
+
 ReportingSchema.methods.calcTime = function () {
+    var localTime = 6;
     var fullTimeHours = null;
     var fullTimeMinutes = null;
     var totalTimeInMinutes = null;
@@ -71,7 +73,10 @@ ReportingSchema.methods.calcTime = function () {
             minutes : fullTimeMinutes, // whole time begiin
             lunchTime : lunchTimeMinutes,
             outWorkDW : outWorkMinutes,
-            totalTimeInMinutes: totalTimeInMinutes
+            totalTimeInMinutes: totalTimeInMinutes,
+            check_in: this.check_in + localTime * 3600 * 1000,
+            check_out: this.check_out + localTime * 3600 * 1000,
+            report_id: this._id
         };
     } else {
         console.log("Вы не сделали чекаут!");
@@ -79,8 +84,9 @@ ReportingSchema.methods.calcTime = function () {
             minutes : fullTimeMinutes, // whole time begiin
             lunchTime : lunchTimeMinutes,
             outWorkDW : outWorkMinutes,
-            totalTimeInMinutes: totalTimeInMinutes
-        };
+            totalTimeInMinutes: totalTimeInMinutes,
+            report_id: this._id
+    };
 
     }
 };
