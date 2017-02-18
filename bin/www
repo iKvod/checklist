@@ -7,12 +7,16 @@
 var app = require('../app');
 var debug = require('debug')('checklist-bot:server');
 var http = require('http');
+var ip = require('../config');
+
+
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '8080');
+var port = normalizePort(process.env.PORT || '80');
+var privateIp = ip.pip;
 app.set('port', port);
 
 /**
