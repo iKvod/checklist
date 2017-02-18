@@ -15,7 +15,7 @@ var ip = require('../config');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '80');
+var port = normalizePort(process.env.PORT || '8080');
 var privateIp = ip.pip;
 app.set('port', port);
 
