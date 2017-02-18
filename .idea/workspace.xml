@@ -21,7 +21,7 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.40581626">
+    <splitter split-orientation="horizontal" split-proportion="0.57567745">
       <split-first>
         <splitter split-orientation="vertical" split-proportion="0.65148515">
           <split-first>
@@ -39,8 +39,8 @@
               <file leaf-file-name="www" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/bin/www">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="330">
-                      <caret line="22" column="22" lean-forward="true" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
+                    <state relative-caret-position="60">
+                      <caret line="35" column="1" lean-forward="true" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
                       <folding />
                     </state>
                   </provider>
@@ -49,7 +49,7 @@
               <file leaf-file-name="botRoutes.js" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/routes/botRoutes.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="445">
+                    <state relative-caret-position="370">
                       <caret line="520" column="39" lean-forward="true" selection-start-line="520" selection-start-column="39" selection-end-line="520" selection-end-column="39" />
                       <folding>
                         <marker date="1487407312000" expanded="true" signature="18933:19172" ph="{...}" />
@@ -127,8 +127,8 @@
               <file leaf-file-name="config.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/config.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="222">
-                      <caret line="16" column="4" lean-forward="false" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+                    <state relative-caret-position="192">
+                      <caret line="14" column="30" lean-forward="false" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
                       <folding />
                     </state>
                   </provider>
@@ -415,12 +415,12 @@
       <workItem from="1486802451365" duration="29847000" />
       <workItem from="1487049309346" duration="6119000" />
       <workItem from="1487235340596" duration="19753000" />
-      <workItem from="1487311343757" duration="15192000" />
+      <workItem from="1487311343757" duration="16195000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="193505000" />
+    <option name="totallyTimeSpent" value="194508000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1920" y="-124" width="1920" height="1080" extended-state="0" />
@@ -836,16 +836,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/botRoutes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="520" column="39" lean-forward="true" selection-start-line="520" selection-start-column="39" selection-end-line="520" selection-end-column="39" />
-          <folding>
-            <marker date="1487407312000" expanded="true" signature="18933:19172" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -854,18 +844,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/routes/botRoutes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="520" column="39" lean-forward="true" selection-start-line="520" selection-start-column="39" selection-end-line="520" selection-end-column="39" />
+          <folding>
+            <marker date="1487407312000" expanded="true" signature="18933:19172" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="16" column="4" lean-forward="false" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+        <state relative-caret-position="192">
+          <caret line="14" column="30" lean-forward="false" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bin/www">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="22" lean-forward="true" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
+        <state relative-caret-position="60">
+          <caret line="35" column="1" lean-forward="true" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
           <folding />
         </state>
       </provider>
