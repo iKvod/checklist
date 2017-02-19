@@ -32,7 +32,7 @@
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="checkin_code_form.html" pinned="false" current-in-tab="true">
+              <file leaf-file-name="checkin_code_form.html" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/views/pages/checkin_code_form.html">
                   <provider selected="true" editor-type-id="text-editor">
                     <state relative-caret-position="225">
@@ -64,46 +64,12 @@
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="services.js" pinned="false" current-in-tab="false">
+              <file leaf-file-name="services.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/services.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="495">
-                      <caret line="33" column="21" lean-forward="false" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
-                      <folding>
-                        <marker date="1486632113000" expanded="true" signature="678:970" ph="{...}" />
-                        <marker date="1486632113000" expanded="true" signature="752:958" ph="{...}" />
-                        <marker date="1486632113000" expanded="true" signature="777:944" ph="{&quot;method&quot;: &quot;POST&quot;...}" />
-                        <marker date="1486632113000" expanded="true" signature="1016:1768" ph="{...}" />
-                        <marker date="1486632113000" expanded="true" signature="1093:1756" ph="{...}" />
-                        <marker date="1486632113000" expanded="true" signature="1118:1362" ph="{&quot;method&quot;: &quot;PUT&quot;...}" />
-                        <marker date="1486632113000" expanded="true" signature="1290:1344" ph="//..." />
-                        <marker date="1486632113000" expanded="true" signature="1386:1553" ph="{&quot;method&quot;: &quot;GET&quot;...}" />
-                        <marker date="1486632113000" expanded="true" signature="1579:1742" ph="{&quot;method&quot;: 'PUT'...}" />
-                        <marker date="1486632113000" expanded="true" signature="1820:2115" ph="{...}" />
-                        <marker date="1486632113000" expanded="true" signature="1896:2103" ph="{...}" />
-                        <marker date="1486632113000" expanded="true" signature="1921:2089" ph="{&quot;method&quot;: 'POST'...}" />
-                        <marker date="1486632113000" expanded="true" signature="2170:2777" ph="{...}" />
-                        <marker date="1486632113000" expanded="true" signature="2304:2766" ph="{...}" />
-                        <marker date="1486632113000" expanded="true" signature="2329:2561" ph="{&quot;method&quot;: &quot;GET&quot;...}" />
-                        <marker date="1486632113000" expanded="true" signature="2489:2543" ph="//..." />
-                        <marker date="1486632113000" expanded="true" signature="2585:2752" ph="{&quot;method&quot;: &quot;GET&quot;...}" />
-                        <marker date="1486632113000" expanded="true" signature="2819:5893" ph="{...}" />
-                        <marker date="1486632113000" expanded="true" signature="3181:3553" ph="{...}" />
-                        <marker date="1486632113000" expanded="true" signature="3636:3704" ph="{...}" />
-                        <marker date="1486632113000" expanded="true" signature="3752:4680" ph="{...}" />
-                        <marker date="1486632113000" expanded="true" signature="3782:4666" ph="{...}" />
-                        <marker date="1486632113000" expanded="true" signature="4262:4345" ph="//..." />
-                        <marker date="1486632113000" expanded="true" signature="4726:4927" ph="{...}" />
-                        <marker date="1486632113000" expanded="true" signature="4978:5069" ph="{...}" />
-                        <marker date="1486632113000" expanded="true" signature="5145:5208" ph="{...}" />
-                        <marker date="1486632113000" expanded="true" signature="5255:5312" ph="{...}" />
-                        <marker date="1486632113000" expanded="true" signature="5356:5777" ph="{...}" />
-                        <marker date="1486632113000" expanded="true" signature="5464:5733" ph="{...}" />
-                        <marker date="1486632113000" expanded="true" signature="5586:5681" ph="{...}" />
-                        <marker date="1486632113000" expanded="true" signature="5807:5853" ph="{&quot;webcam&quot;: webcam...}" />
-                        <marker date="1486632113000" expanded="true" signature="5902:6365" ph="//..." />
-                        <marker date="1486632113000" expanded="true" signature="6368:6399" ph="//..." />
-                      </folding>
+                    <state relative-caret-position="240">
+                      <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+                      <folding />
                     </state>
                   </provider>
                 </entry>
@@ -174,8 +140,8 @@
               <file leaf-file-name="checkout_image_form.html" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/views/pages/checkout_image_form.html">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="117">
-                      <caret line="73" column="24" lean-forward="true" selection-start-line="73" selection-start-column="24" selection-end-line="73" selection-end-column="24" />
+                    <state relative-caret-position="312">
+                      <caret line="84" column="66" lean-forward="false" selection-start-line="84" selection-start-column="66" selection-end-line="84" selection-end-column="66" />
                       <folding>
                         <element signature="n#style#0;n#md-input-container#0;n#form#0;n#div#1;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
                         <element signature="n#style#0;n#md-input-container#1;n#form#0;n#div#1;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
@@ -235,8 +201,8 @@
           <file leaf-file-name="admin_panel.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/admin_panel/admin_panel.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="300">
-                  <caret line="20" column="8" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
+                <state relative-caret-position="420">
+                  <caret line="28" column="41" lean-forward="true" selection-start-line="28" selection-start-column="41" selection-end-line="28" selection-end-column="41" />
                   <folding />
                 </state>
               </provider>
@@ -288,10 +254,11 @@
         <option value="$PROJECT_DIR$/stylesheets/new_style.css" />
         <option value="$PROJECT_DIR$/views/pages/checklist_id_form.html" />
         <option value="$PROJECT_DIR$/views/pages/checkout_code_form.html" />
-        <option value="$PROJECT_DIR$/admin_panel/admin_panel.html" />
         <option value="$PROJECT_DIR$/views/pages/checkin_code_form.html" />
         <option value="$PROJECT_DIR$/stylesheets/admin_panel.css" />
         <option value="$PROJECT_DIR$/views/pages/checkout_image_form.html" />
+        <option value="$PROJECT_DIR$/admin_panel/admin_panel.html" />
+        <option value="$PROJECT_DIR$/services.js" />
       </list>
     </option>
   </component>
@@ -471,16 +438,16 @@
       <workItem from="1486983271217" duration="2384000" />
       <workItem from="1487049286506" duration="21198000" />
       <workItem from="1487235321111" duration="17764000" />
-      <workItem from="1487311332398" duration="18387000" />
+      <workItem from="1487311332398" duration="19498000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59733000" />
+    <option name="totallyTimeSpent" value="60844000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1920" y="-124" width="1920" height="1080" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13164824" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -547,41 +514,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
           <caret line="33" column="21" lean-forward="false" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
-          <folding>
-            <marker date="1486632113000" expanded="true" signature="678:970" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="752:958" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="777:944" ph="{&quot;method&quot;: &quot;POST&quot;...}" />
-            <marker date="1486632113000" expanded="true" signature="1016:1768" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="1093:1756" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="1118:1362" ph="{&quot;method&quot;: &quot;PUT&quot;...}" />
-            <marker date="1486632113000" expanded="true" signature="1290:1344" ph="//..." />
-            <marker date="1486632113000" expanded="true" signature="1386:1553" ph="{&quot;method&quot;: &quot;GET&quot;...}" />
-            <marker date="1486632113000" expanded="true" signature="1579:1742" ph="{&quot;method&quot;: 'PUT'...}" />
-            <marker date="1486632113000" expanded="true" signature="1820:2115" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="1896:2103" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="1921:2089" ph="{&quot;method&quot;: 'POST'...}" />
-            <marker date="1486632113000" expanded="true" signature="2170:2777" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="2304:2766" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="2329:2561" ph="{&quot;method&quot;: &quot;GET&quot;...}" />
-            <marker date="1486632113000" expanded="true" signature="2489:2543" ph="//..." />
-            <marker date="1486632113000" expanded="true" signature="2585:2752" ph="{&quot;method&quot;: &quot;GET&quot;...}" />
-            <marker date="1486632113000" expanded="true" signature="2819:5893" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="3181:3553" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="3636:3704" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="3752:4680" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="3782:4666" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="4262:4345" ph="//..." />
-            <marker date="1486632113000" expanded="true" signature="4726:4927" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="4978:5069" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="5145:5208" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="5255:5312" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="5356:5777" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="5464:5733" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="5586:5681" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="5807:5853" ph="{&quot;webcam&quot;: webcam...}" />
-            <marker date="1486632113000" expanded="true" signature="5902:6365" ph="//..." />
-            <marker date="1486632113000" expanded="true" signature="6368:6399" ph="//..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -675,41 +608,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
           <caret line="33" column="21" lean-forward="false" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
-          <folding>
-            <marker date="1486632113000" expanded="true" signature="678:970" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="752:958" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="777:944" ph="{&quot;method&quot;: &quot;POST&quot;...}" />
-            <marker date="1486632113000" expanded="true" signature="1016:1768" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="1093:1756" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="1118:1362" ph="{&quot;method&quot;: &quot;PUT&quot;...}" />
-            <marker date="1486632113000" expanded="true" signature="1290:1344" ph="//..." />
-            <marker date="1486632113000" expanded="true" signature="1386:1553" ph="{&quot;method&quot;: &quot;GET&quot;...}" />
-            <marker date="1486632113000" expanded="true" signature="1579:1742" ph="{&quot;method&quot;: 'PUT'...}" />
-            <marker date="1486632113000" expanded="true" signature="1820:2115" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="1896:2103" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="1921:2089" ph="{&quot;method&quot;: 'POST'...}" />
-            <marker date="1486632113000" expanded="true" signature="2170:2777" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="2304:2766" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="2329:2561" ph="{&quot;method&quot;: &quot;GET&quot;...}" />
-            <marker date="1486632113000" expanded="true" signature="2489:2543" ph="//..." />
-            <marker date="1486632113000" expanded="true" signature="2585:2752" ph="{&quot;method&quot;: &quot;GET&quot;...}" />
-            <marker date="1486632113000" expanded="true" signature="2819:5893" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="3181:3553" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="3636:3704" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="3752:4680" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="3782:4666" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="4262:4345" ph="//..." />
-            <marker date="1486632113000" expanded="true" signature="4726:4927" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="4978:5069" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="5145:5208" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="5255:5312" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="5356:5777" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="5464:5733" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="5586:5681" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="5807:5853" ph="{&quot;webcam&quot;: webcam...}" />
-            <marker date="1486632113000" expanded="true" signature="5902:6365" ph="//..." />
-            <marker date="1486632113000" expanded="true" signature="6368:6399" ph="//..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -779,41 +678,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
           <caret line="36" column="38" lean-forward="false" selection-start-line="36" selection-start-column="38" selection-end-line="36" selection-end-column="38" />
-          <folding>
-            <marker date="1486632113000" expanded="true" signature="678:970" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="752:958" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="777:944" ph="{&quot;method&quot;: &quot;POST&quot;...}" />
-            <marker date="1486632113000" expanded="true" signature="1016:1768" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="1093:1756" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="1118:1362" ph="{&quot;method&quot;: &quot;PUT&quot;...}" />
-            <marker date="1486632113000" expanded="true" signature="1290:1344" ph="//..." />
-            <marker date="1486632113000" expanded="true" signature="1386:1553" ph="{&quot;method&quot;: &quot;GET&quot;...}" />
-            <marker date="1486632113000" expanded="true" signature="1579:1742" ph="{&quot;method&quot;: 'PUT'...}" />
-            <marker date="1486632113000" expanded="true" signature="1820:2115" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="1896:2103" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="1921:2089" ph="{&quot;method&quot;: 'POST'...}" />
-            <marker date="1486632113000" expanded="true" signature="2170:2777" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="2304:2766" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="2329:2561" ph="{&quot;method&quot;: &quot;GET&quot;...}" />
-            <marker date="1486632113000" expanded="true" signature="2489:2543" ph="//..." />
-            <marker date="1486632113000" expanded="true" signature="2585:2752" ph="{&quot;method&quot;: &quot;GET&quot;...}" />
-            <marker date="1486632113000" expanded="true" signature="2819:5893" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="3181:3553" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="3636:3704" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="3752:4680" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="3782:4666" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="4262:4345" ph="//..." />
-            <marker date="1486632113000" expanded="true" signature="4726:4927" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="4978:5069" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="5145:5208" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="5255:5312" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="5356:5777" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="5464:5733" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="5586:5681" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="5807:5853" ph="{&quot;webcam&quot;: webcam...}" />
-            <marker date="1486632113000" expanded="true" signature="5902:6365" ph="//..." />
-            <marker date="1486632113000" expanded="true" signature="6368:6399" ph="//..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -874,48 +739,6 @@
         <state relative-caret-position="270">
           <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" column="21" lean-forward="false" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
-          <folding>
-            <marker date="1486632113000" expanded="true" signature="678:970" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="752:958" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="777:944" ph="{&quot;method&quot;: &quot;POST&quot;...}" />
-            <marker date="1486632113000" expanded="true" signature="1016:1768" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="1093:1756" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="1118:1362" ph="{&quot;method&quot;: &quot;PUT&quot;...}" />
-            <marker date="1486632113000" expanded="true" signature="1290:1344" ph="//..." />
-            <marker date="1486632113000" expanded="true" signature="1386:1553" ph="{&quot;method&quot;: &quot;GET&quot;...}" />
-            <marker date="1486632113000" expanded="true" signature="1579:1742" ph="{&quot;method&quot;: 'PUT'...}" />
-            <marker date="1486632113000" expanded="true" signature="1820:2115" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="1896:2103" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="1921:2089" ph="{&quot;method&quot;: 'POST'...}" />
-            <marker date="1486632113000" expanded="true" signature="2170:2777" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="2304:2766" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="2329:2561" ph="{&quot;method&quot;: &quot;GET&quot;...}" />
-            <marker date="1486632113000" expanded="true" signature="2489:2543" ph="//..." />
-            <marker date="1486632113000" expanded="true" signature="2585:2752" ph="{&quot;method&quot;: &quot;GET&quot;...}" />
-            <marker date="1486632113000" expanded="true" signature="2819:5893" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="3181:3553" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="3636:3704" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="3752:4680" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="3782:4666" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="4262:4345" ph="//..." />
-            <marker date="1486632113000" expanded="true" signature="4726:4927" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="4978:5069" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="5145:5208" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="5255:5312" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="5356:5777" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="5464:5733" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="5586:5681" ph="{...}" />
-            <marker date="1486632113000" expanded="true" signature="5807:5853" ph="{&quot;webcam&quot;: webcam...}" />
-            <marker date="1486632113000" expanded="true" signature="5902:6365" ph="//..." />
-            <marker date="1486632113000" expanded="true" signature="6368:6399" ph="//..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1018,16 +841,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/pages/checkin_code_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="24" lean-forward="true" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="26" />
-          <folding>
-            <element signature="n#style#0;n#md-button#0;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/stylesheets/admin_panel.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -1044,10 +857,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/admin_panel/admin_panel.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="41" lean-forward="true" selection-start-line="28" selection-start-column="41" selection-end-line="28" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/pages/checkout_image_form.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="73" column="24" lean-forward="true" selection-start-line="73" selection-start-column="24" selection-end-line="73" selection-end-column="24" />
+        <state relative-caret-position="312">
+          <caret line="84" column="66" lean-forward="false" selection-start-line="84" selection-start-column="66" selection-end-line="84" selection-end-column="66" />
           <folding>
             <element signature="n#style#0;n#md-input-container#0;n#form#0;n#div#1;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#md-input-container#1;n#form#0;n#div#1;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
@@ -1057,10 +878,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin_panel/admin_panel.html">
+    <entry file="file://$PROJECT_DIR$/views/pages/checkin_code_form.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="8" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
+        <state relative-caret-position="225">
+          <caret line="15" column="24" lean-forward="true" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="26" />
+          <folding>
+            <element signature="n#style#0;n#md-button#0;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding />
         </state>
       </provider>

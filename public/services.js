@@ -2,21 +2,21 @@
     'use Strict'
     angular
         .module('checklist')
-        .constant("baseURL", "https://localhost:3000/")
+        .constant("baseURL", "https://localhost:8080")
         .factory('WebcamService', WebcamService)
         .factory('ChecklistService', ChecklistService)
         .factory('CheckinService', CheckinService)
         .factory('CheckoutService', CheckoutService)
         .factory('ReportService', ReportService);
 
-        WebcamService.$inject = ['$http'];
+        WebcamService.$inject = ['$http', 'baseURL'];
         ChecklistService.$inject = ['$resource', 'baseURL'];
-        CheckinService.$inject = ['$resource'];
-        CheckoutService.$inject = ['$resource'];
-        ReportService.$inject = ['$resource'];
+        CheckinService.$inject = ['$resource', 'baseURL'];
+        CheckoutService.$inject = ['$resource', 'baseURL'];
+        ReportService.$inject = ['$resource', 'baseURL'];
 
-        function ReportService($resource) {
-            return $resource('/api/checklist/upload/:id', { id: "@id"}, {
+        function ReportService($resource, baseURL) {
+            return $resource(baseURL + '/api/checklist/upload/:id', { id: "@id"}, {
                 query: {
                     method: "POST",
                     params: {"id":"@id"},
@@ -26,9 +26,9 @@
             });
         };
 
-        function CheckoutService($resource){
+        function CheckoutService($resource, baseURL){
 
-            return $resource('/api/checklist/checkout/:id', { id: '@id'}, {
+            return $resource(baseURL + '/api/checklist/checkout/:id', { id: '@id'}, {
                 query: {
                     method: "PUT",
                     params: { "id":"@id" },
@@ -53,8 +53,8 @@
 
         }
         
-        function CheckinService($resource){
-            return $resource('/api/checklist/checkin/:id', { id: "@id" }, {
+        function CheckinService($resource, baseURL){
+            return $resource(baseURL + '/api/checklist/checkin/:id', { id: "@id" }, {
                 query: {
                     method: 'POST',
                     params: {"id": "@id"},
@@ -66,7 +66,7 @@
 
         function ChecklistService($resource, baseURL){
            //return $resource("/api/checklist/:id", { id: "@id" });
-           return $resource('/api/checklist/:id', { id: '@id'}, {
+           return $resource(baseURL + '/api/checklist/:id', { id: '@id'}, {
                 query: {
                     method: "GET",
                     params: {},
@@ -84,7 +84,7 @@
             })
         } 
 
-        function WebcamService ($http) {
+        function WebcamService ($http, baseURL) {
             var webcam = {};
             webcam.isTurnOn = false;
             webcam.patData = null;
