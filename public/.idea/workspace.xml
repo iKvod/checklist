@@ -22,7 +22,7 @@
         <splitter split-orientation="vertical" split-proportion="0.46138614">
           <split-first>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-              <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+              <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/app.js">
                   <provider selected="true" editor-type-id="text-editor">
                     <state relative-caret-position="231">
@@ -64,7 +64,7 @@
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="services.js" pinned="false" current-in-tab="true">
+              <file leaf-file-name="services.js" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/services.js">
                   <provider selected="true" editor-type-id="text-editor">
                     <state relative-caret-position="210">
@@ -438,12 +438,12 @@
       <workItem from="1486983271217" duration="2384000" />
       <workItem from="1487049286506" duration="21198000" />
       <workItem from="1487235321111" duration="17764000" />
-      <workItem from="1487311332398" duration="20541000" />
+      <workItem from="1487311332398" duration="20690000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61887000" />
+    <option name="totallyTimeSpent" value="62036000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1920" y="-124" width="1920" height="1080" extended-state="0" />
@@ -758,14 +758,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="74" column="24" lean-forward="false" selection-start-line="74" selection-start-column="24" selection-end-line="74" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/pages/checkin_image_form.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -892,6 +884,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="50" lean-forward="false" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="74" column="24" lean-forward="false" selection-start-line="74" selection-start-column="24" selection-end-line="74" selection-end-column="24" />
           <folding />
         </state>
       </provider>
