@@ -56,7 +56,7 @@ app.use(express.static(__dirname + "./public/bower_components"));
 app.use(express.static(__dirname + "./public/views/pages"));
 app.use(express.static(__dirname + "./public/images"));
 app.use(express.static(__dirname + "./public/stylesheets"));
-app.use(exprq.static(__dirname + "./public/photos"));
+app.use(express.static(__dirname + "./public/photos"));
 
 /*
 * api's
