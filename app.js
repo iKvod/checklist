@@ -50,13 +50,13 @@ var allowCrossDomain = function(req, res, next) {
 };
 
 app.use(allowCrossDomain);
-
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(__dirname + "./public/bower_components"));
 app.use(express.static(__dirname + "./public/views/pages"));
 app.use(express.static(__dirname + "./public/images"));
 app.use(express.static(__dirname + "./public/stylesheets"));
+app.use(exprq.static(__dirname + "./public/photos"));
 
 /*
 * api's

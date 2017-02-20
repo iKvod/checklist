@@ -2,7 +2,7 @@
     'use Strict'
     angular
         .module('checklist')
-        .constant("baseURL", "http://188.166.182.2:8080")
+        .constant("baseURL", "https://188.166.182.2")
         .factory('WebcamService', WebcamService)
         .factory('ChecklistService', ChecklistService)
         .factory('CheckinService', CheckinService)

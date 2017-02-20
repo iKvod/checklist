@@ -36,6 +36,23 @@ ReportingSchema.pre('save', function (next) {
 
     next();
 });
+ReportingSchema.methods.calcTimeCorrectly = function() {
+    var fullTimeHours = null;
+    var fullTimeMinutes = null;
+    var totalTimeMinutes = null;
+
+
+    var dayDifference = this.check_in.getUTCDay() - this.check_out.getUTCDay();
+
+    if(dayDifference <= 1){
+        fullTimeMinutes = this.check_out.getHours() * 60 + this.check_out.getMinutes()
+
+    } else {
+
+    }
+
+};
+
 
 ReportingSchema.methods.calcTime = function () {
     var localTime = 6;
@@ -81,7 +98,7 @@ ReportingSchema.methods.calcTime = function () {
     } else {
         console.log("Вы не сделали чекаут!");
         return {
-            minutes : fullTimeMinutes, // whole time begiin
+            minutes : fullTimeMinutes, // whole time begin
             lunchTime : lunchTimeMinutes,
             outWorkDW : outWorkMinutes,
             totalTimeInMinutes: totalTimeInMinutes,
