@@ -117,7 +117,7 @@ checklist.put('/checkout/:id', function (req, res, next) {
 
                report.check_out = new Date();
                report.report = req.body.report;
-               report.calcTime();
+               report.calcTimeCorrectly();
                //
                report.save(function (err, savedReport) {
                    if(err){
