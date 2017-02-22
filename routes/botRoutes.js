@@ -416,7 +416,11 @@ bot.onText(/\/🍔tolunch/, function(msg, match){
 
     goDuringWorkHours(botId, checkinType.type);
     bot.sendMessage(ceoBotId, name + ", вышел(ла) на обед!");
+    console.log(' ');
+    console.log(' ');
     console.log(name);
+    console.log(' ');
+    console.log(' ');
 });
 
 bot.onText(/\/fromlunch🍔/, function(msg, match){
