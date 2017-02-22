@@ -67,8 +67,8 @@
               <file leaf-file-name="services.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/services.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="870">
-                      <caret line="67" column="54" lean-forward="true" selection-start-line="67" selection-start-column="54" selection-end-line="67" selection-end-column="54" />
+                    <state relative-caret-position="-45">
+                      <caret line="31" column="80" lean-forward="false" selection-start-line="31" selection-start-column="80" selection-end-line="31" selection-end-column="80" />
                       <folding />
                     </state>
                   </provider>
@@ -438,12 +438,12 @@
       <workItem from="1486983271217" duration="2384000" />
       <workItem from="1487049286506" duration="21198000" />
       <workItem from="1487235321111" duration="17764000" />
-      <workItem from="1487311332398" duration="27808000" />
+      <workItem from="1487311332398" duration="28170000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69154000" />
+    <option name="totallyTimeSpent" value="69516000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1920" y="-124" width="1920" height="1080" extended-state="0" />
@@ -890,8 +890,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/services.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
-          <caret line="67" column="54" lean-forward="true" selection-start-line="67" selection-start-column="54" selection-end-line="67" selection-end-column="54" />
+        <state relative-caret-position="-45">
+          <caret line="31" column="80" lean-forward="false" selection-start-line="31" selection-start-column="80" selection-end-line="31" selection-end-column="80" />
           <folding />
         </state>
       </provider>

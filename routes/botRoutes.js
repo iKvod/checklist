@@ -416,6 +416,7 @@ bot.onText(/\/🍔tolunch/, function(msg, match){
 
     goDuringWorkHours(botId, checkinType.type);
     bot.sendMessage(ceoBotId, name + ", вышел(ла) на обед!");
+    console.log(name);
 });
 
 bot.onText(/\/fromlunch🍔/, function(msg, match){
@@ -435,7 +436,7 @@ bot.onText(/\/⚔️stopwork/, function(msg, match){
 
     goDuringWorkHours(botId, checkinType.type);
     bot.sendMessage(ceoBotId, name + ", отметился(ась), что он уходит с работы во время рабочего дня!");
-
+    console.log(name);
 });
 
 bot.onText(/\/👨🏼‍💻starkwork👩🏼‍💻/, function(msg, match){

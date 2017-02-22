@@ -5,7 +5,9 @@ angular.module('checklist', [
     'ngResource',
     'ngFileUpload',
     'ngAria',
-    'webcam'
+    'webcam',
+    'ngSanitize',
+    'mgcrea.ngStrap'
 ])
   .config(['$stateProvider', '$urlRouterProvider','$locationProvider',
      function($stateProvider, $urlRouterProvider, $locationProvider) {

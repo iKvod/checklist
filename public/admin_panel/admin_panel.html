@@ -46,7 +46,9 @@
 				</div>
 
 				<div class="table-body-cell-header" >
-					<span class="report" ng-repeat="minutes in report.report track by $index" > {{ minutes }}</span>
+					<span class="report" ng-repeat="minutes in report.report track by $index" >
+						<span id="elem_{{$index}}" ng-bind="minutes" ng-click="vm.getPersonalInfo(vm.report)"></span>
+					</span>
 				</div>
 			</div>
 

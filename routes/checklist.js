@@ -123,7 +123,7 @@ checklist.put('/checkout/:id', function (req, res, next) {
                    if(err){
                        return next(err);
                    }
-                   savedReport.calcTime();
+                   // savedReport.calcTime();
                    //console.log(savedReport.calcTime());
                    res.send(savedReport);
                });

@@ -17,8 +17,8 @@ var salaryRoutes = require('./routes/reportSalary');
 var config = require('./config');
 var app = express();
 
-//mongoose.connect(config.mongoUrl, config.opt);
-mongoose.connect(config.mongoUrl);
+mongoose.connect(config.mongoUrl, config.opt);
+//mongoose.connect(config.mongoUrl);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {

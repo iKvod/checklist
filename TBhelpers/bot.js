@@ -84,7 +84,7 @@ console.log(date.getTime())// time in ms
 console.log(date.getUTCDay()) // day of week
 console.log(date.getTimezoneOffset())
 console.log(date.getUTCHours() + 6)
-console.log(date.)
+console.log(date);
 console.log(date.getHours());
 console.log(date.getDay());
 console.log(date.getFullYear());

@@ -25,7 +25,6 @@ reportRoute.get('/:id', function (req, res, next) {
         .exec(function (err, report) {
             if(err){
                 return next(err);
-                console.log(err);
             }
             res.send(report.calcTimeCorrectly());
         })
