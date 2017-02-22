@@ -17,6 +17,7 @@ var Employee = new Schema({
     phonenumber: {type:String},
     department: String,
     position: String,
+    salary_fixed: Number,
     registered_at: { type:Date, default:Date.now},
     checked: {
         type: Boolean,
@@ -49,16 +50,16 @@ Employee.pre('save', function (next) {
     next();
 })
 
-Employee.method.getName = function () {
+Employee.methods.getName = function () {
   return this.firstname + ' ' + this.lastname;
 };
 
-Employee.method.getId = function(){
+Employee.methods.getId = function(){
     return this.id;
 };
 
-Employee.method.getBotId = function(){
-    return this.bot_id;
+Employee.methods.getBotId = function(){
+    return this.botId;
 };
 
 //User.plugin(passportLocalMongoose);

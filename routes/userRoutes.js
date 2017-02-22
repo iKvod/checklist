@@ -43,15 +43,20 @@ userrouter.get('/:userId', function(req, res, next){
 });
 
 userrouter.put('/:id', function(req, res, next){
-     Users.findById(req.params.blogId, function (err, user) {
-        if (err) res.send(err);
-        user.name = req.body.name;
+
+     Users.findById(req.params.id, function (err, user) {
+
+        if (err) {
+            return next(err);
+        }
+        user.salary_fixed = req.body.salaryFixed;
 
         user.save(function (err) {
-            if(err) res.send(err);
-            res.json({message: "user updated!"});
+            if(err) {
+                return next(err);
+            }
+            res.send({message: "Salary updated!"});
         });
-
     });
 });
 

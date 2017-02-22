@@ -12,6 +12,7 @@ var botRoutes = require('./routes/botRoutes');
 var userRoutes = require('./routes/userRoutes');
 var checklistRoutes = require('./routes/checklist');
 var reportRoutes = require('./routes/reportsRoute');
+var salaryRoutes = require('./routes/reportSalary');
 
 var config = require('./config');
 var app = express();
@@ -65,6 +66,7 @@ app.use('/api/bot', botRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/checklist', checklistRoutes);
 app.use('/api/reports', reportRoutes);
+app.use('/api/salary', salaryRoutes);
 app.use('/*', function(req, res){
       res.sendFile(path.join(__dirname + '/public/index.html'));
 });

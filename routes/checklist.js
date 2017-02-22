@@ -52,7 +52,8 @@ checklist.post('/checkin/:id', function(req, res, next){
 
     var report = new Reports({
         check_in: new Date(),
-        employee: id
+        employee: id,
+        absent: false
     });
 
     report.save(function(err, data){

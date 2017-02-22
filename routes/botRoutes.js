@@ -19,6 +19,7 @@ var ceoBotId = config.ceoBotID;
 var managerBotId = config.managerBotID;
 
 
+
 // var options = {
 //     webHook: {
 //         port: 443,
@@ -414,15 +415,16 @@ bot.onText(/\/🍔tolunch/, function(msg, match){
     var date = new Date();
 
     goDuringWorkHours(botId, checkinType.type);
-
+    bot.sendMessage(ceoBotId, name + ", вышел(ла) на обед!");
 });
 
 bot.onText(/\/fromlunch🍔/, function(msg, match){
     var botId = msg.from.id;
     var name = msg.chat.user_name;
-    var checkinType = {"type": "lunch_out"}
+    var checkinType = {"type": "lunch_out"};
 
     goDuringWorkHours(botId, checkinType.type);
+    bot.sendMessage(ceoBotId, name + ", пришел(ла) с обеда!");
 
 });
 
@@ -432,6 +434,7 @@ bot.onText(/\/⚔️stopwork/, function(msg, match){
     var checkinType = {"type":"go_out"};
 
     goDuringWorkHours(botId, checkinType.type);
+    bot.sendMessage(ceoBotId, name + ", отметился(ась), что он уходит с работы во время рабочего дня!");
 
 });
 
@@ -441,6 +444,7 @@ bot.onText(/\/👨🏼‍💻starkwork👩🏼‍💻/, function(msg, match){
     var checkinType = {"type": "come_back"};
 
     goDuringWorkHours(botId, checkinType.type);
+    bot.sendMessage(ceoBotId, name + ", возвратился к работе!");
 
 });
 
@@ -463,7 +467,7 @@ function goDuringWorkHours(botId, checkinType) {
                             bot.sendMessage(botId, err);
                             return next(err);
                         }
-                        console.log(savedReport);
+                        //console.log(savedReport);
                         bot.sendMessage(botId, name + ", Ваш запрос успешно обработан!");
                     });
                 });
@@ -531,7 +535,7 @@ botrouter.post('/image', function (req, res, next) {
     };
     //
     bot.sendPhoto(ceoBotId, buffer, opt); // Rustam's bot ID
-    //sending comment about red books
+    //sending comment about read books
     if(bookReportCeo){
         bot.sendMessage(ceoBotId, bookReportCeo, bookOpt);
     }
@@ -749,7 +753,7 @@ function saveBook(id, callback, title, link) {
         });
 }
 
-//sends book info to employees
+//sends new book info to employees
 function sendBookInfo(botId, title, link) {
 
     var opt = {
