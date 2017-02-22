@@ -406,7 +406,7 @@ bot.onText(/\/getbookinfo (.+)/,function (msg, match) {
 
 
 bot.onText(/\/🍔tolunch/, function(msg, match){
-    //console.log(msg);
+    console.log(msg);
     var botId = msg.from.id;
     var name = msg.chat.user_name;
     var checkinType = { "type" : "lunch_in" };

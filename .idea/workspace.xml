@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b72f4adc-28a2-4842-8e1a-86b6eaa83083" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.js" afterPath="$PROJECT_DIR$/config.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/botRoutes.js" afterPath="$PROJECT_DIR$/routes/botRoutes.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -24,7 +24,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="user.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="user.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/user.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="540">
@@ -37,8 +37,8 @@
       <file leaf-file-name="config.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="13" column="24" lean-forward="false" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+            <state relative-caret-position="26">
+              <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -64,13 +64,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="botRoutes.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="botRoutes.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/botRoutes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="458" column="41" lean-forward="true" selection-start-line="458" selection-start-column="41" selection-end-line="458" selection-end-column="41" />
+            <state relative-caret-position="93">
+              <caret line="408" column="4" lean-forward="false" selection-start-line="408" selection-start-column="4" selection-end-line="408" selection-end-column="4" />
               <folding>
-                <marker date="1487766249000" expanded="true" signature="19277:19516" ph="{...}" />
+                <marker date="1487777658000" expanded="true" signature="19275:19514" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -109,8 +109,8 @@
       <file leaf-file-name="checklist.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/checklist.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="88" column="19" lean-forward="true" selection-start-line="88" selection-start-column="19" selection-end-line="88" selection-end-column="19" />
+            <state relative-caret-position="598">
+              <caret line="125" column="28" lean-forward="true" selection-start-line="125" selection-start-column="28" selection-end-line="125" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -153,12 +153,12 @@
         <option value="$PROJECT_DIR$/public/admin_panel/admin_panel.html" />
         <option value="$PROJECT_DIR$/public/admin_panel/admin-panel-controller.js" />
         <option value="$PROJECT_DIR$/routes/reportsRoute.js" />
-        <option value="$PROJECT_DIR$/routes/botRoutes.js" />
         <option value="$PROJECT_DIR$/routes/checklist.js" />
         <option value="$PROJECT_DIR$/.bowerrc" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/config.js" />
         <option value="$PROJECT_DIR$/models/user.js" />
+        <option value="$PROJECT_DIR$/routes/botRoutes.js" />
       </list>
     </option>
   </component>
@@ -389,12 +389,12 @@
       <workItem from="1486802451365" duration="29847000" />
       <workItem from="1487049309346" duration="6119000" />
       <workItem from="1487235340596" duration="19753000" />
-      <workItem from="1487311343757" duration="99982000" />
+      <workItem from="1487311343757" duration="100220000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="278295000" />
+    <option name="totallyTimeSpent" value="278533000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -417,7 +417,7 @@
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24960506" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35703" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35703" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -465,7 +465,7 @@
         <state relative-caret-position="225">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding>
-            <marker date="1487766249000" expanded="true" signature="19277:19516" ph="{...}" />
+            <marker date="1487777658000" expanded="true" signature="19275:19514" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -554,7 +554,7 @@
         <state relative-caret-position="825">
           <caret line="55" column="20" lean-forward="true" selection-start-line="55" selection-start-column="20" selection-end-line="55" selection-end-column="20" />
           <folding>
-            <marker date="1487766249000" expanded="true" signature="19277:19516" ph="{...}" />
+            <marker date="1487777658000" expanded="true" signature="19275:19514" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -833,32 +833,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/checklist.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="88" column="19" lean-forward="true" selection-start-line="88" selection-start-column="19" selection-end-line="88" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/botRoutes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="458" column="41" lean-forward="true" selection-start-line="458" selection-start-column="41" selection-end-line="458" selection-end-column="41" />
-          <folding>
-            <marker date="1487766249000" expanded="true" signature="19277:19516" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="13" column="24" lean-forward="false" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="104">
@@ -872,6 +846,32 @@
         <state relative-caret-position="540">
           <caret line="53" column="28" lean-forward="false" selection-start-line="53" selection-start-column="28" selection-end-line="53" selection-end-column="28" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/checklist.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="598">
+          <caret line="125" column="28" lean-forward="true" selection-start-line="125" selection-start-column="28" selection-end-line="125" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/botRoutes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="408" column="4" lean-forward="false" selection-start-line="408" selection-start-column="4" selection-end-line="408" selection-end-column="4" />
+          <folding>
+            <marker date="1487777658000" expanded="true" signature="19275:19514" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
