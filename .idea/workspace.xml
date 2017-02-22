@@ -3,17 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b72f4adc-28a2-4842-8e1a-86b6eaa83083" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.js" afterPath="$PROJECT_DIR$/config.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/reporting.js" afterPath="$PROJECT_DIR$/models/reporting.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/user.js" afterPath="$PROJECT_DIR$/models/user.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/.idea/workspace.xml" afterPath="$PROJECT_DIR$/public/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/services.js" afterPath="$PROJECT_DIR$/public/services.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/admin_panel.css" afterPath="$PROJECT_DIR$/public/stylesheets/admin_panel.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/botRoutes.js" afterPath="$PROJECT_DIR$/routes/botRoutes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/checklist.js" afterPath="$PROJECT_DIR$/routes/checklist.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/reportsRoute.js" afterPath="$PROJECT_DIR$/routes/reportsRoute.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/userRoutes.js" afterPath="$PROJECT_DIR$/routes/userRoutes.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -172,10 +163,10 @@
               <file leaf-file-name="reporting.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/models/reporting.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="1525">
-                      <caret line="151" column="13" lean-forward="false" selection-start-line="151" selection-start-column="13" selection-end-line="151" selection-end-column="13" />
+                    <state relative-caret-position="520">
+                      <caret line="56" column="5" lean-forward="true" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
                       <folding>
-                        <marker date="1487708638000" expanded="false" signature="6334:8352" ph="{...}" />
+                        <marker date="1487739553000" expanded="false" signature="6410:8428" ph="{...}" />
                       </folding>
                     </state>
                   </provider>
@@ -247,10 +238,10 @@
         <option value="$PROJECT_DIR$/routes/helpers/SalaryReportingHelpers/reportSalary.js" />
         <option value="$PROJECT_DIR$/routes/reportSalary.js" />
         <option value="$PROJECT_DIR$/routes/reportsRoute.js" />
-        <option value="$PROJECT_DIR$/models/reporting.js" />
         <option value="$PROJECT_DIR$/routes/botRoutes.js" />
         <option value="$PROJECT_DIR$/config.js" />
         <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/models/reporting.js" />
       </list>
     </option>
   </component>
@@ -470,25 +461,25 @@
       <workItem from="1486802451365" duration="29847000" />
       <workItem from="1487049309346" duration="6119000" />
       <workItem from="1487235340596" duration="19753000" />
-      <workItem from="1487311343757" duration="83864000" />
+      <workItem from="1487311343757" duration="84146000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="262177000" />
+    <option name="totallyTimeSpent" value="262459000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1920" y="-124" width="1920" height="1080" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13270143" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13270143" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13461539" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24960506" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22538178" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22538178" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -550,7 +541,7 @@
         <state relative-caret-position="270">
           <caret line="18" column="24" lean-forward="false" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
           <folding>
-            <marker date="1487708638000" expanded="false" signature="6334:8352" ph="{...}" />
+            <marker date="1487739553000" expanded="false" signature="6410:8428" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -641,7 +632,7 @@
         <state relative-caret-position="180">
           <caret line="12" column="20" lean-forward="true" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
           <folding>
-            <marker date="1487708638000" expanded="false" signature="6334:8352" ph="{...}" />
+            <marker date="1487739553000" expanded="false" signature="6410:8428" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -899,16 +890,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/reporting.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1525">
-          <caret line="151" column="13" lean-forward="false" selection-start-line="151" selection-start-column="13" selection-end-line="151" selection-end-column="13" />
-          <folding>
-            <marker date="1487708638000" expanded="false" signature="6334:8352" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/reportSalary.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="690">
@@ -930,6 +911,16 @@
         <state relative-caret-position="36">
           <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/reporting.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="56" column="5" lean-forward="true" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
+          <folding>
+            <marker date="1487739553000" expanded="false" signature="6410:8428" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>

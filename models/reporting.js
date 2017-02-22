@@ -50,7 +50,11 @@ ReportingSchema.methods.calcTimeCorrectly = function() {
     var lunchTimeMinutes = null;
 
 
-    var dayDifference = this.check_out.getDate() - this.check_in.getDate();
+    var dayDifference = 0;
+
+    if (this.check_in && this.check_out){
+        dayDifference = this.check_out.getDate() - this.check_in.getDate();
+    }
     // var dayDifferenceDinner = this.lunch_out.getDate() - this.lunch_in.getDate();
     // var dayDifferenceOut = this.come_back.getDate() - this.go_out.getDate();
 
