@@ -3,6 +3,7 @@
 function calculateMinutes (users, res, callback) {
     var usersReports = [];
     var userReport = {
+        employee_id : null,
         username: null,
         salaryfixed: null,
         reportminutes: []
@@ -12,21 +13,22 @@ function calculateMinutes (users, res, callback) {
 
     for(var i = 0, len = users.length; i < len; i++){
         var name = users[i].lastname + " " + users[i].firstname;
+        userReport.employee_id = users[i].employee_id;
         userReport.username = name;
         userReport.salaryfixed = users[i].salary_fixed;
 
         for(var j = 0, len1 = users[i].report.length; j < len1; j++){
-            var obj = {}
-            // obj.check_in = new Date(users[i].report[j].check_in);
-            // obj.check_out = new Date(users[i].report[j].check_out);
+            var obj = {};
+            obj.check_in = new Date(users[i].report[j].check_in);
+            obj.check_out = new Date(users[i].report[j].check_out);
             obj.report = users[i].report[j].calcTimeCorrectly();
             repMin.push(obj);
             //console.dir(obj);
         }
         userReport.reportminutes = repMin;
         usersReports.push(userReport);
-        repMin = []
-        userReport = {}
+        repMin = [];
+        userReport = {};
     }
     callback(usersReports, res);
 }

@@ -58,15 +58,15 @@
             if(weekDayWorkHourNormal >= weekDayWorkHourReal){
                 //salaryRealPerDay =  salaryFixedPerDay; //* weekDayWorkHourNormal;
                 salaryRealPerDay = salaryFixedPerDay / weekDayWorkHourNormal * weekDayWorkHourReal;
-                console.log("----------------------");
-                console.log("Всего отработал- " + totalTimeInMinutes);
-                console.log(salaryRealPerDay)
-                console.log("----------------------");
+                // console.log("----------------------");
+                // console.log("Всего отработал- " + totalTimeInMinutes);
+                // console.log(salaryRealPerDay)
+                // console.log("----------------------");
             } else {
-                console.log("Переработка");
-                console.log("++++++++++++++++++++++++");
+                // console.log("Переработка");
+                // console.log("++++++++++++++++++++++++");
                 salaryRealPerDay = salaryFixedPerDay;
-                console.log("++++++++++++++++++++++++");
+                // console.log("++++++++++++++++++++++++");
             }
             //console.log("Workday");
            // console.log(salaryRealPerDay);
@@ -82,18 +82,18 @@
         } else if( weekDay === 0 && !weekDayType.holiday && weekDayType.workday) { // if sunday and this day is workday
             if(weekDayWorkHourNormal >= weekDayWorkHourReal){
                 salaryRealPerDay =  salaryFixedPerDay + bonus; //* weekDayWorkHourNormal;
-                console.log("Fixed3")
+                // console.log("Fixed3")
 
             } else {
                 salaryRealPerDay = salaryFixedPerDay / weekDayWorkHourNormal * weekDayWorkHourReal + bonus;
             }
-            console.log("Воскресенье");
-            console.log(salaryRealPerDay);
+            // console.log("Воскресенье");
+            // console.log(salaryRealPerDay);
            return salaryRealPerDay;
         } else {
-            console.log("Другие дни");
+            // console.log("Другие дни");
             salaryRealPerDay = 0.0;
-            console.log(salaryRealPerDay);
+            // console.log(salaryRealPerDay);
             return salaryRealPerDay;
         }
         //console.log(salaryRealPerDay);
