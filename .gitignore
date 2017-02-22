@@ -1,6 +1,5 @@
 /node_modules
 /cert
 /public/photos
-/public/bower_components/
 /.idea/
 /public/.idea/
