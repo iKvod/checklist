@@ -40,8 +40,8 @@ angular.module('checklist')
                     console.warn(err);
                 })
         };
-		vm.getPersonalInfo = function (data, index) {
-		    console.log(data);
+		vm.getPersonalInfo = function (data, index, user) {
+		    console.log(user);
 		    $popover(angular.element(document.querySelector('.elem_'+data.minutes+'_'+index+'_'+(data.lunchTime==null?'null':data.lunchTime))), {
 		        title: 'Данные за этот день',
                 content: '<b>checkin:</b> '+ $filter('date')(data.beginWorkDay, 'shortTime', 'Z')+'<br>' +
