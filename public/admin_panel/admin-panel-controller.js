@@ -40,15 +40,18 @@ angular.module('checklist')
                     console.warn(err);
                 })
         };
+        function filterDate(date) {
+            return $filter('date')(date, 'shortTime', 'Z');
+        }
 		vm.getPersonalInfo = function (data, index, user) {
 		    $popover(angular.element(document.querySelector('.'+user.name.split(' ')[0]+'_'+index)), {
 		        title: 'Данные за этот день',
-                content: '<b>checkin:</b> '+ $filter('date')(data.beginWorkDay, 'shortTime', 'Z')+'<br>' +
-                '<b>checkout:</b> '+data.stopWorkDay+'<br>' +
-                '<b>ушел на обед: </b>'+data.goLunch+'<br>' +
-                '<b>пришел с обеда: </b>'+data.comeFromLunch+'<br>' +
-                '<b>ушел на перерыв: </b>' + data.goOut+'<br>'+
-                '<b>пришел с перерыва: </b>'+data.comeToWork,
+                content: '<b>checkin:</b> '+filterDate(data.beginWorkDay)+'<br>' +
+                '<b>checkout:</b> '+filterDate(data.stopWorkDay)+'<br>' +
+                '<b>ушел на обед: </b>'+filterDate(data.goLunch)+'<br>' +
+                '<b>пришел с обеда: </b>'+filterDate(data.comeFromLunch)+'<br>' +
+                '<b>ушел на перерыв: </b>' + filterDate(data.goOut)+'<br>'+
+                '<b>пришел с перерыва: </b>'+filterDate(data.comeToWork),
                 trigger: 'click',
                 autoClose: true,
                 html: true,
