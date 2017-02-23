@@ -42,7 +42,7 @@ angular.module('checklist')
         };
 		vm.getPersonalInfo = function (data, index) {
 		    console.log(data);
-		    $popover(angular.element(document.querySelector('.elem_'+data.minutes+'_'+index)), {
+		    $popover(angular.element(document.querySelector('.elem_'+data.minutes+'_'+index+'_'+(data.lunchTime==null?'null':data.lunchTime))), {
 		        title: 'Данные за этот день',
                 content: '<b>checkin:</b> '+ $filter('date')(data.beginWorkDay, 'shortTime', 'Z')+'<br>' +
                 '<b>checkout:</b> '+data.stopWorkDay+'<br>' +
@@ -55,7 +55,9 @@ angular.module('checklist')
                 html: true,
                 animation: 'am-fade-and-scale',
                 placement: 'bottom'
-            }).$promise.then(function (data) {
+            })
+                .$promise
+                .then(function (data) {
                 data.toggle;
             }, function (error) {
                 console.warn('error: ', error);
