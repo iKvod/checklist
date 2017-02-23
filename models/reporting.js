@@ -92,6 +92,7 @@ ReportingSchema.methods.calcTimeCorrectly = function() {
                 comeFromLunch: this.lunch_out,
                 goOut: this.go_out,
                 comeToWork: this.come_back,
+                salaryPerDay: this.salary_per_day,
                 message: "Another day"
             };
 
@@ -110,6 +111,7 @@ ReportingSchema.methods.calcTimeCorrectly = function() {
                 comeFromLunch: this.lunch_out,
                 goOut: this.go_out,
                 comeToWork: this.come_back,
+                salaryPerDay: this.salary_per_day,
                 message: "Another day"
             };
         }
@@ -148,6 +150,7 @@ ReportingSchema.methods.calcTimeCorrectly = function() {
                 comeFromLunch: this.lunch_out,
                 goOut: this.go_out,
                 comeToWork: this.come_back,
+                salaryPerDay: this.salary_per_day,
                 message: "The same day"
             };
         } else {
@@ -165,6 +168,7 @@ ReportingSchema.methods.calcTimeCorrectly = function() {
                 comeFromLunch: this.lunch_out,
                 goOut: this.go_out,
                 comeToWork: this.come_back,
+                salaryPerDay: this.salary_per_day,
                 message: "The same day"
             };
 

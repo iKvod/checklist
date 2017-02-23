@@ -24,10 +24,11 @@ reportRoute.get('/:id', function (req, res, next) {
         .populate('employee')
         .exec(function (err, report) {
             if(err){
+                console.log(err);
                 return next(err);
             }
-            res.send(report.calcTimeCorrectly());
-        })
+            res.send(report);
+        });
 });
 
 module.exports = reportRoute;

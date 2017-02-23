@@ -9,7 +9,7 @@ angular.module('checklist')
               get : {
                   method:"GET",
                   params:{"id":"@id"},
-                  isArray:true,
+                  isArray: true,
                   cache: false
               }
           })

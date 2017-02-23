@@ -94,7 +94,7 @@ salaryRoute.get('/:id', function (req, res, next) {
                 sendSalaryReport(userReport, res, function (res, usersSalaryReport) {
                     //console.log(salaryReport);
                     // res.send(userReport);
-                    res.send(usersSalaryReport);
+                    res.status(200).send(usersSalaryReport);
                 });
                 // res.send(users)
 

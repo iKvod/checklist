@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('checklist')
-	.controller('ReportCtrl', ['$state', '$stateParams', 'ReportingService', '$popover', function ($state, $stateParams, ReportingService, $popover) {
+	.controller('ReportCtrl', ['$state', '$stateParams', 'ReportingService', '$popover', '$http', '$filter', function ($state, $stateParams, ReportingService, $popover, $http, $filter) {
 		var vm = this;
 
 		vm.reportMinutes = [];
@@ -15,9 +15,8 @@ angular.module('checklist')
             reports.get()
                 .$promise
                 .then(function (data) {
+                    console.log(data);
                     var obj = {};
-
-                    //console.log(data);
 
                     for(var i = 0, len = data.length; i < len; ++i){
                         //vm.name.push(data[i].username);
@@ -28,7 +27,7 @@ angular.module('checklist')
 
                             // var date = new Date(data[i].reportminutes[j].check_in);
                             // vm.date.push(date.getDate());
-                            vm.reportMinutes.push(data[i].reportminutes[j].report.totalTimeInMinutes);
+                            vm.reportMinutes.push(data[i].reportminutes[j].report);
                         }
 
                         obj.report = vm.reportMinutes;
@@ -37,14 +36,30 @@ angular.module('checklist')
                         obj = {};
                         vm.name = '';
                     }
-
-
                 }, function (err) {
-                    console.log(err);
+                    console.warn(err);
                 })
         };
-		vm.getPersonalInfo = function (data) {
-            console.log(data);
+		vm.getPersonalInfo = function (data, index) {
+		    console.log(data);
+		    $popover(angular.element(document.querySelector('.elem_'+data.minutes+'_'+index)), {
+		        title: 'Данные за этот день',
+                content: '<b>checkin:</b> '+ $filter('date')(data.beginWorkDay, 'shortTime', 'Z')+'<br>' +
+                '<b>checkout:</b> '+data.stopWorkDay+'<br>' +
+                '<b>ушел на обед: </b>'+data.goLunch+'<br>' +
+                '<b>пришел с обеда: </b>'+data.comeFromLunch+'<br>' +
+                '<b>ушел на перерыв: </b>' + data.goOut+'<br>'+
+                '<b>пришел с перерыва: </b>'+data.comeToWork,
+                trigger: 'click',
+                autoClose: true,
+                html: true,
+                animation: 'am-fade-and-scale',
+                placement: 'bottom'
+            }).$promise.then(function (data) {
+                data.toggle;
+            }, function (error) {
+                console.warn('error: ', error);
+            });
         };
 
 	}]);

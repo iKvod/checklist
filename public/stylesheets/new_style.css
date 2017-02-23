@@ -1,3 +1,7 @@
+body {
+    padding-top: 0 !important;
+}
+
 .custom_btn {
     width: 100%;
     margin-left: 0 !important;
@@ -23,4 +27,7 @@ html {
 .webcam-live {
     width: 100%;
 
+}
+.background_white {
+    background-color: #fff;
 }
