@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b72f4adc-28a2-4842-8e1a-86b6eaa83083" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.js" afterPath="$PROJECT_DIR$/config.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/admin_panel/admin-panel-controller.js" afterPath="$PROJECT_DIR$/public/admin_panel/admin-panel-controller.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/admin_panel/admin_panel.html" afterPath="$PROJECT_DIR$/public/admin_panel/admin_panel.html" />
@@ -28,8 +29,8 @@
       <file leaf-file-name="config.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="116">
-              <caret line="4" column="56" lean-forward="false" selection-start-line="4" selection-start-column="56" selection-end-line="4" selection-end-column="56" />
+            <state relative-caret-position="319">
+              <caret line="13" column="24" lean-forward="false" selection-start-line="13" selection-start-column="24" selection-end-line="14" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -38,8 +39,8 @@
       <file leaf-file-name="admin-panel-controller.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/admin_panel/admin-panel-controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="49" column="39" lean-forward="false" selection-start-line="49" selection-start-column="38" selection-end-line="49" selection-end-column="39" />
+            <state relative-caret-position="425">
+              <caret line="50" column="25" lean-forward="true" selection-start-line="50" selection-start-column="25" selection-end-line="50" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -48,8 +49,8 @@
       <file leaf-file-name="admin_panel.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/admin_panel/admin_panel.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
-              <caret line="65" column="195" lean-forward="true" selection-start-line="65" selection-start-column="195" selection-end-line="65" selection-end-column="195" />
+            <state relative-caret-position="300">
+              <caret line="65" column="48" lean-forward="false" selection-start-line="65" selection-start-column="48" selection-end-line="65" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -164,8 +165,8 @@
         <option value="$PROJECT_DIR$/routes/reportsRoute.js" />
         <option value="$PROJECT_DIR$/models/reporting.js" />
         <option value="$PROJECT_DIR$/public/stylesheets/new_style.css" />
-        <option value="$PROJECT_DIR$/public/admin_panel/admin_panel.html" />
         <option value="$PROJECT_DIR$/public/admin_panel/admin-panel-controller.js" />
+        <option value="$PROJECT_DIR$/public/admin_panel/admin_panel.html" />
         <option value="$PROJECT_DIR$/config.js" />
       </list>
     </option>
@@ -414,12 +415,12 @@
       <workItem from="1487049309346" duration="6119000" />
       <workItem from="1487235340596" duration="19753000" />
       <workItem from="1487311343757" duration="120908000" />
-      <workItem from="1487856563408" duration="1569000" />
+      <workItem from="1487856563408" duration="1992000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="300790000" />
+    <option name="totallyTimeSpent" value="301213000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -835,24 +836,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/admin_panel/admin_panel.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="65" column="195" lean-forward="true" selection-start-line="65" selection-start-column="195" selection-end-line="65" selection-end-column="195" />
+        <state relative-caret-position="300">
+          <caret line="65" column="48" lean-forward="false" selection-start-line="65" selection-start-column="48" selection-end-line="65" selection-end-column="48" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/admin_panel/admin-panel-controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="49" column="39" lean-forward="false" selection-start-line="49" selection-start-column="38" selection-end-line="49" selection-end-column="39" />
+        <state relative-caret-position="425">
+          <caret line="50" column="25" lean-forward="true" selection-start-line="50" selection-start-column="25" selection-end-line="50" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="4" column="56" lean-forward="false" selection-start-line="4" selection-start-column="56" selection-end-line="4" selection-end-column="56" />
+        <state relative-caret-position="319">
+          <caret line="13" column="24" lean-forward="false" selection-start-line="13" selection-start-column="24" selection-end-line="14" selection-end-column="28" />
           <folding />
         </state>
       </provider>

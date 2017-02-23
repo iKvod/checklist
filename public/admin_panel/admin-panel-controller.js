@@ -41,8 +41,7 @@ angular.module('checklist')
                 })
         };
 		vm.getPersonalInfo = function (data, index, user) {
-		    console.log(user);
-		    $popover(angular.element(document.querySelector('.elem_'+data.minutes+'_'+index+'_'+(data.lunchTime==null?'null':data.lunchTime))), {
+		    $popover(angular.element(document.querySelector('.'+user.name.split(' ')[0]+'_'+index)), {
 		        title: 'Данные за этот день',
                 content: '<b>checkin:</b> '+ $filter('date')(data.beginWorkDay, 'shortTime', 'Z')+'<br>' +
                 '<b>checkout:</b> '+data.stopWorkDay+'<br>' +
