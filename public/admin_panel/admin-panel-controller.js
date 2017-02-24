@@ -66,6 +66,15 @@ angular.module('checklist')
             });
         };
 
+    vm.getSomething = function () {
+      $http.get('/api/salary/58a5f6af782a54933045b86d')
+        .then(function (success) {
+          console.log(success);
+        }, function (error) {
+          console.log(error);
+        });
+    }
+
 	}]);
 
 
