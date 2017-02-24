@@ -406,16 +406,15 @@ bot.onText(/\/getbookinfo (.+)/,function (msg, match) {
 
 
 bot.onText(/\/🍔tolunch/, function(msg, match){
-    console.log(msg, match);
     var botId = msg.from.id;
-    var name = msg.chat.user_name;
+    var name = msg.chat.username;
     var checkinType = { "type" : "lunch_in" };
 
     //this is for checking  if users report for current day
     var date = new Date();
 
     goDuringWorkHours(botId, checkinType.type);
-    bot.sendMessage(botId, name + ", вышел(ла) на обед!");
+    bot.sendMessage(botId, name + " вышел(ла) на обед!");
     console.log(' ');
     console.log(' ');
     console.log(name);
@@ -426,31 +425,31 @@ bot.onText(/\/🍔tolunch/, function(msg, match){
 bot.onText(/\/fromlunch🍔/, function(msg, match){
     console.log(msg, match)
     var botId = msg.from.id;
-    var name = msg.chat.user_name;
+    var name = msg.chat.username;
     var checkinType = {"type": "lunch_out"};
 
     goDuringWorkHours(botId, checkinType.type);
-    bot.sendMessage(ceoBotId, name + ", пришел(ла) с обеда!");
+    bot.sendMessage(ceoBotId, name + " пришел(ла) с обеда!");
 
 });
 
 bot.onText(/\/⚔️stopwork/, function(msg, match){
     var botId = msg.from.id;
-    var name = msg.chat.user_name;
+    var name = msg.chat.username;
     var checkinType = {"type":"go_out"};
 
     goDuringWorkHours(botId, checkinType.type);
-    bot.sendMessage(ceoBotId, name + ", отметился(ась), что он уходит с работы во время рабочего дня!");
+    bot.sendMessage(ceoBotId, name + " отметился(ась), что он уходит с работы во время рабочего дня!");
     console.log(name);
 });
 
 bot.onText(/\/👨🏼‍💻starkwork👩🏼‍💻/, function(msg, match){
     var botId = msg.from.id;
-    var name = msg.chat.user_name;
+    var name = msg.chat.username;
     var checkinType = {"type": "come_back"};
 
     goDuringWorkHours(botId, checkinType.type);
-    bot.sendMessage(ceoBotId, name + ", возвратился к работе!");
+    bot.sendMessage(ceoBotId, name + " возвратился к работе!");
 
 });
 
