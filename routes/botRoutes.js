@@ -407,20 +407,20 @@ bot.onText(/\/getbookinfo (.+)/,function (msg, match) {
 
 bot.onText(/\/🍔tolunch/, function(msg, match){
     console.log(msg);
-    var botId = msg.from.id;
-    var name = msg.chat.user_name;
-    var checkinType = { "type" : "lunch_in" };
-
-    //this is for checking  if users report for current day
-    var date = new Date();
-
-    goDuringWorkHours(botId, checkinType.type);
-    bot.sendMessage(ceoBotId, name + ", вышел(ла) на обед!");
-    console.log(' ');
-    console.log(' ');
-    console.log(name);
-    console.log(' ');
-    console.log(' ');
+    // var botId = msg.from.id;
+    // var name = msg.chat.user_name;
+    // var checkinType = { "type" : "lunch_in" };
+    //
+    // //this is for checking  if users report for current day
+    // var date = new Date();
+    //
+    // goDuringWorkHours(botId, checkinType.type);
+    // bot.sendMessage(ceoBotId, name + ", вышел(ла) на обед!");
+    // console.log(' ');
+    // console.log(' ');
+    // console.log(name);
+    // console.log(' ');
+    // console.log(' ');
 });
 
 bot.onText(/\/fromlunch🍔/, function(msg, match){
