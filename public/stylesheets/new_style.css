@@ -31,3 +31,15 @@ html {
 .background_white {
     background-color: #fff;
 }
+
+.table-custom {
+    width: auto !important;
+    text-align: center;
+}
+
+.fixed-cell {
+    padding: 8px 100px !important;
+}
+.fixed-cell-day {
+    padding: 8px 20px !important;
+}

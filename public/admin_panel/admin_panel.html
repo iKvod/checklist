@@ -53,11 +53,11 @@
 			<!--</div>-->
 			<div class="container-fluid">
 				<div class="table-responsive background_white">
-					<table class="table table-bordered table-hover" ng-repeat="report in vm.report track by $index">
+					<table class="table table-custom table-bordered table-hover" ng-repeat="report in vm.report track by $index">
 						<tr class="danger">
-							<td>ФИО</td>
-							<td ng-repeat="report in report.report track by $index">
-								<span ng-bind="(report.beginWorkDay | date:'shortDate':'Z')"></span>
+							<td class="fixed-cell">ФИО</td>
+							<td class="fixed-cell-day" ng-repeat="report in report.report track by $index">
+								<span ng-bind="(report.beginWorkDay | date:'shortDate':'GMT+06:00')"></span>
 							</td>
 						</tr>
 						<tr>
