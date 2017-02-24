@@ -406,7 +406,7 @@ bot.onText(/\/getbookinfo (.+)/,function (msg, match) {
 
 
 bot.onText(/\/🍔tolunch/, function(msg, match){
-    console.log(msg);
+    console.log(msg, match);
     // var botId = msg.from.id;
     // var name = msg.chat.user_name;
     // var checkinType = { "type" : "lunch_in" };
@@ -424,22 +424,23 @@ bot.onText(/\/🍔tolunch/, function(msg, match){
 });
 
 bot.onText(/\/fromlunch🍔/, function(msg, match){
-    var botId = msg.from.id;
-    var name = msg.chat.user_name;
-    var checkinType = {"type": "lunch_out"};
-
-    goDuringWorkHours(botId, checkinType.type);
-    bot.sendMessage(ceoBotId, name + ", пришел(ла) с обеда!");
+    console.log(msg, match)
+    // var botId = msg.from.id;
+    // var name = msg.chat.user_name;
+    // var checkinType = {"type": "lunch_out"};
+    //
+    // goDuringWorkHours(botId, checkinType.type);
+    // bot.sendMessage(ceoBotId, name + ", пришел(ла) с обеда!");
 
 });
 
 bot.onText(/\/⚔️stopwork/, function(msg, match){
     var botId = msg.from.id;
     var name = msg.chat.user_name;
-    var checkinType = {"type":"go_out"};
-
-    goDuringWorkHours(botId, checkinType.type);
-    bot.sendMessage(ceoBotId, name + ", отметился(ась), что он уходит с работы во время рабочего дня!");
+    // var checkinType = {"type":"go_out"};
+    //
+    // goDuringWorkHours(botId, checkinType.type);
+    // bot.sendMessage(ceoBotId, name + ", отметился(ась), что он уходит с работы во время рабочего дня!");
     console.log(name);
 });
 

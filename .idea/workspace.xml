@@ -91,8 +91,8 @@
       <file leaf-file-name="config.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="13" column="24" lean-forward="true" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+            <state relative-caret-position="551">
+              <caret line="19" column="2" lean-forward="true" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -101,8 +101,8 @@
       <file leaf-file-name="botRoutes.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/botRoutes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="409" column="4" lean-forward="false" selection-start-line="409" selection-start-column="7" selection-end-line="422" selection-end-column="24" />
+            <state relative-caret-position="29">
+              <caret line="460" column="4" lean-forward="true" selection-start-line="460" selection-start-column="4" selection-end-line="479" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -115,6 +115,7 @@
       <find>отметился</find>
       <find>пользователь не</find>
       <find>_polling()</find>
+      <find>ус</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -470,12 +471,12 @@
       <workItem from="1487856563408" duration="4125000" />
       <workItem from="1487928586551" duration="850000" />
       <workItem from="1487929796418" duration="3531000" />
-      <workItem from="1487934812287" duration="5935000" />
+      <workItem from="1487934812287" duration="6415000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="313662000" />
+    <option name="totallyTimeSpent" value="314142000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -897,14 +898,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="13" column="24" lean-forward="true" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/helpers/TimeCalcReportings/calcMinutes.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="58">
@@ -915,10 +908,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="551">
+          <caret line="19" column="2" lean-forward="true" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/routes/botRoutes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="409" column="4" lean-forward="false" selection-start-line="409" selection-start-column="7" selection-end-line="422" selection-end-column="24" />
+        <state relative-caret-position="29">
+          <caret line="460" column="4" lean-forward="true" selection-start-line="460" selection-start-column="4" selection-end-line="479" selection-end-column="11" />
           <folding />
         </state>
       </provider>
