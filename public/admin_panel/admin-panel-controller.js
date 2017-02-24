@@ -41,7 +41,7 @@ angular.module('checklist')
                 })
         };
         function filterDate(date) {
-            return $filter('date')(date, 'shortTime', 'Z');
+            return $filter('date')(date, 'shortTime', 'GMT+06:00');
         }
 		vm.getPersonalInfo = function (data, index, user) {
 		    $popover(angular.element(document.querySelector('.'+user.name.split(' ')[0]+'_'+index)), {
