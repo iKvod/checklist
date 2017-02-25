@@ -14,68 +14,56 @@
 		</div>
 
 		<div class="admin-header">
-			<button ng-click="vm.getReports()">GetReport</button>
+			<button ng-click="vm.getSomething()">GetReport</button>
 			<button >Calendar</button>
-			<button ng-click="vm.getSomething()">Get Something</button>
+			<!--<button ng-click="vm.getSomething()">Get Something</button>-->
 		</div>
 		<div class="admin-main">
-			<!--<div class="table-header">-->
-				<!--<div class="table-heading">-->
-					<!--&lt;!&ndash;<div class="table-main">-->
-                    <!--</div>&ndash;&gt;-->
-					<!--<span> Ф.И.О.</span>-->
-				<!--</div>-->
-
-				<!--<div class="table-cell-header">-->
-					<!--<span>february</span>-->
-					<!--&lt;!&ndash;<div class="table-main-cell"> &lt;!&ndash;ng-repeat="date in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] track by $index"&ndash;&gt;&ndash;&gt;-->
-					<!--&lt;!&ndash;<span>date</span>&ndash;&gt;-->
-					<!--&lt;!&ndash;<span>date</span>&ndash;&gt;-->
-					<!--&lt;!&ndash;<span>date</span>&ndash;&gt;-->
-					<!--&lt;!&ndash;<span>date</span>&ndash;&gt;-->
-
-					<!--&lt;!&ndash;</div>&ndash;&gt;-->
-					<!--<div class="table-main-cell"> &lt;!&ndash;ng-repeat="date in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] track by $index"&ndash;&gt;-->
-						<!--<span class="line"  ng-repeat="date in vm.date track by $index">{{ date }}</span>-->
-					<!--</div>-->
-				<!--</div>-->
-			<!--</div>-->
-
-			<!--<div class="table-body" ng-repeat="report in vm.report track by $index">-->
-				<!--<div class="table-body-main"  >-->
-					<!--<span class="name" > {{ report.name }} </span>-->
-				<!--</div>-->
-
-				<!--<div class="table-body-cell-header" >-->
-					<!--<span class="report" ng-repeat="minutes in report.report track by $index" >-->
-						<!--<span class="elem_{{minutes.minutes}}_{{$index}}" ng-bind="minutes.totalTimeInMinutes" ng-click="vm.getPersonalInfo(report.report[$index], $index)"></span>-->
-					<!--</span>-->
-				<!--</div>-->
-			<!--</div>-->
 			<div class="container-fluid">
 				<div class="table-responsive background_white">
 					<table class="table table-custom table-bordered table-hover" ng-repeat="report in vm.report track by $index">
 						<tr class="danger">
-							<td class="fixed-cell">ФИО</td>
-							<td class="fixed-cell-day" ng-repeat="report in report.report track by $index">
-								<span ng-bind="(report.beginWorkDay | date:'shortDate':'GMT+06:00')"></span>
-							</td>
+							<th class="fixed-cell">FIO</th>
+							<th class="fixed-cell-day" ng-repeat="day in report.salaryReports track by $index">
+								<span ng-bind="day.salaryDetails.check_in | date: 'shortDate':'GMT+06:00'"></span>
+							</th>
 						</tr>
 						<tr>
 							<td ng-bind="report.name"></td>
-							<td ng-repeat="minutes in report.report track by $index">
-								<span class="{{report.name.split(' ')[0]}}_{{$index}}" ng-bind="(minutes.totalTimeInMinutes)+' минут'" ng-click="vm.getPersonalInfo(report.report[$index], $index, report)"></span>
+							<td ng-repeat="minutes in report.salaryReports track by $index">
+								<span
+										class="{{report.name.split(' ')[0]}}_{{$index}}"
+										ng-bind="minutes.salaryDetails.report.totalTimeInMinutes"
+										ng-click="vm.getPersonalInfo(report.salaryReports[$index], $index, report)">
+								</span>
+								<!--<span
+								class="{{report.name.split(' ')[0]}}_{{$index}}"
+								ng-bind="(minutes.totalTimeInMinutes)+' минут'"
+								ng-click="vm.getPersonalInfo(report.report[$index], $index, report)"></span>-->
+
 							</td>
 						</tr>
-						<!--<tr ng-repeat="report in vm.report track by $index">-->
-							<!--<td ng-bind="report.name"></td>-->
-							<!--<td ng-repeat="minutes in report.report track by $index">-->
-								<!--<span class="elem_{{minutes.minutes}}_{{$index}}" ng-bind="minutes.totalTimeInMinutes" ng-click="vm.getPersonalInfo(report.report[$index], $index)"></span>-->
-							<!--</td>-->
-						<!--</tr>-->
 					</table>
 				</div>
 			</div>
+			<!--<div class="container-fluid">-->
+				<!--<div class="table-responsive background_white">-->
+					<!--<table class="table table-custom table-bordered table-hover" ng-repeat="report in vm.report track by $index">-->
+						<!--<tr class="danger">-->
+							<!--<td class="fixed-cell">ФИО</td>-->
+							<!--<td class="fixed-cell-day" ng-repeat="report in report.report track by $index">-->
+								<!--<span ng-bind="(report.beginWorkDay | date:'shortDate':'GMT+06:00')"></span>-->
+							<!--</td>-->
+						<!--</tr>-->
+						<!--<tr>-->
+							<!--<td ng-bind="report.name"></td>-->
+							<!--<td ng-repeat="minutes in report.report track by $index">-->
+								<!--<span class="{{report.name.split(' ')[0]}}_{{$index}}" ng-bind="(minutes.totalTimeInMinutes)+' минут'" ng-click="vm.getPersonalInfo(report.report[$index], $index, report)"></span>-->
+							<!--</td>-->
+						<!--</tr>-->
+					<!--</table>-->
+				<!--</div>-->
+			<!--</div>-->
 
 
 		</div>
@@ -84,3 +72,37 @@
 
 </div>
 
+<!--it was after div class admin-main-->
+<!--<div class="table-header">-->
+<!--<div class="table-heading">-->
+<!--&lt;!&ndash;<div class="table-main">-->
+<!--</div>&ndash;&gt;-->
+<!--<span> Ф.И.О.</span>-->
+<!--</div>-->
+
+<!--<div class="table-cell-header">-->
+<!--<span>february</span>-->
+<!--&lt;!&ndash;<div class="table-main-cell"> &lt;!&ndash;ng-repeat="date in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] track by $index"&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;<span>date</span>&ndash;&gt;-->
+<!--&lt;!&ndash;<span>date</span>&ndash;&gt;-->
+<!--&lt;!&ndash;<span>date</span>&ndash;&gt;-->
+<!--&lt;!&ndash;<span>date</span>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--<div class="table-main-cell"> &lt;!&ndash;ng-repeat="date in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] track by $index"&ndash;&gt;-->
+<!--<span class="line"  ng-repeat="date in vm.date track by $index">{{ date }}</span>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--<div class="table-body" ng-repeat="report in vm.report track by $index">-->
+<!--<div class="table-body-main"  >-->
+<!--<span class="name" > {{ report.name }} </span>-->
+<!--</div>-->
+
+<!--<div class="table-body-cell-header" >-->
+<!--<span class="report" ng-repeat="minutes in report.report track by $index" >-->
+<!--<span class="elem_{{minutes.minutes}}_{{$index}}" ng-bind="minutes.totalTimeInMinutes" ng-click="vm.getPersonalInfo(report.report[$index], $index)"></span>-->
+<!--</span>-->
+<!--</div>-->
+<!--</div>-->

@@ -17,7 +17,10 @@ var Employee = new Schema({
     phonenumber: {type:String},
     department: String,
     position: String,
-    salary_fixed: Number,
+    salary_fixed: {
+        type: Number,
+        default: 60000
+    },
     registered_at: { type:Date, default:Date.now},
     checked: {
         type: Boolean,

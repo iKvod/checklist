@@ -6,10 +6,10 @@ angular.module('checklist')
 
 		vm.reportMinutes = [];
 		vm.name = '';
-        vm.date = [];
-        vm.report = [];
+    vm.date = [];
+    vm.report = [];
 
-        vm.getReports = function () {
+    vm.getReports = function () {
             var reports = ReportingService.getReports();
 
             reports.get()
@@ -39,19 +39,20 @@ angular.module('checklist')
                 }, function (err) {
                     console.warn(err);
                 })
-        };
-        function filterDate(date) {
-            return $filter('date')(date, 'shortTime', 'GMT+06:00');
-        }
+    };
+    function filterDate(date) {
+      return date===null?'Не отмечался':$filter('date')(date, 'shortTime', 'GMT+06:00');
+    }
 		vm.getPersonalInfo = function (data, index, user) {
 		    $popover(angular.element(document.querySelector('.'+user.name.split(' ')[0]+'_'+index)), {
 		        title: 'Данные за этот день',
-                content: '<b>checkin:</b> '+filterDate(data.beginWorkDay)+'<br>' +
-                '<b>checkout:</b> '+filterDate(data.stopWorkDay)+'<br>' +
-                '<b>ушел на обед: </b>'+filterDate(data.goLunch)+'<br>' +
-                '<b>пришел с обеда: </b>'+filterDate(data.comeFromLunch)+'<br>' +
-                '<b>ушел на перерыв: </b>' + filterDate(data.goOut)+'<br>'+
-                '<b>пришел с перерыва: </b>'+filterDate(data.comeToWork),
+                content: '<b>checkin:</b> '+filterDate(data.salaryDetails.check_in)+'<br>' +
+                '<b>checkout:</b> '+filterDate(data.salaryDetails.check_out)+'<br>' +
+                '<b>ушел на обед: </b>'+filterDate(data.salaryDetails.report.goLunch)+'<br>' +
+                '<b>пришел с обеда: </b>'+filterDate(data.salaryDetails.report.comeFromLunch)+'<br>' +
+                '<b>ушел на перерыв: </b>' + filterDate(data.salaryDetails.report.goOut)+'<br>'+
+                '<b>пришел с перерыва: </b>'+filterDate(data.salaryDetails.report.comeToWork)+'<br>' +
+                '<b>фикса за день: </b>'+data.salaryPerDay,
                 trigger: 'click',
                 autoClose: true,
                 html: true,
@@ -67,14 +68,15 @@ angular.module('checklist')
         };
 
     vm.getSomething = function () {
-      $http.get('/api/salary/58a5f6af782a54933045b86d')
-        .then(function (success) {
-          console.log(success);
+      $http.get('/api/salary')
+        .then(function (data) {
+          vm.report = data.data;
+          console.log(vm.report);
         }, function (error) {
           console.log(error);
         });
     }
 
+
+
 	}]);
-
-
