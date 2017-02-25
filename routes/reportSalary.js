@@ -17,13 +17,12 @@ salaryRoute.get('/', function (req, res, next) {
             }
            // res.send(users);
             timeCalculator.calculateMinutes(users, res, function (userReport, res) {
-               var salaryReport = ['ss'];
-               var fullSalaryReport = [];
-               var obj = {
-                    userReport: userReport,
-                    salaryReport: []
-               };
-
+               // var salaryReport = ['ss'];
+               // var fullSalaryReport = [];
+               // var obj = {
+               //      userReport: userReport,
+               //      salaryReport: []
+               // };
 
                 sendSalaryReport(userReport, res, function (res, usersSalaryReport) {
                    //console.log(salaryReport);

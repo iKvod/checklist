@@ -52,7 +52,7 @@ angular.module('checklist')
                 '<b>пришел с обеда: </b>'+filterDate(data.salaryDetails.report.comeFromLunch)+'<br>' +
                 '<b>ушел на перерыв: </b>' + filterDate(data.salaryDetails.report.goOut)+'<br>'+
                 '<b>пришел с перерыва: </b>'+filterDate(data.salaryDetails.report.comeToWork)+'<br>' +
-                '<b>фикса за день: </b>'+data.salaryPerDay,
+                '<b>фикса за день: </b>'+$filter('number')(data.salaryPerDay, 2),
                 trigger: 'click',
                 autoClose: true,
                 html: true,
@@ -61,10 +61,10 @@ angular.module('checklist')
             })
                 .$promise
                 .then(function (data) {
-                data.toggle;
-            }, function (error) {
+                  data.toggle;
+                }, function (error) {
                 console.warn('error: ', error);
-            });
+                });
         };
 
     vm.getSomething = function () {

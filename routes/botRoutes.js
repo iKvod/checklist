@@ -414,12 +414,7 @@ bot.onText(/\/🍔tolunch/, function(msg, match){
     var date = new Date();
 
     goDuringWorkHours(botId, checkinType.type);
-    bot.sendMessage(ceoBotId, name + " вышел(ла) на обед!");
-    console.log(' ');
-    console.log(' ');
-    console.log(name);
-    console.log(' ');
-    console.log(' ');
+    bot.sendMessage(ceoBotId, name + " вышел(-ла) на обед!");
 });
 
 bot.onText(/\/fromlunch🍔/, function(msg, match){
@@ -429,7 +424,7 @@ bot.onText(/\/fromlunch🍔/, function(msg, match){
     var checkinType = {"type": "lunch_out"};
 
     goDuringWorkHours(botId, checkinType.type);
-    bot.sendMessage(ceoBotId, name + " пришел(ла) с обеда!");
+    bot.sendMessage(ceoBotId, name + " пришел(-ла) с обеда!");
 
 });
 
@@ -439,8 +434,7 @@ bot.onText(/\/⚔️stopwork/, function(msg, match){
     var checkinType = {"type":"go_out"};
 
     goDuringWorkHours(botId, checkinType.type);
-    bot.sendMessage(ceoBotId, name + " отметился(ась), что он уходит с работы во время рабочего дня!");
-    console.log(name);
+    bot.sendMessage(ceoBotId, name + " отметился(-ась), что он уходит с работы во время рабочего дня!");
 });
 
 bot.onText(/\/👨🏼‍💻starkwork👩🏼‍💻/, function(msg, match){
@@ -485,7 +479,7 @@ function goDuringWorkHours(botId, checkinType) {
 * from web client
 * */
 
-//gathering snapchot image and reports and sending it to bot
+// gathering snapshot image and reports and sending it to bot
 botrouter.post('/image', function (req, res, next) {
     var date = new Date();
     var time = date.toLocaleString();
