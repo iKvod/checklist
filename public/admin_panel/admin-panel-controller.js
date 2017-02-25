@@ -44,14 +44,15 @@ angular.module('checklist')
       return date===null?'Не отмечался':$filter('date')(date, 'shortTime', 'GMT+06:00');
     }
 		vm.getPersonalInfo = function (data, index, user) {
+      var dsReport = data.salaryDetails.report;
 		    $popover(angular.element(document.querySelector('.'+user.name.split(' ')[0]+'_'+index)), {
 		        title: 'Данные за этот день',
-                content: '<b>checkin:</b> '+filterDate(data.salaryDetails.report.beginWorkDay)+'<br>' +
-                '<b>checkout:</b> '+filterDate(data.salaryDetails.report.stopWorkDay)+'<br>' +
-                '<b>ушел на обед: </b>'+filterDate(data.salaryDetails.report.goLunch)+'<br>' +
-                '<b>пришел с обеда: </b>'+filterDate(data.salaryDetails.report.comeFromLunch)+'<br>' +
-                '<b>ушел на перерыв: </b>' + filterDate(data.salaryDetails.report.goOut)+'<br>'+
-                '<b>пришел с перерыва: </b>'+filterDate(data.salaryDetails.report.comeToWork)+'<br>' +
+                content: '<b>checkin:</b> '+filterDate(dsReport.beginWorkDay)+'<br>' +
+                (dsReport.stopWorkDay==null?'':'<b>checkout:</b> '+filterDate(dsReport.stopWorkDay)+'<br>') +
+                (dsReport.goLunch==null?'':'<b>ушел на обед: </b>'+filterDate(dsReport.goLunch)+'<br>') +
+                (dsReport.comeFromLunch==null?'':'<b>пришел с обеда: </b>'+filterDate(dsReport.comeFromLunch)+'<br>' )+
+                (dsReport.goOut==null?'':'<b>ушел на перерыв: </b>' + filterDate(dsReport.goOut)+'<br>')+
+                (dsReport.comeToWork==null?'':'<b>пришел с перерыва: </b>'+filterDate(dsReport.comeToWork)+'<br>') +
                 '<b>фикса за день: </b>'+$filter('number')(data.salaryPerDay, 2),
                 trigger: 'click',
                 autoClose: true,

@@ -4,12 +4,6 @@
     <list default="true" id="b72f4adc-28a2-4842-8e1a-86b6eaa83083" name="Default" comment="asdasdad">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/admin_panel/admin-panel-controller.js" afterPath="$PROJECT_DIR$/public/admin_panel/admin-panel-controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/admin_panel/admin_panel.html" afterPath="$PROJECT_DIR$/public/admin_panel/admin_panel.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/new_style.css" afterPath="$PROJECT_DIR$/public/stylesheets/new_style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/botRoutes.js" afterPath="$PROJECT_DIR$/routes/botRoutes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/helpers/calendar/calendar.js" afterPath="$PROJECT_DIR$/routes/helpers/calendar/calendar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/reportSalary.js" afterPath="$PROJECT_DIR$/routes/reportSalary.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -43,21 +37,11 @@
       <file leaf-file-name="admin-panel-controller.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/admin_panel/admin-panel-controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="45" column="55" lean-forward="true" selection-start-line="45" selection-start-column="55" selection-end-line="45" selection-end-column="55" />
+            <state relative-caret-position="475">
+              <caret line="54" column="46" lean-forward="false" selection-start-line="54" selection-start-column="46" selection-end-line="54" selection-end-column="46" />
               <folding>
                 <element signature="e#357#1500#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="new_style.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/stylesheets/new_style.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="429">
-              <caret line="43" column="19" lean-forward="false" selection-start-line="43" selection-start-column="19" selection-end-line="43" selection-end-column="19" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -384,12 +368,12 @@
       <workItem from="1487928586551" duration="850000" />
       <workItem from="1487929796418" duration="3531000" />
       <workItem from="1487934812287" duration="13220000" />
-      <workItem from="1488013084636" duration="9558000" />
+      <workItem from="1488013084636" duration="10444000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="330505000" />
+    <option name="totallyTimeSpent" value="331391000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -847,8 +831,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/admin_panel/admin-panel-controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="45" column="55" lean-forward="true" selection-start-line="45" selection-start-column="55" selection-end-line="45" selection-end-column="55" />
+        <state relative-caret-position="475">
+          <caret line="54" column="46" lean-forward="false" selection-start-line="54" selection-start-column="46" selection-end-line="54" selection-end-column="46" />
           <folding>
             <element signature="e#357#1500#0" expanded="false" />
           </folding>
