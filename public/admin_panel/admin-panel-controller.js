@@ -46,8 +46,8 @@ angular.module('checklist')
 		vm.getPersonalInfo = function (data, index, user) {
 		    $popover(angular.element(document.querySelector('.'+user.name.split(' ')[0]+'_'+index)), {
 		        title: 'Данные за этот день',
-                content: '<b>checkin:</b> '+filterDate(data.salaryDetails.check_in)+'<br>' +
-                '<b>checkout:</b> '+filterDate(data.salaryDetails.check_out)+'<br>' +
+                content: '<b>checkin:</b> '+filterDate(data.salaryDetails.report.beginWorkDay)+'<br>' +
+                '<b>checkout:</b> '+filterDate(data.salaryDetails.report.stopWorkDay)+'<br>' +
                 '<b>ушел на обед: </b>'+filterDate(data.salaryDetails.report.goLunch)+'<br>' +
                 '<b>пришел с обеда: </b>'+filterDate(data.salaryDetails.report.comeFromLunch)+'<br>' +
                 '<b>ушел на перерыв: </b>' + filterDate(data.salaryDetails.report.goOut)+'<br>'+

@@ -25,7 +25,7 @@
 						<tr class="danger">
 							<th class="fixed-cell">FIO</th>
 							<th class="fixed-cell-day" ng-repeat="day in report.salaryReports track by $index">
-								<span ng-bind="day.salaryDetails.check_in | date: 'shortDate':'GMT+06:00'"></span>
+								<span ng-bind="day.salaryDetails.report.beginWorkDay | date: 'shortDate':'GMT+06:00'"></span>
 							</th>
 						</tr>
 						<tr>
