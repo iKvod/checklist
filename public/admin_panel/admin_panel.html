@@ -33,7 +33,7 @@
 							<td ng-repeat="minutes in report.salaryReports track by $index">
 								<span
 										class="{{report.name.split(' ')[0]}}_{{$index}}"
-										ng-bind="minutes.salaryDetails.report.totalTimeInMinutes"
+										ng-bind="(minutes.salaryDetails.report.totalTimeInMinutes)+' минут'"
 										ng-click="vm.getPersonalInfo(report.salaryReports[$index], $index, report)">
 								</span>
 								<!--<span
