@@ -6,8 +6,18 @@
 
 var app = require('../app');
 var debug = require('debug')('checklist-bot:server');
-var http = require('http');
+var http = require('https');
 var ip = require('../config');
+var fs = require('fs');
+
+
+
+var options = {
+  key  : fs.readFileSync('/etc/letsencrypt/live/checklist.automato.me/privkey.pem'),
+  cert : fs.readFileSync('/etc/letsencrypt/live/checklist.automato.me/fullchain.pem')
+};
+
+
 
 
 
@@ -23,7 +33,7 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+var server = http.createServer(options, app);
 
 /**
  * Listen on provided port, on all network interfaces.
