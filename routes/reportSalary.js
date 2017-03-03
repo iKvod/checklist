@@ -34,13 +34,18 @@ salaryRoute.get('/', function (req, res, next) {
         });
 });
 
+
+
 function sendSalaryReport (userReport, res, callback){
-    var usersSalaryReport = []
+
+    var usersSalaryReport = [];
     var salaryReport = [];
     var employeeInfo = {
         employee_id:null,
         name : null,
         salaryFixed: null,
+        totalSalary: null,
+        totalMonthHours: null,
         salaryReports: []
     };
 
@@ -49,22 +54,26 @@ function sendSalaryReport (userReport, res, callback){
         salaryDetails: []
     };
 
-    for(var i = 0, len = userReport.length; i < len; ++i){
+    for(var i = 0, len = userReport.length; i < len; ++i) {
         employeeInfo.employee_id = userReport[i].employee_id;
         employeeInfo.name = userReport[i].username;
-        employeeInfo.salaryFixed = userReport[i].salaryFixed;
+        employeeInfo.salaryFixed = userReport[i].salaryfixed;
 
         for(var j = 0, len1 = userReport[i].reportminutes.length; j < len1; j++) {
 
             salary.salaryPerDay = salaryCalculator.salaryPerDay(userReport[i].reportminutes[j].report.beginWorkDay, {}, userReport[i].salaryfixed, salaryCalculator.calcSalaryFixedPerDay, userReport[i].reportminutes[j].report.totalTimeInMinutes, null);
             salary.salaryDetails = userReport[i].reportminutes[j];
-            //console.log(salaryReport);
             salaryReport.push(salary);
+            employeeInfo.totalMonthHours += salary.salaryDetails.report.fullTimeHours;
+            employeeInfo.totalSalary += salary.salaryPerDay;
+            // console.log(salary.salaryDetails);
             salary = {};
-            //console.log(salaryPerDay);
+            //console.log(employeeInfo.totalSalary);
+            //console.log(salary.salaryPerDay);
         }
+        //console.log(employeeInfo.totalSalary);
+
         employeeInfo.salaryReports = salaryReport;
-        //console.log(salaryReport);
         usersSalaryReport.push(employeeInfo);
         employeeInfo = {}
         salaryReport = [];
@@ -88,7 +97,6 @@ salaryRoute.get('/:id', function (req, res, next) {
                     userReport: userReport,
                     salaryReport: []
                 };
-
 
                 sendSalaryReport(userReport, res, function (res, usersSalaryReport) {
                     //console.log(salaryReport);

@@ -23,7 +23,6 @@
 
         var salaryFixedPerDay = salaryFixedPerMonth / (calReport.workdays + calReport.saturdays);
 
-       //console.log(salaryFixedPerDay)
         return salaryFixedPerDay;
     };
 
@@ -121,9 +120,8 @@
         }
     };
 
-module.exports = {
-    calcSalaryFixedPerDay: calcSalaryFixedPerDay,
-    salaryPerDay: salaryPerDay
-}
-
+    module.exports = {
+        calcSalaryFixedPerDay: calcSalaryFixedPerDay,
+        salaryPerDay: salaryPerDay
+    }
 })();

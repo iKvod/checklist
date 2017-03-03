@@ -5,7 +5,7 @@ angular.module('checklist')
         var adminFac = {};
 
         adminFac.getReports = function () {
-          return $resource('/api/reports/:id', {id:'@id'},{
+          return $resource('/api/reports/:id', {id:'@id'}, {
               get : {
                   method:"GET",
                   params:{"id":"@id"},

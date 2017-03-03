@@ -67,7 +67,7 @@ angular.module('checklist', [
         .state('checkin.success', {
             url:'/success',
             templateUrl:'views/pages/success_checkin_page.html',
-            controler:"CheckinCtrl",
+            controller:"CheckinCtrl",
             controllerAs:'vm'
          })
          .state("checkout", {
@@ -94,7 +94,7 @@ angular.module('checklist', [
          .state('error',{
             url:'/error',
             templateUrl:'',
-            controler:"",
+            controller:"",
             controllerAs:''
          })
          .state('success',{

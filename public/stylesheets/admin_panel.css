@@ -130,12 +130,37 @@
     .table-body-main {
         flex:1;
         display: flex;
+        padding: 3px;
     }
 
         .table-body-main span.name {
+            flex: 5;
             margin: auto;
             padding: 0 3px;
         }
+
+        .table-body-main .icon {
+            flex: 2;
+            width: 24px;
+            min-width: 24px;
+            max-width: 60px;
+            height: 24px;
+            min-height: 24px;
+            background-color: #FFFFFF;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+            .icon .icon-pencil {
+                flex: 1;
+                min-width: 24px;
+            }
+
+            .icon .icon-bin {
+                flex: 1;
+                min-width: 24px;
+            }
 
     .table-body-cell-header {
         padding: 0px;

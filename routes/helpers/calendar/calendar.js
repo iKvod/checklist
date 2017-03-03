@@ -76,9 +76,6 @@ function countForCurrentMonth(year, month){
         sundays: 0
     };
 
-    var countWorkDays = 0;
-    var countSaturdays = 0;
-    var countSundays = 0;
     //var holidays = {month: null, days: []}; // should be included
 
     for(var j = 1; j <= 31; ++j){
@@ -87,7 +84,7 @@ function countForCurrentMonth(year, month){
             // console.log(new Date(year, i, j).getMonth() + 1)
             // console.log('--------------------');
         }
-        if(new Date(year, i, j).getMonth() > month){
+        if(new Date(year, i, j).getMonth() > month) {
             // console.log(new Date(year, i, j).getMonth());
             break;
         } else {
@@ -96,6 +93,7 @@ function countForCurrentMonth(year, month){
                 countedDays.month = currentDay.getMonth();
             }
             countedDays.days++;
+
             if( (currentDay.getDay() != 6) && (currentDay.getDay() != 0)){
                 countedDays.workdays++;
             } else if (currentDay.getDay() === 6){
@@ -107,7 +105,6 @@ function countForCurrentMonth(year, month){
     }
     //console.log(countedDays);
     return countedDays;
-
 }
 //for testing
 // countForWholeYear(2017);

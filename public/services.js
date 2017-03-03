@@ -22,7 +22,7 @@
                     method: "POST",
                     params: {"id":"@id"},
                     isArray: false,
-                    cache: false,
+                    cache: false
                 }
             });
         };
@@ -34,7 +34,7 @@
                     method: "PUT",
                     params: { "id":"@id" },
                     isArray: false, 
-                    cache: false,
+                    cache: false
                     //transformRequest, 
                     //interceptor
                 }, 
@@ -42,13 +42,13 @@
                     method: "GET",
                     params: {"id": "@id"},
                     isArray: false,
-                    cache: false,
+                    cache: false
                 },
                 update: {
                     method: 'PUT',
                     params:{"id":"@id"},
                     isArray:false,
-                    cache:false,
+                    cache:false
                 }
             })
 
@@ -60,7 +60,7 @@
                     method: 'POST',
                     params: {"id": "@id"},
                     isArray: false,
-                    cache: false,
+                    cache: false
                 }
             });
         }
@@ -72,7 +72,7 @@
                     method: "GET",
                     params: {},
                     isArray: false, 
-                    cache: false,
+                    cache: false
                     //transformRequest, 
                     //interceptor
                 }, 
@@ -80,7 +80,7 @@
                     method: "GET",
                     params: {"id": "@id"},
                     isArray: false,
-                    cache: false,
+                    cache: false
                 }
             })
         } 

@@ -51,16 +51,18 @@ ReportingSchema.methods.calcTimeCorrectly = function() {
 
 
     var dayDifference = 0;
+    var monthDifference = 0;
 
     if (this.check_in && this.check_out){
         dayDifference = this.check_out.getDate() - this.check_in.getDate();
+        monthDifference = this.check_out.getMonth() - this.check_in.getMonth();
     }
     // var dayDifferenceDinner = this.lunch_out.getDate() - this.lunch_in.getDate();
     // var dayDifferenceOut = this.come_back.getDate() - this.go_out.getDate();
 
     //console.log(dayDifference);
 
-    if (dayDifference === 1) {
+    if ((dayDifference === 1) || ( (dayDifference != 1) && (monthDifference === 1)) ) {
 
         if (this.check_in && this.check_out) {
 

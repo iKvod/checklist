@@ -60,8 +60,9 @@ userrouter.put('/:id', function(req, res, next){
     });
 });
 
-userrouter.delete('/:userid', function(req, res, next){
-    Users.findById(req.params.userid, function(err, user){
+userrouter.delete('/:employee_id', function(req, res, next){
+    Users.findById(req.params.employee_id, function(err, user){
+
         user.remove();
 
         user.save(function(err, resp){

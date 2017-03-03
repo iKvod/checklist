@@ -12,7 +12,7 @@ angular.module('checklist')
     //vm.user = user;
        vm.employee_id = '';
        vm.errorMessage = '';
-
+        // checks if user checked in or out and redirect to state
        vm.checkChecked = function(emp_id){ 
            var id = emp_id.toLowerCase();
             var userData = ChecklistService.get({id:id});
@@ -43,7 +43,7 @@ angular.module('checklist')
         ['$state','$stateParams','$http', '$rootScope','CheckinService','WebcamService', function($state,$stateParams, $http, $rootScope, CheckinService, WebcamService){
             var vm = this;
             vm.greeting = "Добро пожаловать! Отметтесь пожалуйста";
-            vm.successGreating = "Вы отметились в системе!"
+            vm.successGreating = "Вы отметились в системе!";
             vm.data = { message: "Пришел(пришла) на работу", 
                         id: $stateParams.employee_id, 
                         name: $rootScope.name,
@@ -104,12 +104,13 @@ angular.module('checklist')
     .controller('CheckoutCtrl', ['$state', '$rootScope','$http','$stateParams', 'CheckoutService', 'WebcamService', 
         function($state, $rootScope, $http, $stateParams, CheckoutService, WebcamService){
         var vm = this;
-        vm.greeting = "Hello! Checkout, please!!"
-        vm.successGreating = "Надеемся день у Вас был плодотворным!"
+        vm.greeting = "Здравствуйте, сделайте Checkout!";
+        vm.successGreating = "Надеемся день у Вас был плодотворным!";
         vm.data = { 
             message: "Уходит с работы!", 
             id: $stateParams.employee_id, 
-            report:'', bookreport:'', 
+            report:'',
+            bookreport:'',
             name: $rootScope.name,
             botId: $rootScope.botId
         };
@@ -131,7 +132,7 @@ angular.module('checklist')
                 vm.webcam.turnOff();
         }
 
-        //sending checkout report to server
+        //sending checkout report to the server
         vm.checkOut = function(code){
             //console.log("Checkout code: " + code);
             var id = $stateParams.employee_id; 
@@ -145,27 +146,27 @@ angular.module('checklist')
                 }, function(err){
                     console.log(err);
                 });
-        }
+        };
 
-        //sending report to server
+        //sending report to the server and notification to CEO and Pr. Manager
         vm.sendReport  = function (report){
             var id = $stateParams.employee_id;
             vm.report = report;
-            var obj = {}
+            var obj = {};
             obj.report = vm.report;
             var reporting = new CheckoutService(obj);
             reporting.$update({id:id})
            
-        }
+        };
 
-        //sending checout report to bot
+        //sending checkout report to bot
         vm.sendData = function(image, report, reportBook){
                 vm.data.report = report;
                 vm.data.bookreport = reportBook;    
                 $http({
                     url:'/api/bot/image',
                     method: 'POST',
-                    data: {image:image, report: vm.data}
+                    data: {image: image, report: vm.data}
                 })
                 .then(function(response){
                     $state.go('checkout.success');
