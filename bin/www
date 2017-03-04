@@ -10,7 +10,7 @@ var http = require('http');
 var https = require('https');
 var ip = require('../config');
 var fs = require('fs');
-//var httpApp =require('express');
+var httpApp =require('express');
 
 
 var options = {
@@ -23,8 +23,8 @@ var options = {
  * Get port from environment and store in Express.
  */
 
-http.set('port', process.env.PORT || 80);
-http.get('*', function (req, res, next) {
+httpApp.set('port', process.env.PORT || 80);
+httpApp.get('*', function (req, res, next) {
   res.redirect('https://' + req.headers.host + "/" + req.path);
 });
 
@@ -60,7 +60,7 @@ server.listen(port, function () {
 server.on('error', onError);
 server.on('listening', onListening);
 
-var httpServer = http.createServer(http.get('port'), function () {
+var httpServer = http.createServer(httpApp.get('port'), function () {
   console.log('Listenning port http ' + http.get('port'));
 });
 
