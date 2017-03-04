@@ -62,7 +62,7 @@ server.on('error', onError);
 server.on('listening', onListening);
 
 var httpServer = http.createServer(httpApp).listen(httpApp.get('port'), function () {
-  console.log('Listenning port http ' + http.get('port'));
+  console.log('Listenning port http ' + httpApp.get('port'));
 });
 
 /**
