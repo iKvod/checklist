@@ -70,13 +70,8 @@
                         <textarea  id="reportBook" ng-model="vm.reportBook" md-autofocus type="text"></textarea>
                     </md-input-container>
 
-                    <md-radio-group >
-                        <md-radio-button flex
-                                         ng-value="vm.doneReading"
-                                          >
-
-                            Закончил читать книгу
-                        </md-radio-button>
+                    <md-radio-group  ng-model="vm.doneReading">
+                        <md-radio-button value="Закончил читать книгу"></md-radio-button>
                     </md-radio-group>
 
                     <md-button

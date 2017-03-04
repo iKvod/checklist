@@ -5,6 +5,7 @@ var botrouter = express.Router();
 var upload = require('multer')();
 var fs = require('fs');
 var config = require('../config');
+var dbBook = require('../Utils/DB/bookBotHelper');
 
 //Models
 var User = require('../models/user');
@@ -368,8 +369,12 @@ function saveBook(sep, text, callback) {
     }
 }
 
+
+
+
+
 //Get employees books info
-bot.onText(/\/getbookinfo (.+)/,function (msg, match) {
+bot.onText(/\/Текущая книга пользователей/,function (msg, match) {
     var userId = msg.chat.id;
     User.findOne({employee_id: match[1]})
         .populate('book')
@@ -392,6 +397,13 @@ bot.onText(/\/getbookinfo (.+)/,function (msg, match) {
             }
         });
 });
+
+// Available book in bot
+bot.onText(/\/Книги добавленные/, function (msg, match) {
+  dbBook.getBooks();
+});
+
+
 
 // TIME REPORTING FOR EMPLOYEES
 /*
@@ -548,7 +560,7 @@ botrouter.post('/image', function (req, res, next) {
     //sending message to  employee if he checked out or in
     //and must read book info
     if(checkOut){
-        fetchBook(botId, sendBookCheckout, messageToUser);
+        dbBook.fetchCurrentBook(botId,  messageToUser, dbBook.sendBookCheckout);
     } else {
         bot.sendMessage(botId, messageToUser); // Users ID send if he checked in or out
     }
@@ -575,33 +587,11 @@ botrouter.post('/image', function (req, res, next) {
     res.send("OK");
 });
 
-function fetchBook(botId, callback, messageToUser){ // bookData title and link
 
-    Books.find({})
-        .exec(function(err, books){
-            var len = books.length;
-            if(err){
-                console.log(err);
-            }
-            callback(books[len-1].link,books[len-1].title, botId, messageToUser);
-
-        });
-}
-
-function sendBookCheckout(link, title, botId, messageToUser) {
-
-    var opt = {
-        'parse_mode':"Markdown"
-    };
-    bot.sendMessage(botId, messageToUser);
-    bot.sendMessage(botId, "["+"Текущая книга которую Вы должны прочитать:\n"+title+"](" + link + ")", opt);
-}
-
-
-bot.on('sticker',function(msg){
-    var chatId = msg.chat.id;
-    bot.sendMessage(chatId, "Received Your sticker");
-});
+// bot.on('sticker',function(msg){
+//     var chatId = msg.chat.id;
+//     bot.sendMessage(chatId, "Received Your sticker");
+// });
 
 var mes = 'message';
 var bookData = [];
@@ -630,7 +620,8 @@ bot.onText(/\/1switchtest/, function (msg, match) {
 var optionCeo = {
     'reply_markup': {
         "keyboard":[
-            [{text: '/👤 Информация о пользователе'}, {text: '/📕Addbooks'}]
+            [{text: '/👤 Информация о пользователе'}, {text: '/📕Addbooks'}],
+            [{text: '/Книги добавленные'}, {text: '/Текущая книга пользователей'}]
         ],
         "resize_keyboard" : true,
         "one_time_keyboard" : true,
