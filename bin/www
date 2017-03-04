@@ -10,7 +10,8 @@ var http = require('http');
 var https = require('https');
 var ip = require('../config');
 var fs = require('fs');
-var httpApp =require('express');
+var express = require('express');
+var httpApp = express();
 
 
 var options = {
