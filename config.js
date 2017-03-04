@@ -13,8 +13,8 @@ var config = {
     },
     ceoBotID : 78923920,
     managerBotID : 228106138
-    // ceoBotID:207925830,     //for testing
-    // managerBotID:207925830 // for testing
+    // ceoBotID: 131958655,//207925830,     //for testing
+    // managerBotID:131958655//207925830 // for testing
     //pip:"10.130.39.7"
    // pip:"127.0.0.1"
 };

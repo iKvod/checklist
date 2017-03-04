@@ -3,11 +3,19 @@
  */
 var Books = require('../../models/book');
 
-function getBooks() {
+function getBooks(callback) {
   Books.find({})
+    .select({title:1, link:1})
     .exec(function (err, books) {
-      return books;
-      console.log(books);
+      if(err){
+        console.log(err);
+        return;
+      }
+     // return books;
+      //console.log(books);
+      callback(books);
+      //return books;
+      //console.log(books);
     });
 }
 

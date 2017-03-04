@@ -400,9 +400,30 @@ bot.onText(/\/Текущая книга пользователей/,function (ms
 
 // Available book in bot
 bot.onText(/\/Книги добавленные/, function (msg, match) {
-  var books = dbBook.getBooks();
-  bot.sendMessage(msg.chatId, books);
+  console.log(msg);
+
+ dbBook.getBooks(function (books) {
+
+ });
+  
+
 });
+
+function BookInfo(books, callback) {
+  var books = {
+    title: null,
+    link: null
+  };
+  for(var i = 0, len = books.length; i < len; ++i){
+    books.title = books[i].title;
+    books.link = books[i].link;
+  }
+  callback(parsedBook);
+}
+
+function sendCurrentBooks(parsedBook) {
+  bot.sendMessage(msg.from.id, books);
+}
 
 
 
