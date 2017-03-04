@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b72f4adc-28a2-4842-8e1a-86b6eaa83083" name="Default" comment="asdasdad">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Utils/DB/bookBotHelper.js" afterPath="$PROJECT_DIR$/Utils/DB/bookBotHelper.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.js" afterPath="$PROJECT_DIR$/config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/.idea/workspace.xml" afterPath="$PROJECT_DIR$/public/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/botRoutes.js" afterPath="$PROJECT_DIR$/routes/botRoutes.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -54,8 +51,8 @@
               <file leaf-file-name="botRoutes.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/routes/botRoutes.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="378">
-                      <caret line="426" column="0" lean-forward="true" selection-start-line="426" selection-start-column="0" selection-end-line="426" selection-end-column="0" />
+                    <state relative-caret-position="63">
+                      <caret line="376" column="0" lean-forward="false" selection-start-line="376" selection-start-column="3" selection-end-line="398" selection-end-column="6" />
                       <folding>
                         <element signature="e#7047#7480#0" expanded="false" />
                         <element signature="n#!!block;n#sendBook#0" expanded="false" />
@@ -63,13 +60,13 @@
                         <element signature="e#9045#9115#0" expanded="false" />
                         <element signature="n#!!block;n#stringSeparator#0" expanded="false" />
                         <element signature="n#!!block;n#saveBook#0" expanded="false" />
-                        <element signature="e#13562#13608#0" expanded="false" />
-                        <element signature="e#14562#14603#0" expanded="false" />
-                        <element signature="e#18194#18565#0" expanded="false" />
-                        <element signature="e#18618#18688#0" expanded="false" />
-                        <element signature="e#19055#19235#0" expanded="false" />
-                        <element signature="e#19283#19521#0" expanded="false" />
-                        <element signature="e#19587#21700#0" expanded="false" />
+                        <element signature="e#13629#13675#0" expanded="false" />
+                        <element signature="e#14629#14670#0" expanded="false" />
+                        <element signature="e#18261#18632#0" expanded="false" />
+                        <element signature="e#18685#18755#0" expanded="false" />
+                        <element signature="e#19122#19302#0" expanded="false" />
+                        <element signature="e#19350#19588#0" expanded="false" />
+                        <element signature="e#19654#21767#0" expanded="false" />
                         <element signature="n#!!block;n#saveBook#1" expanded="false" />
                         <element signature="n#!!block;n#sendBookInfo#1" expanded="false" />
                       </folding>
@@ -262,9 +259,9 @@
         <option value="$PROJECT_DIR$/bin/dev" />
         <option value="$PROJECT_DIR$/bin/www" />
         <option value="$PROJECT_DIR$/Utils/DB/bookBotHelper.js" />
-        <option value="$PROJECT_DIR$/routes/botRoutes.js" />
         <option value="$PROJECT_DIR$/config.js" />
         <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/routes/botRoutes.js" />
       </list>
     </option>
   </component>
@@ -529,12 +526,12 @@
       <workItem from="1488013084636" duration="14856000" />
       <workItem from="1488432216617" duration="6445000" />
       <workItem from="1488460908908" duration="34000" />
-      <workItem from="1488534036160" duration="23124000" />
+      <workItem from="1488534036160" duration="23243000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="365406000" />
+    <option name="totallyTimeSpent" value="365525000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1000,10 +997,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="21" column="9" lean-forward="false" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/routes/botRoutes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="426" column="0" lean-forward="true" selection-start-line="426" selection-start-column="0" selection-end-line="426" selection-end-column="0" />
+        <state relative-caret-position="63">
+          <caret line="376" column="0" lean-forward="false" selection-start-line="376" selection-start-column="3" selection-end-line="398" selection-end-column="6" />
           <folding>
             <element signature="e#7047#7480#0" expanded="false" />
             <element signature="n#!!block;n#sendBook#0" expanded="false" />
@@ -1011,24 +1016,16 @@
             <element signature="e#9045#9115#0" expanded="false" />
             <element signature="n#!!block;n#stringSeparator#0" expanded="false" />
             <element signature="n#!!block;n#saveBook#0" expanded="false" />
-            <element signature="e#13562#13608#0" expanded="false" />
-            <element signature="e#14562#14603#0" expanded="false" />
-            <element signature="e#18194#18565#0" expanded="false" />
-            <element signature="e#18618#18688#0" expanded="false" />
-            <element signature="e#19055#19235#0" expanded="false" />
-            <element signature="e#19283#19521#0" expanded="false" />
-            <element signature="e#19587#21700#0" expanded="false" />
+            <element signature="e#13629#13675#0" expanded="false" />
+            <element signature="e#14629#14670#0" expanded="false" />
+            <element signature="e#18261#18632#0" expanded="false" />
+            <element signature="e#18685#18755#0" expanded="false" />
+            <element signature="e#19122#19302#0" expanded="false" />
+            <element signature="e#19350#19588#0" expanded="false" />
+            <element signature="e#19654#21767#0" expanded="false" />
             <element signature="n#!!block;n#saveBook#1" expanded="false" />
             <element signature="n#!!block;n#sendBookInfo#1" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="21" column="9" lean-forward="false" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>

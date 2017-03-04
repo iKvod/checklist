@@ -374,29 +374,29 @@ function saveBook(sep, text, callback) {
 
 
 //Get employees books info
-bot.onText(/\/Текущая книга пользователей/,function (msg, match) {
-    var userId = msg.chat.id;
-    User.findOne({employee_id: match[1]})
-        .populate('book')
-        .select({book:1, firstname:1})
-        .exec(function (err, data) {
-
-            if(err) {
-                console.log(err);
-                bot.sendMessage(userId, "Ошибка, попробуйте через некоторое время!\n");
-                return;
-            }
-
-            if(data.book.length === 0){
-                bot.sendMessage(userId, "Возможно, он уже прочитал книги!\n" + " Отправьте ему книги");
-            } else {
-                for (var i = 0, len = data.book.length; i < len; i++){
-                    var message = i+1 + " " + data.book[i] + " \n"
-                }
-                bot.sendMessage(userId, "dsds");
-            }
-        });
-});
+// bot.onText(/\/Текущая книга пользователей/,function (msg, match) {
+//     var userId = msg.chat.id;
+//     User.findOne({employee_id: match[1]})
+//         .populate('book')
+//         .select({book:1, firstname:1})
+//         .exec(function (err, data) {
+//
+//             if(err) {
+//                 console.log(err);
+//                 bot.sendMessage(userId, "Ошибка, попробуйте через некоторое время!\n");
+//                 return;
+//             }
+//
+//             if(data.book.length === 0){
+//                 bot.sendMessage(userId, "Возможно, он уже прочитал книги!\n" + " Отправьте ему книги");
+//             } else {
+//                 for (var i = 0, len = data.book.length; i < len; i++){
+//                     var message = i+1 + " " + data.book[i] + " \n"
+//                 }
+//                 bot.sendMessage(userId, "dsds");
+//             }
+//         });
+// });
 
 // Available book in bot
 bot.onText(/\/Книги добавленные/, function (msg, match) {
