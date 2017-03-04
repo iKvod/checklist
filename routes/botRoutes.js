@@ -399,15 +399,15 @@ function saveBook(sep, text, callback) {
 // });
 
 // Available book in bot
-bot.onText(/\/Книги добавленные/, function (msg, match) {
-  console.log(msg);
-
- dbBook.getBooks(function (books) {
-
- });
-  
-
-});
+// bot.onText(/\/Книги добавленные/, function (msg, match) {
+//   console.log(msg);
+//
+//  dbBook.getBooks(function (books) {
+//
+//  });
+//
+//
+// });
 
 function BookInfo(books, callback) {
   var books = {
