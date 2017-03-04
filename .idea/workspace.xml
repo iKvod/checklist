@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b72f4adc-28a2-4842-8e1a-86b6eaa83083" name="Default" comment="asdasdad">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/botRoutes.js" afterPath="$PROJECT_DIR$/routes/botRoutes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/www" afterPath="$PROJECT_DIR$/bin/www" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -126,7 +126,7 @@
         <splitter split-orientation="vertical" split-proportion="0.9">
           <split-first>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-              <file leaf-file-name="bookBotHelper.js" pinned="false" current-in-tab="true">
+              <file leaf-file-name="bookBotHelper.js" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/Utils/DB/bookBotHelper.js">
                   <provider selected="true" editor-type-id="text-editor">
                     <state relative-caret-position="180">
@@ -161,18 +161,18 @@
               <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/app.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="615">
+                    <state relative-caret-position="585">
                       <caret line="45" column="1" lean-forward="false" selection-start-line="45" selection-start-column="1" selection-end-line="50" selection-end-column="2" />
                       <folding />
                     </state>
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="www" pinned="false" current-in-tab="false">
+              <file leaf-file-name="www" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/bin/www">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="255">
-                      <caret line="29" column="2" lean-forward="true" selection-start-line="29" selection-start-column="2" selection-end-line="29" selection-end-column="2" />
+                    <state relative-caret-position="460">
+                      <caret line="220" column="11" lean-forward="true" selection-start-line="220" selection-start-column="11" selection-end-line="220" selection-end-column="11" />
                       <folding />
                     </state>
                   </provider>
@@ -257,11 +257,11 @@
         <option value="$PROJECT_DIR$/routes/reportSalary.js" />
         <option value="$PROJECT_DIR$/models/reporting.js" />
         <option value="$PROJECT_DIR$/bin/dev" />
-        <option value="$PROJECT_DIR$/bin/www" />
         <option value="$PROJECT_DIR$/Utils/DB/bookBotHelper.js" />
         <option value="$PROJECT_DIR$/config.js" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/routes/botRoutes.js" />
+        <option value="$PROJECT_DIR$/bin/www" />
       </list>
     </option>
   </component>
@@ -526,12 +526,12 @@
       <workItem from="1488013084636" duration="14856000" />
       <workItem from="1488432216617" duration="6445000" />
       <workItem from="1488460908908" duration="34000" />
-      <workItem from="1488534036160" duration="23639000" />
+      <workItem from="1488534036160" duration="23855000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="365921000" />
+    <option name="totallyTimeSpent" value="366137000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -939,14 +939,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/www">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="29" column="2" lean-forward="true" selection-start-line="29" selection-start-column="2" selection-end-line="29" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/reportSalary.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
@@ -975,14 +967,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="25" column="15" lean-forward="true" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="45" column="1" lean-forward="false" selection-start-line="45" selection-start-column="1" selection-end-line="50" selection-end-column="2" />
           <folding />
         </state>
       </provider>
@@ -1026,6 +1010,22 @@
           <folding>
             <element signature="e#0#41#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="45" column="1" lean-forward="false" selection-start-line="45" selection-start-column="1" selection-end-line="50" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/www">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="220" column="11" lean-forward="true" selection-start-line="220" selection-start-column="11" selection-end-line="220" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
