@@ -29,12 +29,12 @@ angular.module('checklist', [
         //         }
 
         // })
-         .state('main', {
-            url:'/',
-           templateUrl: 'components/main/main.html',
-           controller: 'MainCtrl',
-           controllerAs: 'vm'
-         })
+        //  .state('main', {
+        //     url:'/',
+        //    templateUrl: 'components/main/main.html',
+        //    controller: 'MainCtrl',
+        //    controllerAs: 'vm'
+        //  })
         .state('checklist', {
             url: '/checklist',
             templateUrl: 'components/checklist/checklist_id_form.html',
@@ -145,5 +145,5 @@ angular.module('checklist', [
         $locationProvider.html5Mode(true);
 }])
     .run(function($state){
-        $state.go('checklist');
+        $state.go('fun');
     });
