@@ -74,4 +74,19 @@ userrouter.delete('/:employee_id', function(req, res, next){
 });
 
 
+userrouter.put('/disable/:id', function (req, res, next) {
+  Users.findOne({_id: req.params.id})
+    .exec(function (err, user) {
+            if(err){
+                return next(err);
+            }
+      user.disabled = true;
+      user.save(function (err, updatedUser) {
+            res.send(updatedUser._id + " fired!");
+      });
+
+    });
+});
+
+
 module.exports = userrouter;

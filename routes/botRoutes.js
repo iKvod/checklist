@@ -235,7 +235,6 @@ bot.onText(/\/info/, function (msg, match) {
     bot.sendMessage(userId, message);
 });
 
-
 // /info - informations about users
 bot.onText(/\/👤 (.+) (.+)/, function (msg, match) {
     User.find({})
@@ -374,57 +373,55 @@ function saveBook(sep, text, callback) {
 
 
 //Get employees books info
-// bot.onText(/\/Текущая книга пользователей/,function (msg, match) {
-//     var userId = msg.chat.id;
-//     User.findOne({employee_id: match[1]})
-//         .populate('book')
-//         .select({book:1, firstname:1})
-//         .exec(function (err, data) {
-//
-//             if(err) {
-//                 console.log(err);
-//                 bot.sendMessage(userId, "Ошибка, попробуйте через некоторое время!\n");
-//                 return;
-//             }
-//
-//             if(data.book.length === 0){
-//                 bot.sendMessage(userId, "Возможно, он уже прочитал книги!\n" + " Отправьте ему книги");
-//             } else {
-//                 for (var i = 0, len = data.book.length; i < len; i++){
-//                     var message = i+1 + " " + data.book[i] + " \n"
-//                 }
-//                 bot.sendMessage(userId, "dsds");
-//             }
-//         });
-// });
+bot.onText(/\/Кто что читает/,function (msg, match) {
+  var userId = msg.from.id;
+
+  dbBook.getBookEmployees(function (message) {
+      if(message){
+        bot.sendMessage(userId, message);
+      } else {
+        bot.sendMessage(userId, "Something wrong");
+      }
+  })
+
+});
 
 // Available book in bot
-// bot.onText(/\/Книги добавленные/, function (msg, match) {
-//   console.log(msg);
-//
-//  dbBook.getBooks(function (books) {
-//
-//  });
-//
-//
-// });
+bot.onText(/\/Все книги/, function (msg, match) {
+ dbBook.getBooks(function (books) {
+     if(books.length != 0){
+       //console.log(books);
+       BookInfo(books, msg, MessageBookInfo)
+     } else {
+      MessageBookInfo(msg, "В базе не найдено книг");
+     }
+ });
 
-function BookInfo(books, callback) {
-  var books = {
+
+});
+
+function BookInfo(books, msg, callback) {
+    console.log(books.length);
+  var book = {
     title: null,
     link: null
   };
+  var bookStr = '';
+
   for(var i = 0, len = books.length; i < len; ++i){
-    books.title = books[i].title;
-    books.link = books[i].link;
+    book.title = books[i].title;
+    book.link = books[i].link;
+    bookStr = bookStr + (i+1) + ". <a href='"+book.link+"'>" + book.title + "</a>\n";
   }
-  callback(parsedBook);
+  callback(msg, bookStr);
 }
 
-function sendCurrentBooks(parsedBook) {
-  bot.sendMessage(msg.from.id, books);
+function MessageBookInfo(msg, bookStr) {
+  var bookOpt = {
+    'parse_mode':"HTML"
+  };
+  bot.sendMessage(msg.from.id, bookStr, bookOpt);
 }
-
 
 
 // TIME REPORTING FOR EMPLOYEES
@@ -438,8 +435,7 @@ function sendCurrentBooks(parsedBook) {
 *
 * */
 
-
-bot.onText(/\/🍔tolunch/, function(msg, match){
+bot.onText(/\/🍔На обед/, function(msg, match){
     var botId = msg.from.id;
     var name = msg.chat.username;
     var checkinType = { "type" : "lunch_in" };
@@ -451,8 +447,7 @@ bot.onText(/\/🍔tolunch/, function(msg, match){
     bot.sendMessage(ceoBotId, name + " вышел(-ла) на обед!");
 });
 
-bot.onText(/\/fromlunch🍔/, function(msg, match){
-    console.log(msg, match)
+bot.onText(/\/С обеда🍔/, function(msg, match){
     var botId = msg.from.id;
     var name = msg.chat.username;
     var checkinType = {"type": "lunch_out"};
@@ -462,7 +457,7 @@ bot.onText(/\/fromlunch🍔/, function(msg, match){
 
 });
 
-bot.onText(/\/⚔️stopwork/, function(msg, match){
+bot.onText(/\/⚔Уйти с работы/, function(msg, match){
     var botId = msg.from.id;
     var name = msg.chat.username;
     var checkinType = {"type":"go_out"};
@@ -471,7 +466,7 @@ bot.onText(/\/⚔️stopwork/, function(msg, match){
     bot.sendMessage(ceoBotId, name + " отметился(-ась), что он уходит с работы во время рабочего дня!");
 });
 
-bot.onText(/\/👨🏼‍💻starkwork👩🏼‍💻/, function(msg, match){
+bot.onText(/\/👨🏼‍💻Пришел на работу👩🏼‍💻/, function(msg, match){
     var botId = msg.from.id;
     var name = msg.chat.username;
     var checkinType = {"type": "come_back"};
@@ -623,9 +618,9 @@ var bookData = [];
 var optTesting = {
     'reply_markup': {
         "keyboard":[
-            [{text: '/👤 Информация о пользователе'}, {text: '/📕Addbooks'}],
-            [{text:'/🍔tolunch'}, {text:'/fromlunch🍔'}],
-            [{text:'/⚔️stopwork'}, {text:'/👨🏼‍💻starkwork👩🏼‍💻'}]
+            [{text: '/👤 Информация о пользователе'}, {text: '/📕Добавить книгу'}],
+            [{text:'/🍔На обед'}, {text:'/С обеда🍔'}],
+            [{text:'/⚔Уйти с работы'}, {text:'/👨🏼‍💻Пришел на работу👩🏼‍💻'}]
         ],
         "resize_keyboard" : true,
         "one_time_keyboard" : true,
@@ -634,16 +629,12 @@ var optTesting = {
 
 };
 
-bot.onText(/\/1switchtest/, function (msg, match) {
-    bot.sendMessage(msg.chat.id,"У вас новые кнопки", optTesting);
-});
-
 
 var optionCeo = {
     'reply_markup': {
         "keyboard":[
-            [{text: '/👤 Информация о пользователе'}, {text: '/📕Addbooks'}],
-            [{text: '/Книги добавленные'}, {text: '/Текущая книга пользователей'}]
+            [{text: '/👤 Информация о пользователе'}, {text: '/📕Добавить книгу'}],
+            [{text: '/Все книги'}, {text: '/Кто что читает'}]
         ],
         "resize_keyboard" : true,
         "one_time_keyboard" : true,
@@ -654,8 +645,8 @@ var optionCeo = {
 var optEmployee = {
   'reply_markup': {
       'keyboard' : [
-          [{text:'/🍔tolunch'}, {text:'/fromlunch🍔'}],
-          [{text:'/⚔️stopwork'}, {text:'/👨🏼‍💻starkwork👩🏼‍💻'}]
+          [{text:'/🍔На обед'}, {text:'/С обеда🍔'}],
+          [{text:'/⚔Уйти с работы'}, {text:'/👨🏼‍💻Пришел на работу👩🏼‍💻'}]
       ]
   }
 };
@@ -676,7 +667,7 @@ bot.on(mes, function (msg) {
     var mes_id = 0;
 
 
-    if(msg.text === '/📕Addbooks'){
+    if(msg.text === '/📕Добавить книгу'){
         this.mes_id = msg.message_id;
 
         var opt = {
@@ -709,7 +700,7 @@ bot.on(mes, function (msg) {
             'reply_to_message_id': (this.mes_id + 1),
             'reply_markup': {
                 "keyboard":[
-                    [{text: '/👤 Информация о пользователе'}, {text: '/Addbooks'}]
+                    [{text: '/👤 Информация о пользователе'}, {text: '/Добавить книгу'}]
                 ],
                 "resize_keyboard" : true,
                 "one_time_keyboard" : true,

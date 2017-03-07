@@ -15,23 +15,29 @@ angular.module('checklist', [
          $stateProvider
         //   .state('app', {
         //         url:'/',
-        //         views: {
+        //         components: {
         //             'toolbar': {
-        //                 templateUrl : 'views/pages/toolbar.html',
+        //                 templateUrl : 'components/checklist/toolbar.html',
         //                 controller  : 'MainCtrl',
         //                 controllerAd: 'vm'
         //             },
         //             'content': {
-        //                 templateUrl : 'views/pages/content.html',
+        //                 templateUrl : 'components/checklist/content.html',
         //                 controller  : 'MainCtrl',
         //                 controllerAd: 'vm'
         //             }
         //         }
 
-        // })      
+        // })
+         .state('main', {
+            url:'/',
+           templateUrl: 'components/main/main.html',
+           controller: 'MainCtrl',
+           controllerAs: 'vm'
+         })
         .state('checklist', {
             url: '/checklist',
-            templateUrl: 'views/pages/checklist_id_form.html',
+            templateUrl: 'components/checklist/checklist_id_form.html',
             controller: 'ChecklistCtrl',
             controllerAs: 'vm'/*,
             resolve: {
@@ -43,7 +49,7 @@ angular.module('checklist', [
         })
          .state("checkin", { //state for creating new FAQﬁ
             url:'/in/code/{employee_id}',
-            templateUrl:"views/pages/checkin_code_form.html",
+            templateUrl:"components/checklist/checkin_code_form.html",
             controller:"CheckinCtrl",
             controllerAs:"vm"
             // resolve: {
@@ -57,7 +63,7 @@ angular.module('checklist', [
          })
          .state("checkin.image",{//state for uploadin image and description
             url:'/camera',
-            templateUrl:"views/pages/checkin_image_form.html",
+            templateUrl:"components/checklist/checkin_image_form.html",
             controller:"CheckinCtrl",
             controllerAs:"vm"
             ,params: {
@@ -66,13 +72,13 @@ angular.module('checklist', [
          })
         .state('checkin.success', {
             url:'/success',
-            templateUrl:'views/pages/success_checkin_page.html',
+            templateUrl:'components/checklist/success_checkin_page.html',
             controller:"CheckinCtrl",
             controllerAs:'vm'
          })
          .state("checkout", {
             url:'/out/code/{employee_id}',
-            templateUrl:'views/pages/checkout_code_form.html',
+            templateUrl:'components/checklist/checkout_code_form.html',
             controller:'CheckoutCtrl',
             controllerAs:'vm'
             ,params: {
@@ -81,13 +87,13 @@ angular.module('checklist', [
          })
          .state('checkout.image',{
             url:'/camera',
-            templateUrl:'views/pages/checkout_image_form.html',
+            templateUrl:'components/checklist/checkout_image_form.html',
             controeller:'CheckoutCtrl',
             controllerAs:'vm'
          })
          .state('checkout.success', {
             url:'/success',
-            templateUrl:'views/pages/success_checkin_page.html',
+            templateUrl:'components/checklist/success_checkin_page.html',
             controller:"CheckoutCtrl",
             controllerAs:'vm'
          })
@@ -99,15 +105,40 @@ angular.module('checklist', [
          })
          .state('success',{
             url:'/success',
-            templateUrl:'views/pages/success_checkin_page.html',
+            templateUrl:'components/checklist/success_checkin_page.html',
             controller:"",
             controllerAs:''
          })
          .state('admin',{
             url:'/admin',
-            templateUrl:'admin_panel/admin_panel.html',
-            controller:'ReportCtrl',
+            templateUrl:'components/admin_panel/admin.main/admin_panel.html',
+            controller:'AdminCtrl',
             controllerAs:'vm'
+         })
+         .state('admin.reports', {
+           url: '/reports',
+           templateUrl: 'components/salary_reports.html',
+           controller: 'ReportCtrl',
+           controllerAs: 'vm'
+          })
+         .state('admin.employees', {
+           url:'/employees',
+           templateUrl:'components/admin_panel/salaryReport/salaryReport.html',
+           controller: 'EmployeesCtrl',
+           controllerAs: 'vm'
+         })
+         .state('admin.settings', {
+           url: '/settings',
+           templateUrl: 'components/settings.html',
+           controller: 'SettingsCtrl',
+           controllerAs: 'vm'
+
+         })
+         .state('fun', {
+           url:'/fun',
+           templateUrl: 'components/fun/fun.html',
+           controller: 'FunCtrl',
+           controllerAs: 'vm'
          });
 
         $urlRouterProvider.otherwise("/");
@@ -116,5 +147,3 @@ angular.module('checklist', [
     .run(function($state){
         $state.go('checklist');
     });
-
-

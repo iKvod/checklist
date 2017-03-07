@@ -28,7 +28,7 @@ angular.module('material.components.gridList', ['material.core'])
  * @module material.components.gridList
  * @restrict E
  * @description
- * Grid lists are an alternative to standard list views. Grid lists are distinct
+ * Grid lists are an alternative to standard list components. Grid lists are distinct
  * from grids used for layouts and other visual presentations.
  *
  * A grid list is best suited to presenting a homogenous data type, typically

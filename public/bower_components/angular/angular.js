@@ -1560,7 +1560,7 @@ function allowAutoBootstrap(document) {
   }
   // Disabled bootstrapping unless angular.js was loaded from a known scheme used on the web.
   // This is to prevent angular.js bundled with browser extensions from being used to bypass the
-  // content security policy in web pages and other browser extensions.
+  // content security policy in web checklist and other browser extensions.
   switch (link.protocol) {
     case 'http:':
     case 'https:':
@@ -8038,7 +8038,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
    *   });
    *
    *   myMod.component('myComp', {
-   *     templateUrl: 'views/my-comp.html',
+   *     templateUrl: 'components/my-comp.html',
    *     controller: 'MyCtrl',
    *     controllerAs: 'ctrl',
    *     bindings: {name: '@'}

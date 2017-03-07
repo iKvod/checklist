@@ -27,7 +27,7 @@ gulp.task('build', gulp.series('ng:build', 'compat', function afterBuild() {
   return del(path.join(paths.dest, 'module.*'));
 }));
 
-gulp.task('pages', gulp.series('ng:pages', function afterPages(done) {
+gulp.task('checklist', gulp.series('ng:checklist', function afterPages(done) {
   var paths = config.docs;
   return gulp.src([
     'bower_components/highlightjs/styles/github.css',

@@ -199,7 +199,7 @@ angular.module('material.components.datepicker', [
 
     /**
      * Cache for the  width of the element without a scrollbar. Used to hide the scrollbar later on
-     * and to avoid extra reflows when switching between views.
+     * and to avoid extra reflows when switching between components.
      * @type {Number}
      */
     this.width = 0;

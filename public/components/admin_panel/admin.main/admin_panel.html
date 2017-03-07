@@ -1,0 +1,96 @@
+
+<!--<div class="admin-wrapper">-->
+	<!--<header class="admin-header-main">-->
+		<!--<img src="/images/footer-logo.png" width="158" height="27">-->
+	<!--</header>-->
+
+	<!--&lt;!&ndash;<div class="aside">-->
+
+	<!--</div>&ndash;&gt;-->
+
+	<!--<div class="admin-container">-->
+		<!--<div class="calendar-container">-->
+
+		<!--</div>-->
+
+		<!--<div class="admin-header">-->
+			<!--<button ng-click="vm.getSomething()">GetReport</button>-->
+			<!--<button >Calendar</button>-->
+			<!--&lt;!&ndash;<button ng-click="vm.getSomething()">Get Something</button>&ndash;&gt;-->
+		<!--</div>-->
+		<!--<div class="admin-main">-->
+			<!--<div class="container-fluid">-->
+				<!--<div class="table-responsive background_white">-->
+					<!--<table class="table table-custom table-bordered table-hover" ng-repeat="report in vm.report track by $index">-->
+						<!--<tr class="danger">-->
+							<!--<th class="fixed-cell">FIO</th>-->
+							<!--<th class="fixed-cell-day" ng-repeat="day in report.salaryReports track by $index">-->
+								<!--<span ng-bind="day.salaryDetails.report.beginWorkDay | date: 'shortDate':'GMT+06:00'"></span>-->
+							<!--</th>-->
+						<!--</tr>-->
+						<!--<tr>-->
+							<!--<td ng-bind="report.name"></td>-->
+							<!--<td ng-repeat="minutes in report.salaryReports track by $index" rowspan="4">-->
+								<!--<span class="{{report.name.split(' ')[0]}}_{{$index}}" ng-click="vm.getPersonalInfo(report.salaryReports[$index], $index, report)">-->
+									<!--<span ng-bind="	(minutes.salaryDetails.report.totalTimeInMinutes)+' минут'">-->
+								<!--</span><br>-->
+								<!--<span ng-bind="'пришел в: '+(minutes.salaryDetails.report.beginWorkDay | date: 'shortTime':'GMT+06:00')"></span><br>-->
+								<!--<span ng-bind="'ушел в: '+(minutes.salaryDetails.report.stopWorkDay | date: 'shortTime':'GMT+06:00')"></span><br>-->
+								<!--<span ng-bind="'фикса: '+(minutes.salaryPerDay | number: 2)+' &#x20b8;'"></span>-->
+								<!--</span>-->
+							<!--</td>-->
+						<!--</tr>-->
+					<!--</table>-->
+				<!--</div>-->
+				<!--<div class="aside_right">-->
+					<!--asdasd-->
+				<!--</div>-->
+			<!--</div>-->
+
+		<!--</div>-->
+
+	<!--</div>-->
+
+<!--</div>-->
+
+<div class="admin-wrapper">
+	<header class="admin-header-main">
+		<img src="/images/footer-logo.png" width="158" height="27">
+		<div ng-cloak class="tab">
+		</div>
+	</header>
+
+	<md-content layout-padding>
+		<md-tabs md-center-tabs="true" md-border-bottom>
+			<md-tab label="Отчеты"  md-on-select="vm.setTab(1)" >
+				<div ui-view="">
+
+				</div>
+			</md-tab>
+			<md-tab label="Сотрудники"  md-on-select="vm.setTab(2)">
+				<div ui-view="">
+
+				</div>
+			</md-tab>
+			<md-tab label="Настройки" md-on-select="vm.setTab(3)">
+				<div ui-view="">
+
+				</div>
+			</md-tab>
+			<md-tab label="FOR FUN" md-on-select="vm.setTab(4)">
+				<div ui-view="">
+
+				</div>
+			</md-tab>
+		</md-tabs>
+
+	</md-content>
+
+</div>
+
+
+
+
+
+
+<!--it was after div class admin-main-->

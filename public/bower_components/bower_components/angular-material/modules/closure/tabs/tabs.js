@@ -1079,13 +1079,13 @@ function MdTabsController ($scope, $element, $window, $mdConstant, $mdTabInkRipp
  *  3. Tabs with external view content
  *
  * **Tab-only** support is useful when tab buttons are used for custom navigation regardless of any
- * other components, content, or views.
+ * other components, content, or components.
  *
  * <i><b>Note:</b> If you are using the Tabs component for page-level navigation, please take a look
  * at the <a ng-href="./api/directive/mdNavBar">NavBar component</a> instead as it can handle this
  * case a bit more natively.</i>
  *
- * **Tabs with internal views** are the traditional usages where each tab has associated view
+ * **Tabs with internal components** are the traditional usages where each tab has associated view
  * content and the view switching is managed internally by the Tabs component.
  *
  * **Tabs with external view content** is often useful when content associated with each tab is
