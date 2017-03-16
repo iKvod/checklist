@@ -1,0 +1,97 @@
+<div class="tab-content">
+  <div class="employee-sidebar">
+    <a class="tool" ui-sref="admin.employees">
+      <img src="/images/employees/user.svg" alt="Сотрудники">
+    </a>
+    <!--<a class="tool" ng-click="vm.addEmployee()">-->
+      <!--<img src="/images/adduser.svg" alt="Добавить нового сотрдуника">-->
+    <!--</a>-->
+    <!--<a class="tool" ui-sref="admin.employees.archived">-->
+      <!--<img src="/images/employees/archidevuser.svg" alt="Архивиронные">-->
+    <!--</a>-->
+
+  </div>
+
+  <div class="employees-tab-wrapper">
+
+    <div class="settings-column">
+      <div class="settings-row">
+
+        <div class="settings-create">
+          <div class="settings-header">
+            <span>Департаменты</span>
+            <a ng-click="vm.addDpt($event)"><img src="/images/add.svg" alt="" width="20" height="20"></a>
+          </div>
+          <div class="settings-body">
+            <div ng-if="vm.positions.length" class="dpts-wrapper">
+              <div class="dpts-body" ng-repeat="dpt in vm.dpts">
+                <span>{{dpt.department}}</span>
+                <a ng-click="vm.deleteDept(dpt._id)"><img src="/images/deletebut.svg" alt="" width="24" height="24"></a>
+                <a ng-click="vm.changeDep(dpt._id);vm.addDpt($event)"><img src="/images/edit.svg" alt="" width="24" height="24"></a>
+              </div>
+              <!--<div class="dpts-body" ng-repeat="dpt in vm.dpts">-->
+                <!--<span>{{dpt}}</span>-->
+              <!--</div>-->
+            </div>
+          </div>
+        </div>
+
+
+        <div class="settings-create">
+          <div class="settings-header">
+            <span>Должности</span>
+            <a ng-click="vm.addPos($event)"><img src="/images/add.svg" alt="" width="20" height="20"></a>
+          </div>
+          <div class="settings-body">
+            <div ng-if="vm.positions.length" class="dpts-wrapper">
+              <div  class="dpts-body" ng-repeat="pos in vm.positions">
+                <span>{{ pos.position }}</span>
+                <a ng-click="vm.deletePos(pos._id)"><img src="/images/deletebut.svg" alt="" width="24" height="24"></a>
+                <a ng-click="vm.changePos(pos._id);vm.addPos($event)"><img src="/images/edit.svg" alt="" width="24" height="24"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-row">
+        <div class="settings-create">
+          <div class="settings-header">
+            <span>Добавить праздничные дни</span>
+            <a ng-click=""><img src="/images/add.svg" alt="" width="20" height="20"></a>
+          </div>
+          <div class="settings-body">
+            <div class="dpts-wrapper">
+              <!--<div class="dpts-body" ng-repeat="dpt in vm.dpts">-->
+                <!--&lt;!&ndash;<span>{{dpt.department}}</span>&ndash;&gt;-->
+                <!--&lt;!&ndash;<a ng-click="vm.deleteDept(dpt._id)"><img src="/images/deletebut.svg" alt="" width="24" height="24"></a>&ndash;&gt;-->
+                <!--&lt;!&ndash;<a ng-click="vm.changeDep(dpt._id);vm.addDpt($event)"><img src="/images/edit.svg" alt="" width="24" height="24"></a>&ndash;&gt;-->
+              <!--</div>-->
+              <!--<div class="dpts-body" ng-repeat="dpt in vm.dpts">-->
+              <!--<span>{{dpt}}</span>-->
+              <!--</div>-->
+            </div>
+          </div>
+        </div>
+        <div class="settings-create">
+          <div class="settings-header">
+            <span>Smth</span>
+            <a ng-click=""><img src="/images/add.svg" alt="" width="20" height="20"></a>
+          </div>
+          <div class="settings-body">
+            <div class="dpts-wrapper">
+              <!--<div class="dpts-body" ng-repeat="dpt in vm.dpts">-->
+                <!--&lt;!&ndash;<span>{{dpt.department}}</span>&ndash;&gt;-->
+                <!--&lt;!&ndash;<a ng-click="vm.deleteDept(dpt._id)"><img src="/images/deletebut.svg" alt="" width="24" height="24"></a>&ndash;&gt;-->
+                <!--&lt;!&ndash;<a ng-click="vm.changeDep(dpt._id);vm.addDpt($event)"><img src="/images/edit.svg" alt="" width="24" height="24"></a>&ndash;&gt;-->
+              <!--</div>-->
+              <!--<div class="dpts-body" ng-repeat="dpt in vm.dpts">-->
+              <!--<span>{{dpt}}</span>-->
+              <!--</div>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

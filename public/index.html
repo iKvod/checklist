@@ -2,60 +2,85 @@
 <html ng-app="checklist">
   <head>
 
-      <meta charset="utf-8">
-      <base href="/">
+    <meta charset="utf-8">
+    <base href="/">
 
-  <!--     <link rel="stylesheet" href="../assets/css/foundation.css">
-      <link rel="stylesheet" href="../assets/css/faq_question_content.css">
-      <link rel="stylesheet" type="text/css" href="../bower_components/font-awesome-4.7.0/css/font-awesome.css">
-      <link rel="stylesheet" type="text/css" href="../assets/css/buttons.css">
+<!--     <link rel="stylesheet" href="../assets/css/foundation.css">
+    <link rel="stylesheet" href="../assets/css/faq_question_content.css">
+    <link rel="stylesheet" type="text/css" href="../bower_components/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/buttons.css">
 
-      <link rel="stylesheet" href="../assets/css/styles.css"> -->
-      <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
-      <link rel="stylesheet" type="text/css" href="stylesheets/pages.css">
-      <link rel="stylesheet" href="stylesheets/admin_panel.css">
-      <link rel="stylesheet" href="stylesheets/icons.css">
-      <link rel="stylesheet" href="stylesheets/reset.css">
+    <link rel="stylesheet" href="../assets/css/styles.css"> -->
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pages.css">
+    <link rel="stylesheet" href="stylesheets/admin_panel.css">
+    <link rel="stylesheet" href="stylesheets/icons.css">
+    <link rel="stylesheet" href="stylesheets/reset.css">
+    <link rel="stylesheet" href="stylesheets/callendar.css">
+    <link rel="stylesheet" href="stylesheets/settings.css">
+    <link rel="stylesheet" href="stylesheets/common.css">
+    <link rel="stylesheet" href="stylesheets/employees-tab.css">
+    <link rel="stylesheet" href="stylesheets/Dialogs/common-dialogs.css">
 
-      <link rel="stylesheet" type="text/css" href="bower_components/angular-material/angular-material.css">
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
-      <link rel="stylesheet" href="//mgcrea.github.io/angular-strap/styles/libs.min.css">
-      <link rel="stylesheet" href="//mgcrea.github.io/angular-strap/styles/docs.min.css">
-       <meta name="viewport" content="initial-scale=1" />
 
-      <!-- agnular libs -->
-      <script src="bower_components/angular/angular.js"></script>
-      <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-      <script src="bower_components/angular-route/angular-route.js"></script>
-      <script src="bower_components/angular-resource/angular-resource.js"></script>
-      <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
-      <script src="bower_components/webcam/app/scripts/webcam.js"></script>
+    <link rel="stylesheet" type="text/css" href="bower_components/angular-material/angular-material.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+    <link rel="stylesheet" href="//mgcrea.github.io/angular-strap/styles/libs.min.css">
+    <link rel="stylesheet" href="//mgcrea.github.io/angular-strap/styles/docs.min.css">
+     <meta name="viewport" content="initial-scale=1" />
 
-      <!-- required for angular material  -->
-      <script src="bower_components/angular-animate/angular-animate.js"></script>
-      <script src="bower_components/angular-aria/angular-aria.js"></script>
-      <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <!-- agnular libs -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+    <script src="bower_components/webcam/app/scripts/webcam.js"></script>
 
-      <!-- angular material library -->
-      <script src="bower_components/angular-material/angular-material.js"></script>
-      <script src="bower_components/webcam/app/scripts/webcam.js"></script>
-      <!-- Angular Custom scripts -->
-      <!-- Routing  -->
-      <script src="app.js"></script>
+    <!-- required for angular material  -->
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
 
-      <!-- controllers -->
-      <script src="controllers.js"></script>
-      <script src="components/admin_panel/admin-panel-controller.js"></script>
-      <script src="components/admin_panel/admin.main/admin.controller.js"></script>
-      <script src="components/admin_panel/Employees/employees-controller.js"></script>
-      <script src="components/admin_panel/settings/settings-controller.js"></script>
-      <script src="components/fun/fun-controller.js"></script>
+    <!-- angular material library -->
+    <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/webcam/app/scripts/webcam.js"></script>
+    <!-- Angular Custom scripts -->
+    <!-- Routing  -->
+    <script src="app.js"></script>
+
+    <!-- controllers -->
+    <script src="controllers.js"></script>
+    <script src="components/admin_panel/admin-panel-controller.js"></script>
+    <script src="components/admin_panel/admin.main/admin.controller.js"></script>
+    <script src="components/admin_panel/employees/employees-controller.js"></script>
+    <script src="components/admin_panel/employees/archivedUser-controller.js"></script>
+
+    <script src="components/admin_panel/settings/settings-controller.js"></script>
+    <script src="components/admin_panel/salaryReport/salary-controller.js"></script>
+    <script src="components/settings/department-controller.js"></script>
+    <script src="components/fun/fun-controller.js"></script>
     <script src="components/main/main-controller.js"></script>
 
+        <!--Toast AND Dialog Controllers -->
+    <script src="components/Toasts/employees/toast-controller.js"></script>
+    <script src="components/admin_panel/Dialogs/employees/empl-dialog-controller.js"></script>
+    <script src="components/admin_panel/Dialogs/settings/department/department-dial-controller.js"></script>
+    <script src="components/admin_panel/Dialogs/settings/positions/positions-dial-controller.js"></script>
+
+
+    <!--<script src="/components/admin_panel/Dialogs/callendar/callendar-controller.js"></script>-->
+
+
     <!-- services -->
-      <script src="services.js"></script>
-      <script src="components/admin_panel/admin-panel-service.js"></script>
-      <title>Checklist</title>
+    <script src="services.js"></script>
+    <script src="components/admin_panel/admin-panel-service.js"></script>
+    <script src="components/admin_panel/employees/employees-service.js"></script>
+    <script src="components/admin_panel/employees/employees-arch-service.js"></script>
+    <script src="components/settings/settings-dpts-service.js"></script>
+    <script src="services/postionsService.js"></script>
+
+    <title>Checklist</title>
 
       <!-- ngstrap -->
       <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>

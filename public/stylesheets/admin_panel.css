@@ -2,7 +2,30 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    height: 100%;
   /*  max-width: ;*/
+}
+
+.admin-wrapper .tabs-body {
+    height: 100%;
+    width: 100%;
+}
+
+
+.tabs-body .tabs-content {
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+}
+
+.tabs-content .tab-content {
+    background-color: #edeef0;
+    width: 100%;
+    min-height: 830px;
+    padding: 10px 0 10px 0;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
 }
 
 .admin-header-main {

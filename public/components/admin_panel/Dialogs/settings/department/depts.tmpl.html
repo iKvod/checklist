@@ -1,0 +1,41 @@
+<md-dialog aria-label="Добавить департамент" class="settings-dial-main">
+  <form ng-cloak>
+    <md-toolbar class="settings-dial-toolbar">
+      <div class="md-toolbar-tools">
+        <h2>Добавить департамент</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="vm.cancel()">
+          <md-icon aria-label="Close dialog"></md-icon>
+          <p>X</p>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content class="settings-dial-wrapper">
+
+      <div class="settings-dial-body">
+        <md-content class="md-no-momentum" flex="100">
+          <md-input-container md-no-float class="md-block" style="padding: 10px 20px 0 20px;">
+            <md-icon md-svg-src="img/icons/ic_phone_24px.svg"></md-icon>
+            <input ng-model="vm.dept" type="text" placeholder="Введите название департамента" ng-required="true">
+          </md-input-container>
+        </md-content>
+      </div>
+
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <md-button ng-if="!vm.change" ng-click="vm.addDept(vm.dept)" md-autofocus>
+        Создать
+      </md-button>
+
+      <md-button  ng-if="vm.change" ng-click="vm.putDept(vm.dept)" md-autofocus>
+        Изменить
+      </md-button>
+
+      <md-button class="button-font" ng-click="vm.cancel()">
+        Отмена
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

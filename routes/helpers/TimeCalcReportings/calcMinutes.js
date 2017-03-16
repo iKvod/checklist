@@ -17,13 +17,12 @@ function calculateMinutes (users, res, callback) {
         userReport.username = name;
         userReport.salaryfixed = users[i].salary_fixed;
 
-        for(var j = 0, len1 = users[i].report.length; j < len1; j++){
+        for(var j = 0, len1 = users[i].report.length; j < len1; j++) {
             var obj = {};
             obj.check_in = new Date(users[i].report[j].check_in);
             obj.check_out = new Date(users[i].report[j].check_out);
             obj.report = users[i].report[j].calcTimeCorrectly();
             repMin.push(obj);
-            //console.dir(obj);
         }
         userReport.reportminutes = repMin;
         usersReports.push(userReport);

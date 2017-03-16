@@ -3,30 +3,21 @@
 var express = require('express');
 var salaryRoute = express.Router();
 var Reports = require('../models/reporting');
-var Users = require('../models/user');
+var Users = require('../models/employee');
 var timeCalculator = require('./helpers/TimeCalcReportings/calcMinutes');
 var salaryCalculator = require('./helpers/SalaryReportingHelpers/reportSalary');
 
 salaryRoute.get('/', function (req, res, next) {
-    Users.find({})
+    Users.find({disabled:false})
         .populate('report')
         .select({'employee_id':1, 'lastname':1,'firstname':1 , 'salary_fixed':1, 'report': 1})
         .exec(function (err, users) {
+
             if (err) {
                 return next(err);
             }
-           // res.send(users);
             timeCalculator.calculateMinutes(users, res, function (userReport, res) {
-               // var salaryReport = ['ss'];
-               // var fullSalaryReport = [];
-               // var obj = {
-               //      userReport: userReport,
-               //      salaryReport: []
-               // };
-
-                sendSalaryReport(userReport, res, function (res, usersSalaryReport) {
-                   //console.log(salaryReport);
-                   // res.send(userReport);
+              sendSalaryReport(userReport, res, function (res, usersSalaryReport) {
                    res.send(usersSalaryReport);
                 });
 
@@ -66,12 +57,8 @@ function sendSalaryReport (userReport, res, callback){
             salaryReport.push(salary);
             employeeInfo.totalMonthHours += salary.salaryDetails.report.fullTimeHours;
             employeeInfo.totalSalary += salary.salaryPerDay;
-            // console.log(salary.salaryDetails);
             salary = {};
-            //console.log(employeeInfo.totalSalary);
-            //console.log(salary.salaryPerDay);
         }
-        //console.log(employeeInfo.totalSalary);
 
         employeeInfo.salaryReports = salaryReport;
         usersSalaryReport.push(employeeInfo);
@@ -107,33 +94,18 @@ salaryRoute.get('/:id', function (req, res, next) {
 
             });
         });
-
-
-
-    // Reports.findOne({_id: req.params.id})
-    //     .populate('employee')
-    //     .exec(function (err, report) {
-    //         if(err){
-    //             return next(err);
-    //             console.log(err);
-    //         }
-    //         res.send(report.calcTimeCorrectly());
-    //     })
 });
 
 
-salaryRoute.get('/employee/:id', function (req, res, next) {
+salaryRoute.get('/monthly', function (req, res, next) {
+    Reports.find({})
+      .populate('employee')
+      .exec(function (err, data) {
+          if(err) return next(err);
+            res.send(data);
+      })
 
-    Users.findById(req.params.id)
-        .select({ 'salary_fixed':1 })
-        .exec(function (err, user) {
 
-
-            if (err) {
-                return next(err);
-            }
-            res.send({user:user, name: user.getName()});
-        });
 });
 
 salaryRoute.put('/employee/:id', function (req, res, next) {

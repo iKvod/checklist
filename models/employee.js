@@ -11,8 +11,8 @@ var Employee = new Schema({
     botId: {type: String, unique: true},
     // botId: {type: String},
     username: String,
-    firstname: {type: String, default:''},
-    lastname: {type: String, default: ''},
+    firstname: {type: String, default:'NoName'},
+    lastname: {type: String, default: 'NoLastname'},
     email: String,
     disabled: {type: Boolean, default: false},
     phonenumber: {type:String},
@@ -20,9 +20,17 @@ var Employee = new Schema({
     position: String,
     salary_fixed: {
         type: Number,
-        default: 60000
+        default: 0.0
     },
-    registered_at: { type:Date, default:Date.now},
+    bonus: {
+        type: Number,
+        default: 0.0
+    },
+    work_time: {
+      type: Number,
+      default: 0
+    },
+    registered_at: { type: Date, default: Date.now },
     checked: {
         type: Boolean,
         default:false
@@ -52,7 +60,7 @@ Employee.pre('save', function (next) {
     var currentDate = new Date();
     this.updated = currentDate;
     next();
-})
+});
 
 Employee.methods.getName = function () {
   return this.firstname + ' ' + this.lastname;

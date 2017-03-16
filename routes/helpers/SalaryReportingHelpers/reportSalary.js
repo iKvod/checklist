@@ -2,7 +2,6 @@
     'use strict';
     var calendar = require('../calendar/calendar');
 
-
     /*
     * salaryFixedHourCalc - calculates the fixed salary for workdays ans saturdays
     * calendar returns JSON object  {

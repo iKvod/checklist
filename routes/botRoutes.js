@@ -8,9 +8,9 @@ var config = require('../config');
 var dbBook = require('../Utils/DB/bookBotHelper');
 
 //Models
-var User = require('../models/user');
+var User = require('../models/employee');
 var Books = require('../models/book');
-var Employees = require('../models/employees');
+var Employees = require('../models/departments');
 var Report = require('../models/reporting');
 
 var TelegramBot = require('node-telegram-bot-api');
@@ -92,26 +92,50 @@ bot.onText(/\/register (.+) (.+) (.+) (.+) (.+) (.+) (.+)/, function(msg, match)
         bot.sendMessage(chatId, user.firstname +  ', вы зарегистрированы в системе\n' + " Ваш ID " + user.employee_id);
     });
 });
+
+var emplBots = require('../models/employment');
 bot.onText(/\/start/, function (msg, match) {
-    var userId = msg.from.id;
-    var opt = {
-        'parse_mode':"Markdown",
-        // 'reply_markup': {
-        //     "keyboard":[
-        //         [{text: 'YES'}],
-        //         [{text: 'NO'}]
-        //     ],
-        //     "resize_keyboard" : true,
-        //     "one_time_keyboard" : true
-        // }
-    };
+    var id = msg.from.id.toString();
+    
+    var emplBot = new emplBots({
+        botid: id
+    });
+    
+    //emplBot.incrCounter();
+    emplBot.save(function (err, savedId) {
 
-    var message = "Чтобы зарегистритоваться в системе вам нужно\n"
-        + "набрать команду * в той же последовательноcти * как ниже:\n\t\t"
-        + "/register ID firstname lastname email mobile department position\n\n"
-        + "P.S. после регистраций наберите /info для получений списков команд\n";
+        if(err) {
+          bot.sendMessage(id, 'Вы уже зарегистрированы в системе', optEmployee);
+        } else {
+            console.log(savedId);
+          bot.sendMessage(id, 'Вы зарегистированы в системе', optEmployee);
+          var message = 'Номер нового сотрудника - ' + savedId.counter + '\n'
+            + "Этот номер нужен для того, чтобы сравнить сотрудника при регистрации через систему"
+            + ",если несколько кандидатов зарегистрировались в системе одновременно";
+          bot.sendMessage(ceoBotId, message);
+        }
+    });
 
-    bot.sendMessage(userId, message, opt);
+    //console.log(msg);
+    // var userId = msg.from.id;
+    // var opt = {
+    //     'parse_mode':"Markdown",
+    //     // 'reply_markup': {
+    //     //     "keyboard":[
+    //     //         [{text: 'YES'}],
+    //     //         [{text: 'NO'}]
+    //     //     ],
+    //     //     "resize_keyboard" : true,
+    //     //     "one_time_keyboard" : true
+    //     // }
+    // };
+    //
+    // var message = "Чтобы зарегистритоваться в системе вам нужно\n"
+    //     + "набрать команду * в той же последовательноcти * как ниже:\n\t\t"
+    //     + "/register ID firstname lastname email mobile department position\n\n"
+    //     + "P.S. после регистраций наберите /info для получений списков команд\n";
+    //
+    // bot.sendMessage(userId, message, opt);
 
 });
 
@@ -709,7 +733,7 @@ bot.on(mes, function (msg) {
         };
 
         if(msg.text === button ){
-            bot.sendMessage(msg.chat.id, "Книга не отправлена",optCeo);
+            bot.sendMessage(msg.chat.id, "Книга не отправлена", optCeo);
             bookData = [];
         }
         else {
@@ -743,7 +767,6 @@ bot.on(mes, function (msg) {
 
 function saveBook(id, callback, title, link) {
 
-
     User.find({})
         .exec(function (err, users) {
             var len = users.length;
@@ -751,7 +774,6 @@ function saveBook(id, callback, title, link) {
                 users[i].book.push(id);
                 users[i].save(function (err, savedUsers) {
                     if(err) {console.log(err); return}
-                    //console.log(savedUsers);
                     callback(savedUsers.botId, title, link);
                 })
             }
@@ -764,18 +786,6 @@ function sendBookInfo(botId, title, link) {
     var opt = {
         'parse_mode':"Markdown"
     };
-    // var optionCeo = {
-    //     //'reply_to_message_id': (this.mes_id + 1),
-    //     'parse_mode':"Markdown",
-    //     'reply_markup': {
-    //         "keyboard":[
-    //             [{text: '/👤 Информация о пользователе'}, {text: '/📕Addbooks'}]
-    //         ],
-    //         "resize_keyboard" : true,
-    //         "one_time_keyboard" : true,
-    //         // "remove_keyboard":true
-    //     }
-    // };
     if(botId != ceoBotId) {
         bot.sendMessage(botId, "Новая книга, не забудьте прочитать");
         bot.sendMessage(botId, '[КНИГА: ' + title + ']('+ link +')', opt);

@@ -14,13 +14,16 @@ var checklistRoutes = require('./routes/checklist');
 var reportRoutes = require('./routes/reportsRoute');
 var salaryRoutes = require('./routes/reportSalary');
 var bookRoutes = require('./routes/booksRoutes');
+var deptRoutes = require('./routes/departmentRoutes');
+var idGenrRoutes = require('./routes/idGenerRoute');
+var psnRoutes = require('./routes/postionsRoute');
 
 var config = require('./config');
 var app = express();
-
 // mongoose.connect(config.mongoUrl, config.opt);
 mongoose.connect(config.mongoUrl);
 var db = mongoose.connection;
+
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
     // we're connected!
@@ -53,22 +56,31 @@ var allowCrossDomain = function(req, res, next) {
 
 app.use(allowCrossDomain);
 app.use(cookieParser());
+
+
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(__dirname + "./public/bower_components"));
 app.use(express.static(__dirname + "./public/views/pages"));
 app.use(express.static(__dirname + "./public/images"));
 app.use(express.static(__dirname + "./public/stylesheets"));
 app.use(express.static(__dirname + "./public/photos"));
+app.use(express.static(__dirname + "./public/components"));
+
 
 /*
 * api's
 * */
-app.use('/api/bot', botRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/bot', botRoutes);
 app.use('/api/checklist', checklistRoutes);
 app.use('/api/reports', reportRoutes);
 app.use('/api/salary', salaryRoutes);
 app.use('/api/books', bookRoutes);
+//app.use('/api/dpts', deptRoutes);
+app.use('/api/depts', deptRoutes);
+app.use('/api/positions', psnRoutes)
+app.use('/api/generators', idGenrRoutes);
 app.use('/*', function(req, res){
       res.sendFile(path.join(__dirname + '/public/index.html'));
 });

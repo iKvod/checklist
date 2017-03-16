@@ -2504,7 +2504,7 @@ $md-calendar-height:
 
   // The left / right padding is applied to the cells instead of the wrapper
   // because we want the header background and the month dividing border to
-  // extend the entire width of the calendar.
+  // extend the entire width of the callendar.
   &:first-child {
     @include rtl-prop(padding-left, padding-right, $md-calendar-side-padding, 0);
   }
@@ -2529,7 +2529,7 @@ md-calendar {
 }
 
 // Wrap the scroll with overflow: hidden in order to hide the scrollbar.
-// The inner .md-calendar-scroll-container will using a padding-right to push the
+// The inner .md-callendar-scroll-container will using a padding-right to push the
 // scrollbar into the hidden area (done with javascript).
 .md-calendar-scroll-mask {
   display: inline-block;
@@ -2549,7 +2549,7 @@ md-calendar {
   }
 
   // Offsetter is the element that is translateY'ed into view of the user and contains the
-  // calendar content.
+  // callendar content.
   .md-virtual-repeat-offsetter {
     width: 100%;
   }
@@ -2557,9 +2557,9 @@ md-calendar {
 
 // Contains the scrolling element (this is the md-virtual-repeat-container).
 .md-calendar-scroll-container {
-  // Add an inset shadow to help cue users that the calendar is scrollable. Use a negative x
+  // Add an inset shadow to help cue users that the callendar is scrollable. Use a negative x
   // offset to push the vertical edge shadow off to the right so that it's cut off by the edge
-  // of the calendar container.
+  // of the callendar container.
   box-shadow: inset -3px 3px $md-calendar-scroll-cue-shadow-radius rgba(black, 0.2);
 
   display: inline-block;
@@ -2569,7 +2569,7 @@ md-calendar {
   width: $md-calendar-width + $md-calendar-scroll-cue-shadow-radius;
 }
 
-// A single date cell in the calendar table.
+// A single date cell in the callendar table.
 .md-calendar-date {
   @include md-calendar-cell();
 
@@ -2652,7 +2652,7 @@ md-calendar {
 }
 
 /** Styles for mdDatepicker. */
-$md-datepicker-button-gap: 12px !default;  // Space between the text input and the calendar-icon button.
+$md-datepicker-button-gap: 12px !default;  // Space between the text input and the callendar-icon button.
 $md-datepicker-border-bottom-gap: 5px !default;  // Space between input and the grey underline.
 $md-date-arrow-size: 5px !default; // Size of the triangle on the right side of the input.
 $md-datepicker-open-animation-duration: 0.2s !default;
@@ -2680,7 +2680,7 @@ md-datepicker {
   }
 }
 
-// The calendar icon button used to open the calendar pane.
+// The callendar icon button used to open the callendar pane.
 .md-datepicker-button {
   display: inline-block;
   box-sizing: border-box;
@@ -2767,7 +2767,7 @@ md-datepicker {
   z-index: $z-index-calendar-pane - 1;
 }
 
-// Floating pane that contains the calendar at the bottom of the input.
+// Floating pane that contains the callendar at the bottom of the input.
 .md-datepicker-calendar-pane {
   // On most browsers the `scale(0)` below prevents this element from
   // overflowing it's parent, however IE and Edge seem to disregard it.
@@ -2802,7 +2802,7 @@ md-datepicker {
   cursor: text;
 }
 
-// The calendar portion of the floating pane (vs. the input mask).
+// The callendar portion of the floating pane (vs. the input mask).
 .md-datepicker-calendar {
   opacity: 0;
   // Use a modified timing function (from swift-ease-out) so that the opacity part of the
@@ -2883,15 +2883,15 @@ md-datepicker[disabled] {
   }
 }
 
-// When the position of the floating calendar pane is adjusted to remain inside
+// When the position of the floating callendar pane is adjusted to remain inside
 // of the viewport, hide the inputput mask, as the text input will no longer be
 // directly underneath it.
 .md-datepicker-pos-adjusted .md-datepicker-input-mask {
   display: none;
 }
 
-// Animate the calendar inside of the floating calendar pane such that it appears to "scroll" into
-// view while the pane is opening. This is done as a cue to users that the calendar is scrollable.
+// Animate the callendar inside of the floating callendar pane such that it appears to "scroll" into
+// view while the pane is opening. This is done as a cue to users that the callendar is scrollable.
 .md-datepicker-calendar-pane {
   .md-calendar {
     transform: translateY(-85px);

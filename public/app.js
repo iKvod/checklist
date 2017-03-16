@@ -99,11 +99,11 @@ angular.module('checklist', [
          })
          .state('error',{
             url:'/error',
-            templateUrl:'',
+            template:"<h1>Upps, Error</h1>>",
             controller:"",
             controllerAs:''
          })
-         .state('success',{
+         .state('success', {
             url:'/success',
             templateUrl:'components/checklist/success_checkin_page.html',
             controller:"",
@@ -117,21 +117,52 @@ angular.module('checklist', [
          })
          .state('admin.reports', {
            url: '/reports',
-           templateUrl: 'components/salary_reports.html',
-           controller: 'ReportCtrl',
+           templateUrl: 'components/admin_panel/salaryReport/salary-report.html',
+           controller: 'SalaryCtrl',
            controllerAs: 'vm'
           })
          .state('admin.employees', {
            url:'/employees',
-           templateUrl:'components/admin_panel/salaryReport/salaryReport.html',
+           templateUrl:'components/admin_panel/employees/employees.html',
            controller: 'EmployeesCtrl',
-           controllerAs: 'vm'
+           controllerAs: 'vm',
+           resolve: {
+             users: function (EmployeesService) {
+               return EmployeesService.getAll().$promise;
+             }
+           }
+         })
+         .state('admin.employees.archived', {
+           url:'/archived',
+           templateUrl:'components/admin_panel/employees/employees.archived.html',
+           controller: 'EmployeeArchCtrl',
+           controllerAs: 'vm',
+           resolve: {
+             archivedUsers: function (EmpArchiveService) {
+               return EmpArchiveService.query().$promise;
+             }
+           }
          })
          .state('admin.settings', {
            url: '/settings',
-           templateUrl: 'components/settings.html',
+           templateUrl: 'components/settings/settings.html',
            controller: 'SettingsCtrl',
-           controllerAs: 'vm'
+           controllerAs: 'vm',
+           resolve: {
+             dpts: function (DepartmentsService) {
+              return DepartmentsService.getAll().$promise;
+             },
+             positions: function (PositionsService) {
+               return PositionsService.getAll().$promise;
+             }
+           }
+         })
+         .state('departmentadd', {
+            url:'/settings/department',
+           templateUrl:'',
+           controller: 'DepartmentsCtrl',
+           conrollerAs: 'vm'
+
 
          })
          .state('fun', {

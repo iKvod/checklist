@@ -34,13 +34,13 @@ angular.module('material.components.datepicker', [
    * @param {(function(Date): boolean)=} md-date-filter Function expecting a date and returning a boolean whether it can be selected or not.
    *
    * @description
-   * `<md-calendar>` is a component that renders a calendar that can be used to select a date.
+   * `<md-callendar>` is a component that renders a callendar that can be used to select a date.
    * It is a part of the `<md-datepicker` pane, however it can also be used on it's own.
    *
    * @usage
    *
    * <hljs lang="html">
-   *   <md-calendar ng-model="birthday"></md-calendar>
+   *   <md-callendar ng-model="birthday"></md-callendar>
    * </hljs>
    */
   CalendarCtrl.$inject = ["$element", "$scope", "$$mdDateUtil", "$mdUtil", "$mdConstant", "$mdTheming", "$$rAF", "$attrs", "$mdDateLocale"];
@@ -56,23 +56,23 @@ angular.module('material.components.datepicker', [
   // TODO(jelbourn): Remove superfluous row from short months (virtual-repeat)
   // TODO(jelbourn): Month headers stick to top when scrolling.
   // TODO(jelbourn): Previous month opacity is lowered when partially scrolled out of view.
-  // TODO(jelbourn): Support md-calendar standalone on a page (as a tabstop w/ aria-live
+  // TODO(jelbourn): Support md-callendar standalone on a page (as a tabstop w/ aria-live
   //     announcement and key handling).
-  // Read-only calendar (not just date-picker).
+  // Read-only callendar (not just date-picker).
 
   function calendarDirective() {
     return {
       template: function(tElement, tAttr) {
-        // TODO(crisbeto): This is a workaround that allows the calendar to work, without
+        // TODO(crisbeto): This is a workaround that allows the callendar to work, without
         // a datepicker, until issue #8585 gets resolved. It can safely be removed
         // afterwards. This ensures that the virtual repeater scrolls to the proper place on load by
-        // deferring the execution until the next digest. It's necessary only if the calendar is used
+        // deferring the execution until the next digest. It's necessary only if the callendar is used
         // without a datepicker, otherwise it's already wrapped in an ngIf.
         var extraAttrs = tAttr.hasOwnProperty('ngIf') ? '' : 'ng-if="calendarCtrl.isInitialized"';
         var template = '' +
           '<div ng-switch="calendarCtrl.currentView" ' + extraAttrs + '>' +
-            '<md-calendar-year ng-switch-when="year"></md-calendar-year>' +
-            '<md-calendar-month ng-switch-default></md-calendar-month>' +
+            '<md-callendar-year ng-switch-when="year"></md-callendar-year>' +
+            '<md-callendar-month ng-switch-default></md-callendar-month>' +
           '</div>';
 
         return template;
@@ -100,11 +100,11 @@ angular.module('material.components.datepicker', [
    * width as 0, because it hasn't been laid out yet. This value will be used
    * as a fallback, in order to prevent scenarios where the element's width
    * would otherwise have been set to 0. This value is the "usual" width of a
-   * calendar within a floating calendar pane.
+   * callendar within a floating callendar pane.
    */
   var FALLBACK_WIDTH = 340;
 
-  /** Next identifier for calendar instance. */
+  /** Next identifier for callendar instance. */
   var nextUniqueId = 0;
 
   /**
@@ -141,30 +141,30 @@ angular.module('material.components.datepicker', [
     this.ngModelCtrl = null;
 
     /**
-     * The currently visible calendar view. Note the prefix on the scope value,
+     * The currently visible callendar view. Note the prefix on the scope value,
      * which is necessary, because the datepicker seems to reset the real one value if the
-     * calendar is open, but the value on the datepicker's scope is empty.
+     * callendar is open, but the value on the datepicker's scope is empty.
      * @type {String}
      */
     this.currentView = this._currentView || 'month';
 
     /** @type {String} Class applied to the selected date cell. */
-    this.SELECTED_DATE_CLASS = 'md-calendar-selected-date';
+    this.SELECTED_DATE_CLASS = 'md-callendar-selected-date';
 
     /** @type {String} Class applied to the cell for today. */
-    this.TODAY_CLASS = 'md-calendar-date-today';
+    this.TODAY_CLASS = 'md-callendar-date-today';
 
     /** @type {String} Class applied to the focused cell. */
     this.FOCUSED_DATE_CLASS = 'md-focus';
 
-    /** @final {number} Unique ID for this calendar instance. */
+    /** @final {number} Unique ID for this callendar instance. */
     this.id = nextUniqueId++;
 
     /**
-     * The date that is currently focused or showing in the calendar. This will initially be set
+     * The date that is currently focused or showing in the callendar. This will initially be set
      * to the ng-model value if set, otherwise to today. It will be updated as the user navigates
      * to other months. The cell corresponding to the displayDate does not necesarily always have
-     * focus in the document (such as for cases when the user is scrolling the calendar).
+     * focus in the document (such as for cases when the user is scrolling the callendar).
      * @type {Date}
      */
     this.displayDate = null;
@@ -179,14 +179,14 @@ angular.module('material.components.datepicker', [
     this.selectedDate = null;
 
     /**
-     * The first date that can be rendered by the calendar. The default is taken
+     * The first date that can be rendered by the callendar. The default is taken
      * from the mdDateLocale provider and is limited by the mdMinDate.
      * @type {Date}
      */
     this.firstRenderableDate = null;
 
     /**
-     * The last date that can be rendered by the calendar. The default comes
+     * The last date that can be rendered by the callendar. The default comes
      * from the mdDateLocale provider and is limited by the maxDate.
      * @type {Date}
      */
@@ -211,7 +211,7 @@ angular.module('material.components.datepicker', [
      */
     this.scrollbarWidth = 0;
 
-    // Unless the user specifies so, the calendar should not be a tab stop.
+    // Unless the user specifies so, the callendar should not be a tab stop.
     // This is necessary because ngAria might add a tabindex to anything with an ng-model
     // (based on whether or not the user has turned that particular feature on/off).
     if (!$attrs.tabindex) {
@@ -258,7 +258,7 @@ angular.module('material.components.datepicker', [
       var value = this.$viewValue;
 
       // Notify the child scopes of any changes.
-      self.$scope.$broadcast('md-calendar-parent-changed', value);
+      self.$scope.$broadcast('md-callendar-parent-changed', value);
 
       // Set up the selectedDate if it hasn't been already.
       if (!self.selectedDate) {
@@ -273,20 +273,20 @@ angular.module('material.components.datepicker', [
   };
 
   /**
-   * Sets the ng-model value for the calendar and emits a change event.
+   * Sets the ng-model value for the callendar and emits a change event.
    * @param {Date} date
    */
   CalendarCtrl.prototype.setNgModelValue = function(date) {
     var value = this.dateUtil.createDateAtMidnight(date);
     this.focus(value);
-    this.$scope.$emit('md-calendar-change', value);
+    this.$scope.$emit('md-callendar-change', value);
     this.ngModelCtrl.$setViewValue(value);
     this.ngModelCtrl.$render();
     return value;
   };
 
   /**
-   * Sets the current view that should be visible in the calendar
+   * Sets the current view that should be visible in the callendar
    * @param {string} newView View name to be set.
    * @param {number|Date} time Date object or a timestamp for the new display date.
    */
@@ -334,7 +334,7 @@ angular.module('material.components.datepicker', [
    * to the child controllers.
    * @param {KeyboardEvent} event
    * @returns {String} The action that should be taken, or null if the key
-   * does not match a calendar shortcut.
+   * does not match a callendar shortcut.
    */
   CalendarCtrl.prototype.getActionFromKeyEvent = function(event) {
     var keyCode = this.keyCode;
@@ -361,7 +361,7 @@ angular.module('material.components.datepicker', [
   };
 
   /**
-   * Handles a key event in the calendar with the appropriate action. The action will either
+   * Handles a key event in the callendar with the appropriate action. The action will either
    * be to select the focused date or to navigate to focus a new date.
    * @param {KeyboardEvent} event
    */
@@ -372,7 +372,7 @@ angular.module('material.components.datepicker', [
       // Capture escape and emit back up so that a wrapping component
       // (such as a date-picker) can decide to close.
       if (event.which == self.keyCode.ESCAPE || event.which == self.keyCode.TAB) {
-        self.$scope.$emit('md-calendar-close');
+        self.$scope.$emit('md-callendar-close');
 
         if (event.which == self.keyCode.TAB) {
           event.preventDefault();
@@ -386,14 +386,14 @@ angular.module('material.components.datepicker', [
       if (action) {
         event.preventDefault();
         event.stopPropagation();
-        self.$scope.$broadcast('md-calendar-parent-action', action);
+        self.$scope.$broadcast('md-callendar-parent-action', action);
       }
     });
   };
 
   /**
-   * Hides the vertical scrollbar on the calendar scroller of a child controller by
-   * setting the width on the calendar scroller and the `overflow: hidden` wrapper
+   * Hides the vertical scrollbar on the callendar scroller of a child controller by
+   * setting the width on the callendar scroller and the `overflow: hidden` wrapper
    * around the scroller, and then setting a padding-right on the scroller equal
    * to the width of the browser's scrollbar.
    *
@@ -404,7 +404,7 @@ angular.module('material.components.datepicker', [
   CalendarCtrl.prototype.hideVerticalScrollbar = function(childCtrl) {
     var self = this;
     var element = childCtrl.$element[0];
-    var scrollMask = element.querySelector('.md-calendar-scroll-mask');
+    var scrollMask = element.querySelector('.md-callendar-scroll-mask');
 
     if (self.width > 0) {
       setWidth();
@@ -430,7 +430,7 @@ angular.module('material.components.datepicker', [
   };
 
   /**
-   * Gets an identifier for a date unique to the calendar instance for internal
+   * Gets an identifier for a date unique to the callendar instance for internal
    * purposes. Not to be displayed.
    * @param {Date} date The date for which the id is being generated
    * @param {string} namespace Namespace for the id. (month, year etc.)
@@ -478,32 +478,32 @@ angular.module('material.components.datepicker', [
     .directive('mdCalendarMonth', calendarDirective);
 
   /**
-   * Height of one calendar month tbody. This must be made known to the virtual-repeat and is
+   * Height of one callendar month tbody. This must be made known to the virtual-repeat and is
    * subsequently used for scrolling to specific months.
    */
   var TBODY_HEIGHT = 265;
 
   /**
-   * Height of a calendar month with a single row. This is needed to calculate the offset for
+   * Height of a callendar month with a single row. This is needed to calculate the offset for
    * rendering an extra month in virtual-repeat that only contains one row.
    */
   var TBODY_SINGLE_ROW_HEIGHT = 45;
 
-  /** Private directive that represents a list of months inside the calendar. */
+  /** Private directive that represents a list of months inside the callendar. */
   function calendarDirective() {
     return {
       template:
-        '<table aria-hidden="true" class="md-calendar-day-header"><thead></thead></table>' +
-        '<div class="md-calendar-scroll-mask">' +
-        '<md-virtual-repeat-container class="md-calendar-scroll-container" ' +
+        '<table aria-hidden="true" class="md-callendar-day-header"><thead></thead></table>' +
+        '<div class="md-callendar-scroll-mask">' +
+        '<md-virtual-repeat-container class="md-callendar-scroll-container" ' +
               'md-offset-size="' + (TBODY_SINGLE_ROW_HEIGHT - TBODY_HEIGHT) + '">' +
-            '<table role="grid" tabindex="0" class="md-calendar" aria-readonly="true">' +
+            '<table role="grid" tabindex="0" class="md-callendar" aria-readonly="true">' +
               '<tbody ' +
-                  'md-calendar-month-body ' +
+                  'md-callendar-month-body ' +
                   'role="rowgroup" ' +
                   'md-virtual-repeat="i in monthCtrl.items" ' +
                   'md-month-offset="$index" ' +
-                  'class="md-calendar-month" ' +
+                  'class="md-callendar-month" ' +
                   'md-start-index="monthCtrl.getSelectedMonthIndex()" ' +
                   'md-item-size="' + TBODY_HEIGHT + '"></tbody>' +
             '</table>' +
@@ -522,7 +522,7 @@ angular.module('material.components.datepicker', [
   }
 
   /**
-   * Controller for the calendar month component.
+   * Controller for the callendar month component.
    * ngInject @constructor
    */
   function CalendarMonthCtrl($element, $scope, $animate, $q,
@@ -571,7 +571,7 @@ angular.module('material.components.datepicker', [
 
     /**
      * Handles click events on the month headers. Switches
-     * the calendar to the year view.
+     * the callendar to the year view.
      * @this {HTMLTableCellElement} The cell that was clicked.
      */
     this.headerClickHandler = function() {
@@ -582,7 +582,7 @@ angular.module('material.components.datepicker', [
   /*** Initialization ***/
 
   /**
-   * Initialize the controller by saving a reference to the calendar and
+   * Initialize the controller by saving a reference to the callendar and
    * setting up the object that will be iterated by the virtual repeater.
    */
   CalendarMonthCtrl.prototype.initialize = function(calendarCtrl) {
@@ -624,7 +624,7 @@ angular.module('material.components.datepicker', [
   };
 
   /**
-   * Change the selected date in the calendar (ngModel value has already been changed).
+   * Change the selected date in the callendar (ngModel value has already been changed).
    * @param {Date} date
    */
   CalendarMonthCtrl.prototype.changeSelectedDate = function(date) {
@@ -658,7 +658,7 @@ angular.module('material.components.datepicker', [
   };
 
   /**
-   * Change the date that is being shown in the calendar. If the given date is in a different
+   * Change the date that is being shown in the callendar. If the given date is in a different
    * month, the displayed month will be transitioned.
    * @param {Date} date
    */
@@ -691,7 +691,7 @@ angular.module('material.components.datepicker', [
   };
 
   /**
-   * Animates the transition from the calendar's current month to the given month.
+   * Animates the transition from the callendar's current month to the given month.
    * @param {Date} date
    * @returns {angular.$q.Promise} The animation promise.
    */
@@ -705,7 +705,7 @@ angular.module('material.components.datepicker', [
   };
 
   /**
-   * Builds and appends a day-of-the-week header to the calendar.
+   * Builds and appends a day-of-the-week header to the callendar.
    * This should only need to be called once during initialization.
    */
   CalendarMonthCtrl.prototype.buildWeekHeader = function() {
@@ -723,21 +723,21 @@ angular.module('material.components.datepicker', [
   };
 
   /**
-   * Attaches listeners for the scope events that are broadcast by the calendar.
+   * Attaches listeners for the scope events that are broadcast by the callendar.
    */
   CalendarMonthCtrl.prototype.attachScopeListeners = function() {
     var self = this;
 
-    self.$scope.$on('md-calendar-parent-changed', function(event, value) {
+    self.$scope.$on('md-callendar-parent-changed', function(event, value) {
       self.changeSelectedDate(value);
     });
 
-    self.$scope.$on('md-calendar-parent-action', angular.bind(this, this.handleKeyEvent));
+    self.$scope.$on('md-callendar-parent-action', angular.bind(this, this.handleKeyEvent));
   };
 
   /**
    * Handles the month-specific keyboard interactions.
-   * @param {Object} event Scope event object passed by the calendar.
+   * @param {Object} event Scope event object passed by the callendar.
    * @param {String} action Action, corresponding to the key that was pressed.
    */
   CalendarMonthCtrl.prototype.handleKeyEvent = function(event, action) {
@@ -784,9 +784,9 @@ angular.module('material.components.datepicker', [
       .directive('mdCalendarMonthBody', mdCalendarMonthBodyDirective);
 
   /**
-   * Private directive consumed by md-calendar-month. Having this directive lets the calender use
+   * Private directive consumed by md-callendar-month. Having this directive lets the calender use
    * md-virtual-repeat and also cleanly separates the month DOM construction functions from
-   * the rest of the calendar controller logic.
+   * the rest of the callendar controller logic.
    * ngInject
    */
   function mdCalendarMonthBodyDirective($compile, $$mdSvgRegistry) {
@@ -822,7 +822,7 @@ angular.module('material.components.datepicker', [
   }
 
   /**
-   * Controller for a single calendar month.
+   * Controller for a single callendar month.
    * ngInject @constructor
    */
   function CalendarMonthBodyCtrl($element, $$mdDateUtil, $mdDateLocale) {
@@ -838,7 +838,7 @@ angular.module('material.components.datepicker', [
     /** @type {Object} Reference to the month view. */
     this.monthCtrl = null;
 
-    /** @type {Object} Reference to the calendar. */
+    /** @type {Object} Reference to the callendar. */
     this.calendarCtrl = null;
 
     /**
@@ -871,7 +871,7 @@ angular.module('material.components.datepicker', [
   };
 
   /**
-   * Creates a single cell to contain a date in the calendar with all appropriate
+   * Creates a single cell to contain a date in the callendar with all appropriate
    * attributes and classes added. If a date is given, the cell content will be set
    * based on the date.
    * @param {Date=} opt_date
@@ -884,7 +884,7 @@ angular.module('material.components.datepicker', [
     // TODO(jelbourn): cloneNode is likely a faster way of doing this.
     var cell = document.createElement('td');
     cell.tabIndex = -1;
-    cell.classList.add('md-calendar-date');
+    cell.classList.add('md-callendar-date');
     cell.setAttribute('role', 'gridcell');
 
     if (opt_date) {
@@ -912,7 +912,7 @@ angular.module('material.components.datepicker', [
       if (this.isDateEnabled(opt_date)) {
         // Add a indicator for select, hover, and focus states.
         var selectionIndicator = document.createElement('span');
-        selectionIndicator.classList.add('md-calendar-date-selection-indicator');
+        selectionIndicator.classList.add('md-callendar-date-selection-indicator');
         selectionIndicator.textContent = cellText;
         cell.appendChild(selectionIndicator);
         cell.addEventListener('click', monthCtrl.cellClickHandler);
@@ -921,7 +921,7 @@ angular.module('material.components.datepicker', [
           this.focusAfterAppend = cell;
         }
       } else {
-        cell.classList.add('md-calendar-date-disabled');
+        cell.classList.add('md-callendar-date-disabled');
         cell.textContent = cellText;
       }
     }
@@ -942,7 +942,7 @@ angular.module('material.components.datepicker', [
   };
 
   /**
-   * Builds a `tr` element for the calendar grid.
+   * Builds a `tr` element for the callendar grid.
    * @param rowNumber The week number within the month.
    * @returns {HTMLElement}
    */
@@ -991,10 +991,10 @@ angular.module('material.components.datepicker', [
 
     monthLabelCellContent.textContent = this.dateLocale.monthHeaderFormatter(date);
     monthLabelCell.appendChild(monthLabelCellContent);
-    monthLabelCell.classList.add('md-calendar-month-label');
+    monthLabelCell.classList.add('md-callendar-month-label');
     // If the entire month is after the max date, render the label as a disabled state.
     if (this.calendarCtrl.maxDate && firstDayOfMonth > this.calendarCtrl.maxDate) {
-      monthLabelCell.classList.add('md-calendar-month-label-disabled');
+      monthLabelCell.classList.add('md-callendar-month-label-disabled');
     } else {
       monthLabelCell.addEventListener('click', this.monthCtrl.headerClickHandler);
       monthLabelCell.setAttribute('data-timestamp', firstDayOfMonth.getTime());
@@ -1071,7 +1071,7 @@ angular.module('material.components.datepicker', [
    * Gets the day-of-the-week index for a date for the current locale.
    * @private
    * @param {Date} date
-   * @returns {number} The column index of the date in the calendar.
+   * @returns {number} The column index of the date in the callendar.
    */
   CalendarMonthBodyCtrl.prototype.getLocaleDay_ = function(date) {
     return (date.getDay() + (7 - this.dateLocale.firstDayOfWeek)) % 7;
@@ -1086,23 +1086,23 @@ angular.module('material.components.datepicker', [
     .directive('mdCalendarYear', calendarDirective);
 
   /**
-   * Height of one calendar year tbody. This must be made known to the virtual-repeat and is
+   * Height of one callendar year tbody. This must be made known to the virtual-repeat and is
    * subsequently used for scrolling to specific years.
    */
   var TBODY_HEIGHT = 88;
 
-  /** Private component, representing a list of years in the calendar. */
+  /** Private component, representing a list of years in the callendar. */
   function calendarDirective() {
     return {
       template:
-        '<div class="md-calendar-scroll-mask">' +
-          '<md-virtual-repeat-container class="md-calendar-scroll-container">' +
-            '<table role="grid" tabindex="0" class="md-calendar" aria-readonly="true">' +
+        '<div class="md-callendar-scroll-mask">' +
+          '<md-virtual-repeat-container class="md-callendar-scroll-container">' +
+            '<table role="grid" tabindex="0" class="md-callendar" aria-readonly="true">' +
               '<tbody ' +
-                  'md-calendar-year-body ' +
+                  'md-callendar-year-body ' +
                   'role="rowgroup" ' +
                   'md-virtual-repeat="i in yearCtrl.items" ' +
-                  'md-year-offset="$index" class="md-calendar-year" ' +
+                  'md-year-offset="$index" class="md-callendar-year" ' +
                   'md-start-index="yearCtrl.getFocusedYearIndex()" ' +
                   'md-item-size="' + TBODY_HEIGHT + '"></tbody>' +
             '</table>' +
@@ -1163,7 +1163,7 @@ angular.module('material.components.datepicker', [
   }
 
   /**
-   * Initialize the controller by saving a reference to the calendar and
+   * Initialize the controller by saving a reference to the callendar and
    * setting up the object that will be iterated by the virtual repeater.
    */
   CalendarYearCtrl.prototype.initialize = function(calendarCtrl) {
@@ -1200,7 +1200,7 @@ angular.module('material.components.datepicker', [
   };
 
   /**
-   * Change the date that is highlighted in the calendar.
+   * Change the date that is highlighted in the callendar.
    * @param {Date} date
    */
   CalendarYearCtrl.prototype.changeDate = function(date) {
@@ -1224,7 +1224,7 @@ angular.module('material.components.datepicker', [
   };
 
   /**
-   * Animates the transition from the calendar's current month to the given month.
+   * Animates the transition from the callendar's current month to the given month.
    * @param {Date} date
    * @returns {angular.$q.Promise} The animation promise.
    */
@@ -1239,7 +1239,7 @@ angular.module('material.components.datepicker', [
 
   /**
    * Handles the year-view-specific keyboard interactions.
-   * @param {Object} event Scope event object passed by the calendar.
+   * @param {Object} event Scope event object passed by the callendar.
    * @param {String} action Action, corresponding to the key that was pressed.
    */
   CalendarYearCtrl.prototype.handleKeyEvent = function(event, action) {
@@ -1276,16 +1276,16 @@ angular.module('material.components.datepicker', [
   };
 
   /**
-   * Attaches listeners for the scope events that are broadcast by the calendar.
+   * Attaches listeners for the scope events that are broadcast by the callendar.
    */
   CalendarYearCtrl.prototype.attachScopeListeners = function() {
     var self = this;
 
-    self.$scope.$on('md-calendar-parent-changed', function(event, value) {
+    self.$scope.$on('md-callendar-parent-changed', function(event, value) {
       self.changeDate(value);
     });
 
-    self.$scope.$on('md-calendar-parent-action', angular.bind(self, self.handleKeyEvent));
+    self.$scope.$on('md-callendar-parent-action', angular.bind(self, self.handleKeyEvent));
   };
 })();
 
@@ -1297,7 +1297,7 @@ angular.module('material.components.datepicker', [
       .directive('mdCalendarYearBody', mdCalendarYearDirective);
 
   /**
-   * Private component, consumed by the md-calendar-year, which separates the DOM construction logic
+   * Private component, consumed by the md-callendar-year, which separates the DOM construction logic
    * and allows for the year view to use md-virtual-repeat.
    */
   function mdCalendarYearDirective() {
@@ -1338,7 +1338,7 @@ angular.module('material.components.datepicker', [
     /** @final */
     this.dateLocale = $mdDateLocale;
 
-    /** @type {Object} Reference to the calendar. */
+    /** @type {Object} Reference to the callendar. */
     this.calendarCtrl = null;
 
     /** @type {Object} Reference to the year view. */
@@ -1374,7 +1374,7 @@ angular.module('material.components.datepicker', [
   };
 
   /**
-   * Creates a single cell to contain a year in the calendar.
+   * Creates a single cell to contain a year in the callendar.
    * @param {number} opt_year Four-digit year.
    * @param {number} opt_month Zero-indexed month.
    * @returns {HTMLElement}
@@ -1407,7 +1407,7 @@ angular.module('material.components.datepicker', [
     if (this.dateUtil.isMonthWithinRange(firstOfMonth,
         calendarCtrl.minDate, calendarCtrl.maxDate)) {
       var selectionIndicator = document.createElement('span');
-      selectionIndicator.classList.add('md-calendar-date-selection-indicator');
+      selectionIndicator.classList.add('md-callendar-date-selection-indicator');
       selectionIndicator.textContent = cellText;
       cell.appendChild(selectionIndicator);
       cell.addEventListener('click', yearCtrl.cellClickHandler);
@@ -1416,7 +1416,7 @@ angular.module('material.components.datepicker', [
         this.focusAfterAppend = cell;
       }
     } else {
-      cell.classList.add('md-calendar-date-disabled');
+      cell.classList.add('md-callendar-date-disabled');
       cell.textContent = cellText;
     }
 
@@ -1430,7 +1430,7 @@ angular.module('material.components.datepicker', [
   CalendarYearBodyCtrl.prototype.buildBlankCell = function() {
     var cell = document.createElement('td');
     cell.tabIndex = -1;
-    cell.classList.add('md-calendar-date');
+    cell.classList.add('md-callendar-date');
     cell.setAttribute('role', 'gridcell');
 
     cell.setAttribute('tabindex', '-1');
@@ -1451,7 +1451,7 @@ angular.module('material.components.datepicker', [
     // First row contains label and Jan-Jun.
     var firstRow = document.createElement('tr');
     var labelCell = document.createElement('td');
-    labelCell.className = 'md-calendar-month-label';
+    labelCell.className = 'md-callendar-month-label';
     labelCell.textContent = year;
     firstRow.appendChild(labelCell);
 
@@ -1503,12 +1503,12 @@ angular.module('material.components.datepicker', [
    * @property {(function(number): string)=} weekNumberFormatter Function that returns a label for
    *     a week given the week number.
    * @property {(string)=} msgCalendar Translation of the label "Calendar" for the current locale.
-   * @property {(string)=} msgOpenCalendar Translation of the button label "Open calendar" for the
+   * @property {(string)=} msgOpenCalendar Translation of the button label "Open callendar" for the
    *     current locale.
-   * @property {Date=} firstRenderableDate The date from which the datepicker calendar will begin
+   * @property {Date=} firstRenderableDate The date from which the datepicker callendar will begin
    * rendering. Note that this will be ignored if a minimum date is set. Defaults to January 1st 1880.
    * @property {Date=} lastRenderableDate The last date that will be rendered by the datepicker
-   * calendar. Note that this will be ignored if a maximum date is set. Defaults to January 1st 2130.
+   * callendar. Note that this will be ignored if a maximum date is set. Defaults to January 1st 2130.
    *
    * @usage
    * <hljs lang="js">
@@ -1551,7 +1551,7 @@ angular.module('material.components.datepicker', [
    *     $mdDateLocaleProvider.msgCalendar = 'Calendrier';
    *     $mdDateLocaleProvider.msgOpenCalendar = 'Ouvrir le calendrier';
    *
-   *     // You can also set when your calendar begins and ends.
+   *     // You can also set when your callendar begins and ends.
    *     $mdDateLocaleProvider.firstRenderableDate = new Date(1776, 6, 4);
    *     $mdDateLocaleProvider.lastRenderableDate = new Date(2012, 11, 21);
    * });
@@ -1613,13 +1613,13 @@ angular.module('material.components.datepicker', [
       this.longDateFormatter = null;
 
       /**
-       * ARIA label for the calendar "dialog" used in the datepicker.
+       * ARIA label for the callendar "dialog" used in the datepicker.
        * @type {string}
        */
       this.msgCalendar = '';
 
       /**
-       * ARIA label for the datepicker's "Open calendar" buttons.
+       * ARIA label for the datepicker's "Open callendar" buttons.
        * @type {string}
        */
       this.msgOpenCalendar = '';
@@ -1740,9 +1740,9 @@ angular.module('material.components.datepicker', [
 
       // Default ARIA messages are in English (US).
       var defaultMsgCalendar = 'Calendar';
-      var defaultMsgOpenCalendar = 'Open calendar';
+      var defaultMsgOpenCalendar = 'Open callendar';
 
-      // Default start/end dates that are rendered in the calendar.
+      // Default start/end dates that are rendered in the callendar.
       var defaultFirstRenderableDate = new Date(1880, 0, 1);
       var defaultLastRendereableDate = new Date(defaultFirstRenderableDate.getFullYear() + 250, 0, 1);
 
@@ -1778,7 +1778,7 @@ angular.module('material.components.datepicker', [
   'use strict';
 
   /**
-   * Utility for performing date calculations to facilitate operation of the calendar and
+   * Utility for performing date calculations to facilitate operation of the callendar and
    * datepicker.
    */
   angular.module('material.components.datepicker').factory('$$mdDateUtil', function() {
@@ -2092,9 +2092,9 @@ angular.module('material.components.datepicker', [
   // POST RELEASE
   // TODO(jelbourn): Demo that uses moment.js
   // TODO(jelbourn): make sure this plays well with validation and ngMessages.
-  // TODO(jelbourn): calendar pane doesn't open up outside of visible viewport.
+  // TODO(jelbourn): callendar pane doesn't open up outside of visible viewport.
   // TODO(jelbourn): forward more attributes to the internal input (required, autofocus, etc.)
-  // TODO(jelbourn): something better for mobile (calendar panel takes up entire screen?)
+  // TODO(jelbourn): something better for mobile (callendar panel takes up entire screen?)
   // TODO(jelbourn): input behavior (masking? auto-complete?)
 
 
@@ -2112,19 +2112,19 @@ angular.module('material.components.datepicker', [
    * @param {Object=} ng-model-options Allows tuning of the way in which `ng-model` is being updated. Also allows
    * for a timezone to be specified. <a href="https://docs.angularjs.org/api/ng/directive/ngModelOptions#usage">Read more at the ngModelOptions docs.</a>
    * @param {expression=} ng-change Expression evaluated when the model value changes.
-   * @param {expression=} ng-focus Expression evaluated when the input is focused or the calendar is opened.
-   * @param {expression=} ng-blur Expression evaluated when focus is removed from the input or the calendar is closed.
+   * @param {expression=} ng-focus Expression evaluated when the input is focused or the callendar is opened.
+   * @param {expression=} ng-blur Expression evaluated when focus is removed from the input or the callendar is closed.
    * @param {Date=} md-min-date Expression representing a min date (inclusive).
    * @param {Date=} md-max-date Expression representing a max date (inclusive).
    * @param {(function(Date): boolean)=} md-date-filter Function expecting a date and returning a boolean whether it can be selected or not.
    * @param {String=} md-placeholder The date input placeholder value.
-   * @param {String=} md-open-on-focus When present, the calendar will be opened when the input is focused.
-   * @param {Boolean=} md-is-open Expression that can be used to open the datepicker's calendar on-demand.
-   * @param {String=} md-current-view Default open view of the calendar pane. Can be either "month" or "year".
+   * @param {String=} md-open-on-focus When present, the callendar will be opened when the input is focused.
+   * @param {Boolean=} md-is-open Expression that can be used to open the datepicker's callendar on-demand.
+   * @param {String=} md-current-view Default open view of the callendar pane. Can be either "month" or "year".
    * @param {String=} md-hide-icons Determines which datepicker icons should be hidden. Note that this may cause the
    * datepicker to not align properly with other components. **Use at your own risk.** Possible values are:
    * * `"all"` - Hides all icons.
-   * * `"calendar"` - Only hides the calendar icon.
+   * * `"callendar"` - Only hides the callendar icon.
    * * `"triangle"` - Only hides the triangle icon.
    * @param {boolean=} ng-disabled Whether the datepicker is disabled.
    * @param {boolean=} ng-required Whether a value is required for the datepicker.
@@ -2151,17 +2151,17 @@ angular.module('material.components.datepicker', [
   function datePickerDirective($$mdSvgRegistry, $mdUtil, $mdAria, inputDirective) {
     return {
       template: function(tElement, tAttrs) {
-        // Buttons are not in the tab order because users can open the calendar via keyboard
+        // Buttons are not in the tab order because users can open the callendar via keyboard
         // interaction on the text input, and multiple tab stops for one component (picker)
         // may be confusing.
         var hiddenIcons = tAttrs.mdHideIcons;
         var ariaLabelValue = tAttrs.ariaLabel || tAttrs.mdPlaceholder;
 
-        var calendarButton = (hiddenIcons === 'all' || hiddenIcons === 'calendar') ? '' :
+        var calendarButton = (hiddenIcons === 'all' || hiddenIcons === 'callendar') ? '' :
           '<md-button class="md-datepicker-button md-icon-button" type="button" ' +
               'tabindex="-1" aria-hidden="true" ' +
               'ng-click="ctrl.openCalendarPane($event)">' +
-            '<md-icon class="md-datepicker-calendar-icon" aria-label="md-calendar" ' +
+            '<md-icon class="md-datepicker-callendar-icon" aria-label="md-callendar" ' +
                      'md-svg-src="' + $$mdSvgRegistry.mdCalendar + '"></md-icon>' +
           '</md-button>';
 
@@ -2185,18 +2185,18 @@ angular.module('material.components.datepicker', [
         '</div>' +
 
         // This pane will be detached from here and re-attached to the document body.
-        '<div class="md-datepicker-calendar-pane md-whiteframe-z1">' +
+        '<div class="md-datepicker-callendar-pane md-whiteframe-z1">' +
           '<div class="md-datepicker-input-mask">' +
             '<div class="md-datepicker-input-mask-opaque"></div>' +
           '</div>' +
-          '<div class="md-datepicker-calendar">' +
-            '<md-calendar role="dialog" aria-label="{{::ctrl.dateLocale.msgCalendar}}" ' +
+          '<div class="md-datepicker-callendar">' +
+            '<md-callendar role="dialog" aria-label="{{::ctrl.dateLocale.msgCalendar}}" ' +
                 'md-current-view="{{::ctrl.currentView}}"' +
                 'md-min-date="ctrl.minDate"' +
                 'md-max-date="ctrl.maxDate"' +
                 'md-date-filter="ctrl.dateFilter"' +
                 'ng-model="ctrl.date" ng-if="ctrl.isCalendarOpen">' +
-            '</md-calendar>' +
+            '</md-callendar>' +
           '</div>' +
         '</div>';
       },
@@ -2240,7 +2240,7 @@ angular.module('material.components.datepicker', [
           mdInputContainer.input = element;
           mdInputContainer.element
             .addClass(INPUT_CONTAINER_CLASS)
-            .toggleClass(HAS_ICON_CLASS, attr.mdHideIcons !== 'calendar' && attr.mdHideIcons !== 'all');
+            .toggleClass(HAS_ICON_CLASS, attr.mdHideIcons !== 'callendar' && attr.mdHideIcons !== 'all');
 
           if (!mdInputContainer.label) {
             $mdAria.expect(element, 'aria-label', attr.mdPlaceholder);
@@ -2280,29 +2280,29 @@ angular.module('material.components.datepicker', [
   /** Class applied to the md-input-container, if a datepicker is placed inside it */
   var INPUT_CONTAINER_CLASS = '_md-datepicker-floating-label';
 
-  /** Class to be applied when the calendar icon is enabled. */
-  var HAS_ICON_CLASS = '_md-datepicker-has-calendar-icon';
+  /** Class to be applied when the callendar icon is enabled. */
+  var HAS_ICON_CLASS = '_md-datepicker-has-callendar-icon';
 
   /** Default time in ms to debounce input event by. */
   var DEFAULT_DEBOUNCE_INTERVAL = 500;
 
   /**
-   * Height of the calendar pane used to check if the pane is going outside the boundary of
-   * the viewport. See calendar.scss for how $md-calendar-height is computed; an extra 20px is
+   * Height of the callendar pane used to check if the pane is going outside the boundary of
+   * the viewport. See callendar.scss for how $md-callendar-height is computed; an extra 20px is
    * also added to space the pane away from the exact edge of the screen.
    *
    *  This is computed statically now, but can be changed to be measured if the circumstances
-   *  of calendar sizing are changed.
+   *  of callendar sizing are changed.
    */
   var CALENDAR_PANE_HEIGHT = 368;
 
   /**
-   * Width of the calendar pane used to check if the pane is going outside the boundary of
-   * the viewport. See calendar.scss for how $md-calendar-width is computed; an extra 20px is
+   * Width of the callendar pane used to check if the pane is going outside the boundary of
+   * the viewport. See callendar.scss for how $md-callendar-width is computed; an extra 20px is
    * also added to space the pane away from the exact edge of the screen.
    *
    *  This is computed statically now, but can be changed to be measured if the circumstances
-   *  of calendar sizing are changed.
+   *  of callendar sizing are changed.
    */
   var CALENDAR_PANE_WIDTH = 360;
 
@@ -2334,7 +2334,7 @@ angular.module('material.components.datepicker', [
 
     /**
      * The root document element. This is used for attaching a top-level click handler to
-     * close the calendar panel when a click outside said panel occurs. We use `documentElement`
+     * close the callendar panel when a click outside said panel occurs. We use `documentElement`
      * instead of body because, when scrolling is disabled, some browsers consider the body element
      * to be completely off the screen and propagate events directly to the html element.
      * @type {!angular.JQLite}
@@ -2353,14 +2353,14 @@ angular.module('material.components.datepicker', [
     /** @type {HTMLElement} */
     this.inputContainer = $element[0].querySelector('.md-datepicker-input-container');
 
-    /** @type {HTMLElement} Floating calendar pane. */
-    this.calendarPane = $element[0].querySelector('.md-datepicker-calendar-pane');
+    /** @type {HTMLElement} Floating callendar pane. */
+    this.calendarPane = $element[0].querySelector('.md-datepicker-callendar-pane');
 
     /** @type {HTMLElement} Calendar icon button. */
     this.calendarButton = $element[0].querySelector('.md-datepicker-button');
 
     /**
-     * Element covering everything but the input in the top of the floating calendar pane.
+     * Element covering everything but the input in the top of the floating callendar pane.
      * @type {!angular.JQLite}
      */
     this.inputMask = angular.element($element[0].querySelector('.md-datepicker-input-mask-opaque'));
@@ -2384,23 +2384,23 @@ angular.module('material.components.datepicker', [
     this.isDisabled;
     this.setDisabled($element[0].disabled || angular.isString($attrs.disabled));
 
-    /** @type {boolean} Whether the date-picker's calendar pane is open. */
+    /** @type {boolean} Whether the date-picker's callendar pane is open. */
     this.isCalendarOpen = false;
 
-    /** @type {boolean} Whether the calendar should open when the input is focused. */
+    /** @type {boolean} Whether the callendar should open when the input is focused. */
     this.openOnFocus = $attrs.hasOwnProperty('mdOpenOnFocus');
 
     /** @final */
     this.mdInputContainer = null;
 
     /**
-     * Element from which the calendar pane was opened. Keep track of this so that we can return
+     * Element from which the callendar pane was opened. Keep track of this so that we can return
      * focus to it when the pane is closed.
      * @type {HTMLElement}
      */
     this.calendarPaneOpenedFrom = null;
 
-    /** @type {String} Unique id for the calendar pane. */
+    /** @type {String} Unique id for the callendar pane. */
     this.calendarPane.id = 'md-date-pane' + $mdUtil.nextUid();
 
     /** Pre-bound click handler is saved so that the event listener can be removed. */
@@ -2422,10 +2422,10 @@ angular.module('material.components.datepicker', [
     /** The built-in Angular date filter. */
     this.ngDateFilter = $filter('date');
 
-    /** @type {Number} Extra margin for the left side of the floating calendar pane. */
+    /** @type {Number} Extra margin for the left side of the floating callendar pane. */
     this.leftMargin = 20;
 
-    /** @type {Number} Extra margin for the top of the floating calendar. Gets determined on the first open. */
+    /** @type {Number} Extra margin for the top of the floating callendar. Gets determined on the first open. */
     this.topMargin = null;
 
     // Unless the user specifies so, the datepicker should not be a tab stop.
@@ -2511,14 +2511,14 @@ angular.module('material.components.datepicker', [
   };
 
   /**
-   * Attach event listeners for both the text input and the md-calendar.
+   * Attach event listeners for both the text input and the md-callendar.
    * Events are used instead of ng-model so that updates don't infinitely update the other
    * on a change. This should also be more performant than using a $watch.
    */
   DatePickerCtrl.prototype.attachChangeListeners = function() {
     var self = this;
 
-    self.$scope.$on('md-calendar-change', function(event, date) {
+    self.$scope.$on('md-callendar-change', function(event, date) {
       self.setModelValue(date);
       self.date = date;
       self.inputElement.value = self.dateLocale.formatDate(date);
@@ -2559,7 +2559,7 @@ angular.module('material.components.datepicker', [
       });
     }
 
-    $scope.$on('md-calendar-close', function() {
+    $scope.$on('md-callendar-close', function() {
       self.closeCalendarPane();
     });
   };
@@ -2699,7 +2699,7 @@ angular.module('material.components.datepicker', [
           (!angular.isFunction(this.dateFilter) || this.dateFilter(opt_date));
   };
 
-  /** Position and attach the floating calendar to the document. */
+  /** Position and attach the floating callendar to the document. */
   DatePickerCtrl.prototype.attachCalendarPane = function() {
     var calendarPane = this.calendarPane;
     var body = document.body;
@@ -2716,7 +2716,7 @@ angular.module('material.components.datepicker', [
       this.topMargin = (this.inputMask.parent().prop('clientHeight') - this.ngInputElement.prop('clientHeight')) / 2;
     }
 
-    // Check to see if the calendar pane would go off the screen. If so, adjust position
+    // Check to see if the callendar pane would go off the screen. If so, adjust position
     // accordingly to keep it within the viewport.
     var paneTop = elementRect.top - bodyRect.top - this.topMargin;
     var paneLeft = elementRect.left - bodyRect.left - this.leftMargin;
@@ -2748,7 +2748,7 @@ angular.module('material.components.datepicker', [
     });
 
     // If the right edge of the pane would be off the screen and shifting it left by the
-    // difference would not go past the left edge of the screen. If the calendar pane is too
+    // difference would not go past the left edge of the screen. If the callendar pane is too
     // big to fit on the screen at all, move it to the left of the screen and scale the entire
     // element down to fit.
     if (paneLeft + CALENDAR_PANE_WIDTH > viewportRight) {
@@ -2781,7 +2781,7 @@ angular.module('material.components.datepicker', [
     });
   };
 
-  /** Detach the floating calendar pane from the document. */
+  /** Detach the floating callendar pane from the document. */
   DatePickerCtrl.prototype.detachCalendarPane = function() {
     this.$element.removeClass(OPEN_CLASS);
     this.mdInputContainer && this.mdInputContainer.element.removeClass(OPEN_CLASS);
@@ -2801,7 +2801,7 @@ angular.module('material.components.datepicker', [
   };
 
   /**
-   * Open the floating calendar pane.
+   * Open the floating callendar pane.
    * @param {Event} event
    */
   DatePickerCtrl.prototype.openCalendarPane = function(event) {
@@ -2809,10 +2809,10 @@ angular.module('material.components.datepicker', [
       this.isCalendarOpen = this.isOpen = true;
       this.calendarPaneOpenedFrom = event.target;
 
-      // Because the calendar pane is attached directly to the body, it is possible that the
+      // Because the callendar pane is attached directly to the body, it is possible that the
       // rest of the component (input, etc) is in a different scrolling container, such as
       // an md-content. This means that, if the container is scrolled, the pane would remain
-      // stationary. To remedy this, we disable scrolling while the calendar pane is open, which
+      // stationary. To remedy this, we disable scrolling while the callendar pane is open, which
       // also matches the native behavior for things like `<select>` on Mac and Windows.
       this.$mdUtil.disableScrollAround(this.calendarPane);
 
@@ -2834,7 +2834,7 @@ angular.module('material.components.datepicker', [
     }
   };
 
-  /** Close the floating calendar pane. */
+  /** Close the floating callendar pane. */
   DatePickerCtrl.prototype.closeCalendarPane = function() {
     if (this.isCalendarOpen) {
       var self = this;
@@ -2851,9 +2851,9 @@ angular.module('material.components.datepicker', [
 
       if (self.openOnFocus) {
         // Ensures that all focus events have fired before resetting
-        // the calendar. Prevents the calendar from reopening immediately
+        // the callendar. Prevents the callendar from reopening immediately
         // in IE when md-open-on-focus is set. Also it needs to trigger
-        // a digest, in order to prevent issues where the calendar wasn't
+        // a digest, in order to prevent issues where the callendar wasn't
         // showing up on the next open.
         self.$mdUtil.nextTick(reset);
       } else {
@@ -2866,14 +2866,14 @@ angular.module('material.components.datepicker', [
     }
   };
 
-  /** Gets the controller instance for the calendar in the floating pane. */
+  /** Gets the controller instance for the callendar in the floating pane. */
   DatePickerCtrl.prototype.getCalendarCtrl = function() {
     return angular.element(this.calendarPane.querySelector('md-calendar')).controller('mdCalendar');
   };
 
-  /** Focus the calendar in the floating pane. */
+  /** Focus the callendar in the floating pane. */
   DatePickerCtrl.prototype.focusCalendar = function() {
-    // Use a timeout in order to allow the calendar to be rendered, as it is gated behind an ng-if.
+    // Use a timeout in order to allow the callendar to be rendered, as it is gated behind an ng-if.
     var self = this;
     this.$mdUtil.nextTick(function() {
       self.getCalendarCtrl().focus();
@@ -2890,7 +2890,7 @@ angular.module('material.components.datepicker', [
     }
 
     // The ng* expressions shouldn't be evaluated when mdOpenOnFocus is on,
-    // because they also get called when the calendar is opened/closed.
+    // because they also get called when the callendar is opened/closed.
     if (!this.openOnFocus) {
       this.evalAttr(isFocused ? 'ngFocus' : 'ngBlur');
     }
@@ -2899,8 +2899,8 @@ angular.module('material.components.datepicker', [
   };
 
   /**
-   * Handles a click on the document body when the floating calendar pane is open.
-   * Closes the floating calendar pane if the click is not inside of it.
+   * Handles a click on the document body when the floating callendar pane is open.
+   * Closes the floating callendar pane if the click is not inside of it.
    * @param {MouseEvent} event
    */
   DatePickerCtrl.prototype.handleBodyClick = function(event) {
@@ -2917,7 +2917,7 @@ angular.module('material.components.datepicker', [
 
   /**
    * Handles the event when the user navigates away from the current tab. Keeps track of
-   * whether the input was focused when the event happened, in order to prevent the calendar
+   * whether the input was focused when the event happened, in order to prevent the callendar
    * from re-opening.
    */
   DatePickerCtrl.prototype.handleWindowBlur = function() {

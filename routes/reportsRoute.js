@@ -3,7 +3,7 @@
 var express = require('express');
 var reportRoute = express.Router();
 var Reports = require('../models/reporting');
-var Users = require('../models/user');
+var Users = require('../models/employee');
 var timeCalculator = require('./helpers/TimeCalcReportings/calcMinutes');
 
 

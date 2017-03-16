@@ -2,7 +2,7 @@
  * Created by rafa on 04/03/2017.
  */
 var Books = require('../../models/book');
-var User = require('../../models/user');
+var User = require('../../models/employee');
 var TelegramBot = require('node-telegram-bot-api');
 var config = require('../../config');
 var token = config.token;

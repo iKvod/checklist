@@ -1,11 +1,6 @@
 'use strict';
 
 angular.module('checklist')
-    .controller('MainCtrl', ['$mdSidenav', function($mdSidenav){
-        var vm = this;
-
-
-    }])
     .controller('ChecklistCtrl', ['ChecklistService', '$state','$stateParams', '$rootScope', '$timeout',
      function(ChecklistService, $state, $stateParams, $rootScope, $timeout){
        var vm = this;

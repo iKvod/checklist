@@ -7,7 +7,7 @@ var express = require('express');
 var router = express.Router();
 
 var Books = require('../models/book');
-var Users = require('../models/user');
+var Users = require('../models/employee');
 
 
 router.get('/', function (req, res, next) {

@@ -10,7 +10,7 @@ var TelegramBot = require('node-telegram-bot-api');
 var token = config.token;
 var bot = new TelegramBot(token);
 
-var Users = require('../models/user');
+var Users = require('../models/employee');
 var Reports = require('../models/reporting');
 
 

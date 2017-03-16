@@ -50,44 +50,23 @@ function stringSeparator(sep, string) {
     return strData[0];
    // console.log(strData[0]);
 }
-var Employees = require('../models/employees');
 
-function generateId(count){
-    var date = new Date();
-    var year = date.getFullYear().toString().substr(2);
-    var dep = 'IT';
-    var newId = year + dep + count;
+var idGntr = require('../Utils/idGenerator');
 
-    console.log("dsds");
-}
+console.log(idGntr.fetchData(null, idGntr.generateId));
 
-
-function getEmployyesCount (callback){
-    var count = 0;
-
-    Employees.findOne({})
-        .select({ number:1 })
-        .exec(function (err, employee) {
-            if(err) {console.log(err); return}
-            count = employee.number;
-            callback(count);
-        });
-}
-
-//getEmployyesCount(generateId);
-
-var date = new Date();
-
-console.log(date.getDate());
-console.log(date.getUTCDate());
-console.log(date.getTime())// time in ms
-console.log(date.getUTCDay()) // day of week
-console.log(date.getTimezoneOffset())
-console.log(date.getUTCHours() + 6)
-console.log(date);
-console.log(date.getHours());
-console.log(date.getDay());
-console.log(date.getFullYear());
+// var date = new Date();
+//
+// console.log(date.getDate());
+// console.log(date.getUTCDate());
+// console.log(date.getTime())// time in ms
+// console.log(date.getUTCDay()) // day of week
+// console.log(date.getTimezoneOffset())
+// console.log(date.getUTCHours() + 6)
+// console.log(date);
+// console.log(date.getHours());
+// console.log(date.getDay());
+// console.log(date.getFullYear());
 
 
 

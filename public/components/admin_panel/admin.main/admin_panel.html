@@ -9,7 +9,7 @@
 	<!--</div>&ndash;&gt;-->
 
 	<!--<div class="admin-container">-->
-		<!--<div class="calendar-container">-->
+		<!--<div class="callendar-container">-->
 
 		<!--</div>-->
 
@@ -60,25 +60,30 @@
 		</div>
 	</header>
 
-	<md-content layout-padding>
-		<md-tabs md-center-tabs="true" md-border-bottom>
+	<md-content layout-padding class="tabs-body">
+		<md-tabs class="tabs-content" md-center-tabs="true" md-border-bottom>
+
 			<md-tab label="Отчеты"  md-on-select="vm.setTab(1)" >
 				<div ui-view="">
 
 				</div>
 			</md-tab>
-			<md-tab label="Сотрудники"  md-on-select="vm.setTab(2)">
-				<div ui-view="">
 
-				</div>
-			</md-tab>
 			<md-tab label="Настройки" md-on-select="vm.setTab(3)">
 				<div ui-view="">
+				</div>
+			</md-tab>
+
+			<md-tab label="Сотрудники"  md-on-select="vm.setTab(2)" >
+				<div ui-view="">
 
 				</div>
 			</md-tab>
+
+
+
 			<md-tab label="FOR FUN" md-on-select="vm.setTab(4)">
-				<div ui-view="">
+				<div ui-view="" class="tab-content">
 
 				</div>
 			</md-tab>
@@ -87,10 +92,3 @@
 	</md-content>
 
 </div>
-
-
-
-
-
-
-<!--it was after div class admin-main-->

@@ -10,19 +10,12 @@ angular.module('checklist')
       vm.num = num;
       if(num === 1){
         $state.go('admin.reports');
-        console.log(num);
       } else if(num === 2 ){
         $state.go('admin.employees');
-        console.log(num);
-
       } else if(num === 3 ){
         $state.go('admin.settings');
-        console.log(num);
-
       } else {
         $state.go('fun');
-        console.log(num);
-
       }
     }
 

@@ -13,8 +13,6 @@ var ReportingSchema = new Schema({
     lunch_out: {type: Date, default: null}, // ..coming from lunch
     go_out: {type: Date, default: null}, // .. go out during the work hours
     come_back: {type: Date, default: null},// .. come back to work during current work day
-    // created_at: { type: Date, default: Date.now },
-    // updated_at: { type: Date, default: Date.now },
     report: { type: String },
     employee: { // position id of employee
         type: Schema.Types.ObjectId,
@@ -23,7 +21,7 @@ var ReportingSchema = new Schema({
     calendar : {type: Schema.Types.ObjectId, ref:''},
     salary_per_day: {type: Number},
     absent : {type: Boolean, default: true},
-
+    fuckup: {type: Boolean, default: false} // if emplo forgot to checkout then  fuckup true
     //curentDayMinutes
 }, {
     timestamps: true
