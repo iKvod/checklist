@@ -8,10 +8,14 @@ var emplBots = require('../models/employment');
 
 
 userrouter.get('/', function(req, res, next){
-    Users.find({disabled:false}, function(err, users){
-        if(err) return next(err);
-        res.send(users);
-    })
+    // Users.find({disabled:false}, function(err, users){
+    //     if(err) return next(err);
+    //     res.send(users);
+    // })
+  Users.find({}, function(err, users){
+    if(err) return next(err);
+    res.send(users);
+  })
 });
 
 userrouter.get('/fired', function (req, res, next) {
