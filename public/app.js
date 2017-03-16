@@ -128,7 +128,7 @@ angular.module('checklist', [
            controllerAs: 'vm',
            resolve: {
              users: function (EmployeesService) {
-               return EmployeesService.getAll().$promise;
+               return EmployeesService.query().$promise;
              }
            }
          })
