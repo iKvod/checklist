@@ -93,12 +93,14 @@ userrouter.put('/update', function (req, res, next) {
               return;
             }
             updatedUsers.push(savedUser);
-            if (i === (users.length)){
-              console.log(i);
-              callback(null, updatedUsers);
-            }
+            // if (i === (users.length)){
+            //   console.log(i);
+            //   callback(null, updatedUsers);
+            // }
           })
         }
+        callback(null, updatedUsers);
+
       })
   }
 });
