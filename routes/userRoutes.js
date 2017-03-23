@@ -87,7 +87,7 @@ userrouter.put('/update', function (req, res, next) {
           users[i].position = null;
           users[i].department = null;
           users[i].save(function (err, savedUser) {
-            // console.log(savedUser);
+            console.log(savedUser);
             if(err){
               callback(err, null);
               return;
