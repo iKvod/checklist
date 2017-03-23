@@ -33,19 +33,35 @@ router.post('/', function (req, res, next) {
   })
 });
 
-router.delete('/', function (req, res, next) {
-
-});
-
 
 router.get('/:id', function (req, res, next) {
-  Dpts.findOne({_id: req.params.id}, function (err, dpt) {
-    if(err)
-    {
-      return next(err);
-    }
-    res.status(201).send(dpt);
-  })
+  Dpts.findOne({ _id: req.params.id })
+    .select('department')
+    .lean()
+    .exec(function (err, dpt) {
+      if(err)
+      {
+        return next(err);
+      }
+      res.status(201).send(dpt);
+    });
+});
+
+// To get departments with positions
+router.get('/position/:id', function (req, res, next) {
+  Dpts.findOne({ _id: req.params.id })
+    .populate({
+      path: 'positions',
+      select: 'positons'
+    })
+    .lean()
+    .exec(function (err, dpt) {
+      if(err)
+      {
+        return next(err);
+      }
+      res.status(201).send(dpt);
+    });
 });
 
 router.put('/:id', function (req, res, next) {

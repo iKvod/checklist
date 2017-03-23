@@ -24,6 +24,7 @@ angular.module('checklist')
       };
 
       vm.dpts = dpts;
+      console.log(dpts);
       vm.positions = positions;
       vm.botInfo = botIds;
       vm.cancel = function () {
@@ -55,27 +56,7 @@ angular.module('checklist')
         }
       };
 
-      vm.showToast = function(message) {
-        $mdToast.show({
-          hideDelay   : 3000,
-          position    : 'top right',
-          controller  : 'ToastCtrl',
-          templateUrl : '/components/Toasts/employees/remove-toast-tmpl.html',
-          locals: { message: message },
-          parent: angular.element(document.querySelectorAll('body'))
-        });
-      };
 
-      var customToast = function (time, message, element) {
-        $mdToast.show({
-          hideDelay   : time,
-          position    : 'top right',
-          controller  : 'ToastCtrl',
-          templateUrl : '/components/Toasts/employees/remove-toast-tmpl.html',
-          locals: {message: message},
-          parent: angular.element(document.querySelectorAll(element))
-        });
-      };
 
       var botid = null;
       vm.getBotId = function(){
@@ -99,6 +80,23 @@ angular.module('checklist')
             }
 
           });
+      };
+
+      vm.specPosition = null;
+      vm.getPositions = function (department) {
+        var dptId = vm.dpts.find(function (el, index, users) {
+          return el.department === department;
+        });
+        $http({
+            method: 'GET',
+            url: '/api/departments/position/' + dptId
+          })
+          .then(function (resp) {
+            vm.specPosition = resp;
+            console.log(resp);
+          }, function (err) {
+            console.log(err);
+          })
       };
 
       // change registred to true in employment schema
@@ -142,6 +140,29 @@ angular.module('checklist')
         //       reload: true, inherit: false
         //     });
         //   });
+      };
+
+
+      vm.showToast = function(message) {
+        $mdToast.show({
+          hideDelay   : 3000,
+          position    : 'top right',
+          controller  : 'ToastCtrl',
+          templateUrl : '/components/Toasts/employees/remove-toast-tmpl.html',
+          locals: { message: message },
+          parent: angular.element(document.querySelectorAll('body'))
+        });
+      };
+
+      var customToast = function (time, message, element) {
+        $mdToast.show({
+          hideDelay   : time,
+          position    : 'top right',
+          controller  : 'ToastCtrl',
+          templateUrl : '/components/Toasts/employees/remove-toast-tmpl.html',
+          locals: {message: message},
+          parent: angular.element(document.querySelectorAll(element))
+        });
       };
 
     }]);

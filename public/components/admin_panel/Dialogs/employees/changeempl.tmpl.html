@@ -24,29 +24,22 @@
           <md-input-container class="md-icon-float md-block" flex="50">
             <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
             <label>Текущий департамент сотрудника</label>
-            <!--<md-select name="type" ng-model="vm.user.employee_id" required>-->
-            <!--&lt;!&ndash;<md-option  value={{vm.user.employee_id}}>{{vm.user.employee_id}}</md-option>&ndash;&gt;-->
-            <!--&lt;!&ndash;<md-option  value={{vm.user.employee_id}}>{{vm.user.employee_id + 2}}</md-option>&ndash;&gt;-->
-            <!--</md-select>-->
             <input ng-model="vm.user.department" type="text" placeholder="Текущий департамент сотрудника" ng-required="true">
           </md-input-container>
           <md-input-container class="md-icon-float md-block" flex="50">
             <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
             <label>Отдел</label>
+            <!--<input type="hidden" ng-model="vm.dpt_id">-->
             <md-select ng-model="vm.user.department" required>
               <md-option ng-value="dpt.department" ng-repeat="dpt in vm.dpts">{{ dpt.department }}</md-option>
             </md-select>
           </md-input-container>
-          <md-input-container class="md-icon-float md-block" flex="50">
+          <md-input-container ng-if="vm.dpts.length != 0" class="md-icon-float md-block" flex="50" ng-click="vm.getPositions(vm.user.department)">
             <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
             <label>Текущая должность сотрудника</label>
-            <!--<md-select name="type" ng-model="vm.user.employee_id" required>-->
-            <!--&lt;!&ndash;<md-option  value={{vm.user.employee_id}}>{{vm.user.employee_id}}</md-option>&ndash;&gt;-->
-            <!--&lt;!&ndash;<md-option  value={{vm.user.employee_id}}>{{vm.user.employee_id + 2}}</md-option>&ndash;&gt;-->
-            <!--</md-select>-->
             <input ng-model="vm.user.position" type="text" placeholder="Текущая должность сотрудника" ng-required="true">
           </md-input-container>
-          <md-input-container class="md-icon-float md-block" flex="50">
+          <md-input-container ng-if="vm.dpts.length != 0" class="md-icon-float md-block" flex="50">
             <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
             <label>Должность</label>
             <md-select ng-model="vm.user.position" required>

@@ -40,6 +40,8 @@ router.post('/', function (req, res, next) {
 
         res.send({message: 'Должность ' + savedPos.position + ' добавлена в департамент ' + department.department});
 
+        //this is if we uncommnt departments field in Position schema
+        // to save an id;
 
         // Psn.findOne({ _id: id }, function (err, position) {
         //     position.departments.push(depId);
@@ -114,7 +116,6 @@ router.put('/dpt/:id', function (req, res, next) {
     });
   })
 });
-
 
 
 module.exports = router;

@@ -101,13 +101,16 @@ checklist.get('/checkout/:id', function (req, res, next) {
 checklist.put('/checkout/:id', function (req, res, next) {
 
     Users.findById(req.params.id, function(err, data){
+      console.log(data);
         if (err) console.log(err);
         var len = data.report.length - 1;
         data.checked = false;
 
         data.save(function(err, savedData){
-            if(err) return next(err);
-
+            if(err) {
+              console.log(err);
+               return next(err);
+            };
             var lastReportId = savedData.report[len];
 
             Reports.findById(lastReportId, function (err, report) {

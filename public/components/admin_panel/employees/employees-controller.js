@@ -79,7 +79,6 @@
           clickOutsideToClose: true,
           fullscreen: vm.customFullScreen,
           locals:{
-
             // dpts: dpts,
             // positions: positions
           },

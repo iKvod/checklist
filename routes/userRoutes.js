@@ -56,6 +56,52 @@ userrouter.get('/d', function (req, res, next) {
     // }
   });
 });
+
+// Updating position and departments to null
+userrouter.put('/update', function (req, res, next) {
+  console.log('heere')
+  // var updatedUsers = [];
+
+  changeToNull( function (err, updatedUsers) {
+    if(err) {
+      console.log(err);
+      res.status(500).send(err);
+      return;
+    }
+    // console.log(updatedUsers);
+    res.send(updatedUsers);
+  });
+
+
+  function changeToNull(callback) {
+    Users.find()
+      .select('position department')
+      .exec(function (err, users) {
+        //console.log(users);
+        if(err){
+          callback(err, null);
+          return;
+        }
+        var updatedUsers = [];
+        for(var i = 0, len = users.length; i < len; i++){
+          users[i].position = null;
+          users[i].department = null;
+          users[i].save(function (err, savedUser) {
+            // console.log(savedUser);
+            if(err){
+              callback(err, null);
+              return;
+            }
+            updatedUsers.push(savedUser);
+            if (i === (users.length)){
+              console.log(i);
+              callback(null, updatedUsers);
+            }
+          })
+        }
+      })
+  }
+});
 // userrouter.get('/d', function (req, res, next) {
 //
 //   emplBots.findOne({ registred: false }, function (err, empl) {
@@ -161,7 +207,7 @@ userrouter.put('/:id', function(req, res, next){
        user.salary_fixed = data.salaryFixed || user.salary_fixed;
        user.firstname = data.firstname || user.firstname;
        user.lastname = data.lastname || user.lastname;
-       user.department = data.department_id || user.department_id;
+       user.department = data.department_id || user.department;
        user.position = data.position_id || user.position;
        user.botId = data.botId || user.botId;
        user.employee_id = data.employee_id || user.employee_id;
@@ -170,7 +216,6 @@ userrouter.put('/:id', function(req, res, next){
        user.bonus = data.bonus || user.bonus;
        user.phonenumber =  data.phonenumber || user.phonenumber;
        user.email = data.email || user.email;
-
 
         user.save(function (err) {
             if(err) {
@@ -252,6 +297,9 @@ userrouter.put('/bot/:id', function (req, res, next) {
   });
 
 });
+
+
+
 
 
 

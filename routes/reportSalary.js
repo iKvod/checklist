@@ -81,7 +81,6 @@ salaryRoute.get('/monthly/:id', function (req, res, next) {
     })
     .exec(function (err, users) {
 
-
       if (err) {
         return next(err);
       }
