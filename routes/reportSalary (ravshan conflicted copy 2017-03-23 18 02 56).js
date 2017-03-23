@@ -68,8 +68,8 @@ salaryRoute.get('/monthly', function (req, res, next) {
 
 // not complited, should the same as above api
 salaryRoute.get('/monthly/:id', function (req, res, next) {
-  // console.log((req.params.id);
-  Users.find({_id: req.params.id}) // for prod pass disabled:false
+  console.log((req.params.id);
+  Users.findById(req.params.id) // for prod pass disabled:false
     .populate({
       path: 'report',
       match: { $and: [{createdAt: { $gte: new Date(2017, 2, 1)}}, { createdAt: { $lte: new Date(2017, 2, 31)}}] }
@@ -81,14 +81,12 @@ salaryRoute.get('/monthly/:id', function (req, res, next) {
     })
     .exec(function (err, users) {
 
-
       if (err) {
         return next(err);
       }
       //res.send(users);
       timeCalculator.calculateMinutes(users, res, function (userReport, res) {
         sendSalaryReport(userReport, res, function (res, usersSalaryReport) {
-          console.log(usersSalaryReport);
           res.send(usersSalaryReport);
         });
       });
