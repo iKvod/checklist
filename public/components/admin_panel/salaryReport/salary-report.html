@@ -1,61 +1,134 @@
-<div class="admin-container">
-  <div class="calendar-container">
+<div class="tab-content">
+  <h>HElo</h>
+  <!--<div class="sal-pan-wrapper">-->
+    <!--<div class="sal-pan-body">-->
+      <!--<div class="sal-pan-tools">-->
+        <!--<a href="" class="tool" ng-click="vm.showCallendar()">-->
+          <!--<img src="/images/employees/user.svg"  width="48" height="48" alt="Календарь">-->
+        <!--</a>-->
+      <!--</div>-->
+      <!--<div class="sal-pan-content">-->
+        <!--<div class="sal-pan-name">-->
+          <!--<div class="sal-pan-title">-->
+            <!--<span>Ф.И.О</span>-->
+          <!--</div>-->
+          <!--<div class="sal-pan-nlist" >-->
+            <!--<div class="sal-pan-list" ng-repeat="rep in vm.report track by $index">-->
+              <!--<span>{{rep.employee_id}}</span>-->
+              <!--<span>{{rep.name}}</span>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="sal-pan-report">-->
+          <!--<div class="sal-pan-month">-->
+            <!--<div class="sal-pan-calendar">-->
+              <!--<div class="month">-->
+                <!--<a href="" ng-click="vm.getReport(vm.month)"><img src="/images/admin/left-arrow.svg" alt="" width="24" height="24"></a>-->
+                <!--<span>Month </span>-->
+                <!--<a  href=""><img src="/images/admin/fast-forward-button.svg" alt="" width="24" height="24"></a>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="sal-pan-repcontent">-->
+            <!--<div class="sal-pan-days">-->
+              <!--<div class="day-content-da" ng-repeat="day in vm.month">-->
+                <!--<span> {{ day }}</span>-->
+              <!--</div>-->
+            <!--</div>-->
+            <!--<div class="sal-pan-day-report">-->
+              <!--<div class="sal-pan-day-rep-body" ng-repeat="rep in vm.report track by $index">-->
+                <!--<div class="cust-layout-row">-->
+                  <!--<div class="cust-layout-row">-->
+                    <!--<div class="day-content-sal" ng-repeat="sal in rep.salaryReports">-->
+                      <!--<span> Пришел: {{sal.salaryDetails.check_in | date:'h:mm'}}</span>-->
+                      <!--<span> Ушел: {{sal.salaryDetails.check_out | date:'h:mm'}}</span>-->
+                      <!--<span> Деньги: {{sal.salaryPerDay | number: 0}}</span>-->
+                      <!--<span> Минуты: {{sal.salaryDetails.report.minutes  }}</span>-->
+                      <!--&lt;!&ndash;<span> 1 {{}}</span>&ndash;&gt;-->
+                    <!--</div>-->
+                  <!--</div>-->
 
-  </div>
+                  <!--<div class="cust-layout-row">-->
+                    <!--<div class="cust-layout-column">-->
+                      <!--<div class="sal-title">-->
+                        <!--<span>SALARY</span>-->
+                      <!--</div>-->
+                      <!--<div class="sal-sal">-->
 
-  <div class="admin-header">
-    <button ng-click="vm.getSomething()">GetReport</button>
-    <button class="md-primary md-raised" ng-click="vm.showCallendar($event)">Calendar</button>
-    <!--<button ng-click="vm.getSomething()">Get Something</button>-->
-  </div>
+                      <!--</div>-->
 
-  <div class="admin-main">
-    <div class="container-fluid">
-      <div class="table-responsive background_white">
+                    <!--</div>-->
+                    <!--<div class="cust-layout-column">-->
+                      <!--<div class="sal-title">-->
+                        <!--<span>BONUS</span>-->
+                      <!--</div>-->
+                      <!--<div class="sal-sal">-->
 
-      </div>
-    </div>
-  </div>
+                      <!--</div>-->
+
+                    <!--</div>-->
+
+                  <!--</div>-->
+                <!--</div>-->
+
+              <!--</div>-->
+
+            <!--</div>-->
+
+          <!--</div>-->
+
+        <!--</div>-->
+        <!--<div class="sal-pan-name" style="width: 700px">-->
+          <!--<md-sidenav class="md-sidenav-right" md-component-id="right"-->
+                      <!--md-disable-backdrop md-whiteframe="4">-->
+
+            <!--<md-toolbar class="md-theme-indigo" style="background-color: #4F6883!important;">-->
+              <!--<h1 class="md-toolbar-tools">Итоговый отчет</h1>-->
+            <!--</md-toolbar>-->
+
+            <!--<md-content layout-margin>-->
+
+              <!--<div class="sal-pan-title">-->
+                <!--<span>Итоговый отчет за месяц</span>-->
+              <!--</div>-->
+              <!--<div class="sal-pan-nlist" >-->
+                <!--<div class="sal-pan-list" ng-repeat="sal in vm.report track by $index">-->
+                  <!--<span>{{$index}}</span>-->
+                <!--</div>-->
+              <!--</div>-->
+
+              <!--<md-button ng-click="vm.toggleRight()" class="md-accent">-->
+                <!--Закрыть-->
+              <!--</md-button>-->
+            <!--</md-content>-->
+
+          <!--</md-sidenav>-->
+
+          <!--<md-content flex style="display: flex">-->
+
+              <!--<div class="sal-pan-name">-->
+                  <!--<div class="sal-pan-title">-->
+                    <!--<span>Итоговый отчет за месяц</span>-->
+                  <!--</div>-->
+                  <!--<div class="sal-pan-nlist" >-->
+                    <!--<div class="sal-pan-list" ng-repeat="sal in vm.report track by $index">-->
+                      <!--<span>{{$index}}</span>-->
+                    <!--</div>-->
+                  <!--</div>-->
+              <!--</div>-->
+
+              <!--&lt;!&ndash;<div>&ndash;&gt;-->
+                <!--&lt;!&ndash;<md-button ng-click="vm.toggleRight()" class="md-raised">&ndash;&gt;-->
+                  <!--&lt;!&ndash;Открыть&ndash;&gt;-->
+                <!--&lt;!&ndash;</md-button>&ndash;&gt;-->
+              <!--&lt;!&ndash;</div>&ndash;&gt;-->
+          <!--</md-content>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--&lt;!&ndash;<div class="aside-cust">&ndash;&gt;-->
+
+      <!--&lt;!&ndash;</div>&ndash;&gt;-->
+      <!--&lt;!&ndash;<aside></aside>&ndash;&gt;-->
+    <!--</div>-->
+  <!--</div>-->
 </div>
-
-
-<!--after admin header-->
-<!--<div class="admin-main">-->
-<!--<div class="table-header">-->
-<!--<div class="table-heading">-->
-<!--&lt;!&ndash;<div class="table-main">-->
-<!--</div>&ndash;&gt;-->
-<!--<span> Ф.И.О.</span>-->
-<!--</div>-->
-
-<!--<div class="table-cell-header">-->
-<!--<span>february</span>-->
-<!--&lt;!&ndash;<div class="table-main-cell"> &lt;!&ndash;ng-repeat="date in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] track by $index"&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;<span>date</span>&ndash;&gt;-->
-<!--&lt;!&ndash;<span>date</span>&ndash;&gt;-->
-<!--&lt;!&ndash;<span>date</span>&ndash;&gt;-->
-<!--&lt;!&ndash;<span>date</span>&ndash;&gt;-->
-
-<!--&lt;!&ndash;</div>&ndash;&gt;-->
-<!--<div class="table-main-cell"> &lt;!&ndash;ng-repeat="date in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] track by $index"&ndash;&gt;-->
-<!--<span class="line"  ng-repeat="date in vm.date track by $index">{{ date }}</span>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<div class="table-body" ng-repeat="report in vm.report track by $index">-->
-<!--<div class="table-body-main">-->
-<!--<span class="name"> {{ report.name }} </span>-->
-<!--<div class="icon">-->
-<!--<span class="icon-pencil"></span>-->
-<!--<span class="icon-bin"></span>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<div class="table-body-cell-header" >-->
-<!--<span class="report" ng-repeat="minutes in report.report track by $index" >-->
-<!--<span class="elem_{{minutes.minutes}}_{{$index}}" ng-bind="minutes.totalTimeInMinutes" ng-click="vm.getPersonalInfo(report.report[$index], $index)"></span>-->
-<!--</span>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->

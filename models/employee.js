@@ -16,8 +16,8 @@ var Employee = new Schema({
     email: String,
     disabled: {type: Boolean, default: false},
     phonenumber: {type:String},
-    department: String,
-    position: String,
+    department: { type: Schema.Types.ObjectId, ref: 'Departments' },
+    position: { type: Schema.Types.ObjectId, ref: 'Positions' },
     salary_fixed: {
         type: Number,
         default: 0.0
@@ -26,7 +26,7 @@ var Employee = new Schema({
         type: Number,
         default: 0.0
     },
-    work_time: {
+    work_time: { //fixed work time
       type: Number,
       default: 0
     },
@@ -61,6 +61,14 @@ Employee.pre('save', function (next) {
     this.updated = currentDate;
     next();
 });
+
+Employee.methods.disableEmployee = function () {
+  this.disabled = true;
+};
+
+Employee.methods.enableEmployee = function () {
+  this.disabled = false;
+};
 
 Employee.methods.getName = function () {
   return this.firstname + ' ' + this.lastname;

@@ -17,16 +17,46 @@ router.get('/', function(req, res, next){
   })
 });
 
+// adds position to db and to write to particular schema of deparment
 router.post('/', function (req, res, next) {
-  var psn = new Psn({});
-  psn.position = req.body.position;
-  psn.save(function (err, savedPsn) {
-    if(err){
-      return next(err);
-    }
-    res.send({message: 'Должность добавлена в базу'});
-  })
 
+  var pos = new Psn({
+    position: req.body.position
+  });
+
+  pos.save(function (err, savedPos) {
+    var id = savedPos._id;
+
+    Dpts.findOne({ department: req.body.department }, function (err, department) {
+      if(err){
+        res.send(err);
+        return;
+      }
+
+      department.positions.push(id);
+
+      department.save(function (err, savedDep) {
+       // var depId = savedDep._id;
+
+        res.send({message: 'Должность ' + savedPos.position + ' добавлена в департамент ' + department.department});
+
+
+        // Psn.findOne({ _id: id }, function (err, position) {
+        //     position.departments.push(depId);
+        //     position.save(function (err, savedPos) {
+        //       if(err){
+        //         res.send(err);
+        //         return
+        //       }
+        //
+        //       console.log(savedPos);
+        //     })
+        // })
+
+      });
+    });
+
+  });
 });
 
 router.delete('/', function (req, res, next) {
@@ -60,6 +90,9 @@ router.put('/:id', function (req, res, next) {
 
 });
 
+// when deleteing position inform User to give another position to existing user;
+// Show him/her  existing user on current position
+// and let him to change there on client side, when he/she tries to delete the particular position
 router.delete('/:id', function (req, res, next) {
   Psn.remove({_id : req.params.id}, function (err, info) {
     if(err){

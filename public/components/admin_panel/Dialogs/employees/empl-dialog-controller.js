@@ -2,7 +2,8 @@
  * Created by rafa on 13/03/2017.
  */
 angular.module('checklist')
-  .controller('EmployeeDialogCtrl', ['$http','$state','$mdDialog','$mdToast', 'EmployeesService', 'dpts', 'positions','botIds', function ($http, $state, $mdDialog, $mdToast, EmployeesService, dpts, positions, botIds) {
+  .controller('EmployeeDialogCtrl', ['$http','$state','$mdDialog','$mdToast', 'EmployeesService', 'dpts', 'positions','botIds',
+    function ($http, $state, $mdDialog, $mdToast, EmployeesService, dpts, positions, botIds) {
       var vm = this;
 
       vm.user = {

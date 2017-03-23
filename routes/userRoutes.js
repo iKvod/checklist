@@ -3,26 +3,39 @@ var userrouter = express.Router();
 var mongoose = require('mongoose');
 var Users = require('../models/employee');
 var emplBots = require('../models/employment');
-
-
-
+var Psn = require('../models/positions');
 
 userrouter.get('/', function(req, res, next){
-    // Users.find({disabled:false}, function(err, users){
+    // Users.find({ disabled: false }, function(err, users){
     //     if(err) return next(err);
     //     res.send(users);
     // })
-  Users.find({}, function(err, users){
-    if(err) return next(err);
-    res.send(users);
-  })
+  Users.find( {} )
+    .populate({
+      path: 'Positions',
+      select: 'position',
+      match: { $and: [{createdAt: { $gte: new Date(2017, 2, 1)}}, { createdAt: { $lte: new Date(2017, 2, 31)}}] }
+    })
+    .populate({
+      path: 'Departments',
+      select: 'department _id'
+    })
+    .exec(function (err, users){
+      console.log(users[1]);
+      if(err) return next(err);
+      res.send(users);
+    });
 });
 
 userrouter.get('/fired', function (req, res, next) {
-  Users.find({disabled:true}, function(err, users){
-    if(err) return next(err);
-    res.status(200).send(users);
-  })
+  // Users.find({disabled:true}, function(err, users){
+  //   if(err) return next(err);
+  //   res.status(200).send(users);
+  // })
+  Users.find({}, function(err, users){
+      if(err) return next(err);
+      res.status(200).send(users);
+    })
 });
 
 userrouter.get('/d', function (req, res, next) {
@@ -59,15 +72,18 @@ userrouter.get('/d', function (req, res, next) {
 // });
 var botHelper = require('../routes/helpers/TelegramBot/tmBotHelper');
 
-userrouter.post('/',function(req, res, next){
+userrouter.post('/',function(req, res, next) {
     var data = req.body;
     //console.log(data);
+
+
+  Psn.findOne({position: data.position}, function (err, pos) {
 
     var user = new Users({
       firstname: data.firstname,
       lastname: data.lastname,
       department: data.department,
-      position: data.position,
+      position: pos._id,
       botId: data.botId,
       employee_id: data.employee_id,
       work_time: data.work_time,
@@ -89,57 +105,40 @@ userrouter.post('/',function(req, res, next){
           //res.location('/error');
         }
       }
+      console.log(savedUser);
 
-      // res.writeHead(302, {
-      //   'Content-Type':'applocation/json'
-      // });
-      //res.location('/admin/employees');
-      res.status(302).send({message: 'Данные сотрудника ' + savedUser.getName() + ' добавлен в базу'});
-      botHelper.sendMessTelegram(savedUser.botId, savedUser.firstname +", Ваш ID - " + savedUser.employee_id + " \n" +
-        "ID Нужен для Checklista.\nПодробную информацию спрашивайте у менеджера или нажмите сюда => '/info' \n Желаем, плодотворной работы :)");
+      pos.employees.push(savedUser._id);
+
+      pos.save(function (err, savedPos) {
+        if(err){
+          res.status(500).send({message: 'Ошибка при сохранений пользователя!'});
+          return;
+        }
+
+        console.log(savedPos);
+        res.status(302).send({message: 'Данные сотрудника ' + savedUser.getName() + ' добавлен в базу'});
+        botHelper.sendMessTelegram(savedUser.botId, savedUser.firstname +", Ваш ID - " + savedUser.employee_id + " \n" +
+          "ID Нужен для Checklista.\nПодробную информацию спрашивайте у менеджера или нажмите сюда => '/info' \n Желаем, плодотворной работы :)");
+      });
     });
-
-    // Users.create([req.body], function(err, user){
-    //     if(err){
-    //         return next(err);
-    //         res.location('/error')
-    //     }
-    //
-    //     res.writeHead(302, {
-    //         'Content-Type':'application/json'
-    //     });
-    //
-    //     res.location('/success');
-    //
-    //     res.send(user);
-    // })
+  });
 });
 
 //to delete employee from db permanantly
 userrouter.delete('/perm/:id', function(req, res, next){
     var id = req.params.id;
     Users.remove({ _id: id }, function(err, deletedUser){
+      console.log(deletedUser);
+      // Psn.find({ }, function () {
+      //
+      // });
 
         if(err) {
           err.status(404);
-          console.log(err);
           return next(err);
         }
         res.send(deletedUser.result);
     });
-    // Users.findById(id, function(err, user){
-    //
-    //   user.remove();
-    //   user.save(function(err, deletedUser){
-    //     if(err) {
-    //       err.status(404);
-    //       console.log(err);
-    //       return next(err);
-    //     }
-    //     console.log(deletedUser);
-    //     res.send(deletedUser);
-    //   });
-    // });
 
 });
 
@@ -152,13 +151,26 @@ userrouter.get('/:id', function(req, res, next){
 });
 
 userrouter.put('/:id', function(req, res, next){
+    var data = req.body;
 
      Users.findById(req.params.id, function (err, user) {
 
         if (err) {
             return next(err);
         }
-        user.salary_fixed = req.body.salaryFixed;
+       user.salary_fixed = data.salaryFixed || user.salary_fixed;
+       user.firstname = data.firstname || user.firstname;
+       user.lastname = data.lastname || user.lastname;
+       user.department = data.department_id || user.department_id;
+       user.position = data.position_id || user.position;
+       user.botId = data.botId || user.botId;
+       user.employee_id = data.employee_id || user.employee_id;
+       user.work_time = data.work_time || user.work_time;
+       user.salary_fixed = data.salary_fixed || user.salary_fixed;
+       user.bonus = data.bonus || user.bonus;
+       user.phonenumber =  data.phonenumber || user.phonenumber;
+       user.email = data.email || user.email;
+
 
         user.save(function (err) {
             if(err) {
@@ -186,13 +198,21 @@ userrouter.delete('/:employee_id', function(req, res, next){
 
 
 userrouter.put('/fire/:id', function (req, res, next) {
+  console.log(req.params.id);
   Users.findOne({_id: req.params.id})
     .exec(function (err, user) {
+      console.log(user);
             if(err){
                 return next(err);
             }
       user.disabled = true;
       user.save(function (err, updatedUser) {
+        if(err){
+          console.log(err);
+return;
+
+        }
+        console.log(updatedUser);
             res.status(200).send(updatedUser._id + " удален и данные помещены в архив!");
       });
 

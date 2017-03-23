@@ -88,7 +88,7 @@ angular.module('checklist', [
          .state('checkout.image',{
             url:'/camera',
             templateUrl:'components/checklist/checkout_image_form.html',
-            controeller:'CheckoutCtrl',
+            controller:'CheckoutCtrl',
             controllerAs:'vm'
          })
          .state('checkout.success', {
@@ -119,7 +119,15 @@ angular.module('checklist', [
            url: '/reports',
            templateUrl: 'components/admin_panel/salaryReport/salary-report.html',
            controller: 'SalaryCtrl',
-           controllerAs: 'vm'
+           controllerAs: 'vm',
+           resolve: {
+             report: function (SalaryService) {
+               return SalaryService.getSalaryReports().getAll().$promise;
+             }
+           }
+           // params: {
+           //   month: null
+           // }
           })
          .state('admin.employees', {
            url:'/employees',

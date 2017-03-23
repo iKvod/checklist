@@ -1,14 +1,14 @@
 <md-dialog aria-label="Mango (Fruit)" class="callendar-main">
   <form ng-cloak>
-    <md-toolbar class="callendar-toolbar">
-      <!--<div class="md-toolbar-tools">-->
-        <!--<h2>Mango (Fruit)</h2>-->
-        <!--<span flex></span>-->
-        <!--<md-button class="md-icon-button" ng-click="vm.cancel()">-->
-          <!--<md-icon aria-label="Close dialog"></md-icon>-->
-          <!--<p>X</p>-->
-        <!--</md-button>-->
-      <!--</div>-->
+    <md-toolbar class="callendar-toolbar" style="background-color: #384554;">
+      <div class="md-toolbar-tools">
+        <h2>Выберите месяц для загрузки отчета</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="vm.cancel()">
+          <md-icon aria-label="Close dialog"></md-icon>
+          <p>X</p>
+        </md-button>
+      </div>
     </md-toolbar>
 
     <md-dialog-content class="callendar-wrapper">
@@ -17,7 +17,7 @@
           <a href='' class="callendar" ng-click="setMonth(month)" ng-repeat="month in ['Янв.', 'Фев.', 'Мар.', 'Апр.', 'Май', 'Июн.',
         'Июл.', 'Авг.','Сен.', 'Окт.', 'Ноя.', 'Дек.']">
             <div class="month" href="" >
-              <span>{{month}}</span>
+              <span>{{ month }}</span>
             </div>
           </a>
       </div>

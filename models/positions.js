@@ -12,7 +12,7 @@ var Schema = mongoose.Schema;
 
 var PositionsSchema = new Schema({
   position: {type: String, default: 'Intern'},
-  departments: [{type: Schema.ObjectId, ref:'Departments'}],
+  // departments: [{type: Schema.ObjectId, ref:'Departments'}],
   employees: [{type: Schema.ObjectId, ref:'Employee'}]
 });
 

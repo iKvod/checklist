@@ -7,6 +7,7 @@ var Schema = mongoose.Schema;
 
 
 var ReportingSchema = new Schema({
+    // created: {type: Date, default: Date.now},
     check_in: {type: Date, default: null},
     check_out: {type: Date, default: null},
     lunch_in: {type: Date, default: null}, // writes new date if employee is going have a lunch

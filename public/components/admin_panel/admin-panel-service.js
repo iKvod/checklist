@@ -1,5 +1,5 @@
 'use strict';
-
+// NOT USED ANYWHERE
 angular.module('checklist')
     .factory('ReportingService', ['$resource', function ($resource) {
         var adminFac = {};

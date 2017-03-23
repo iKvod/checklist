@@ -8,21 +8,108 @@ var timeCalculator = require('./helpers/TimeCalcReportings/calcMinutes');
 var salaryCalculator = require('./helpers/SalaryReportingHelpers/reportSalary');
 
 salaryRoute.get('/', function (req, res, next) {
-    Users.find({disabled:false})
-        .populate('report')
-        .select({'employee_id':1, 'lastname':1,'firstname':1 , 'salary_fixed':1, 'report': 1})
-        .exec(function (err, users) {
+    // Users.find({ disabled: false }) // for prod pass disabled:false
+    //     .populate('report')
+    //     .select({'employee_id':1, 'lastname':1,'firstname':1 , 'salary_fixed':1, 'report': 1, 'bonus': 1, 'work_time': 1 })
+    //     .exec(function (err, users) {
+    //
+    //         if (err) {
+    //             return next(err);
+    //         }
+    //         timeCalculator.calculateMinutes(users, res, function (userReport, res) {
+    //           sendSalaryReport(userReport, res, function (res, usersSalaryReport) {
+    //                res.send(usersSalaryReport);
+    //             });
+    //         });
+    //     });
 
-            if (err) {
-                return next(err);
-            }
-            timeCalculator.calculateMinutes(users, res, function (userReport, res) {
-              sendSalaryReport(userReport, res, function (res, usersSalaryReport) {
-                   res.send(usersSalaryReport);
-                });
+  Users.find({}) // for prod pass disabled:false
+    .populate('report')
+    .select({'employee_id':1, 'lastname':1,'firstname':1 , 'salary_fixed':1, 'report': 1, 'bonus': 1, 'work_time': 1 })
+    .exec(function (err, users) {
 
-            });
+      if (err) {
+        return next(err);
+      }
+      timeCalculator.calculateMinutes(users, res, function (userReport, res) {
+        sendSalaryReport(userReport, res, function (res, usersSalaryReport) {
+          res.send(usersSalaryReport);
         });
+      });
+    });
+});
+
+salaryRoute.get('/monthly', function (req, res, next) {
+  var date = req.body.date; // date.begin $ date.end of month
+
+  Users.find({}) // for prod pass disabled:false
+    .populate({
+        path: 'report',
+        match: { $and: [{createdAt: { $gte: new Date(2017, 2, 1)}}, { createdAt: { $lte: new Date(2017, 2, 31)}}] }
+    })
+    .select({
+      'employee_id':1, 'lastname':1,'firstname':1 ,
+      'salary_fixed':1, 'report': 1, 'bonus': 1,
+      'work_time': 1
+    })
+    .exec(function (err, users) {
+
+      if (err) {
+        return next(err);
+      }
+      //res.send(users);
+      timeCalculator.calculateMinutes(users, res, function (userReport, res) {
+        sendSalaryReport(userReport, res, function (res, usersSalaryReport) {
+          res.send(usersSalaryReport);
+        });
+      });
+    });
+});
+
+// not complited, should the same as above api
+salaryRoute.get('/monthly/:id', function (req, res, next) {
+  Users.findById(req.params.id) // for prod pass disabled:false
+    .populate({
+      path: 'report',
+      match: { $and: [{createdAt: { $gte: new Date(2017, 2, 1)}}, { createdAt: { $lte: new Date(2017, 2, 31)}}] }
+    })
+    .select({
+      'employee_id':1, 'lastname':1,'firstname':1 ,
+      'salary_fixed':1, 'report': 1, 'bonus': 1,
+      'work_time': 1
+    })
+    .exec(function (err, users) {
+
+      if (err) {
+        return next(err);
+      }
+      //res.send(users);
+      timeCalculator.calculateMinutes(users, res, function (userReport, res) {
+        sendSalaryReport(userReport, res, function (res, usersSalaryReport) {
+          res.send(usersSalaryReport);
+        });
+      });
+    });
+  // Users.findOne({_id: req.params.id}) // for prod pass disabled:false
+  //   .populate({
+  //     path: 'report',
+  //     // match: { createdAt: { $gte: new Date(2017, 2, 1)}}
+  //     match: { $and: [{createdAt: { $gte: new Date(2017, 1, 1)}}, {createdAt: { $lte: new Date(2017, 1, 31)}}] }
+  //   })
+  //   .select({'employee_id':1, 'lastname':1,'firstname':1 , 'salary_fixed':1, 'report': 1})
+  //   .exec(function (err, users) {
+  //
+  //     if (err) {
+  //       return next(err);
+  //     }
+  //     res.send(users);
+  //     // timeCalculator.calculateMinutes(users, res, function (userReport, res) {
+  //     //   sendSalaryReport(userReport, res, function (res, usersSalaryReport) {
+  //     //     res.send(usersSalaryReport);
+  //     //   });
+  //     //
+  //     // });
+  //   });
 });
 
 
@@ -96,17 +183,17 @@ salaryRoute.get('/:id', function (req, res, next) {
         });
 });
 
-
-salaryRoute.get('/monthly', function (req, res, next) {
-    Reports.find({})
-      .populate('employee')
-      .exec(function (err, data) {
-          if(err) return next(err);
-            res.send(data);
-      })
-
-
-});
+//
+// salaryRoute.get('/monthly', function (req, res, next) {
+//     Reports.find({})
+//       .populate('employee')
+//       .exec(function (err, data) {
+//           if(err) return next(err);
+//             res.send(data);
+//       })
+//
+//
+// });
 
 salaryRoute.put('/employee/:id', function (req, res, next) {
 

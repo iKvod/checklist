@@ -9,14 +9,25 @@ angular.module('checklist')
 
 		salaryReport.getSalaryReports = function(){
 
-			return $resource('/api/salary', {id:'@id'}, {
-				get: {
-						method: "GET",
-						params: {"id":"@id"},
-						isArray: true,
-						cache: false
-				}
-			});
+      return $resource('/api/salary/monthly/:id', { id: '@id'}, {
+        create: { method: 'POST' },
+        getAll: { method: 'GET', isArray: true },
+        getOne: {
+          method: 'GET',
+          params: {'id': '@id'}
+        },
+        update: {
+          method: 'PUT',
+          params: { "id":"@id" },
+          isArray: false,
+          cache: false
+        },
+        deleteAll: {method: 'DELETE'},
+        deleteOne: {
+          method: 'DELETE',
+          params: {'id': '@id'}
+        }
+      });
 
 		};
 

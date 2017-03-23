@@ -9,6 +9,7 @@ angular.module('checklist')
     vm.dpts = dpts;
     vm.positions = positions;
     vm.customFullScreen = false;
+    console.log(dpts);
 
     var data = { change: false, id: null, dpt: null };
     var dataPos = { change: false, id: null, pos: null };
@@ -82,6 +83,12 @@ angular.module('checklist')
         fullscreen: vm.customFullScreen,
         locals: {
           positions: dataPos
+        },
+        resolve: {
+          departments: function (DepartmentsService) {
+            return DepartmentsService.getAll().$promise;
+          }
+  
         }
       })
         .then(function (resp) {

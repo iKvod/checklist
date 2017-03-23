@@ -13,45 +13,48 @@
   </div>
 
   <div class="employees-tab-wrapper" ui-view>
-    <div class="employee-grid" ng-repeat="user in vm.users">
-      <div class="employee-grid-header">
-        <span>Информация сотрудника</span>
-        <span ng-click="vm.archiveEmployee(user._id)"><img src="/images/delete.svg" alt="Delete" width="32" height="24"></span>
+      <div class="employee-grid" ng-repeat="user in vm.users">
+        <a href="" ng-click="vm.changeInfo($event, user._id)">
+         <div class="employee-grid-header">
+          <span>Информация сотрудника</span>
+          <span ng-click="vm.archiveEmployee(user._id)"><img src="/images/delete.svg" alt="Delete" width="32" height="24"></span>
+        </div>
+
+        <div class="employee-grid-body">
+          <div class="employee-info-common">
+            <div class="employee-avatar">
+              <img src="/images/user.svg" width="54" height="54">
+            </div>
+            <div class="employee-info">
+              <span>{{user.firstname}}</span>
+              <span>{{user.lastname}}</span>
+              <span>Отдел: {{user.department}}</span>
+              <span> {{user.position}}</span>
+              <span>ID:{{user.employee_id}}</span>
+              <span>Моб. номер: {{user.phonenumber}}</span>
+              <span>Email: {{user.email}}</span>
+
+            </div>
+
+          </div>
+          <div class="employee-info-salary">
+            <div class="table">
+              <span>Зарплата</span>
+              <span>{{user.salary_fixed}}</span>
+            </div>
+            <div class="table">
+              <span>Бонус</span>
+              <span>{{user.bonus?user.bonus:'Не задано'}}</span>
+            </div>
+            <div class="table">
+              <span>Фиксировнное время работы:</span>
+              <span>{{user.work_time?user.work_time:"Не задано"}}</span>
+            </div>
+          </div>
+        </div>
+        </a>
       </div>
 
-      <div class="employee-grid-body">
-        <div class="employee-info-common">
-          <div class="employee-avatar">
-            <img src="/images/user.svg" width="54" height="54">
-          </div>
-          <div class="employee-info">
-            <span>{{user.firstname}}</span>
-            <span>{{user.lastname}}</span>
-            <span>Отдел: {{user.department}}</span>
-            <span> {{user.position}}</span>
-            <span>ID:{{user.employee_id}}</span>
-            <span>Моб. номер: {{user.phonenumber}}</span>
-            <span>Email: {{user.email}}</span>
-
-          </div>
-
-        </div>
-        <div class="employee-info-salary">
-          <div class="table">
-            <span>Зарплата</span>
-            <span>{{user.salary_fixed}}</span>
-          </div>
-          <div class="table">
-            <span>Бонус</span>
-            <span>{{user.bonus?user.bonus:'Не задано'}}</span>
-          </div>
-          <div class="table">
-            <span>Фиксировнное время работы:</span>
-            <span>{{user.work_time?user.work_time:"Не задано"}}</span>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 

@@ -15,11 +15,13 @@ router.get('/', function(req, res, next){
     {
       return next(err);
     }
+    // console.log(dpts);
     res.status(200).send(dpts);
   })
 });
 
 router.post('/', function (req, res, next) {
+  console.log(req.body);
   var dep = new Dpts({});
   dep.department = req.body.dept;
   dep.save(function (err, savedDept) {

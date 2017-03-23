@@ -11,8 +11,8 @@ var mongoose = require('mongoose'),
 
 var config = require('../config');
 // mongoose.connect(config.mongoUrl, config.opt);
-var connection = mongoose.createConnection(config.mongoUrl);
-//var connection = mongoose.createConnection(config.mongoUrl, config.opt);
+// var connection = mongoose.createConnection(config.mongoUrl);
+var connection = mongoose.createConnection(config.mongoUrl, config.opt); //for testing purposes
 
 autoIncrement.initialize(connection);
 

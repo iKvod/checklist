@@ -21,6 +21,7 @@
 
       // archiving user
       vm.archiveEmployee = function (user_id) {
+        console.log(user_id);
         $http({
           method: 'PUT',
           url: '/api/users/fire/' + user_id
@@ -67,6 +68,45 @@
             //cancelling
           })
       };
+
+      vm.changeInfo = function(ev, user_id){
+        $mdDialog.show({
+          templateUrl: '/components/admin_panel/Dialogs/employees/changeempl.tmpl.html',
+          controller: 'ChangeemplDialogCtrl',
+          controllerAs: 'vm',
+          parent: angular.element(document.body),
+          targetEvent: ev,
+          clickOutsideToClose: true,
+          fullscreen: vm.customFullScreen,
+          locals:{
+
+            // dpts: dpts,
+            // positions: positions
+          },
+          resolve: {
+            dpts: function (DepartmentsService) {
+              return DepartmentsService.getAll().$promise;
+            },
+            positions: function (PositionsService) {
+              return PositionsService.getAll().$promise;
+            },
+            botIds: function ($resource) {
+              var getAll = $resource('/api/users/d');
+              return getAll.query().$promise;
+            },
+            user: function () {
+              return users.find(function (el, index, users) {
+                return el._id === user_id;
+              });
+            }
+          }
+        })
+        .then(function (resp) {
+
+        }, function (resp) {
+          //cancelling
+        })
+      }
 
     }]);
 })(angular);

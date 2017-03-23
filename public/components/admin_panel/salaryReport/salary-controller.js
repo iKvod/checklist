@@ -2,19 +2,28 @@
  * Created by rafa on 07/03/2017.
  */
 angular.module('checklist')
-  .controller('SalaryCtrl', ['$http', '$mdDialog', function ($http, $mdDialog) {
+  .controller('SalaryCtrl', ['$state','$stateParams', '$http', '$mdDialog', 'report', '$timeout', '$mdSidenav', function ($state, $stateParams, $http, $mdDialog, report, $timeout, $mdSidenav) {
     var vm = this;
-    vm.month = null;
+    vm.month = null; // for callendar
     vm.customFullScreen = true;
+    vm.report = report;
+    console.log(vm.report);
 
     vm.salaryReport = null;
+
+
+    // Sidenav
+    vm.toggleLeft = buildToggler('left');
+    vm.toggleRight = buildToggler('right');
+
+    function buildToggler(componentId) {
+      // console.log(componentId);
+      return function() {
+        $mdSidenav(componentId).toggle();
+      };
+    }
     
-    
-    vm.getSalaryCurrentMonth = function () {
-
-    };
-
-
+    //Calendar
     vm.showCallendar = function (ev) {
       $mdDialog.show( {
         templateUrl: '/components/admin_panel/Dialogs/callendar/callendar.tmpl.html',

@@ -8,6 +8,7 @@ angular.module('checklist')
 
     return $resource('/api/users/:id', { id: '@id'}, {
       create: { method: 'POST' },
+      getAll: { method: 'GET', isArray: true },
       getOne: {
         method: 'GET',
         params: {'id': '@id'}

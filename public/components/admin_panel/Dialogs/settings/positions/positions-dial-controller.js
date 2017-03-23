@@ -5,8 +5,9 @@
  * Created by rafa on 13/03/2017.
  */
 angular.module('checklist')
-  .controller('PosDialogCtrl', ['$state', '$http', '$mdDialog', '$mdToast','PositionsService', 'positions', function ($state, $http, $mdDialog, $mdToast, PositionsService, positions) {
+  .controller('PosDialogCtrl', ['$state', '$http', '$mdDialog', '$mdToast','PositionsService', 'positions', 'departments', function ($state, $http, $mdDialog, $mdToast, PositionsService, positions, departments) {
     var vm = this;
+    vm.deps = departments;
 
     var showToast = function(message) {
       $mdToast.show({
@@ -25,8 +26,13 @@ angular.module('checklist')
       vm.pos = '';
     }
 
-    vm.addDept = function (name) {
-      var data =  { position: name };
+    vm.addPos = function (data) {
+      console.log(data);
+      console.log($state.params);
+      // $state.transitionTo($state.current, $state.params, {
+      //          reload: true, inherit: false
+      //        });
+     //var data =  { position: data.position, dept: data.position };
       PositionsService.create(data).$promise
         .then(function (resp) {
           showToast(resp.message);
@@ -41,8 +47,8 @@ angular.module('checklist')
         })
     };
 
-    vm.putDept = function (name) {
-      var data = { position: name };
+    vm.putPos = function (name) {
+      var data = { position: name, dept: dept};
       PositionsService.update({ id: positions.id }, data).$promise
         .then(function (resp) {
           showToast(resp.message);

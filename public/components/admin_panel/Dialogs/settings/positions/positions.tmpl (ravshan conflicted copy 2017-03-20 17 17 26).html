@@ -15,12 +15,15 @@
 
       <div class="settings-dial-body">
         <md-content class="md-no-momentum" flex="100" layout="column">
-          <md-input-container layout-margin="40px" class="md-icon-float md-icon-right md-block" flex="25" ng-required="true" style="margin-bottom:40px;">
-            <label>Выберите департамент</label>
+          <md-input-container layout-margin="40px" class="md-icon-float md-icon-right md-block" flex="25" ng-required="true">
+            <label>Департамент</label>
             <md-icon md-svg-src="img/icons/ic_card_giftcard_24px.svg"></md-icon>
+            <!--<input ng-model="vm.user.botId" type="text" placeholder="ID бота сотрудника">-->
+            <!--<span ng-repeat="bot in vm.botInfo" layout="row"> {{bot.botid + ' Код регистрации: ' + bot.counter }} </span>-->
             <md-select ng-model="vm.department" required>
               <md-option ng-value= "dep.department" ng-repeat="dep in vm.deps">{{ dep.department }}</md-option>
             </md-select>
+            <!--<md-icon md-svg-src="img/icons/ic_euro_24px.svg"></md-icon>-->
           </md-input-container>
           <md-input-container layout-margin="60px" class="md-icon-float md-icon-right md-block" flex="25" ng-required="true" class="md-block" style="padding: 10px 50px 0 50px;">
             <md-icon md-svg-src="img/icons/ic_phone_24px.svg"></md-icon>
@@ -32,12 +35,11 @@
     </md-dialog-content>
 
     <md-dialog-actions layout="row">
-
-      <md-button ng-if="!vm.change" ng-click="vm.addPos({ department: vm.department, position: vm.pos })" md-autofocus ng-disabled="positionForm.$invalid">
+      <md-button ng-if="!vm.change" ng-click="vm.addDept(vm.pos)" md-autofocus ng-disabled="positionForm.$invalid">
         Создать
       </md-button>
 
-      <md-button  ng-if="vm.change" ng-click="vm.putPos(vm.pos)" md-autofocus ng-disabled="positionForm.$invalid">
+      <md-button  ng-if="vm.change" ng-click="vm.putDept(vm.pos)" md-autofocus ng-disabled="positionForm.$invalid">
         Изменить
       </md-button>
 

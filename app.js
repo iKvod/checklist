@@ -79,7 +79,7 @@ app.use('/api/salary', salaryRoutes);
 app.use('/api/books', bookRoutes);
 //app.use('/api/dpts', deptRoutes);
 app.use('/api/depts', deptRoutes);
-app.use('/api/positions', psnRoutes)
+app.use('/api/positions', psnRoutes);
 app.use('/api/generators', idGenrRoutes);
 app.use('/*', function(req, res){
       res.sendFile(path.join(__dirname + '/public/index.html'));
