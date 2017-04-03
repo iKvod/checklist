@@ -29,7 +29,7 @@ salaryRoute.get('/', function (req, res, next) {
 salaryRoute.get('/monthly', function (req, res, next) {
   var date = req.body.date; // date.begin $ date.end of month
 
-  Users.find({disabled:false}) // for prod pass disabled:false
+  Users.find({ disabled:false }) // for prod pass disabled:false
     .populate({
       path: 'report',
       match: { $and: [{createdAt: { $gte: new Date(2017, 2, 1)}}, { createdAt: { $lte: new Date(2017, 2, 31)}}] }
@@ -70,7 +70,7 @@ salaryRoute.get('/monthly/:id', function (req, res, next) {
       if (err) {
         return next(err);
       }
-      timeCalculator.calculateMinutes(users, 3, function (userReport) {
+      timeCalculator.calculateMinutes(users, 2, function (userReport) {
         // res.send(userReport);
 
         sendSalaryReport(userReport, function (usersSalaryReport) {
@@ -118,7 +118,6 @@ function sendSalaryReport (userReport, callback){
 
       if(userReport[i].reportminutes[j].report){
         salary.salaryPerDay = salaryCalculator.salaryPerDay(userReport[i].reportminutes[j].report.beginWorkDay, {}, userReport[i].salaryfixed,  userReport[i].reportminutes[j].report.totalTimeInMinutes, null, userReport[i].work_time);
-        console.log(salary.salaryPerDay);
         salary.salaryDetails = userReport[i].reportminutes[j];
         salaryReport.push(salary);
         employeeInfo.totalMonthHours += userReport[i].reportminutes[j].report.fullTimeHours;
@@ -127,112 +126,27 @@ function sendSalaryReport (userReport, callback){
         employeeInfo.mustWorkHours += salary.salaryPerDay.workHourNormal;
         salary = {};
       } else {
-        // console.log('TUR');
-        // console.log(userReport[i].reportminutes[j])
-        // salary.salaryPerDay = 0.0;
-        // salary.salaryDetails = userReport[i].reportminutes[j];
-        // salaryReport.push(salary);
-        // employeeInfo.totalMonthHours += userReport[i].reportminutes[j].report.fullTimeHours;
-        // employeeInfo.totalTimeMinutes += userReport[i].reportminutes[j].report.minutes;
-        // employeeInfo.totalSalary += salary.salaryPerDay.salaryRealPerDay;
-        // employeeInfo.mustWorkHours += salary.salaryPerDay.workHourNormal;
-        // salary = {};
-        // console.log(userReport[i].reportminutes[j]);
+        salary.salaryPerDay = salaryCalculator.salaryPerDay(userReport[i].reportminutes[j].reportDate, {}, userReport[i].salaryfixed,  0.0, null, userReport[i].work_time);
+        salary.salaryDetails = userReport[i].reportminutes[j];
+        salaryReport.push(salary);
+        salary = {};
       }
     }
 
-    if(employeeInfo){
+    if(employeeInfo.totalMonthHours){
       employeeInfo.workTimeDifference = employeeInfo.totalMonthHours - employeeInfo.mustWorkHours;
       employeeInfo.salaryReports = salaryReport;
       usersSalaryReport.push(employeeInfo);
       employeeInfo = {};
       salaryReport = [];
     } else {
-      // console.log(employeeInfo)
+      usersSalaryReport.push(employeeInfo);
+      employeeInfo = {};
+      salaryReport = [];
     }
   }
   callback(usersSalaryReport);
 }
-
-
-// function sendSalaryReport (userReport, callback){
-//
-//     var usersSalaryReport = [];
-//     var salaryReport = [];
-//     var employeeInfo = {
-//         employee_id:null,
-//         name : null,
-//         salaryFixed: null,
-//         totalSalary: null,
-//         totalMonthHours: null,
-//         totalTimeMinutes: null,
-//         mustWorkHours:null,
-//         emplWorkTimeFixed: null,
-//         workTimeDifference: null,
-//         salaryReports: []
-//     };
-//
-//     var salary = {
-//         salaryPerDay:  null,
-//         salaryDetails: null
-//     };
-//
-//     var calenda = calendar.countForCurrentMonth(2017, 2);
-//      console.log(calenda);
-//
-//     for(var i = 0, len = userReport.length; i < len; ++i) {
-//         employeeInfo.employee_id = userReport[i].employee_id;
-//         employeeInfo.name = userReport[i].username;
-//         employeeInfo.salaryFixed = userReport[i].salaryfixed;
-//         employeeInfo.emplWorkTimeFixed = userReport[i].work_time;
-//
-//         for(var j = 0, len1 = userReport[i].reportminutes.length; j < len1; j++) {
-//
-//             if(userReport[i].reportminutes[j].report){
-//                 salary.salaryPerDay = salaryCalculator.salaryPerDay
-//                 (
-//                   userReport[i].reportminutes[j].report.beginWorkDay,
-//                   {},
-//                   userReport[i].salaryfixed,
-//                   salaryCalculator.calcSalaryFixedPerDay,
-//                   userReport[i].reportminutes[j].report.totalTimeInMinutes,
-//                   null,
-//                   userReport[i].work_time
-//                 );
-//               salary.salaryDetails = userReport[i].reportminutes[j];
-//               salaryReport.push(salary);
-//               employeeInfo.totalMonthHours += userReport[i].reportminutes[j].report.fullTimeHours;
-//               employeeInfo.totalTimeMinutes += userReport[i].reportminutes[j].report.minutes;
-//               employeeInfo.totalSalary += salary.salaryPerDay.salaryRealPerDay;
-//               employeeInfo.mustWorkHours += salary.salaryPerDay.workHourNormal;
-//               salary = {};
-//             } else {
-//               // console.log('TUR');
-//               // console.log(userReport[i].reportminutes[j])
-//               // salary.salaryPerDay = 0.0;
-//               // salary.salaryDetails = userReport[i].reportminutes[j];
-//               // salaryReport.push(salary);
-//               // employeeInfo.totalMonthHours += userReport[i].reportminutes[j].report.fullTimeHours;
-//               // employeeInfo.totalTimeMinutes += userReport[i].reportminutes[j].report.minutes;
-//               // employeeInfo.totalSalary += salary.salaryPerDay.salaryRealPerDay;
-//               // employeeInfo.mustWorkHours += salary.salaryPerDay.workHourNormal;
-//               // salary = {};
-//               // console.log(userReport[i].reportminutes[j]);
-//             }
-//         }
-//
-//         if(employeeInfo){
-//           employeeInfo.workTimeDifference = employeeInfo.totalMonthHours - employeeInfo.mustWorkHours;
-//           employeeInfo.salaryReports = salaryReport;
-//           usersSalaryReport.push(employeeInfo);
-//           employeeInfo = {};
-//           salaryReport = [];
-//         } else {
-//           // console.log(employeeInfo)
-//         }
-//     }
-//     callback(usersSalaryReport);
-// }
 
 
 salaryRoute.get('/:id', function (req, res, next) {
@@ -263,17 +177,7 @@ salaryRoute.get('/:id', function (req, res, next) {
         });
 });
 
-//
-// salaryRoute.get('/monthly', function (req, res, next) {
-//     Reports.find({})
-//       .populate('employee')
-//       .exec(function (err, data) {
-//           if(err) return next(err);
-//             res.send(data);
-//       })
-//
-//
-// });
+
 
 salaryRoute.put('/employee/:id', function (req, res, next) {
 
@@ -292,7 +196,6 @@ salaryRoute.put('/employee/:id', function (req, res, next) {
         });
     });
 });
-
 
 
 module.exports = salaryRoute;

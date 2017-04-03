@@ -102,7 +102,6 @@ function countForCurrentMonth(year, month){
             }
         }
     }
-    // console.log('Calendar')
     // console.log(countedDays);
     return countedDays;
 }

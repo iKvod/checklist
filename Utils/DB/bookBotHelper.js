@@ -107,5 +107,4 @@ module.exports = {
   fetchCurrentBook: fetchCurrentBook,
   sendBookCheckout: sendBookCheckout,
   getBookEmployees: getBookEmployees
-
 };

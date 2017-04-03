@@ -37,23 +37,24 @@ function generateId(options){
     //  }
 }
 
-function time() {
-    var date = new Date();
-    console.log(date.getFullYear());
-    console.log(date.toLocaleDateString());
-}
-//time();
+// function time() {
+//     var date = new Date();
+//     console.log(date.getFullYear());
+//     console.log(date.toLocaleDateString());
+// }
+// //time();
+//
+//
+// function stringSeparator(sep, string) {
+//     var strData = string.split(sep);
+//     return strData[0];
+//    // console.log(strData[0]);
+// }
+//
+// var idGntr = require('../Utils/idGenerator');
 
+// console.log(idGntr.fetchData(null, idGntr.generateId));
 
-function stringSeparator(sep, string) {
-    var strData = string.split(sep);
-    return strData[0];
-   // console.log(strData[0]);
-}
-
-var idGntr = require('../Utils/idGenerator');
-
-console.log(idGntr.fetchData(null, idGntr.generateId));
 
 // var date = new Date();
 //
@@ -67,7 +68,12 @@ console.log(idGntr.fetchData(null, idGntr.generateId));
 // console.log(date.getHours());
 // console.log(date.getDay());
 // console.log(date.getFullYear());
-
+//
+// var date = new Date(2017, 0, 1,22,12);
+// console.log(date);
+// console.log(date.getDate());
+// console.log(date.getMonth());
+// console.log(date.getYear());
 
 
 
