@@ -6,7 +6,6 @@ var Reports = require('../models/reporting');
 var Users = require('../models/employee');
 var timeCalculator = require('./helpers/TimeCalcReportings/calcMinutes');
 
-
 reportRoute.get('/', function (req, res, next) {
     Users.find({})
         .populate('report')

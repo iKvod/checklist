@@ -3,15 +3,15 @@
  */
 angular.module('checklist')
   .controller('ChangeemplDialogCtrl', ['$http','$mdToast', '$mdDialog',
-    'EmployeesService', 'dpts', 'positions','botIds', 'user',
-    function ($http, $mdToast, $mdDialog, EmployeesService, dpts, positions, botIds, user) {
+    'EmployeesService', 'dpts', 'positions', 'user',
+    function ($http, $mdToast, $mdDialog, EmployeesService, dpts, positions, user) {
       var vm = this;
-      console.log(user);
       vm.user = {
+        id: user._id,
         firstname: user.firstname,
         lastname: user.lastname,
-        department: user.department,
-        position: user.position,
+        department: user.department ? user.department.department : user.department,
+        position: user.position ? user.position.position : user.position ,
         botId: user.botId,
         employee_id: user.employee_id,
         work_time: user.work_time,
@@ -24,15 +24,12 @@ angular.module('checklist')
       };
 
       vm.dpts = dpts;
-      console.log(dpts);
       vm.positions = positions;
-      vm.botInfo = botIds;
       vm.cancel = function () {
         $mdDialog.cancel();
       };
       var ok = true;
       vm.getId = function(dept){
-        console.log(dept);
         if(ok){
           $http(
             {
@@ -47,39 +44,12 @@ angular.module('checklist')
             .then(function (resp) {
               // console.log(resp);
               vm.user.employee_id = resp.data;
-              console.log(vm.user.employee_id);
               // ok = false;
               vm.showToast("ID сгенирировано - " + vm.user.employee_id);
             }, function (err) {
               vm.showToast("ID Не сгенирировано. " + err.data.message)
             })
         }
-      };
-
-
-
-      var botid = null;
-      vm.getBotId = function(){
-        console.log(vm.botInfo.length);
-        botIds.$promise
-          .catch(function (err) {
-            console.log(err);
-          })
-          .then(function (resp) {
-            var mess = '';
-            if(vm.botInfo.length){
-
-              for(var i = 0, len = resp.length; i < len; i++){
-                mess += " Бот ID: " + resp[i].botid + " Уникальный код: " + resp[i].counter + " ";
-              }
-
-            }
-            customToast(7000, mess ? mess : 'Сотрудник не зарегистрирован в Телеграм боте', mess ? '#content' : 'body');
-            if(!mess){
-              $mdDialog.hide();
-            }
-
-          });
       };
 
       vm.specPosition = null;
@@ -89,13 +59,12 @@ angular.module('checklist')
         });
         $http({
             method: 'GET',
-            url: '/api/departments/position/' + dptId
+            url: '/api/depts/position/' + dptId._id
           })
           .then(function (resp) {
-            vm.specPosition = resp;
-            console.log(resp);
+            vm.specPosition = resp.data.positions;
           }, function (err) {
-            console.log(err);
+
           })
       };
 
@@ -119,29 +88,36 @@ angular.module('checklist')
       };
 
       vm.changeUser = function (user) {
-        console.log(user);
-        // EmployeesService.create(user)
-        //   .$promise
-        //   .catch(function (err) {
-        //     if(err){
-        //       vm.showToast(err.data.message);
-        //       $mdDialog.hide();
-        //       $state.transitionTo($state.current, $state.params, {
-        //         reload: true, inherit: false
-        //       });
-        //     }
-        //   })
-        //   .then(function (resp) {
-        //     vm.regBotId(vm.user.botId);
-        //     //$mdDialog.hide();
-        //     console.log(resp);
-        //     vm.showToast(resp.data.message);
-        //     $state.transitionTo($state.current, $state.params, {
-        //       reload: true, inherit: false
-        //     });
-        //   });
+        user.position_id = vm.positions.find(function (el) {
+          if(el.position === user.position) {
+            return el._id;
+          }
+        })._id;
+        user.department_id = vm.dpts.find(function (el, index, dpts) {
+          if(el.department === user.department){
+            return el._id;
+          }
+        })._id;
+        EmployeesService.update({ id: vm.user.id }, user)
+          .$promise
+          .catch(function (err) {
+            if(err){
+              console.log(err);
+              vm.showToast(err.data.message);
+              $mdDialog.hide();
+              $state.transitionTo($state.current, $state.params, {
+                reload: true, inherit: false
+              });
+            }
+          })
+          .then(function (resp) {
+            $mdDialog.hide();
+            vm.showToast(resp.message);
+            $state.transitionTo($state.current, $state.params, {
+              reload: true, inherit: false
+            });
+          });
       };
-
 
       vm.showToast = function(message) {
         $mdToast.show({

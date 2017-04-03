@@ -5,7 +5,6 @@
     </md-toolbar>
 
     <md-dialog-content  class="form-wrapper">
-
       <md-content class="md-no-momentum">
         <div layout="row">
           <md-input-container class="md-icon-float md-block" flex="50">
@@ -21,30 +20,35 @@
         </div>
 
         <md-content layout="row">
-          <md-input-container class="md-icon-float md-block" flex="50">
+          <md-input-container class="md-icon-float md-block" flex="25">
             <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
             <label>Отдел</label>
             <md-select ng-model="vm.user.department" required>
               <md-option ng-value="dpt.department" ng-repeat="dpt in vm.dpts">{{ dpt.department }}</md-option>
             </md-select>
           </md-input-container>
-          <md-input-container class="md-icon-float md-block" flex="50">
+          <md-input-container class="md-icon-float md-block" flex="25" ng-click="vm.getSpecPos(vm.user.department)">
             <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
             <label>Должность</label>
             <md-select ng-model="vm.user.position" required>
-              <md-option ng-value="pos.position" ng-repeat="pos in vm.positions">{{ pos.position }}</md-option>
+              <md-option ng-value="pos.position" ng-repeat="pos in vm.specPositions">{{ pos.position }}</md-option>
             </md-select>
-
           </md-input-container>
+          <!--<md-input-container class="md-icon-float md-block" flex="50">-->
+            <!--<md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>-->
+            <!--<label>Должность</label>-->
+            <!--<md-select ng-model="vm.user.position" required>-->
+              <!--<md-option ng-value="pos.position" ng-repeat="pos in vm.positions">{{ pos.position }}</md-option>-->
+            <!--</md-select>-->
+          <!--</md-input-container>-->
           <md-input-container ng-click="vm.getId(vm.user.department)" class="md-icon-float md-block" flex="50">
             <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
             <label>Новый ID сотрудника</label>
-            <!--<md-select name="type" ng-model="vm.user.employee_id" required>-->
-              <!--&lt;!&ndash;<md-option  value={{vm.user.employee_id}}>{{vm.user.employee_id}}</md-option>&ndash;&gt;-->
-              <!--&lt;!&ndash;<md-option  value={{vm.user.employee_id}}>{{vm.user.employee_id + 2}}</md-option>&ndash;&gt;-->
-            <!--</md-select>-->
-            <input ng-model="vm.user.employee_id" type="text" placeholder="ID сотрудника" ng-required="true">
+            <input ng-model="vm.user.employee_id" type="text" placeholder="Нажмите сюда, чтобы получить ID" ng-required="true">
           </md-input-container>
+
+        </md-content>
+        <div layout="row">
           <md-input-container class="md-icon-float md-icon-right md-block" flex="50">
             <label>Рабочее время</label>
             <md-icon md-svg-src="img/icons/ic_card_giftcard_24px.svg"></md-icon>
@@ -54,41 +58,36 @@
 
           <md-input-container class="md-icon-float md-icon-right md-block" flex="50" ng-click="vm.getBotId()">
             <label>Бот ID</label>
-            <!--<md-icon md-svg-src="img/icons/ic_card_giftcard_24px.svg"></md-icon>-->
-            <!--<input ng-model="vm.user.botId" type="text" placeholder="ID бота сотрудника">-->
-            <!--<span ng-repeat="bot in vm.botInfo" layout="row"> {{bot.botid + ' Код регистрации: ' + bot.counter }} </span>-->
             <md-select ng-model="vm.user.botId" required>
               <md-option ng-value= "bot.botid" ng-repeat="bot in vm.botInfo">{{ bot.botid }}</md-option>
             </md-select>
             <!--<md-icon md-svg-src="img/icons/ic_euro_24px.svg"></md-icon>-->
           </md-input-container>
-
-        </md-content>
+        </div>
         <div layout="row">
-          <md-input-container class="md-icon-float md-block" flex="50">
+          <md-input-container class="md-icon-float md-block" flex="25">
             <label>Зарплата</label>
             <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
             <input ng-model="vm.user.salary_fixed" type="text" placeholder="По умолчанию - 0.0" ng-required="true">
           </md-input-container>
-          <md-input-container class="md-icon-float md-block" flex="50">
+          <md-input-container class="md-icon-float md-block" flex="25">
             <label>Бонус</label>
             <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
             <input ng-model="vm.user.bonus" type="text" placeholder="По умолчанию - 0.0" ng-required="true">
           </md-input-container>
+          <md-input-container md-no-float class="md-block" flex="25">
+            <md-icon md-svg-src="img/icons/ic_phone_24px.svg"></md-icon>
+            <input ng-model="vm.user.phonenumber" type="text" placeholder="Мобильный номер" ng-required="true">
+          </md-input-container>
+          <md-input-container md-no-float class="md-block" flex="25">
+            <!-- Use floating placeholder instead of label -->
+            <md-icon md-svg-src="img/icons/ic_email_24px.svg" class="email"></md-icon>
+            <input ng-model="vm.user.email" type="email" placeholder="Электронная почта" ng-required="true">
+          </md-input-container>
         </div>
-
-        <md-input-container md-no-float class="md-block">
-          <md-icon md-svg-src="img/icons/ic_phone_24px.svg"></md-icon>
-          <input ng-model="vm.user.phonenumber" type="text" placeholder="Мобильный номер" ng-required="true">
-        </md-input-container>
-
-        <md-input-container md-no-float class="md-block">
-          <!-- Use floating placeholder instead of label -->
-          <md-icon md-svg-src="img/icons/ic_email_24px.svg" class="email"></md-icon>
-          <input ng-model="vm.user.email" type="email" placeholder="Электронная почта" ng-required="true">
-        </md-input-container>
       </md-content>
     </md-dialog-content>
+
     <md-dialog-actions layout="row">
       <!--<md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank" md-autofocus>-->
       <!--More on Wikipedia-->

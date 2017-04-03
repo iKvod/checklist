@@ -1,0 +1,15 @@
+.edit {
+    background-image: url("../images/ic_mode_edit_black_24px.svg");
+}
+
+.remove {
+    background-image: url("../images/ic_delete_sweep_black_24px.svg");
+}
+
+.icon-bin:before {
+    content: "\e9ac";
+}
+
+.icon-pencil:before {
+    content: "\e905";
+}

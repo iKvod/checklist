@@ -51,11 +51,6 @@ var Employee = new Schema({
     timestamp:true
 });
 
-// Employee.pre('save', function(){
-//
-// });
-
-
 Employee.pre('save', function (next) {
     var currentDate = new Date();
     this.updated = currentDate;
@@ -80,6 +75,18 @@ Employee.methods.getId = function(){
 
 Employee.methods.getBotId = function(){
     return this.botId;
+};
+
+Employee.methods.generateCode = function(){
+  var code = [];
+  var index = Math.floor(Math.random() * (9 - 8) + 8);
+
+  for(var i = 0; i < index; ++i){
+    var number = Math.floor(Math.random() * (9000 - 1000) + 1000);
+    code[i] = number;
+    // console.log(code[i] = number);
+  }
+  return code;
 };
 
 //User.plugin(passportLocalMongoose);

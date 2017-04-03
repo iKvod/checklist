@@ -1,0 +1,22 @@
+.button-font {
+    color: #4CAF50;
+}
+
+
+.text-name {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    padding-top: 5px;
+}
+
+.text-list {
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.text-list .inner-text {
+    font-weight: 300;
+
+
+}

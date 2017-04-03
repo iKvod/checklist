@@ -58,7 +58,6 @@ function countForWholeYear(year) {
         }
         calendarReport.push(countedDays);
     }
-    console.dir((calendarReport));
     return calendarReport;
 }
 
@@ -77,8 +76,8 @@ function countForCurrentMonth(year, month){
     };
 
     //var holidays = {month: null, days: []}; // should be included
-
-    for(var j = 1; j <= 31; ++j){
+    //     console.log(new Date(year, month , 0).getDate());
+    for(var j = 1; j <= new Date(year, month + 1, 0).getDate(); ++j){
         if(j === 1 ){
             // console.log('--------------------');
             // console.log(new Date(year, i, j).getMonth() + 1)
@@ -103,7 +102,8 @@ function countForCurrentMonth(year, month){
             }
         }
     }
-    //console.log(countedDays);
+    // console.log('Calendar')
+    // console.log(countedDays);
     return countedDays;
 }
 //for testing

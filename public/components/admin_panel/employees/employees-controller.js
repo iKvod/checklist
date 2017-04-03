@@ -21,7 +21,6 @@
 
       // archiving user
       vm.archiveEmployee = function (user_id) {
-        console.log(user_id);
         $http({
           method: 'PUT',
           url: '/api/users/fire/' + user_id
@@ -88,10 +87,6 @@
             },
             positions: function (PositionsService) {
               return PositionsService.getAll().$promise;
-            },
-            botIds: function ($resource) {
-              var getAll = $resource('/api/users/d');
-              return getAll.query().$promise;
             },
             user: function () {
               return users.find(function (el, index, users) {

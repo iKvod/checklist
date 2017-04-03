@@ -52,14 +52,17 @@ router.get('/position/:id', function (req, res, next) {
   Dpts.findOne({ _id: req.params.id })
     .populate({
       path: 'positions',
-      select: 'positons'
+      select: 'position'
     })
     .lean()
     .exec(function (err, dpt) {
       if(err)
       {
-        return next(err);
+        console.log(err);
+        res.send(err);
+        return ;
       }
+      console.log(dpt)
       res.status(201).send(dpt);
     });
 });

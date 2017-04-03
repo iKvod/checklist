@@ -7,10 +7,9 @@ angular.module('checklist')
     vm.month = null; // for callendar
     vm.customFullScreen = true;
     vm.report = report;
-    console.log(vm.report);
+    console.log(report);
 
     vm.salaryReport = null;
-
 
     // Sidenav
     vm.toggleLeft = buildToggler('left');

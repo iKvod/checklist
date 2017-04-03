@@ -98,7 +98,6 @@ ReportingSchema.methods.calcTimeCorrectly = function() {
             };
 
         } else {
-            console.log("Вы не сделали чекаут!");
             return {
                 report_id: this._id,
                 minutes: fullTimeMinutes, // whole time workDay
@@ -172,12 +171,9 @@ ReportingSchema.methods.calcTimeCorrectly = function() {
                 salaryPerDay: this.salary_per_day,
                 message: "The same day"
             };
-
         }
-
     }
-
-}
+};
 /*
 
 ReportingSchema.methods.calcTime = function () {

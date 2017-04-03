@@ -27,16 +27,4 @@ angular.module('checklist')
     });
 
 
-
-    // return $resource('/api/checklist/checkout/:id', { id: '@id'}, {
-    //   update: {
-    //     method: 'PUT',
-    //     params:{"id":"@id"},
-    //     isArray:false,
-    //     cache:false
-    //   }
-//    return $resource();
-   // })
-
-
   }]);

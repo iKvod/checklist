@@ -510,22 +510,28 @@ function goDuringWorkHours(botId, checkinType) {
     User.findOne({botId: botId})
         .select('report firstname')
         .exec(function (err, user){
-            var len = user.report.length;
-            var lastReportId = user.report[len-1];
-            var name = user.firstname;
 
-            Report.findOne({_id: lastReportId})
+            if(user){
+              var len = user.report.length;
+              var lastReportId = user.report[len-1];
+              var name = user.firstname;
+
+              Report.findOne({_id: lastReportId})
                 .exec(function (err, currentDayReport) {
-                    currentDayReport[checkinType] = new Date();
-                    currentDayReport.save(function (err, savedReport) {
-                        if(err){
-                            bot.sendMessage(botId, err);
-                            return next(err);
-                        }
-                        //console.log(savedReport);
-                        bot.sendMessage(botId, name + ", Ваш запрос успешно обработан!");
-                    });
+                  currentDayReport[checkinType] = new Date();
+                  currentDayReport.save(function (err, savedReport) {
+                    if(err){
+                      bot.sendMessage(botId, err);
+                      return next(err);
+                    }
+                    //console.log(savedReport);
+                    bot.sendMessage(botId, name + ", Ваш запрос успешно обработан!");
+                  });
                 });
+
+            } else {
+              bot.sendMessage(botId, " Вы не прошли полную регистрацию\n + ");
+            }
         });
 }
 

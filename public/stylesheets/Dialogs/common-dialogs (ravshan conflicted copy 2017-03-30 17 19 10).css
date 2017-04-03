@@ -1,0 +1,20 @@
+.form-main {
+    min-width: 900px;
+    min-height: 600px;
+    background-color: #384554;
+
+}
+
+.form-toolbar {
+    height: 50px;
+    background-color: #384554!important;
+
+
+}
+
+.form-wrapper {
+    min-width: 400px;
+    min-height: 400px;
+    background-color: #fafafa;
+    padding: 30px;
+}

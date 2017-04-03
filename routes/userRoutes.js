@@ -10,32 +10,32 @@ userrouter.get('/', function(req, res, next){
     //     if(err) return next(err);
     //     res.send(users);
     // })
-  Users.find( {} )
+  Users.find( {disabled:false} )
     .populate({
-      path: 'Positions',
-      select: 'position',
-      match: { $and: [{createdAt: { $gte: new Date(2017, 2, 1)}}, { createdAt: { $lte: new Date(2017, 2, 31)}}] }
+      path: 'position',
+      select: 'position'
     })
     .populate({
-      path: 'Departments',
+      path: 'department',
       select: 'department _id'
     })
     .exec(function (err, users){
-      console.log(users[1]);
       if(err) return next(err);
       res.send(users);
     });
 });
 
 userrouter.get('/fired', function (req, res, next) {
-  // Users.find({disabled:true}, function(err, users){
-  //   if(err) return next(err);
-  //   res.status(200).send(users);
-  // })
-  Users.find({}, function(err, users){
+  Users.find({ disabled:true })
+    .lean()
+    .exec(function(err, users){
       if(err) return next(err);
       res.status(200).send(users);
-    })
+    });
+  // Users.find({}, function(err, users){
+  //     if(err) return next(err);
+  //     res.status(200).send(users);
+  //   })
 });
 
 userrouter.get('/d', function (req, res, next) {
@@ -59,7 +59,6 @@ userrouter.get('/d', function (req, res, next) {
 
 // Updating position and departments to null
 userrouter.put('/update', function (req, res, next) {
-  console.log('heere')
   // var updatedUsers = [];
 
   changeToNull( function (err, updatedUsers) {
@@ -118,57 +117,42 @@ userrouter.put('/update', function (req, res, next) {
 //     }
 //   });
 // });
+
 var botHelper = require('../routes/helpers/TelegramBot/tmBotHelper');
 
 userrouter.post('/',function(req, res, next) {
-    var data = req.body;
-    //console.log(data);
+  var data = req.body;
 
+  var user = new Users({
+    firstname: data.firstname,
+    lastname: data.lastname,
+    department: data.department_id,
+    position: data.position_id,
+    botId: data.botId,
+    employee_id: data.employee_id,
+    work_time: data.work_time,
+    salary_fixed: data.salary_fixed,
+    bonus: data.bonus,
+    phonenumber: data.phonenumber,
+    email: data.email,
+  });
 
-  Psn.findOne({position: data.position}, function (err, pos) {
-
-    var user = new Users({
-      firstname: data.firstname,
-      lastname: data.lastname,
-      department: data.department,
-      position: pos._id,
-      botId: data.botId,
-      employee_id: data.employee_id,
-      work_time: data.work_time,
-      salary_fixed: data.salary_fixed,
-      bonus: data.bonus,
-      phonenumber: data.phonenumber,
-      email: data.email
-    });
-
-    user.save(function(err, savedUser){
-      if(err){
-        //console.log(err);
-        if(err && err.code && (err.code === 11000)) {
-          res.status(404).send({ message: "Сотрудник с таким Бот ID уже существует!"});
-          return
-        } else {
-          res.status(404).send({ message: 'Ошибка при сохранений данных сотрудника в базу. Попробуйте еще раз!'});
-          return;
-          //res.location('/error');
-        }
+  user.save(function(err, savedUser){
+    if(err){
+      console.log(err);
+      if(err && err.code && (err.code === 11000)) {
+        res.status(404).send({ message: "Сотрудник с таким Бот ID или ID уже существует!"});
+        return
+      } else {
+        res.status(404).send({ message: 'Ошибка при сохранений данных сотрудника в базу. Попробуйте еще раз!'});
+        return;
       }
-      console.log(savedUser);
-
-      pos.employees.push(savedUser._id);
-
-      pos.save(function (err, savedPos) {
-        if(err){
-          res.status(500).send({message: 'Ошибка при сохранений пользователя!'});
-          return;
-        }
-
-        console.log(savedPos);
-        res.status(302).send({message: 'Данные сотрудника ' + savedUser.getName() + ' добавлен в базу'});
-        botHelper.sendMessTelegram(savedUser.botId, savedUser.firstname +", Ваш ID - " + savedUser.employee_id + " \n" +
-          "ID Нужен для Checklista.\nПодробную информацию спрашивайте у менеджера или нажмите сюда => '/info' \n Желаем, плодотворной работы :)");
-      });
-    });
+    }
+    savedUser.code = savedUser.generateCode();
+    savedUser.save();
+    res.status(302).send({message: 'Данные сотрудника ' + savedUser.getName() + ' добавлен в базу'});
+    botHelper.sendMessTelegram(savedUser.botId, savedUser.firstname +", Ваш ID - " + savedUser.employee_id + " \n" +
+      "ID Нужен для Checklista.\nПодробную информацию спрашивайте у менеджера или нажмите сюда => '/info' \n Желаем, плодотворной работы :)");
   });
 });
 
@@ -200,7 +184,7 @@ userrouter.get('/:id', function(req, res, next){
 
 userrouter.put('/:id', function(req, res, next){
     var data = req.body;
-
+    console.log(data.admin);
      Users.findById(req.params.id, function (err, user) {
 
         if (err) {
@@ -218,12 +202,15 @@ userrouter.put('/:id', function(req, res, next){
        user.bonus = data.bonus || user.bonus;
        user.phonenumber =  data.phonenumber || user.phonenumber;
        user.email = data.email || user.email;
+       user.disabled = data.disabled || user.disabled;
+       user.admin = data.admin;
 
-        user.save(function (err) {
+        user.save(function (err, savedUser) {
             if(err) {
                 return next(err);
             }
-            res.send({message: "Salary updated!"});
+            // console.log(savedUser);
+            res.send({message: "Данные " + user.getName() + " изменены!"});
         });
     });
 
@@ -286,7 +273,6 @@ userrouter.put('/rehire/:id', function (req, res, next) {
 
 
 userrouter.put('/bot/:id', function (req, res, next) {
-
   emplBots.findOne({botid: req.params.id}, function (err, empl) {
     if(err){
       res.send({ message: 'Попробуйте позже!'});

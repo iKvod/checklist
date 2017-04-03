@@ -1,3 +1,40 @@
 .button-font {
     color: #4CAF50;
 }
+
+
+.text-name {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    padding-top: 5px;
+}
+
+.text-list {
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.text-list .inner-text {
+    font-weight: 300;
+}
+
+.label-text {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 100%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: left;
+    /*white-space: nowrap;*/
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+
+
+
+.img-wrapper {
+    margin: 0 4px 0 4px;
+    width: 100%;
+}
