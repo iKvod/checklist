@@ -12,6 +12,10 @@
       <img class="img-wrapper" src="/images/employees/archidevuser.svg" alt="Архивиронные">
       <span class="label-text">Архив бывших сотрудников</span>
     </a>
+    <a class="tool" ng-click="vm.rehireAll()">
+      <img class="img-wrapper" src="/images/employees/archidevuser.svg" alt="Архивиронные">
+      <span class="label-text">Rehire</span>
+    </a>
   </div>
 
   <div class="employees-tab-wrapper" ui-view>
@@ -20,13 +24,12 @@
     </div>
     <div class="centered-content">
       <div class="employee-grid" ng-repeat="user in vm.users">
-        <a href="" ng-click="vm.changeInfo($event, user._id)" style="text-decoration: none">
           <div class="employee-grid-header">
             <span>Данные сотрудника</span>
-            <span ng-click="vm.archiveEmployee(user._id)"><img src="/images/delete.svg" alt="Delete" width="18" height="16"></span>
+            <span ><img ng-click="vm.archiveEmployee(user._id)" src="/images/delete.svg" alt="Delete" width="18" height="16"></span>
           </div>
-
-          <div class="employee-grid-body">
+      <a href="" ng-click="vm.changeInfo($event, user._id)" style="text-decoration: none">
+        <div class="employee-grid-body">
             <div class="employee-info-common">
               <div class="employee-avatar">
                 <img src="/images/user.svg" width="54" height="54">

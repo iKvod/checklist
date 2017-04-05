@@ -45,7 +45,7 @@
     var weekDay = date.getDay(); // this should in function parameter as object key
 
     // if(weekDay === 0){
-    //   console.log(date.getDate());
+    //   console.log(date.getDate())
     // }
 
     var salaryRealPerDay = null;
@@ -148,7 +148,6 @@
       salaryReportPerDay.salaryRealPerDay = 0.0;
       salaryReportPerDay.weekDay = weekDay;
       salaryReportPerDay.workHourNormal = 0;
-      salaryReportPerDay.weekDayWorkHourReal = weekDayWorkHourReal;
       // salaryReportPerDay.emplFixedWorkHour = 0;
       return salaryReportPerDay;
     }

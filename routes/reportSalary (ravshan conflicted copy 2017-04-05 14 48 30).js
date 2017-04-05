@@ -46,9 +46,9 @@ salaryRoute.get('/monthly', function (req, res, next) {
       timeCalculator.calculateMinutes(users, 2, function (userReport) {
         // res.send(userReport);
 
-        sendSalaryReport(userReport, function (monthReport) {
-          // console.log(monthReport);
-          res.send(monthReport);
+        sendSalaryReport(userReport, function (usersSalaryReport) {
+          // console.log(usersSalaryReport);
+          res.send(usersSalaryReport);
         });
       });
     });
@@ -59,7 +59,7 @@ salaryRoute.get('/monthly/:id', function (req, res, next) {
   Users.find({_id: req.params.id}) // for prod pass disabled:false
     .populate({
       path: 'report',
-      match: { $and: [{createdAt: { $gte: new Date(2017, 2, 1)}}, { createdAt: { $lte: new Date(2017, 2, 31)}}] }
+      match: { $and: [{createdAt: { $gte: new Date(2017, 1, 1)}}, { createdAt: { $lte: new Date(2017, 1, 31)}}] }
     })
     .select({
       'employee_id':1, 'lastname':1,'firstname':1 ,
@@ -70,12 +70,12 @@ salaryRoute.get('/monthly/:id', function (req, res, next) {
       if (err) {
         return next(err);
       }
-      timeCalculator.calculateMinutes(users, 2, function (userReport) {
+      timeCalculator.calculateMinutes(users, 1, function (userReport) {
         // res.send(userReport);
 
-        sendSalaryReport(userReport, function (monthReport) {
-          // console.log(monthReport);
-          res.send(monthReport);
+        sendSalaryReport(userReport, function (usersSalaryReport) {
+          // console.log(usersSalaryReport);
+          res.send(usersSalaryReport);
         });
       });
     });
@@ -84,10 +84,6 @@ salaryRoute.get('/monthly/:id', function (req, res, next) {
 
 
 function sendSalaryReport (userReport, callback){
-  var monthReport = {
-    calendarReport: null,
-    usersSalaryReport: null
-  };
 
   var usersSalaryReport = [];
   var salaryReport = [];
@@ -97,7 +93,6 @@ function sendSalaryReport (userReport, callback){
     salaryFixed: null,
     workHourCurMonth: null,
     totalMustSalary: null,
-    totalSalary: null,
     totalMonthHours: null,
     totalTimeMinutes: null,
     mustWorkHours: null,
@@ -111,15 +106,16 @@ function sendSalaryReport (userReport, callback){
     salaryDetails: null
   };
 
-  monthReport.calendarReport  = calendar.countForCurrentMonth(2017, 2);
-
+  var cal = calendar.countForCurrentMonth(2017, 1);
+  // console.log(cal);
 
   for(var i = 0, len = userReport.length; i < len; ++i) {
     employeeInfo.employee_id = userReport[i].employee_id;
     employeeInfo.name = userReport[i].username;
     employeeInfo.salaryFixed = userReport[i].salaryfixed;
-    employeeInfo.workHourCurMonth =  monthReport.calendarReport.workdays * userReport[i].work_time + monthReport.calendarReport.saturdays * 5;
+    employeeInfo.workHourCurMonth =  cal.workdays * userReport[i].work_time + cal.saturdays * 5;
     employeeInfo.emplWorkTimeFixed = userReport[i].work_time;
+
 
     for(var j = 0, len1 = userReport[i].reportminutes.length; j < len1; j++) {
 
@@ -142,9 +138,8 @@ function sendSalaryReport (userReport, callback){
     }
 
     if(employeeInfo.totalMonthHours){
-      employeeInfo.workTimeDifference = employeeInfo.totalMonthHours - employeeInfo.workHourCurMonth;
+      employeeInfo.workTimeDifference = employeeInfo.totalMonthHours - employeeInfo.mustWorkHours;
       employeeInfo.salaryReports = salaryReport;
-      employeeInfo.totalSalary = ((employeeInfo.workTimeDifference > 0)? employeeInfo.salaryFixed : employeeInfo.totalMustSalary);
       usersSalaryReport.push(employeeInfo);
       employeeInfo = {
         employee_id:null,
@@ -176,8 +171,7 @@ function sendSalaryReport (userReport, callback){
       salaryReport = [];
     }
   }
-  monthReport.usersSalaryReport = usersSalaryReport;
-  callback(monthReport);
+  callback(usersSalaryReport);
 }
 
 

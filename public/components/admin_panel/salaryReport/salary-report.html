@@ -12,7 +12,7 @@
             <span>Ф.И.О</span>
           </div>
           <div class="sal-pan-nlist" >
-            <div class="sal-pan-list" ng-repeat="rep in vm.report track by $index">
+            <div class="sal-pan-list sal-pan-list-text" ng-repeat="rep in vm.report track by $index">
               <span>{{rep.employee_id}}</span>
               <span>{{rep.name}}</span>
             </div>
@@ -21,17 +21,43 @@
         <div class="sal-pan-report">
           <div class="sal-pan-month">
             <div class="sal-pan-calendar">
+              <div class="month-info">
+                <div class="month-info-cont">
+                  <div class="month-info-cont-label">
+                    <label for="">Месяц:</label><span> {{vm.calendar[vm.monthInfo.month]}}</span>
+                  </div>
+                  <div class="month-info-cont-label">
+                    <label for="">Дней в месяце: </label><span>{{vm.monthInfo.days}}</span>
+                  </div>
+                </div>
+                <div class="month-info-cont">
+                  <div class="month-info-cont-label">
+                    <label for="">Кол-во будних дней: </label><span>{{vm.monthInfo.workdays}}</span>
+                  </div>
+                  <!--<span>{{vm.monthInfo.saturdays}}</span>-->
+                </div>
+                <div class="month-info-cont">
+                  <div class="month-info-cont-label">
+                    <label for="">Количество суббот:</label><span> {{vm.monthInfo.saturdays}}</span>
+                  </div>
+                  <div class="month-info-cont-label">
+                    <label for="">Количество воскресений:</label><span> {{vm.monthInfo.sundays}}</span>
+                  </div>
+                </div>
+              </div>
               <div class="month">
                 <a href="" ng-click="vm.getReport(vm.month)"><img src="/images/admin/left-arrow.svg" alt="" width="24" height="24"></a>
-                <span>Month </span>
+                <span>{{vm.calendar[vm.monthInfo.month]}}</span>
                 <a  href=""><img src="/images/admin/fast-forward-button.svg" alt="" width="24" height="24"></a>
               </div>
             </div>
           </div>
           <div class="sal-pan-repcontent">
-            <div class="sal-pan-days">
-              <div class="day-content-da" ng-repeat="day in vm.month">
-                <span> {{ day }}</span>
+            <div class="sal-pan-days" >
+              <div class="day-content-da"  ng-repeat="rep in vm.month track by $index " ng-class="{sund : rep.salaryPerDay.weekDay===0, satd: rep.salaryPerDay.weekDay===6}">
+                <span> {{ $index + 1 }}</span>
+                <span> /</span>
+                <span>{{['Вс.','Пн.','Вт.', 'Ср.', 'Чт.', 'Пт.','Сб.'][rep.salaryPerDay.weekDay]}}</span>
               </div>
             </div>
             <div class="sal-pan-day-report">
@@ -41,7 +67,7 @@
                     <div class="day-content-sal" ng-repeat="sal in rep.salaryReports">
                       <span> Пришел: {{sal.salaryDetails.check_in | date:'h:mm'}}</span>
                       <span> Ушел: {{sal.salaryDetails.check_out | date:'h:mm'}}</span>
-                      <span> Деньги: {{sal.salaryPerDay | number: 0}}</span>
+                      <span> Деньги: {{sal.salaryPerDay.salaryRealPerDay | number: 0}}</span>
                       <span> Минуты: {{sal.salaryDetails.report.minutes  }}</span>
                       <!--<span> 1 {{}}</span>-->
                     </div>
@@ -103,7 +129,7 @@
 
           </md-sidenav>
 
-          <md-content flex style="display: flex">
+          <md-content flex style="display: flex; background-color: transparent; overflow-x:auto">
 
               <div class="sal-pan-name">
                   <div class="sal-pan-title">
@@ -111,7 +137,13 @@
                   </div>
                   <div class="sal-pan-nlist" >
                     <div class="sal-pan-list" ng-repeat="sal in vm.report track by $index">
-                      <span>{{$index}}</span>
+                      <span>Фикс. зарплата: {{sal.salaryFixed | number: 0}}</span>
+                      <span>Фикс. Время работы: {{sal.emplWorkTimeFixed | number: 0}}</span>
+                      <span>Должен отработать за месяц: {{sal.workHourCurMonth | number: 0}}</span>
+                      <span>Должен отработать за период: {{sal.mustWorkHours | number: 0}}</span>
+                      <span>Отработал всего (часов): {{sal.totalMonthHours | number: 0}}</span>
+                      <span>Зарплата: {{sal.totalMustSalary | number: 0}} Итого к выплате: {{sal.totalSalary | number: 0}}</span>
+                      <!--<span>Итого к выплате: {{sal.totalSalary | number: 0}}</span>-->
                     </div>
                   </div>
               </div>

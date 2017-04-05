@@ -43,8 +43,8 @@ ReportingSchema.pre('save', function (next) {
 ReportingSchema.methods.calcTimeCorrectly = function() {
 
     var fullTimeHours = null;
-    var fullTimeMinutes = null;
-    var totalTimeInMinutes = null;
+    var fullTimeMinutes = null; // Actual work time from begining of work day till the end of work day()
+    var totalTimeInMinutes = null; // Actual time. According to this field salary calculated
     var outWorkMinutes = null;
     var lunchTimeMinutes = null;
 
@@ -68,6 +68,7 @@ ReportingSchema.methods.calcTimeCorrectly = function() {
             fullTimeMinutes = (24 - this.check_in.getHours() ) * 60 + this.check_in.getMinutes()
                 + this.check_out.getHours() * 60 + this.check_out.getMinutes();
             fullTimeHours = fullTimeMinutes / 60;
+
             if (this.go_out && this.come_back) {
                 outWorkMinutes = (this.come_back.getHours() * 60 + this.come_back.getMinutes())
                     - (( this.go_out.getHours() ) * 60 + this.go_out.getMinutes());
@@ -78,9 +79,18 @@ ReportingSchema.methods.calcTimeCorrectly = function() {
                     - (( this.lunch_in.getHours() ) * 60 + this.lunch_in.getMinutes());
             }
 
+
+            //check's if employee didn't check that went to have lunch
+            if(!this.lunch_in && !this.lunch_out){
+              totalTimeInMinutes = fullTimeMinutes - outWorkMinutes - 60.0;
+            } else {
+              totalTimeInMinutes = fullTimeMinutes - outWorkMinutes - lunchTimeMinutes;
+            }
+
             totalTimeInMinutes = fullTimeMinutes - outWorkMinutes - lunchTimeMinutes;
 
-            return {
+
+          return {
                 report_id: this._id,
                 minutes: fullTimeMinutes, // whole time workDay
                 fullTimeHours: fullTimeHours,
@@ -112,7 +122,7 @@ ReportingSchema.methods.calcTimeCorrectly = function() {
                 goOut: this.go_out,
                 comeToWork: this.come_back,
                 salaryPerDay: this.salary_per_day,
-                message: "Another day"
+                message: "Another day. Employee did't check out"
             };
         }
     } else {
@@ -133,7 +143,14 @@ ReportingSchema.methods.calcTimeCorrectly = function() {
                     - (this.lunch_in.getHours() * 60 + this.lunch_in.getMinutes());
             }
 
+
+          if(!this.lunch_in && !this.lunch_out){
+            totalTimeInMinutes = fullTimeMinutes - outWorkMinutes - 60.0;
+          } else {
             totalTimeInMinutes = fullTimeMinutes - outWorkMinutes - lunchTimeMinutes;
+          }
+
+            // totalTimeInMinutes = fullTimeMinutes - outWorkMinutes - lunchTimeMinutes;
             // console.log("Get interval in hours: "+ fullTimeHours);
             // console.log("Get interval in min: " + fullTimeMinutes);
 
@@ -154,7 +171,6 @@ ReportingSchema.methods.calcTimeCorrectly = function() {
                 message: "The same day"
             };
         } else {
-            console.log("Вы не сделали чекаут!");
             return {
                 report_id: this._id,
                 minutes: fullTimeMinutes, // whole time workDay
@@ -169,7 +185,7 @@ ReportingSchema.methods.calcTimeCorrectly = function() {
                 goOut: this.go_out,
                 comeToWork: this.come_back,
                 salaryPerDay: this.salary_per_day,
-                message: "The same day"
+                message: "The same day. Employee did't check out"
             };
         }
     }

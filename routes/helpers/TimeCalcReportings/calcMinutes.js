@@ -20,7 +20,6 @@ function calculateMinutes (users, month, callback) {
 
         var lastReportDay = null;
         var cnt = 0; // cnt < repLen
-        var repLen = users[i].report.length;
 
         for(var j = 1, len1 = new Date(2017, month + 1, 0).getDate(); j <= len1; j++) {
           var obj = {};
@@ -67,11 +66,8 @@ function calculateMinutes (users, month, callback) {
         repMin = [];
         userReport = {};
     }
-
   callback(usersReports);
-
 }
-
 
 module.exports = {
     calculateMinutes: calculateMinutes

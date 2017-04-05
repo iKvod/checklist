@@ -235,7 +235,6 @@ userrouter.put('/fire/:id', function (req, res, next) {
   console.log(req.params.id);
   Users.findOne({_id: req.params.id})
     .exec(function (err, user) {
-      console.log(user);
             if(err){
                 return next(err);
             }

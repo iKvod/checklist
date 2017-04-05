@@ -5,7 +5,7 @@
     display: flex;
     min-width: 80%;
     max-width: 100%;
-    padding: 10px;
+    /*padding: 10px;*/
     background-color: #D5DAE6;
     min-height: 800px;
 }

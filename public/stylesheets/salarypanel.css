@@ -1,11 +1,13 @@
 .sal-pan-wrapper {
     background-color: #EDEEF0;
     min-height: 800px;
-    margin-top: 12px;
+    /*margin-top: 12px;*/
     display: flex;
     flex-flow: column nowrap;
-    margin-left: 10px;
-    margin-right: 10px;
+    /*margin-left: 10px;*/
+    /*margin-right: 10px;*/
+    padding-top: 6px;
+    width: 100%;
 }
 
 
@@ -42,9 +44,9 @@
     flex: 1;
     display: flex;
     flex-flow: column nowrap;
-    min-width: 200px;
-    max-width: 200px;
-    margin: 0 3px 0 10px;
+    min-width: 206px;
+    max-width: 206px;
+    margin: 0 3px 0 3px;
 }
 
     .sal-pan-name .sal-pan-title {
@@ -53,9 +55,13 @@
         display: flex;
         flex-flow: row wrap;
         width: 100%;
-        min-height: 76px;
-        max-height: 76px;
+        min-height: 100px;
+        max-height: 100px;
         max-width: 200px;
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center;
+
         /*margin: 5px;*/
         /*overflow: auto;*/
     }
@@ -68,24 +74,36 @@
     .sal-pan-name .sal-pan-nlist  {
         flex: 12;
         width: 100%;
-        padding: 6px;
+        /*padding: 6px;*/
+        margin-top: 10px;
         display: flex;
         flex-flow: column nowrap;
     }
         .sal-pan-nlist .sal-pan-list {
             background-color: #4F6883;
-            min-height: 80px;
+            padding: 3px;
             width: 100%;
             margin-bottom: 10px;
+            display: flex;
+            flex-flow: column nowrap;
+            min-height: 100px;
+            max-height: 100px;
+            font-size: 10px;
+        }
+        .sal-pan-list-text {
+            font-size: 17px !important;
+            color: #ffffff;
+            font-weight: 600;
+            padding-left: 10px !important;
         }
 
 .sal-pan-content .sal-pan-report {
     flex: 5;
     display: flex;
     flex-flow: column nowrap;
-    min-width: 70%;
-    min-width: 800px;
-    /*max-width: 1100px;*/
+    min-width: 60%;
+    /*min-width: 00px;*/
+    max-width: 930px;
 }
 
     .sal-pan-report .sal-pan-month {
@@ -93,32 +111,69 @@
         background-color: #EDEEF0;
         display: flex;
         flex-flow: column nowrap;
-        max-height: 40px;
+        /*max-height: 40px;*/
         /*align-items: center;*/
     }
         .sal-pan-month .sal-pan-calendar {
             flex: 1;
             display: flex;
-            background-color: #FEEBC8;
+            /*background-color: #FEEBC8;*/
             max-width: 1400px;
+            display: flex;
+            flex-flow: row nowrap;
         }
             .sal-pan-calendar .month {
                 flex: 1;
                 margin: auto;
                 justify-content: center;
-                min-width: 100px;
-                max-width: 250px;
+                /*min-width: 100px;*/
+                /*max-width: 250px;*/
                 padding: 0 10px 0 10px;
                 display: flex;
                 flex-flow: row wrap;
+                /*background-color: #4CAF50;*/
             }
 
-            .month span {
-                /*margin: 0 10% 0 10%;*/
-                min-width: 110px;
-                flex: 1;
-                margin: auto;
+                .month span {
+                    min-width: 110px;
+                    margin: 0 auto;
+                    text-align: center;
+                    font-size: 25px;
+                    font-weight: 600;
+                    color: cornflowerblue;
+                }
+            .sal-pan-calendar .month-info {
+                flex: 2;
+                display: flex;
+                flex-flow: row nowrap;
+                 /*background-color: #4F6883;*/
             }
+                .sal-pan-calendar .month-info-cont {
+                    flex:1;
+                    display: flex;
+                    flex-flow: column nowrap;
+                    padding: 0 6px 0 10px;
+                    min-width: 100px;
+                    max-width: 200px;
+                    max-height: 100px;
+                }
+                    .month-info-cont .month-info-cont-label {
+                        margin-bottom: 5px;
+                        display: flex;
+                        flex-flow: row nowrap;
+                    }
+                         .month-info-cont-label label {
+                             text-align: left;
+                             font-size: 12px;
+                             font-weight: 400;
+                             margin-right: 10px ;
+                         }
+                         .month-info-cont-label span {
+                             font-size: 16px;
+                             font-weight: 600;
+                             color: cornflowerblue;
+                         }
+
         /*.sal-pan-month .sal-pan-days {*/
             /*flex: 0.7;*/
             /*background-color: #31B6FC;*/
@@ -132,13 +187,13 @@
             /*!*-webkit-overflow-scrolling: auto;*!*/
         /*}*/
 
-
     .sal-pan-report .sal-pan-repcontent {
         flex: 21;
         display: flex;
         flex-flow: column nowrap;
         width: 100%;
         overflow-x: auto;
+        /*padding: 10px 10px 10px 10px;*/
         /*background-color: #FF3D00;*/
     }
 
@@ -147,23 +202,40 @@
             display: flex;
             flex-flow: row nowrap;
             min-width: 100%;
-            border-bottom: #4f6883 solid 1px;
-            min-height: 3.5%;
+            /*border-bottom: #4f6883 solid 1px;*/
+            /*min-height: 3.5%;*/
             padding-left: 10px;
+            margin-bottom: 8px;
             /*background-color: #FFFFFF;*/
         }
                 .sal-pan-days .day-content-da {
-                    min-width: 100px;
-                    max-width: 100px;
+                    min-width: 150px;
+                    max-width: 150px;
                     background-color: #FFFFFF;
                     min-height: 8.3%;
                     border-right: #4f6883 solid 1px;
                     display: flex;
                     flex-flow: row nowrap;
                     max-height: 32px;
+                    font-size: 20px;
+                    font-weight: 600;
                 }
                     .day-content-da span{
                         margin: auto;
+                    }
+
+                    .sund{
+                        background-color: darkred!important;
+                        color: #FFFFFF;
+                        font-size: 20px;
+                        font-weight: 600;
+                    }
+
+                    .satd{
+                        background-color: yellow!important;
+                        color: #000;
+                        font-size: 20px;
+                        font-weight: 600;
                     }
         /*.sal-pan-repcontent .sal-pan-day-report {*/
             /*flex: 20;*/
@@ -178,26 +250,31 @@
             flex: 20;
             display: flex;
             min-width: 100%;
-            background-color: #FEEBC8;
+            /*background-color: #FEEBC8;*/
             flex-flow: column nowrap;
             padding-left: 10px;
         }
             .sal-pan-day-report .sal-pan-day-rep-body {
-                min-height: 80px;
                 display: flex;
                 flex-flow: column nowrap;
                 margin-bottom: 10px;
                 background-color: aliceblue;
+                min-width: 100px;
+                max-width: 120px;
+                min-height: 100px;
+                max-height: 100px;
             }
 
              .day-content-sal {
-                min-width: 100px;
-                max-width: 100px;
-                min-height: 30px;
-                max-height: 80px;
+                min-width: 150px;
+                max-width: 150px;
+                min-height: 100px;
+                max-height: 100px;
                 border-right: #4f6883 solid 1px;
+                padding: 3px;
                 display: flex;
                 flex-flow: column nowrap;
+                font-size: 12px;
             }
                 /*.day-content-sal span:nth-child(n + 5){*/
                     /*background-color: #4F6883;*/

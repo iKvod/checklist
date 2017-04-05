@@ -11,7 +11,7 @@ angular.module('checklist')
 
       return $resource('/api/salary/monthly/:id', { id: '@id'}, {
         create: { method: 'POST' },
-        getAll: { method: 'GET', isArray: true },
+        getAll: { method: 'GET', isArray: false },
         getOne: {
           method: 'GET',
           params: {'id': '@id'}

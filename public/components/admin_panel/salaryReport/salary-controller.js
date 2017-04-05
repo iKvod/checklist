@@ -6,10 +6,14 @@ angular.module('checklist')
     var vm = this;
     vm.month = null; // for callendar
     vm.customFullScreen = true;
-    vm.report = report;
-    console.log(report);
-
+    vm.report = report.usersSalaryReport;
+    //dummy month change it
+    vm.month = report.usersSalaryReport[0].salaryReports;
+    // console.log(report.usersSalaryReport[0].salaryReports);
+    vm.monthInfo = report.calendarReport;
     vm.salaryReport = null;
+    vm.calendar = ['Янв.', 'Фев.', 'Мар.', 'Апр.', 'Май', 'Июн.',
+      'Июл.', 'Авг.','Сен.', 'Окт.', 'Ноя.', 'Дек.'];
 
     // Sidenav
     vm.toggleLeft = buildToggler('left');

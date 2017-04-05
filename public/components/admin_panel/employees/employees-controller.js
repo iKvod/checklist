@@ -102,5 +102,26 @@
         })
       }
 
+      // Dummy request
+      vm.rehireAll = function () {
+        $http(
+          {
+            method: "POST",
+            url: '/api/dummy/fire',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            data: {}
+          }
+        )
+          .then(function (resp) {
+            console.log(resp);
+          }, function (err) {
+            console.log(err);
+
+          })
+      }
+
+
     }]);
 })(angular);
