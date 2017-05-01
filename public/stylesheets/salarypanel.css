@@ -90,6 +90,9 @@
             max-height: 120px;
             font-size: 10px;
             border-bottom: solid 2px black;
+            color: #fff;
+            font-weight: 600;
+            /*font-size: 12px;*/
         }
         .sal-pan-list-text {
             font-size: 17px !important;

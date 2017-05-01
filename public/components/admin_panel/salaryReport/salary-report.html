@@ -64,8 +64,8 @@
               <div class="sal-pan-day-rep-body" ng-repeat="rep in vm.report track by $index">
                   <div class="cust-layout-row">
                     <div class="day-content-sal" ng-repeat="sal in rep.salaryReports">
-                      <span> Пришел: {{sal.salaryDetails.check_in | date:'h:mm'}}</span>
-                      <span> Ушел: {{sal.salaryDetails.check_out | date:'h:mm'}}</span>
+                      <span> Пришел: {{sal.salaryDetails.check_in | date:'Дата-dd; Вр-H:mm'}}</span>
+                      <span> Ушел: {{sal.salaryDetails.check_out | date:'Дата-dd; Вр-H:mm'}}</span>
                       <span> Деньги: {{sal.salaryPerDay.salaryRealPerDay | number: 0}}</span>
                       <span> Минуты: {{sal.salaryDetails.report.minutes  }}</span>
                       <!--<span> 1 {{}}</span>-->
@@ -138,9 +138,11 @@
                       <span>Фикс. зарплата: {{sal.salaryFixed | number: 0}}</span>
                       <span>Фикс. Время работы: {{sal.emplWorkTimeFixed | number: 0}}</span>
                       <span>Должен отработать за месяц: {{sal.workHourCurMonth | number: 0}}</span>
-                      <span>Должен отработать за период: {{sal.mustWorkHours | number: 0}}</span>
+                      <!--<span>Должен отработать за период: {{sal.mustWorkHours | number: 0}}</span>-->
                       <span>Отработал всего (часов): {{sal.totalMonthHours | number: 0}}</span>
-                      <span>Зарплата: {{sal.totalMustSalary | number: 0}} Итого к выплате: {{sal.totalSalary | number: 0}}</span>
+                      <!--<span>Зарплата: {{sal.totalMustSalary | number: 0}} Итого к выплате: {{sal.totalSalary | number: 0}}</span>-->
+                      <span> Итого к выплате без переработки: {{sal.totalSalary | number: 0}}</span>
+
                       <!--<span>Итого к выплате: {{sal.totalSalary | number: 0}}</span>-->
                     </div>
                   </div>
