@@ -8,7 +8,6 @@ angular.module('checklist')
     function ($http, $state, $mdDialog, $mdToast, EmployeesService, dpts, botIds, positions) {
       var vm = this;
 
-      console.log(dpts);
       vm.user = {
         firstname: null,
         lastname: null,
@@ -77,15 +76,11 @@ angular.module('checklist')
       //get's bot id for users if they have already registred
       var botid = null;
       vm.getBotId = function(){
-        console.log(vm.botInfo.length);
         botIds.$promise
           .catch(function (err) {
-            console.log(err);
           })
           .then(function (resp) {
-            console.log(resp);
             var mess = ''; // if candidates registred simultaneusly message will be displayed
-            console.log(mess);
             if(vm.botInfo.length){
 
               for(var i = 0, len = resp.length; i < len; i++){
@@ -109,7 +104,6 @@ angular.module('checklist')
             url: '/api/users/bot/' + botid
           })
             .then(function (resp) {
-              console.log(resp);
               // customToast(4000, resp.data.message, 'body');
               //vm.showToast('Зарегистрирован');
             }, function (resp) {
@@ -135,7 +129,6 @@ angular.module('checklist')
           .$promise
           .catch(function (err) {
             if(err){
-              console.log(err.data.message)
               if(err){
                 vm.showToast(err.data.message);
                 $state.transitionTo($state.current, $state.params, {
@@ -148,7 +141,7 @@ angular.module('checklist')
           })
           .then(function (resp) {
             vm.regBotId(vm.user.botId);
-            //$mdDialog.hide();
+            $mdDialog.hide();
             vm.showToast(resp.data.message);
             $state.transitionTo($state.current, $state.params, {
               reload: true, inherit: false

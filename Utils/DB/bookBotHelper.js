@@ -86,9 +86,14 @@ function fetchCurrentBook(botId, messageToUser, callback){ // bookData title and
     .exec(function(err, books){
       var len = books.length;
       if(err){
+        res.status.send({message: 'Ошибка при отравке текущей книги сотруднику!'});
         console.log(err);
       }
-      callback(books[len-1].link, books[len-1].title, botId, messageToUser);
+      if(books.length <= 0){
+
+      } else  {
+        callback(books[len-1].link, books[len-1].title, botId, messageToUser);
+      }
 
     });
 }

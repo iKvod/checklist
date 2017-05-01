@@ -21,8 +21,8 @@ var dummyRoutes = require('./routes/dummyRoutes');
 
 var config = require('./config');
 var app = express();
-// mongoose.connect(config.mongoUrl, config.opt);
-mongoose.connect(config.mongoUrl);
+mongoose.connect(config.mongoUrl, config.opt);
+// mongoose.connect(config.mongoUrl);
 var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -84,6 +84,7 @@ app.use('/api/dummy', dummyRoutes);
 app.use('/*', function(req, res){
       res.sendFile(path.join(__dirname + '/public/index.html'));
 });
+
 
 
 // catch 404 and forward to error handler

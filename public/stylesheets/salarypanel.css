@@ -6,7 +6,7 @@
     flex-flow: column nowrap;
     /*margin-left: 10px;*/
     /*margin-right: 10px;*/
-    padding-top: 6px;
+    /*padding-top: 6px;*/
     width: 100%;
 }
 
@@ -28,16 +28,16 @@
     .sal-pan-body .sal-pan-tools {
         flex:1;
         background-color: #4F6883;
-        min-width: 60px;
-        max-width: 60px;
+        min-width: 150px;
+        max-width: 150px;
     }
     .sal-pan-body .sal-pan-content {
-        /*max-width: 1200px;*/
         min-width: 1200px;
         flex: 14;
         display: flex;
         flex-flow: row nowrap;
-        /*background-color: #9E9E9E;*/
+        padding-top: 6px;
+        margin-left: 6px;
     }
 
 .sal-pan-content .sal-pan-name {
@@ -46,7 +46,7 @@
     flex-flow: column nowrap;
     min-width: 206px;
     max-width: 206px;
-    margin: 0 3px 0 3px;
+    margin: 0 0 0 0;
 }
 
     .sal-pan-name .sal-pan-title {
@@ -55,8 +55,8 @@
         display: flex;
         flex-flow: row wrap;
         width: 100%;
-        min-height: 100px;
-        max-height: 100px;
+        min-height: 88px;
+        max-height: 88px;
         max-width: 200px;
         font-size: 20px;
         font-weight: 600;
@@ -75,7 +75,7 @@
         flex: 12;
         width: 100%;
         /*padding: 6px;*/
-        margin-top: 10px;
+        margin-top: 6px;
         display: flex;
         flex-flow: column nowrap;
     }
@@ -86,9 +86,10 @@
             margin-bottom: 10px;
             display: flex;
             flex-flow: column nowrap;
-            min-height: 100px;
-            max-height: 100px;
+            min-height: 120px;
+            max-height: 120px;
             font-size: 10px;
+            border-bottom: solid 2px black;
         }
         .sal-pan-list-text {
             font-size: 17px !important;
@@ -111,11 +112,11 @@
         background-color: #EDEEF0;
         display: flex;
         flex-flow: column nowrap;
-        /*max-height: 40px;*/
+        max-height: 55px;
         /*align-items: center;*/
     }
         .sal-pan-month .sal-pan-calendar {
-            flex: 1;
+            /*flex: 1;*/
             display: flex;
             /*background-color: #FEEBC8;*/
             max-width: 1400px;
@@ -188,7 +189,7 @@
         /*}*/
 
     .sal-pan-report .sal-pan-repcontent {
-        flex: 21;
+        /*flex: 21;*/
         display: flex;
         flex-flow: column nowrap;
         width: 100%;
@@ -198,13 +199,13 @@
     }
 
         .sal-pan-repcontent .sal-pan-days {
-            flex: 0.7;
+            flex: 0.62;
             display: flex;
             flex-flow: row nowrap;
             min-width: 100%;
             /*border-bottom: #4f6883 solid 1px;*/
             /*min-height: 3.5%;*/
-            padding-left: 10px;
+            /*padding-left: 10px;*/
             margin-bottom: 8px;
             /*background-color: #FFFFFF;*/
         }
@@ -252,17 +253,19 @@
             min-width: 100%;
             /*background-color: #FEEBC8;*/
             flex-flow: column nowrap;
-            padding-left: 10px;
+            /*padding-left: 10px;*/
         }
             .sal-pan-day-report .sal-pan-day-rep-body {
                 display: flex;
                 flex-flow: column nowrap;
                 margin-bottom: 10px;
-                background-color: aliceblue;
+                /*background-color: aliceblue;*/
                 min-width: 100px;
-                max-width: 120px;
-                min-height: 100px;
-                max-height: 100px;
+                /*max-width: 120px;*/
+                min-height: 120px;
+                max-height: 120px;
+                border-bottom: solid 2px black;
+                padding: 7px 3px
             }
 
              .day-content-sal {
@@ -275,37 +278,17 @@
                 display: flex;
                 flex-flow: column nowrap;
                 font-size: 12px;
-            }
-                /*.day-content-sal span:nth-child(n + 5){*/
-                    /*background-color: #4F6883;*/
-                    /*z-index: auto;*/
-                    /*position: absolute;*/
-                    /*font-size: 20px;*/
-                /*}*/
+                 /*border-bottom: solid 2px black;*/
 
-                /*.day-content-sal span:nth-child(1){*/
-                    /*z-index: 10;*/
-                    /*background-color: transparent;*/
-                /*}*/
-                /*.day-content-sal span:nth-child(2){*/
-                    /*background-color: transparent;*/
-                    /*z-index: 10;*/
-                /*}*/
-                /*.day-content-sal span:nth-child(3){*/
-                    /*background-color: transparent;*/
-                    /*z-index: 10;*/
-                /*}*/
-                /*.day-content-sal span:nth-child(4){*/
-                    /*background-color: transparent;*/
-                    /*z-index: 10;*/
-                /*}*/
+             }
+
 
 
 
 .cust-layout-row {
     display: flex;
     flex-flow: row nowrap;
-    background-color: #FFFFFF;
+    /*background-color: #FFFFFF;*/
 }
 
 .cust-layout-column {

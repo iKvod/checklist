@@ -7,7 +7,7 @@ var Schema = mongoose.Schema;
 //var passportLocalMongoose = require('passport-local-mongoose');
 
 var Employee = new Schema({
-    employee_id: {type: String, unique: true},
+    employee_id: { type: String, unique: true },
     botId: {type: String, unique: true},
     // botId: {type: String},
     username: String,

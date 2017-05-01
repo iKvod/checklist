@@ -26,7 +26,7 @@ angular.module('checklist')
                         $state.go('checkin', { employee_id: data._id });
                     }
             }, function(err){
-                console.log(err.status);
+                // console.log(err.status);
                 vm.errorMessage = 'Пользователь не найден!'
                     $timeout(function () {
                         vm.errorMessage = '';
@@ -35,7 +35,8 @@ angular.module('checklist')
        }
     }])
     .controller('CheckinCtrl',
-        ['$state','$stateParams','$http', '$rootScope','CheckinService','WebcamService', function($state,$stateParams, $http, $rootScope, CheckinService, WebcamService){
+        ['$state','$stateParams','$http', '$rootScope','CheckinService','WebcamService', 
+            function($state,$stateParams, $http, $rootScope, CheckinService, WebcamService){
             var vm = this;
             vm.greeting = "Добро пожаловать! Отметтесь пожалуйста";
             vm.successGreating = "Вы отметились в системе!";
@@ -77,21 +78,21 @@ angular.module('checklist')
 
             // reports checkin in db
             vm.checkIn = function(code){
-                console.log(code);
+                // console.log(code);
                 var id = $stateParams.employee_id;
-                console.log(id);
+                // console.log(id);
                 var checkin = CheckinService.query({id:id});
 
                 checkin.$promise
                     .then(
                         function(data){
-                            console.log("Checkin");
-                            console.log(data);
+                            // console.log("Checkin");
+                            // console.log(data);
                             $state.go('checkin.image', {employee_id: data._id});
 
 
                     },  function(err){
-                            console.log(err);
+                            // console.log(err);
                     });
             };
             

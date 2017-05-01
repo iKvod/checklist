@@ -7,7 +7,6 @@
       var vm = this;
       vm.customFullScreen = false;
       vm.users = users;
-      console.log(users);
 
       vm.showToast = function (message) {
         $mdToast.show({

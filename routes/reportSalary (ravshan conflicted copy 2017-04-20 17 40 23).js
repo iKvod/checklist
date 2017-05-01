@@ -32,7 +32,7 @@ salaryRoute.get('/monthly', function (req, res, next) {
   Users.find({ disabled:false }) // for prod pass disabled:false
     .populate({
       path: 'report',
-      match: { $and: [{createdAt: { $gte: new Date(2017, 3, 1)}}, { createdAt: { $lte: new Date(2017, 3, 31)}}] }
+      match: { $and: [{createdAt: { $gte: new Date(2017, 2, 1)}}, { createdAt: { $lte: new Date(2017, 2, 31)}}] }
     })
     .select({
       'employee_id':1, 'lastname':1,'firstname':1 ,
@@ -43,8 +43,9 @@ salaryRoute.get('/monthly', function (req, res, next) {
       if (err) {
         return next(err);
       }
-      timeCalculator.calculateMinutes(users, 3, function (userReport) {
+      timeCalculator.calculateMinutes(users, 2, function (userReport) {
         // res.send(userReport);
+
         sendSalaryReport(userReport, function (monthReport) {
           // console.log(monthReport);
           res.send(monthReport);
@@ -58,7 +59,7 @@ salaryRoute.get('/monthly/:id', function (req, res, next) {
   Users.find({_id: req.params.id}) // for prod pass disabled:false
     .populate({
       path: 'report',
-      match: { $and: [{createdAt: { $gte: new Date(2017, 3, 1)}}, { createdAt: { $lte: new Date(2017, 3, 31)}}] }
+      match: { $and: [{createdAt: { $gte: new Date(2017, 2, 1)}}, { createdAt: { $lte: new Date(2017, 2, 31)}}] }
     })
     .select({
       'employee_id':1, 'lastname':1,'firstname':1 ,
@@ -69,8 +70,9 @@ salaryRoute.get('/monthly/:id', function (req, res, next) {
       if (err) {
         return next(err);
       }
-      timeCalculator.calculateMinutes(users, 3, function (userReport) {
+      timeCalculator.calculateMinutes(users, 2, function (userReport) {
         // res.send(userReport);
+
         sendSalaryReport(userReport, function (monthReport) {
           // console.log(monthReport);
           res.send(monthReport);
@@ -78,6 +80,8 @@ salaryRoute.get('/monthly/:id', function (req, res, next) {
       });
     });
 });
+
+
 
 function sendSalaryReport (userReport, callback){
   var monthReport = {
@@ -107,7 +111,7 @@ function sendSalaryReport (userReport, callback){
     salaryDetails: null
   };
 
-  monthReport.calendarReport  = calendar.countForCurrentMonth(2017, 3);
+  monthReport.calendarReport  = calendar.countForCurrentMonth(2017, 2);
 
 
   for(var i = 0, len = userReport.length; i < len; ++i) {
@@ -205,6 +209,7 @@ salaryRoute.get('/:id', function (req, res, next) {
             });
         });
 });
+
 
 
 salaryRoute.put('/employee/:id', function (req, res, next) {

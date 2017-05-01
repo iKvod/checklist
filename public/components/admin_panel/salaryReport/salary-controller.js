@@ -1,6 +1,8 @@
 /**
  * Created by rafa on 07/03/2017.
  */
+'use strict';
+
 angular.module('checklist')
   .controller('SalaryCtrl', ['$state','$stateParams', '$http', '$mdDialog', 'report', '$timeout', '$mdSidenav', function ($state, $stateParams, $http, $mdDialog, report, $timeout, $mdSidenav) {
     var vm = this;
@@ -8,8 +10,7 @@ angular.module('checklist')
     vm.customFullScreen = true;
     vm.report = report.usersSalaryReport;
     //dummy month change it
-    vm.month = report.usersSalaryReport[0].salaryReports;
-    // console.log(report.usersSalaryReport[0].salaryReports);
+    vm.month = report.usersSalaryReport[0].salaryReports ? report.usersSalaryReport[0].salaryReports : [];
     vm.monthInfo = report.calendarReport;
     vm.salaryReport = null;
     vm.calendar = ['Янв.', 'Фев.', 'Мар.', 'Апр.', 'Май', 'Июн.',
@@ -38,8 +39,8 @@ angular.module('checklist')
         fullscreen: vm.customFullScreen
       })
         .then(function (resp) {
+
         }, function (resp) {
-          console.log(resp);
           //cancelling
         })
     };

@@ -62,7 +62,6 @@
             </div>
             <div class="sal-pan-day-report">
               <div class="sal-pan-day-rep-body" ng-repeat="rep in vm.report track by $index">
-                <div class="cust-layout-row">
                   <div class="cust-layout-row">
                     <div class="day-content-sal" ng-repeat="sal in rep.salaryReports">
                       <span> Пришел: {{sal.salaryDetails.check_in | date:'h:mm'}}</span>
@@ -73,28 +72,27 @@
                     </div>
                   </div>
 
-                  <div class="cust-layout-row">
-                    <div class="cust-layout-column">
-                      <div class="sal-title">
-                        <span>SALARY</span>
-                      </div>
-                      <div class="sal-sal">
+                  <!--<div class="cust-layout-row">-->
+                    <!--<div class="cust-layout-column">-->
+                      <!--<div class="sal-title">-->
+                        <!--<span>SALARY</span>-->
+                      <!--</div>-->
+                      <!--<div class="sal-sal">-->
 
-                      </div>
+                      <!--</div>-->
 
-                    </div>
-                    <div class="cust-layout-column">
-                      <div class="sal-title">
-                        <span>BONUS</span>
-                      </div>
-                      <div class="sal-sal">
+                    <!--</div>-->
+                    <!--<div class="cust-layout-column">-->
+                      <!--<div class="sal-title">-->
+                        <!--<span>BONUS</span>-->
+                      <!--</div>-->
+                      <!--<div class="sal-sal">-->
 
-                      </div>
+                      <!--</div>-->
 
-                    </div>
+                    <!--</div>-->
 
-                  </div>
-                </div>
+                  <!--</div>-->
 
               </div>
 

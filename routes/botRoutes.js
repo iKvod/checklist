@@ -279,10 +279,8 @@ bot.onText(/\/👤 (.+) (.+)/, function (msg, match) {
 ///sendbook@touser <Название книги> <ID сотрудника>
 bot.onText(/\/sendbook@touser (.+) (.+)/, function (msg, match) {
 
-    var title = match[1]
-   // console.log(title);
+    var title = match[1];
     var id = match[2];
- //   console.log(id);
 
     User.findOne({ employee_id: id})
         .select({ _id: 1, botId: 1, book: 1 })
@@ -360,7 +358,7 @@ function saveBook(sep, text, callback) {
                         users[i].save(function (err, savedUsers) {
                             if(err) {console.log(err); return}
 
-                            console.log(savedUsers);
+                            // console.log(savedUsers);
                         });
                     }
                })
