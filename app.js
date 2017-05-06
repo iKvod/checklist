@@ -75,6 +75,7 @@ app.use('/api/checklist', checklistRoutes);
 app.use('/api/reports', reportRoutes);
 app.use('/api/salary', salaryRoutes);
 app.use('/api/books', bookRoutes);
+
 //app.use('/api/dpts', deptRoutes);
 app.use('/api/depts', deptRoutes);
 app.use('/api/positions', psnRoutes);

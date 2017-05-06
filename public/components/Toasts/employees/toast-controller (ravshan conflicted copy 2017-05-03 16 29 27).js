@@ -22,10 +22,10 @@ angular.module('checklist')
       $mdDialog
         .show($mdDialog
           .alert()
-          .title('Больше информации тут')
-          .textContent('ааа.')
-          .ariaLabel('Больше инфорамции')
-          .ok('Понятно')
+          .title('More info goes here.')
+          .textContent('Something witty.')
+          .ariaLabel('More info')
+          .ok('Got it')
           .targetEvent(e)
         )
         .then(function() {

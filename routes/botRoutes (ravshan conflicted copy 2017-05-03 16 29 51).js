@@ -766,45 +766,6 @@ bot.on(mes, function (msg) {
     // }
 });
 
-
-bot.onText(/\/report/, function (msg, match) {
-  // var date = req.body.date; // date.begin $ date.end of month
-  var chatId = msg.from.id;
-
-  User.find({ disabled: false }) // for prod pass disabled:false
-    .populate({
-      path: 'report',
-      match: { $and: [{createdAt: { $gte: new Date(2017, 3, 1)}}, { createdAt: { $lte: new Date(2017, 3, 31)}}] }
-    })
-    .select({
-      'employee_id':1, 'lastname':1,'firstname':1 ,
-      'report': 1
-    })
-    .exec(function (err, users) {
-      if (err) {
-        return next(err);
-      }
-      sendReportText(users, function (data) {
-        console.log(data);
-        // bot.sendMessage(chatId, data);
-      });
-    });
-
-});
-
-var sendReportText = function (usersReport, callback) {
-  var message = '';
-
-  usersReport.forEach(function (el) {
-    // console.log(el);
-    message += '\n\nФИО - ' + el.firstname + " " + el.lastname + '\nОтчет за текущий месяц \n';
-    el.report.forEach(function (el2) {
-      message += el2.check_in.getDate() + "-"+ el2.check_in.getDay() + " " + el2.report + "\n";
-    });
-  });
-  callback(message);
-};
-
 function saveBook(id, callback, title, link) {
 
     User.find({})
@@ -833,9 +794,5 @@ function sendBookInfo(botId, title, link) {
         bot.sendMessage(botId, '[Отправлена КНИГА: ' + title + ']('+ link +')', optionCeo);
     }
 }
-
-
-
-
 
 module.exports = botrouter;

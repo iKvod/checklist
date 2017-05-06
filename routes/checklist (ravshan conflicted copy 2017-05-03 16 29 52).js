@@ -200,7 +200,7 @@ checklist.get('/:id', function (req, res, next) {
 checklist.post('/code', function(req, res,  next){
     //if user checked it will be saved as checkin
     //otherwise checked as checkout
-    // console.log(req.body);
+    console.log(req.body);
     if(!req.body.checked){
         var report = new Reports();
         console.log("User checked");
@@ -213,7 +213,7 @@ checklist.post('/code', function(req, res,  next){
                 return next(err);
             }
             //check if the code in users code prototype
-            // console.log(data);
+            console.log(data);
             if(req.body.code) {
                 for(var i = 0; i < 2; ++i){
                     if(data[i] === req.body.code) {
@@ -229,7 +229,7 @@ checklist.post('/code', function(req, res,  next){
         });
 
     } else {
-        // console.log("not checked");
+        console.log("not checked");
         res.send("ok");
     }
     res.send("ok")

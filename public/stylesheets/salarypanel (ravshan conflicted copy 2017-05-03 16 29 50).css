@@ -1,0 +1,317 @@
+.sal-pan-wrapper {
+    background-color: #EDEEF0;
+    min-height: 800px;
+    /*margin-top: 12px;*/
+    display: flex;
+    flex-flow: column nowrap;
+    /*margin-left: 10px;*/
+    /*margin-right: 10px;*/
+    /*padding-top: 6px;*/
+    width: 100%;
+}
+
+
+/*.sal-pan-wrapper .sal-pan-month {*/
+    /*flex: 1;*/
+    /*background-color: #FFFFFF;*/
+    /*display: flex;*/
+    /*flex-flow: row nowrap;*/
+    /*!*align-items: center;*!*/
+/*}*/
+
+.sal-pan-wrapper .sal-pan-body {
+    flex: 1;
+    display: flex;
+    flex-flow: row nowrap;
+    min-height: 1000px;
+}
+    .sal-pan-body .sal-pan-tools {
+        flex:1;
+        background-color: #4F6883;
+        min-width: 150px;
+        max-width: 150px;
+    }
+    .sal-pan-body .sal-pan-content {
+        min-width: 1200px;
+        flex: 14;
+        display: flex;
+        flex-flow: row nowrap;
+        padding-top: 6px;
+        margin-left: 6px;
+    }
+
+.sal-pan-content .sal-pan-name {
+    flex: 1;
+    display: flex;
+    flex-flow: column nowrap;
+    min-width: 206px;
+    max-width: 206px;
+    margin: 0 0 0 0;
+}
+
+    .sal-pan-name .sal-pan-title {
+        background-color: #ffffff;
+        flex: 1;
+        display: flex;
+        flex-flow: row wrap;
+        width: 100%;
+        min-height: 88px;
+        max-height: 88px;
+        max-width: 200px;
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center;
+
+        /*margin: 5px;*/
+        /*overflow: auto;*/
+    }
+
+        .sal-pan-title span {
+            /*flex: 1;*/
+            margin:auto;
+        }
+
+    .sal-pan-name .sal-pan-nlist  {
+        flex: 12;
+        width: 100%;
+        /*padding: 6px;*/
+        margin-top: 6px;
+        display: flex;
+        flex-flow: column nowrap;
+    }
+        .sal-pan-nlist .sal-pan-list {
+            background-color: #4F6883;
+            padding: 3px;
+            width: 100%;
+            margin-bottom: 10px;
+            display: flex;
+            flex-flow: column nowrap;
+            min-height: 120px;
+            max-height: 120px;
+            font-size: 10px;
+            border-bottom: solid 2px black;
+        }
+        .sal-pan-list-text {
+            font-size: 17px !important;
+            color: #ffffff;
+            font-weight: 600;
+            padding-left: 10px !important;
+        }
+
+.sal-pan-content .sal-pan-report {
+    flex: 5;
+    display: flex;
+    flex-flow: column nowrap;
+    min-width: 60%;
+    /*min-width: 00px;*/
+    max-width: 930px;
+}
+
+    .sal-pan-report .sal-pan-month {
+        flex: 1;
+        background-color: #EDEEF0;
+        display: flex;
+        flex-flow: column nowrap;
+        max-height: 55px;
+        /*align-items: center;*/
+    }
+        .sal-pan-month .sal-pan-calendar {
+            /*flex: 1;*/
+            display: flex;
+            /*background-color: #FEEBC8;*/
+            max-width: 1400px;
+            display: flex;
+            flex-flow: row nowrap;
+        }
+            .sal-pan-calendar .month {
+                flex: 1;
+                margin: auto;
+                justify-content: center;
+                /*min-width: 100px;*/
+                /*max-width: 250px;*/
+                padding: 0 10px 0 10px;
+                display: flex;
+                flex-flow: row wrap;
+                /*background-color: #4CAF50;*/
+            }
+
+                .month span {
+                    min-width: 110px;
+                    margin: 0 auto;
+                    text-align: center;
+                    font-size: 25px;
+                    font-weight: 600;
+                    color: cornflowerblue;
+                }
+            .sal-pan-calendar .month-info {
+                flex: 2;
+                display: flex;
+                flex-flow: row nowrap;
+                 /*background-color: #4F6883;*/
+            }
+                .sal-pan-calendar .month-info-cont {
+                    flex:1;
+                    display: flex;
+                    flex-flow: column nowrap;
+                    padding: 0 6px 0 10px;
+                    min-width: 100px;
+                    max-width: 200px;
+                    max-height: 100px;
+                }
+                    .month-info-cont .month-info-cont-label {
+                        margin-bottom: 5px;
+                        display: flex;
+                        flex-flow: row nowrap;
+                    }
+                         .month-info-cont-label label {
+                             text-align: left;
+                             font-size: 12px;
+                             font-weight: 400;
+                             margin-right: 10px ;
+                         }
+                         .month-info-cont-label span {
+                             font-size: 16px;
+                             font-weight: 600;
+                             color: cornflowerblue;
+                         }
+
+        /*.sal-pan-month .sal-pan-days {*/
+            /*flex: 0.7;*/
+            /*background-color: #31B6FC;*/
+            /*display: flex;*/
+            /*flex-flow: row nowrap;*/
+            /*max-height: 800px;*/
+            /*width: 1000px;*/
+            /*overflow-x: auto;*/
+            /*!*overflow-x: auto;*!*/
+            /*!*-ms-overflow-x: auto;*!*/
+            /*!*-webkit-overflow-scrolling: auto;*!*/
+        /*}*/
+
+    .sal-pan-report .sal-pan-repcontent {
+        /*flex: 21;*/
+        display: flex;
+        flex-flow: column nowrap;
+        width: 100%;
+        overflow-x: auto;
+        /*padding: 10px 10px 10px 10px;*/
+        /*background-color: #FF3D00;*/
+    }
+
+        .sal-pan-repcontent .sal-pan-days {
+            flex: 0.62;
+            display: flex;
+            flex-flow: row nowrap;
+            min-width: 100%;
+            /*border-bottom: #4f6883 solid 1px;*/
+            /*min-height: 3.5%;*/
+            /*padding-left: 10px;*/
+            margin-bottom: 8px;
+            /*background-color: #FFFFFF;*/
+        }
+                .sal-pan-days .day-content-da {
+                    min-width: 150px;
+                    max-width: 150px;
+                    background-color: #FFFFFF;
+                    min-height: 8.3%;
+                    border-right: #4f6883 solid 1px;
+                    display: flex;
+                    flex-flow: row nowrap;
+                    max-height: 32px;
+                    font-size: 20px;
+                    font-weight: 600;
+                }
+                    .day-content-da span{
+                        margin: auto;
+                    }
+
+                    .sund{
+                        background-color: darkred!important;
+                        color: #FFFFFF;
+                        font-size: 20px;
+                        font-weight: 600;
+                    }
+
+                    .satd{
+                        background-color: yellow!important;
+                        color: #000;
+                        font-size: 20px;
+                        font-weight: 600;
+                    }
+        /*.sal-pan-repcontent .sal-pan-day-report {*/
+            /*flex: 20;*/
+            /*display: flex;*/
+            /*min-width: 100%;*/
+            /*background-color: #FEEBC8;*/
+            /*flex-flow: column nowrap;*/
+            /*min-height: 65px;*/
+            /*!*padding: 4px;*!*/
+        /*}*/
+        .sal-pan-repcontent .sal-pan-day-report {
+            flex: 20;
+            display: flex;
+            min-width: 100%;
+            /*background-color: #FEEBC8;*/
+            flex-flow: column nowrap;
+            /*padding-left: 10px;*/
+        }
+            .sal-pan-day-report .sal-pan-day-rep-body {
+                display: flex;
+                flex-flow: column nowrap;
+                margin-bottom: 10px;
+                /*background-color: aliceblue;*/
+                min-width: 100px;
+                /*max-width: 120px;*/
+                min-height: 120px;
+                max-height: 120px;
+                border-bottom: solid 2px black;
+                padding: 7px 3px
+            }
+
+             .day-content-sal {
+                min-width: 150px;
+                max-width: 150px;
+                min-height: 100px;
+                max-height: 100px;
+                border-right: #4f6883 solid 1px;
+                padding: 3px;
+                display: flex;
+                flex-flow: column nowrap;
+                font-size: 12px;
+                 /*border-bottom: solid 2px black;*/
+
+             }
+
+
+
+
+.cust-layout-row {
+    display: flex;
+    flex-flow: row nowrap;
+    /*background-color: #FFFFFF;*/
+}
+
+.cust-layout-column {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.cust-aside {
+    min-width: 200px;
+    min-height: 80px;
+    background-color: aqua;
+}
+
+.sal-title {
+    padding: 4px;
+}
+
+.aside-cust {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: 1049;
+    overflow: auto;
+    min-width: 320px;
+    background: #fff;
+}

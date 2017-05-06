@@ -102,6 +102,7 @@ angular.module('checklist')
           .$promise
           .catch(function (err) {
             if(err){
+              console.log(err);
               vm.showToast(err.data.message);
               $mdDialog.hide();
               $state.transitionTo($state.current, $state.params, {
