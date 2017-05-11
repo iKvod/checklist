@@ -12,7 +12,7 @@ var config = {
         auth: { authdb: "checklist"}
     },
     ceoBotID : 78923920,
-    managerBotID : 228106138
+    managerBotID : 370463373
     // ceoBotID: 207925830,     //for testing
     // managerBotID: 207925830 // for testing
     //pip:"10.130.39.7"
