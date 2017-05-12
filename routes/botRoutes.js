@@ -390,10 +390,6 @@ function saveBook(sep, text, callback) {
     }
 }
 
-
-
-
-
 //Get employees books info
 bot.onText(/\/Кто что читает/,function (msg, match) {
   var userId = msg.from.id;
@@ -591,6 +587,7 @@ botrouter.post('/image', function (req, res, next) {
     };
     //
     bot.sendPhoto(ceoBotId, buffer, opt); // Rustam's bot ID
+    bot.sendMessage(managerBotId, caption);
     //sending comment about read books
     if(bookReportCeo){
         bot.sendMessage(ceoBotId, bookReportCeo, bookOpt);
@@ -684,6 +681,49 @@ bot.onText(/\/switch/, function (msg, match) {
         bot.sendMessage(msg.chat.id,"У вас новые кнопки", optEmployee);
     }
 });
+
+bot.onText(/\/сво/, function (msg, match) {
+  var msgId = msg.chat.id;
+  sendEmplList(function (err, data) {
+    if(err){
+      console.log(err);
+      return;
+    }
+
+    console.log(data);
+  });
+});
+
+var sendEmplList = function (cb) {
+  getEmplAtOffice(function (err, data) {
+    if(err){
+      cb(err, null);
+      return;
+    }
+    cb(null, data);
+  });
+};
+
+var getEmplAtOffice = function (cb) {
+  Employees.find({checked: true})
+    .select({})
+    .exec(function (err, empl) {
+      if(err){
+        cb(err, null);
+        return;
+      }
+
+      if(empl.length){
+        // console.log(empl)
+        cb(null, empl);
+      } else {
+        var error = {};
+        error.message = 'Не найден';
+        error.status = 404;
+        cb(error, null);
+      }
+    });
+};
 
 
 // for sending book interactively
@@ -833,8 +873,6 @@ function sendBookInfo(botId, title, link) {
         bot.sendMessage(botId, '[Отправлена КНИГА: ' + title + ']('+ link +')', optionCeo);
     }
 }
-
-
 
 
 

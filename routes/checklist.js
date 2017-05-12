@@ -101,7 +101,6 @@ checklist.get('/checkout/:id', function (req, res, next) {
 checklist.put('/checkout/:id', function (req, res, next) {
 
     Users.findById(req.params.id, function(err, data){
-      console.log(data);
         if (err) console.log(err);
         var len = data.report.length - 1;
         data.checked = false;
