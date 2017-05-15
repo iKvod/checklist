@@ -466,6 +466,7 @@ bot.onText(/\/🍔На обед/, function(msg, match){
 });
 
 bot.onText(/\/С обеда🍔/, function(msg, match){
+  console.log("jahfjkash")
     var botId = msg.from.id;
     var name = msg.chat.username;
     var checkinType = {"type": "lunch_out"};
@@ -476,6 +477,7 @@ bot.onText(/\/С обеда🍔/, function(msg, match){
 });
 
 bot.onText(/\/⚔Уйти с работы/, function(msg, match){
+  console.log(msg);
     var botId = msg.from.id;
     var name = msg.chat.username;
     var checkinType = {"type":"go_out"};
@@ -497,7 +499,6 @@ bot.onText(/\/👨🏼‍💻Пришел на работу👩🏼‍💻/, fun
 //for writing times to report during work time
 // (Lunch/come from lunch and go out/come during work hours
 function goDuringWorkHours(botId, checkinType) {
-
     User.findOne({botId: botId})
         .select('report firstname')
         .exec(function (err, user){
@@ -506,22 +507,32 @@ function goDuringWorkHours(botId, checkinType) {
               var len = user.report.length;
               var lastReportId = user.report[len-1];
               var name = user.firstname;
+              var currentDate = new Date();
 
               Report.findOne({_id: lastReportId})
                 .exec(function (err, currentDayReport) {
-                  currentDayReport[checkinType] = new Date();
-                  currentDayReport.save(function (err, savedReport) {
-                    if(err){
-                      bot.sendMessage(botId, err);
-                      return next(err);
+                  if(currentDayReport){
+                    var repCreatedAt = currentDayReport.createdAt;
+
+                    if((repCreatedAt.getDate() === currentDate.getDate()) && (repCreatedAt.getMonth() === currentDate.getMonth())){
+                      currentDayReport[checkinType] = currentDate;
+                      currentDayReport.save(function (err, savedReport) {
+                        if(err){
+                          bot.sendMessage(botId, err);
+                          return next(err);
+                        }
+                        //console.log(savedReport);
+                        bot.sendMessage(botId, name + ", Ваш запрос успешно обработан!");
+                      });
+
+                    } else  {
+                      bot.sendMessage(botId, name + ", Возможно Вы забыли отметиться сегодня!");
                     }
-                    //console.log(savedReport);
-                    bot.sendMessage(botId, name + ", Ваш запрос успешно обработан!");
-                  });
+                  }
                 });
 
             } else {
-              bot.sendMessage(botId, " Вы не прошли полную регистрацию\n + ");
+              bot.sendMessage(botId, " По Вашем данным ничего не найдено! Обратитесь в тех. поддержку\n");
             }
         });
 }
@@ -634,22 +645,6 @@ botrouter.post('/image', function (req, res, next) {
 
 var mes = 'message';
 var bookData = [];
-
-
-//for testing. comment when production mode
-var optTesting = {
-    'reply_markup': {
-        "keyboard":[
-            [{text: '/👤 Информация о пользователе'}, {text: '/📕Добавить книгу'}],
-            [{text:'/🍔На обед'}, {text:'/С обеда🍔'}],
-            [{text:'/⚔Уйти с работы'}, {text:'/👨🏼‍💻Пришел на работу👩🏼‍💻'}]
-        ],
-        "resize_keyboard" : true,
-        "one_time_keyboard" : true,
-        "remove_keyboard": true
-    }
-
-};
 
 
 var optionCeo = {
