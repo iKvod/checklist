@@ -726,6 +726,7 @@ bot.on(mes, function (msg) {
     var data = ["text", "link"];
     var mes_id = 0;
 
+    console.log(msg);
 
     if(msg.text === '/📕Добавить книгу'){
         this.mes_id = msg.message_id;

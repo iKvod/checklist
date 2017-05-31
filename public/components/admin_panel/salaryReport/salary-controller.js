@@ -9,6 +9,7 @@ angular.module('checklist')
     vm.month = null; // for callendar
     vm.customFullScreen = true;
     vm.report = report.usersSalaryReport;
+    console.log(vm.report);
     //dummy month change it
     vm.month = report.usersSalaryReport[0].salaryReports ? report.usersSalaryReport[0].salaryReports : [];
     vm.monthInfo = report.calendarReport;
