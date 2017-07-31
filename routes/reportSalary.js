@@ -32,7 +32,7 @@ salaryRoute.get('/monthly', function (req, res, next) {
   Users.find({ disabled:false }) // for prod pass disabled:false
     .populate({
       path: 'report',
-      match: { $and: [{createdAt: { $gte: new Date(2017, 4, 1)}}, { createdAt: { $lte: new Date(2017, 4, 31)}}] }
+      match: { $and: [{createdAt: { $gte: new Date(2017, 6, 1)}}, { createdAt: { $lte: new Date(2017, 6, 31)}}] }
     })
     .select({
       'employee_id':1, 'lastname':1,'firstname':1 ,
@@ -43,7 +43,7 @@ salaryRoute.get('/monthly', function (req, res, next) {
       if (err) {
         return next(err);
       }
-      timeCalculator.calculateMinutes(users, 4, function (userReport) {
+      timeCalculator.calculateMinutes(users, 6, function (userReport) {
         // res.send(userReport);
         sendSalaryReport(userReport, function (monthReport) {
           // console.log(monthReport);
@@ -58,7 +58,7 @@ salaryRoute.get('/monthly/:id', function (req, res, next) {
   Users.find({_id: req.params.id}) // for prod pass disabled:false
     .populate({
       path: 'report',
-      match: { $and: [{createdAt: { $gte: new Date(2017, 4, 1)}}, { createdAt: { $lte: new Date(2017, 4, 31)}}] }
+      match: { $and: [{createdAt: { $gte: new Date(2017, 6, 1)}}, { createdAt: { $lte: new Date(2017, 6, 31)}}] }
     })
     .select({
       'employee_id':1, 'lastname':1,'firstname':1 ,
@@ -69,7 +69,7 @@ salaryRoute.get('/monthly/:id', function (req, res, next) {
       if (err) {
         return next(err);
       }
-      timeCalculator.calculateMinutes(users, 4, function (userReport) {
+      timeCalculator.calculateMinutes(users, 6, function (userReport) {
         // res.send(userReport);
         sendSalaryReport(userReport, function (monthReport) {
           // console.log(monthReport);
