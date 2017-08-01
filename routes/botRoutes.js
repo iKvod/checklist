@@ -821,8 +821,14 @@ bot.onText(/\/report/, function (msg, match) {
         return next(err);
       }
       sendReportText(users, function (data) {
-        console.log(data);
-        // bot.sendMessage(chatId, data);
+        // console.log(data);
+          fs.appendFile('reportJuly.txt', data, function (err) {
+              if (err){
+                  bot.sendMessage(chatId, "Ошибка при генерации текстового отчета");
+                  return console.log(err);
+              }
+              bot.sendMessage(chatId, "Отчет сгенирирован!");
+          });
       });
     });
 
