@@ -810,7 +810,7 @@ bot.onText(/\/report/, function (msg, match) {
   User.find({ disabled: false }) // for prod pass disabled:false
     .populate({
       path: 'report',
-      match: { $and: [{createdAt: { $gte: new Date(2017, 3, 1)}}, { createdAt: { $lte: new Date(2017, 3, 31)}}] }
+      match: { $and: [{createdAt: { $gte: new Date(2017, 6, 1)}}, { createdAt: { $lte: new Date(2017, 6, 31)}}] }
     })
     .select({
       'employee_id':1, 'lastname':1,'firstname':1 ,
